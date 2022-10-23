@@ -26,6 +26,14 @@ defaultContentLanguage = "en"
       name = "Posts"
       url = "/posts/"
       title = ""
+    [[languages.en.menu.main]]
+      weight = 2
+      identifier = "about"
+      pre = ""
+      post = ""
+      name = "About"
+      url = "/about/"
+      title = ""
 
   [languages.fr]
     weight = 2
