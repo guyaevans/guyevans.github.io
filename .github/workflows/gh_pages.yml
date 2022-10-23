@@ -3,6 +3,10 @@ name: github pages
 on:
   push:
     branches:
+<<<<<<< HEAD
+=======
+      - main 
+>>>>>>> a45a08f7d08ea81be3f1d250dd31981710ef8696
       - master # Set a branch to deploy
   pull_request:
 
