@@ -31,7 +31,7 @@ defaultContentLanguage = "en"
       identifier = "about"
       pre = ""
       post = ""
-      name = "About"
+      name = "~ Whoami"
       url = "/about/"
       title = ""
 
@@ -46,6 +46,14 @@ defaultContentLanguage = "en"
       post = ""
       name = "Postes"
       url = "/posts/"
+      title = ""
+    [[languages.fr.menu.main]]
+      weight = 2
+      identifier = "about"
+      pre = ""
+      post = ""
+      name = "~ Whoami"
+      url = "/about/"
       title = ""
 
 
