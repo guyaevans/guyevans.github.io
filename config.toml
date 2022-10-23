@@ -6,10 +6,42 @@ theme = "LoveIt"
 # website title
 title = "Guy Evans"
 
-# language code ["en", "zh-CN", "fr", "pl", ...]
-languageCode = "en"
-# language name ["English", "简体中文", "Français", "Polski", ...]
-languageName = "English"
+# # language code ["en", "zh-CN", "fr", "pl", ...]
+# languageCode = "en"
+# # language name ["English", "简体中文", "Français", "Polski", ...]
+# languageName = "English"
+
+defaultContentLanguage = "en"
+
+[languages]
+  [languages.en]
+    weight = 1
+    languageCode = "en"
+    languageName = "English"
+    [[languages.en.menu.main]]
+      weight = 1
+      identifier = "posts"
+      pre = ""
+      post = ""
+      name = "Posts"
+      url = "/posts/"
+      title = ""
+
+  [languages.fr]
+    weight = 2
+    languageCode = "fr"
+    languageName = "Français"
+    [[languages.fr.menu.main]]
+      weight = 1
+      identifier = "posts"
+      pre = ""
+      post = ""
+      name = "Postes"
+      url = "/posts/"
+      title = ""
+
+
+
 
 [params.header]
     [params.header.title]
