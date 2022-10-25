@@ -27,4 +27,4 @@ J'aime construire et apprendre des choses. Pas seulement des ordinateurs et des 
 Là où je vis actuellement - le sud de la France. Il n'y a pas beaucoup d'endroits où l'on peut vivre à 30 minutes de la mer et des pistes de ski.
 
 ----
-Adapté d'une autobiographie que j'ai écrite lorsque je travaillais à [YFSOL](https://yfsol.com).
+Adapté d'une autobiographie que j'ai écrit lorsque je travaillais à [YFSOL](https://yfsol.com).
