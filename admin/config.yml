@@ -14,6 +14,7 @@ collections:
   - name: posts
     label: Posts
     folder: content/posts
+    structure: multiple_files
     create: true
     i18n: true
     # slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
