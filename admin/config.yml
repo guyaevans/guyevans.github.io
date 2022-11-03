@@ -7,7 +7,7 @@ media_folder: static/img
 public_folder: /img
 site_url: https://guy-evans.com
 i18n:
-  structure: multiple_folders
+  structure: multiple_files
   locales: [en, fr]
 
 collections:
@@ -26,6 +26,7 @@ collections:
         name: date
         widget: datetime
         i18n: duplicate
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - label: Body
         name: body
         widget: markdown
