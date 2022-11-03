@@ -7,8 +7,9 @@ media_folder: static/img
 public_folder: /img
 site_url: https://guy-evans.com
 i18n:
-  # structure: multiple_files
+  structure: multiple_files
   locales: [en, fr]
+  default_locale: en
 
 collections:
   - name: posts
