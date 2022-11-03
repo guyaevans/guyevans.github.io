@@ -29,7 +29,7 @@ collections:
         name: date
         widget: datetime
         i18n: duplicate
-      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false, i18n: duplicate}
+      - {label: "Featured Image", name: "featuredImage", widget: "image", required: false, i18n: duplicate}
       - label: Body
         name: body
         widget: markdown
