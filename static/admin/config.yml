@@ -1,6 +1,7 @@
 backend:
   name: github
   branch: master # Branch to update (optional; defaults to master)
+  repo: guyaevans/guyevans.github.io
 publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
