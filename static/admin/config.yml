@@ -26,6 +26,7 @@ collections:
         name: date
         widget: datetime
         i18n: duplicate
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - label: Body
         name: body
         widget: markdown
