@@ -34,3 +34,8 @@ collections:
         name: body
         widget: markdown
         i18n: true 
+      - label: Tags
+        name: tags
+        widget: list
+        i18n: true
+        required: false
