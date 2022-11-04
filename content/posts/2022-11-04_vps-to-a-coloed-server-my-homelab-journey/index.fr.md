@@ -1,6 +1,7 @@
 ---
 title: " D'un VPS à un serveur en colocation, l'evolution de mon homelab "
 date: 2022-11-04T21:01:45.853Z
+tags: ["homelab", "ovh", "vps", "serveurs", "wordpress", "colo", "colocation"]
 ---
 J'ai toujours eu un intérêt pour les ordinateurs et la technologie. J'étais loin de me douter qu'il s'agirait de la base de mon parcours professionnel.
 
