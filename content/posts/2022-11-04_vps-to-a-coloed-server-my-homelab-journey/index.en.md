@@ -1,6 +1,7 @@
 ---
 title: VPS to a coloed server, my homelab journey
 date: 2022-11-04T21:01:45.853Z
+tags: ["homelab", "ovh", "vps", "servers", "wordpress", "colo", "colocation"]
 ---
 As a young child I always had an interest in computers and tech, little did I know that it would foundation for my carear path that I have chosen today.
 
