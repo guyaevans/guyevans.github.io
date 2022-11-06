@@ -98,6 +98,7 @@ enableEmoji = true
     Twitter = "_guyevans"
     Instagram = "_guyevans"
     Telegram = "guye06"
+    Mastodon = "https://mastodon.xyz/@_guyevans"
     GitHub = ""
 # Menu config
 
