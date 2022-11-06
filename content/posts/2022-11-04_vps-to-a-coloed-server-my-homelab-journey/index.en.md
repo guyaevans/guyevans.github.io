@@ -1,5 +1,5 @@
 ---
-title: VPS to a coloed server, my homelab journey
+title: VPS to a coloed server, my homelab journey - Part 1
 date: 2022-11-04T21:01:45.853Z
 featuredImage: thomas-jensen-urtxbx5i5se-unsplash-2-.jpg
 tags:
