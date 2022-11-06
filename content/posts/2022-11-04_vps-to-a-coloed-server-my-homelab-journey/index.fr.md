@@ -1,7 +1,15 @@
 ---
 title: " D'un VPS à un serveur en colocation, l'evolution de mon homelab "
 date: 2022-11-04T21:01:45.853Z
-tags: ["homelab", "ovh", "vps", "serveurs", "wordpress", "colo", "colocation"]
+featuredImage: thomas-jensen-urtxbx5i5se-unsplash-2-.jpg
+tags:
+  - homelab
+  - ovh
+  - vps
+  - serveurs
+  - wordpress
+  - colo
+  - colocation
 ---
 J'ai toujours eu un intérêt pour les ordinateurs et la technologie. J'étais loin de me douter qu'il s'agirait de la base de mon parcours professionnel.
 
@@ -37,3 +45,5 @@ Ce VPS [^vps] a fini par héberger le site web d'EvansMedia, ma société de ser
 Le prochain VPS [^vps] est arrivé lorsque je cherchais à synchroniser mes fichiers sur mes nombreux appareils, pour des raisons de confidentialité je ne voulais pas utiliser Google Drive ou un équivalent. Je me suis retrouvé sur Owncloud puis j'ai migré vers Nextcloud qui est ce que j'utilise encore aujourd'hui. Nextcloud est fonctionnellement similaire à Dropbox, Office 365 ou Google Drive, il peut être hébergé dans le cloud ou sur votre propre serveur.
 
 La prochaine fois : Je reviendrai sur ce qui m'a fait passer à un serveur dédié et peu après à mon propre matériel racké sans chez un operateur associatif.
+
+[^photo]: Photo par Thomas Jensen @ (Unsplash.com)[https://unsplash.com/@thomasjsn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText]
