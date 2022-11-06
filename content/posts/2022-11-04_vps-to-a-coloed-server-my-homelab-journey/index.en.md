@@ -33,5 +33,6 @@ This VPS[^vps] eventually ended up hosting the website for EvansMedia, my IT and
 [^vps]: Virtual Private Server
 [^ovhfire]: *10 March 2021* - Millions of websites offline after fire at French cloud services firm - [Reuters](https://www.reuters.com/article/us-france-ovh-fire-idUSKBN2B20NU)
 #### VPS Number 2: The storage server
-THe next VPS[^vps] came around when I was looking to sync my files acroos my many devices, for privacy reasons I didn'y want to use Google Drive or an equivalent. I ended up on Owncloud and then moved to Nexcloud which is what I still use today. Nextcloud is Nextcloud is functionally similar to Dropbox, Office 365 or Google Drive, It can be hosted in the cloud or on your own server.
+THe next VPS[^vps] came around when I was looking to sync my files acroos my many devices, for privacy reasons I didn'y want to use Google Drive or an equivalent. I ended up on Owncloud and then moved to Nextcloud which is what I still use today. Nextcloud is functionally similar to Dropbox, Office 365 or Google Drive, It can be hosted in the cloud or on your own server.
 
+Next time: I'll go over what moved me to a dedicated server and soon after my own hardware colo rack with a charity run ISP
