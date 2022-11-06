@@ -34,3 +34,6 @@ Ce VPS [^vps] a fini par héberger le site web d'EvansMedia, ma société de ser
 [^ovhfire]: *10 mars 2021* - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - [Le Monde](https://www.lemonde.fr/societe/article/2021/03/10/a-strasbourg-un-important-incendie-sur-le-site-de-l-entreprise-ovh-classe-seveso_6072548_3224.html)
 
 #### VPS numéro 2 : Le serveur de stockage
+Le prochain VPS [^vps] est arrivé lorsque je cherchais à synchroniser mes fichiers sur mes nombreux appareils, pour des raisons de confidentialité je ne voulais pas utiliser Google Drive ou un équivalent. Je me suis retrouvé sur Owncloud puis j'ai migré vers Nextcloud qui est ce que j'utilise encore aujourd'hui. Nextcloud est fonctionnellement similaire à Dropbox, Office 365 ou Google Drive, il peut être hébergé dans le cloud ou sur votre propre serveur.
+
+La prochaine fois : Je reviendrai sur ce qui m'a fait passer à un serveur dédié et peu après à mon propre matériel racké sans chez un operateur associatif.
