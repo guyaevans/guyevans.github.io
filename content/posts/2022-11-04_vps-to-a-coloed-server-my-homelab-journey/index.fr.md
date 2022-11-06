@@ -34,7 +34,7 @@ Après avoir fait quelques recherches, j'ai conclu deux choses :
 
 Après quelques recherches, j'ai trouvé [OVH](https://ovh.fr), un hébergeur basé en France. OVH proposait et propose toujours des serveurs privés virtuels bon marché et de très bonne qualité. J'ai choisi un serveur 1vCore et 512 Mb RAM pour faire tourner mon site web basé sur Wordpress [^wordpress]. 
 
-Ce VPS [^vps] a fini par héberger le site web d'EvansMedia, ma société de services informatiques et web jusqu'au 10 mars 2021 et ce que je nomme *'Le BBQ d'OVH*' [^ovhfire], où leurs quatre datacenters de Strasbourg sont partis en fumée (littéralement).
+Ce VPS [^vps] a fini par héberger le site web d'EvansMedia, ma société de services informatiques et web jusqu'au 10 mars 2021 et ce que je nomme *'Le BBQ d'OVH*' :fire: [^ovhfire], où leurs quatre datacenters de Strasbourg sont partis en fumée (littéralement).
 
 [^wordpress]: [Wordpress](https://wordpress.org) est un système de gestion de contenu gratuit et open-source. En 2021, 30% des sites web du monde fonctionnaient avec Wordpress.
 
@@ -46,4 +46,6 @@ Le prochain VPS [^vps] est arrivé lorsque je cherchais à synchroniser mes fich
 
 La prochaine fois : Je reviendrai sur ce qui m'a fait passer à un serveur dédié et peu après à mon propre matériel racké sans chez un operateur associatif.
 
-[^photo]: Photo par Thomas Jensen @ (Unsplash.com)[https://unsplash.com/@thomasjsn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText]
+---
+_Photo par Thomas Jensen @ [Unsplash.com](https://unsplash.com/@thomasjsn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
+  

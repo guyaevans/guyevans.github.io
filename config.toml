@@ -12,7 +12,7 @@ title = "Guy Evans"
 # languageName = "English"
 
 defaultContentLanguage = "en"
-
+enableEmoji = true
 [languages]
   [languages.en]
     weight = 1

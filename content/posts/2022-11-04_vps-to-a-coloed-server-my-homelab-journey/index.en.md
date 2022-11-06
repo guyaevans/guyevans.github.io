@@ -34,7 +34,7 @@ After doing some research I new two things:
 
 A bit more research later I found [OVH](https://ovh.fr), they are a web host based in france. OVH offered and still do cheap and very good Virtual Private Servers. I went and chose a 1vCore and 512 Mb RAM server to run my website that was based on Wordpress[^wordpress]. 
 
-This VPS[^vps] eventually ended up hosting the website for EvansMedia, my IT and Web services company until the 10th March 2021 and what I will call *'The Great Fire of OVH*'[^ovhfire], where their four Strasbourg Datacenters went up in smoke (literally, more on that later).
+This VPS[^vps] eventually ended up hosting the website for EvansMedia, my IT and Web services company until the 10th March 2021 and what I will call *'The Great Fire of OVH* :fire:'[^ovhfire], where their four Strasbourg Datacenters went up in smoke (literally, more on that later).
 
 [^wordpress]: [Wordpress](https://wordpress.org) is a free and open-source content management system. In 2021, 30% of the worlds webites ran on Wordpress
 
@@ -45,5 +45,6 @@ THe next VPS[^vps] came around when I was looking to sync my files acroos my man
 
 Next time: I'll go over what moved me to a dedicated server and soon after my own hardware colo rack with a charity run ISP
 
-[^photo]: Photo by Thomas Jensen @ (Unsplash.com)[https://unsplash.com/@thomasjsn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText]
+---
+_Photo by Thomas Jensen @ [Unsplash.com](https://unsplash.com/@thomasjsn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
   
