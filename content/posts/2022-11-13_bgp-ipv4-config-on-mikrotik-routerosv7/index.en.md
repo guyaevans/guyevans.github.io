@@ -1,7 +1,8 @@
 ---
 title: BGP IPv4 Config on Mikrotik RouterOSv7
-date: 2022-11-13T17:25:52.081Z
+date: 2022-11-13
 featuredImage: screen-router.png
+draft: false
 tags:
   - routeros
   - mikrotik
