@@ -11,7 +11,10 @@ description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
   [params.page]
     [params.page.comment]
-      enable = false
+      enable = true
+        [params.page.comment.commento]
+        enable = true
+
 
 # # language code ["en", "zh-CN", "fr", "pl", ...]
 # languageCode = "en"
