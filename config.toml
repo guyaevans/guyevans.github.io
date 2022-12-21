@@ -5,6 +5,7 @@ theme = "LoveIt"
 
 # website title
 title = "Guy Evans"
+description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
 # # language code ["en", "zh-CN", "fr", "pl", ...]
 # languageCode = "en"
@@ -13,6 +14,11 @@ title = "Guy Evans"
 
 defaultContentLanguage = "en"
 enableEmoji = true
+
+ [params.app]
+    # whether to omit favicon resource links
+    noFavicon = true
+
 [languages]
   [languages.en]
     weight = 1
