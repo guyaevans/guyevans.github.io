@@ -141,7 +141,7 @@ enableEmoji = true
 [params.analytics]
     enable = true
     # Umami
-    [params.analytics.yandexMetrica]
+    [params.analytics.umami]
       id = ""
-      websiteId = "unique-website-id"
-      jsLocation = "https://analytics.my-hugo-blog.tld/umami.js"
+      websiteId = "4d8524a0-ef19-4b23-bf6b-fa76b7614903"
+      jsLocation = "https://umami.evans.fr/umami.js"
