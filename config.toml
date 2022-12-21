@@ -18,7 +18,6 @@ description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
         # Disqus shortname to use Disqus in posts
         shortname = "guy-evans.com"
 
-
 # # language code ["en", "zh-CN", "fr", "pl", ...]
 # languageCode = "en"
 # # language name ["English", "简体中文", "Français", "Polski", ...]
