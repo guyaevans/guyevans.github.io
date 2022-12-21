@@ -9,6 +9,14 @@ description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
   # website title
   title = "Guy Evans"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
+  [params.page]
+    [params.page.comment]
+      enable = true
+      [params.page.comment.disqus]
+        # LoveIt NEW | 0.1.1
+        enable = true
+        # Disqus shortname to use Disqus in posts
+        shortname = "guy-evans.com"
 
 # # language code ["en", "zh-CN", "fr", "pl", ...]
 # languageCode = "en"
