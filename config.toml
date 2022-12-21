@@ -2,10 +2,13 @@ baseURL = "https://evans.fr"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
-[Params]
-# website title
 title = "Guy Evans"
 description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
+
+[params]
+  # website title
+  title = "Guy Evans"
+  description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
 # # language code ["en", "zh-CN", "fr", "pl", ...]
 # languageCode = "en"
