@@ -15,7 +15,26 @@
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript>
         {{- end -}}
-
+        {{/* Add support for ISSO comment system */}}
+        {{- $isso := $comment.isso| default dict -}}
+        {{ if $isso.enabled }}
+          <script
+              data-isso="{{ $isso.data }}"
+              data-isso-id="{{ $isso.id}}"
+              data-isso-css="{{ $isso.css }}"
+              data-isso-lang="{{ $isso.lang }}"
+              data-isso-reply-to-self="{{ $isso.replyToSelf }}"
+              data-isso-require-author="{{ $isso.requireAuthor }}"
+              data-isso-require-email="{{ $isso.requireEmail }}"
+              data-isso-avatar="{{ $isso.avatar }}"
+              data-isso-avatar-bg="{{ $isso.avatarBg }}"
+              src="{{ $isso.jsLocation }}">
+          </script>
+          <noscript>Please enable JavaScript to view the comments powered by <a href="https://posativ.org/isso/">Isso</a>.</noscript>
+          <div>
+            <section id="isso-thread"></section>
+          </div>
+        {{ end }}
     </section>
 
         {{- /* Gitalk Comment System */ -}}
@@ -148,27 +167,6 @@
                 Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
             </noscript>
         {{- end -}}
-
-        {{/* Add support for ISSO comment system */}}
-        {{- $isso := $comment.isso| default dict -}}
-        {{ if $isso.enabled }}
-          <script
-              data-isso="{{ $isso.data }}"
-              data-isso-id="{{ $isso.id}}"
-              data-isso-css="{{ $isso.css }}"
-              data-isso-lang="{{ $isso.lang }}"
-              data-isso-reply-to-self="{{ $isso.replyToSelf }}"
-              data-isso-require-author="{{ $isso.requireAuthor }}"
-              data-isso-require-email="{{ $isso.requireEmail }}"
-              data-isso-avatar="{{ $isso.avatar }}"
-              data-isso-avatar-bg="{{ $isso.avatarBg }}"
-              src="{{ $isso.jsLocation }}">
-          </script>
-          <noscript>Please enable JavaScript to view the comments powered by <a href="https://posativ.org/isso/">Isso</a>.</noscript>
-          <div>
-            <section id="isso-thread"></section>
-          </div>
-        {{ end }}
     
     </div>
 {{- end -}}
