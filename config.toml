@@ -12,8 +12,18 @@ description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
   [params.page]
     [params.page.comment]
       enable = true
-        [params.page.comment.commento]
-        enable = true
+      [params.page.comment.isso]
+        enabled = true
+        data = "https://isso.evans.fr/"
+        id = "thread-id"
+        css = true
+        lang = "en"
+        replyToSelf = true
+        requireAuthor = true
+        requireEmail = false
+        avatar = true
+        avatar-bg = "#f0f0f0"
+        jsLocation = "https://isso.evans.fr/js/embed.min.js"
 
 
 # # language code ["en", "zh-CN", "fr", "pl", ...]
@@ -160,16 +170,3 @@ enableEmoji = true
       id = ""
       websiteId = "4d8524a0-ef19-4b23-bf6b-fa76b7614903"
       jsLocation = "https://umami.evans.fr/umami.js"
-
-[Params.isso]
-  enabled = true
-  data = "https://isso.evans.fr"
-  id = "thread-id"
-  css = true
-  lang = "en"
-  replyToSelf = true
-  requireAuthor = true
-  requireEmail = false
-  avatar = true
-  avatar-bg = "#f0f0f0"
-  jsLocation = "https://isso.evans.fr/js/embed.min.js"

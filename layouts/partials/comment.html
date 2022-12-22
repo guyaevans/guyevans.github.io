@@ -17,25 +17,6 @@
         {{- end -}}
 
     </section>
-    {{/* Add support for ISSO comment system */}}
-    {{ if .Site.Params.isso.enabled }}
-      <script
-          data-isso="{{ .Site.Params.isso.data }}"
-          data-isso-id="{{ .Site.Params.isso.id}}"
-          data-isso-css="{{ .Site.Params.isso.css }}"
-          data-isso-lang="{{ .Site.Params.isso.lang }}"
-          data-isso-reply-to-self="{{ .Site.Params.isso.replyToSelf }}"
-          data-isso-require-author="{{ .Site.Params.isso.requireAuthor }}"
-          data-isso-require-email="{{ .Site.Params.isso.requireEmail }}"
-          data-isso-avatar="{{ .Site.Params.isso.avatar }}"
-          data-isso-avatar-bg="{{ .Site.Params.isso.avatarBg }}"
-          src="{{ .Site.Params.isso.jsLocation }}">
-      </script>
-      <noscript>Please enable JavaScript to view the comments powered by <a href="https://posativ.org/isso/">Isso</a>.</noscript>
-      <div>
-        <section id="isso-thread"></section>
-      </div>
-    {{ end }}
 
         {{- /* Gitalk Comment System */ -}}
         {{- $gitalk := $comment.gitalk | default dict -}}
@@ -167,6 +148,28 @@
                 Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
             </noscript>
         {{- end -}}
+
+        {{/* Add support for ISSO comment system */}}
+        {{- $isso := $comment.isso| default dict -}}
+        {{ if $isso.enabled }}
+          <script
+              data-isso="{{ $isso.data }}"
+              data-isso-id="{{ $isso.id}}"
+              data-isso-css="{{ $isso.css }}"
+              data-isso-lang="{{ $isso.lang }}"
+              data-isso-reply-to-self="{{ $isso.replyToSelf }}"
+              data-isso-require-author="{{ $isso.requireAuthor }}"
+              data-isso-require-email="{{ $isso.requireEmail }}"
+              data-isso-avatar="{{ $isso.avatar }}"
+              data-isso-avatar-bg="{{ $isso.avatarBg }}"
+              src="{{ $isso.jsLocation }}">
+          </script>
+          <noscript>Please enable JavaScript to view the comments powered by <a href="https://posativ.org/isso/">Isso</a>.</noscript>
+          <div>
+            <section id="isso-thread"></section>
+          </div>
+        {{ end }}
+    
     </div>
 {{- end -}}
 
