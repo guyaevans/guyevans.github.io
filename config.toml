@@ -102,7 +102,7 @@ enableEmoji = true
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "https://pbs.twimg.com/profile_images/860920914166394880/GKUV-AWm_400x400.jpg"
+      avatarURL = "img/ge-profile.jpg"
       # title shown in home page (HTML format is supported)
       title = "Guy Evans"
       # subtitle shown in home page (HTML format is supported)
