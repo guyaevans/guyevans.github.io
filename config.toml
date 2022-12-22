@@ -102,7 +102,7 @@ enableEmoji = true
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "guy-evans.com/img/ge-profile.jpg"
+      avatarURL = "https://guy-evans.com/img/ge-profile.jpg"
       # title shown in home page (HTML format is supported)
       title = "Guy Evans"
       # subtitle shown in home page (HTML format is supported)
