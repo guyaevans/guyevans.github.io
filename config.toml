@@ -1,10 +1,25 @@
-baseURL = "https://evans.fr"
+baseURL = "https://guy-evans.com"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 title = "Guy Evans"
 description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
+
 enableEmoji = true
+
+
+enableRobotsTXT = true
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+    series = "series"
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "MarkDown"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML"]
 [params]
   # website title
   title = "Guy Evans"
