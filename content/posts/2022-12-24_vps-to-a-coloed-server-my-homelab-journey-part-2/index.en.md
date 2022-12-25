@@ -2,6 +2,8 @@
 title: VPS to a coloed server, my homelab journey - Part 2
 date: 2022-12-24T15:02:35.756Z
 featuredImage: cbo-rack-mw2.jpg
+series: 
+  - VPS to a coloed server my homelab journey
 ---
 
 ## After the Virtual Private Servers
@@ -34,7 +36,25 @@ Bonus: They can provide a 10Gb connection to the internet.
 
 _Did I mention they have a great community, being charity run means that they hold annual meeting and have the best interests of their members at heart. Since the end of 2022 I am also an elected representative of the members to the charity comity_
 
+### My own (recent-ish) hardware
 
+Now I had found somewhere for my hardware, I actually needed some hardware. I found what I needed in [BargainHardware.co.uk](https://www.bargainhardware.co.uk/), they specialise in secondhand enterprise hardware and have great prices.
+
+Here is the server I settled on:
+
+**Dell Poweredge R620**
+- 2 x Intel Xeon E5-2660 V2 2.20Ghz Ten Core CPUs
+- 96 Gb of DDR3 RAM
+- 2 x 240 Gb Crucial SSDs for the boot drives (They will be in Raid 1 to provide redundancy in case of a drive failure)
+- 6 x 900 Gb SAS Hard drives for the datadrives to give us a total of 5Tb usable space (This will be the main storage pool and will be in a ZFS pool to provide redundancy in case of a drive failure)
+- 1 x Dell BCM57800S Quad Port - 1GbE, 10GbE SFP+, RJ45 network card
+
+Cost: €700 including shipping to france.
+
+Not too old to be inefficent to run and not too recent that it breaks the bank. This should provide me with plenty of horsepower to multiple virtual machines.
+
+
+{{< series_en "VPS to a coloed server my homelab journey" >}}
 
 [^ovhfire]: *10 March 2021* - Millions of websites offline after fire at French cloud services firm - [Reuters](https://www.reuters.com/article/us-france-ovh-fire-idUSKBN2B20NU)
 [^vps]: Virtual Private Server
