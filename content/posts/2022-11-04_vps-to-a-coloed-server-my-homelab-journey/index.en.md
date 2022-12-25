@@ -10,6 +10,9 @@ tags:
   - wordpress
   - colo
   - colocation
+category: ["test"]
+series: 
+  - VPS to a coloed server my homelab journey
 ---
 As a young child I always had an interest in computers and tech, little did I know that it would foundation for my carear path that I have chosen today.
 
@@ -45,6 +48,8 @@ THe next VPS[^vps] came around when I was looking to sync my files acroos my man
 
 Next time: I'll go over what moved me to a dedicated server and soon after my own hardware colo rack with a charity run ISP
 
+
 ---
 _Photo by Thomas Jensen @ [Unsplash.com](https://unsplash.com/@thomasjsn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
   
+{{< series_en "VPS to a coloed server my homelab journey" >}}
