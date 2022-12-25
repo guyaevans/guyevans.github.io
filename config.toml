@@ -5,6 +5,8 @@ theme = "LoveIt"
 title = "Guy Evans"
 description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
+enableRobotsTXT = true
+
 [params]
   # website title
   title = "Guy Evans"
