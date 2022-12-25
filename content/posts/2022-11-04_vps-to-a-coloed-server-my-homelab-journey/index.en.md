@@ -10,6 +10,9 @@ tags:
   - wordpress
   - colo
   - colocation
+category: ["test"]
+series: 
+  - VPS to a coloed server my homelab journey
 ---
 As a young child I always had an interest in computers and tech, little did I know that it would foundation for my carear path that I have chosen today.
 
@@ -44,6 +47,8 @@ This VPS[^vps] eventually ended up hosting the website for EvansMedia, my IT and
 THe next VPS[^vps] came around when I was looking to sync my files acroos my many devices, for privacy reasons I didn'y want to use Google Drive or an equivalent. I ended up on Owncloud and then moved to Nextcloud which is what I still use today. Nextcloud is functionally similar to Dropbox, Office 365 or Google Drive, It can be hosted in the cloud or on your own server.
 
 Next time: I'll go over what moved me to a dedicated server and soon after my own hardware colo rack with a charity run ISP
+
+{{< series_en "VPS to a coloed server my homelab journey" >}}
 
 ---
 _Photo by Thomas Jensen @ [Unsplash.com](https://unsplash.com/@thomasjsn?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_

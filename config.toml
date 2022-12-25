@@ -7,6 +7,17 @@ description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
 enableRobotsTXT = true
 
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+    series = "series"
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "MarkDown"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML"]
+
 [params]
   # website title
   title = "Guy Evans"
