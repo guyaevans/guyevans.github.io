@@ -1,27 +1,15 @@
-baseURL = "https://guy-evans.com"
+baseURL = "https://evans.fr"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 title = "Guy Evans"
 description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
-
-enableRobotsTXT = true
-
-[taxonomies]
-    tag = "tags"
-    category = "categories"
-    series = "series"
-# [outputs]
-#   home = ["HTML", "RSS", "JSON"]
-#   page = ["HTML", "MarkDown"]
-#   section = ["HTML", "RSS"]
-#   taxonomy = ["HTML", "RSS"]
-#   taxonomyTerm = ["HTML"]
-
+enableEmoji = true
 [params]
   # website title
   title = "Guy Evans"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
+
   [params.page]
     [params.page.comment]
       enable = true
@@ -45,7 +33,6 @@ enableRobotsTXT = true
 # languageName = "English"
 
 defaultContentLanguage = "en"
-enableEmoji = true
 
  [params.app]
     # whether to omit favicon resource links
