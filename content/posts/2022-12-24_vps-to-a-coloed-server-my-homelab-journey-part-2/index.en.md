@@ -12,6 +12,8 @@ After loosing one of my virtual private servers along with the data in the _'The
 
 So I went ahead a found [OneProvider.com](https://oneprovider.com) where you can rent dedicated servers for cheap, their cheap hardware is old and the connectivity is ok but you cannot beat there pricing (Server with an Intel Atom C2750, 16 Gb Ram, 1Tb Hard drive and 1Gb of 'unlimited' bandwith was €14 per server/month at the time). That went great for a couple of months but I kept getting fustrated with not having full control over the hardware and my growing interest for BGP[^bgp] and how the internet is really just a bunch of inter connected networks. After some trial and error I decided I should review my home-lab goals and re-think my shopping list.
 
+{{< figure src="/img/going-to-need-more-coffee-bbt.gif">}}
+
 ## The Shopping List
 
 So what did I want?
