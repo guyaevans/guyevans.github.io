@@ -32,7 +32,7 @@ Geoff White and Jean Lee take you on the story of "Almost the Perfect Crime". St
 ### The Missing Cryptoqueen - Jamie Bartlett
 {{< figure src="the-missing-cryptoqueen.jpg">}}
 
-Jamie Bartlett and his team of researchers take you one the story of Dr Ruja Ignatova and the thrilling rise and fall of the biggest cryptocurrency ponzi schemes in history. Need I say more? Great story.
+Jamie Bartlett and his team of researchers take you on the story of Dr Ruja Ignatova and the thrilling rise and fall of the biggest cryptocurrency ponzi schemes in history. Need I say more? Great story.
 
 [BBC Radio 5 Live](https://www.bbc.co.uk/programmes/p07nkd84/episodes/downloads)
 
@@ -63,6 +63,8 @@ A story of rescuing child abuse victims around the world, Hunting Wardhead follo
 Marit Higraff and Neil McCarth follows a two your investigation into the [Isdal Women](https://en.wikipedia.org/wiki/Isdal_Woman) case, an unknown women whose burned body was found in western Norway in 1970.
 
 Due to the interest in the podcast, new leads were gathered by crowd-source researchers, finally convinving the Bergen Police to reopen the case in 2016.
+
+[BBC World Service](https://www.bbc.co.uk/programmes/p060ms2h)
 <br/>
 <br/>
 
@@ -72,3 +74,4 @@ Thats all for now. Have you got a podcast suggestion? Drop it in the comments be
 
 ---
 _Photo by Melanie Pongratz @ [Unsplash.com](https://unsplash.com/s/photos/headphones-podcast?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
+
