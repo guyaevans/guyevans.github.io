@@ -5,23 +5,26 @@ theme = "LoveIt"
 title = "Guy Evans"
 description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
+enableEmoji = true
+
+
 enableRobotsTXT = true
 
 [taxonomies]
     tag = "tags"
     category = "categories"
     series = "series"
-# [outputs]
-#   home = ["HTML", "RSS", "JSON"]
-#   page = ["HTML", "MarkDown"]
-#   section = ["HTML", "RSS"]
-#   taxonomy = ["HTML", "RSS"]
-#   taxonomyTerm = ["HTML"]
-
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "MarkDown"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML"]
 [params]
   # website title
   title = "Guy Evans"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
+
   [params.page]
     [params.page.comment]
       enable = true
@@ -45,7 +48,6 @@ enableRobotsTXT = true
 # languageName = "English"
 
 defaultContentLanguage = "en"
-enableEmoji = true
 
  [params.app]
     # whether to omit favicon resource links
