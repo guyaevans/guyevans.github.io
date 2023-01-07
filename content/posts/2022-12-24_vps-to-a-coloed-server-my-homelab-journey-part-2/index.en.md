@@ -1,8 +1,8 @@
 ---
 title: VPS to a coloed server, my homelab journey - Part 2
-date: 2022-12-24T15:02:35.756Z
+date: 2023-01-07T16:04:28.538Z
 featuredImage: cbo-rack-mw2.jpg
-series: 
+series:
   - VPS to a coloed server my homelab journey
 ---
 
