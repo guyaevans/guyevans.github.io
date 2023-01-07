@@ -2,8 +2,6 @@
 title: VPS to a coloed server, my homelab journey - Part 2
 date: 2023-01-07T16:04:28.538Z
 featuredImage: cbo-rack-mw2.jpg
-series:
-  - VPS to a coloed server my homelab journey
 tags:
   - homelab
   - ovh
@@ -12,6 +10,8 @@ tags:
   - wordpress
   - colo
   - colocation
+series:
+  - VPS to a coloed server my homelab journey
 ---
 
 ## After the Virtual Private Servers
