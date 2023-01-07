@@ -14,12 +14,12 @@ enableRobotsTXT = true
     tag = "tags"
     category = "categories"
     series = "series"
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-  page = ["HTML", "MarkDown"]
-  section = ["HTML", "RSS"]
-  taxonomy = ["HTML", "RSS"]
-  taxonomyTerm = ["HTML"]
+# [outputs]
+#   home = ["HTML", "RSS", "JSON"]
+#   page = ["HTML", "MarkDown"]
+#   section = ["HTML", "RSS"]
+#   taxonomy = ["HTML", "RSS"]
+#   taxonomyTerm = ["HTML"]
 [params]
   # website title
   title = "Guy Evans"
