@@ -4,6 +4,14 @@ date: 2023-01-07T16:04:28.538Z
 featuredImage: cbo-rack-mw2.jpg
 series:
   - VPS to a coloed server my homelab journey
+tags:
+  - homelab
+  - ovh
+  - vps
+  - servers
+  - wordpress
+  - colo
+  - colocation
 ---
 
 ## After the Virtual Private Servers
