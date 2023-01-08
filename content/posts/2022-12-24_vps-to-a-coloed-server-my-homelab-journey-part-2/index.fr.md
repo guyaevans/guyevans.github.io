@@ -41,7 +41,7 @@ Coût : 75 € pour un serveur 1U, une alimentation et une connexion réseau.
 
 Bonus : Ils peuvent fournir une connexion 10Gb à internet.
 
-_J'ai mentionné qu'ils ont une grande communauté, étant géré par une association caritative, cela signifie qu'ils tiennent une réunion annuelle et qu'ils ont à cœur les meilleurs intérêts de leurs membres et le reseau. Depuis la fin de 2022, je suis également élu comme représentant des membres de l'association._
+_J'ai mentionné qu'ils ont une grande communauté, étant géré par une association à but non lucratif et cela signifie qu'ils ont à cœur les meilleurs intérêts de leurs membres et le reseau. Depuis la fin de 2022, je suis également élu comme représentant des membres de l'association._
 
 ### Mon propre matériel
 
@@ -62,13 +62,13 @@ Pas trop vieux pour être peu rentable et pas trop récent pour faire exploser l
 
 ## Tout mettre en place
 
-Après avoir commandé le serveur et l'hébergement, il ne me restait plus qu'à configurer [Proxmox] (https://www.proxmox.com) et à envoyer mon tout nouveau serveur à *Milkywan* qui me l'a installé dans son centre de données. 
+Après avoir commandé le serveur et l'hébergement, il ne me restait plus qu'à configurer [Proxmox](https://www.proxmox.com) et à envoyer mon tout nouveau serveur à *Milkywan* qui me l'a installé dans son centre de données. 
 
 Je dispose maintenant de mon propre matériel avec une connexion 10G dans un centre de données français. Vous pouvez remarquer dans l'image du speedtest ci-dessous que mon nom apparaît comme le FAI, c'est parce que je suis effectivement devenu mon propre FAI puisque je fournis à mon serveur l'internet via mon propre ASN ([AS211486](https://bgp.he.net/AS211486)) et mes IPs. (Cloudflare a un excellent article sur BGP [^bgp])
 
 Mon serveur héberge la plupart de mon 'homelab', y compris certaines parties de ce site web, comme le système de commentaires et les statistiques. J'ai également une petite installation à la maison avec un NAS et un microserveur dont je vais probablement écrire un autre billet à ce sujet.
 
-![10G Proof](https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png " Presque 10G mais c'est une autre histoire")
+![10G Proof](https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png "Presque 10G mais c'est une autre histoire")
 
 Mon serveur est la dernière machine dans le rack sur l'image d'en-tête de ce post. Avez-vous voulu ou avez-vous mis en place votre propre homelab ? Partagez vos commentaires ci-dessous.
 
