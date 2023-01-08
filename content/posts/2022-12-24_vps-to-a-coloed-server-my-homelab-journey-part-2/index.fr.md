@@ -1,5 +1,5 @@
 ---
-title: " D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 2"
+title: "D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 2"
 date: 2023-01-07T16:04:28.538Z
 featuredImage: cbo-rack-mw2.jpg
 tags:
@@ -15,7 +15,7 @@ tags:
 
 Après avoir perdu l'un de mes serveurs privés virtuels ainsi que les données dans le _'The Great Fire of OVH_ :fire:'[^ovhfire] (Oui je sais que j'aurais dû avoir des sauvegardes de ce VPS[^vps]), je me suis dit pourquoi ne pas mettre en place un Cluster[^cluster] Proxmox[^pve] sur quelques serveurs dédiés. 
 
-Après quelques recherches et j'ai trouvé [OneProvider.com] (https://oneprovider.com) où vous pouvez louer des serveurs dédiés pour pas cher, leur matériel bon marché est vieux et la connectivité est correcte mais vous ne pouvez pas battre leurs prix (un serveur avec un Intel Atom C2750, 16 Go de RAM, 1 To de disque dur et 1 Go de bande passante "illimitée" coûtait 14 € par serveur/mois à l'époque). Cela s'est bien passé pendant quelques mois, mais j'étais de plus en plus frustré de ne pas avoir le contrôle total du matériel et de mon intérêt croissant pour BGP [^bgp] et la façon dont Internet n'est en fait qu'un ensemble de (petits) réseaux interconnectés. Après quelques essais et erreurs, j'ai décidé que je devais revoir les objectifs de mon home-lab et repenser ma liste d'achats.
+Après quelques recherches et j'ai trouvé [OneProvider.com](https://oneprovider.com) où vous pouvez louer des serveurs dédiés pour pas cher, leur matériel bon marché est vieux et la connectivité est correcte mais vous ne pouvez pas battre leurs prix (un serveur avec un Intel Atom C2750, 16 Go de RAM, 1 To de disque dur et 1 Go de bande passante "illimitée" coûtait 14 € par serveur/mois à l'époque). Cela s'est bien passé pendant quelques mois, mais j'étais de plus en plus frustré de ne pas avoir le contrôle total du matériel et de mon intérêt croissant pour BGP [^bgp] et la façon dont Internet n'est en fait qu'un ensemble de (petits) réseaux interconnectés. Après quelques essais et erreurs, j'ai décidé que je devais revoir les objectifs de mon home-lab et repenser ma liste d'achats.
 
 {{< figure src="/img/going-to-need-more-coffee-bbt.gif">}}
 
