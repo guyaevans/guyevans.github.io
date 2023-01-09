@@ -13,7 +13,7 @@ tags:
 ## Email
 Question: What is one service on the internet that we use regularly and has become part of our day to day? **EMAIL**
 
-Chances are that is you use a computer, you have at the very leat ine email address, some people have more that one (I've lost count of how many I have). That brings me to a firm belief of mine: if you work in IT in _any_ shape or form, your email should be your own, with your own domain name _(hello@evans.fr for example)_ instead of using @gmail.com @outlook.com or @aol.com _(that's an old one)_ or any other provider.
+Chances are that if you use a computer, you have at the very least one email address, some people have more that one (I've lost count). That brings me to a firm belief of mine: if you work in IT in _any_ shape or form, your email should be your own, with your own domain name _(hello@evans.fr for example)_ instead of using a @gmail.com @outlook.com or @aol.com _(that's an old one)_ or any other provider.
 
 ## Why (self-host)
 I for one have used to host all of my email addresses on Google Apps _(now called Google Workspace)_. It was simple point the right mx records to their servers and boom your own email domain.
