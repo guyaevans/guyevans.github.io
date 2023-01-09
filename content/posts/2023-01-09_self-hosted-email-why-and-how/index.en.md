@@ -25,5 +25,6 @@ That got me thinking, why not host my own email someday. So to as with a lot of 
 _but first, we need coffee..._
 {{<figure src="/img/bbt-first-coffee.gif">}}
 
+## How
 ---
 _Photo by Brett Jordon @ [Unsplash.com](https://unsplash.com/@brett_jordan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
