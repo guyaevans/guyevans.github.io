@@ -1,153 +1,29 @@
 ---
-"0": _
-"1": P
-"2": h
-"3": o
-"4": t
-"5": o
-"6": " "
-"7": b
-"8": y
-"9": " "
-"10": B
-"11": r
-"12": e
-"13": t
-"14": t
-"15": " "
-"16": J
-"17": o
-"18": r
-"19": d
-"20": a
-"21": n
-"22": " "
-"23": "@"
-"24": " "
-"25": "["
-"26": U
-"27": n
-"28": s
-"29": p
-"30": l
-"31": a
-"32": s
-"33": h
-"34": .
-"35": c
-"36": o
-"37": m
-"38": "]"
-"39": (
-"40": h
-"41": t
-"42": t
-"43": p
-"44": s
-"45": ":"
-"46": /
-"47": /
-"48": u
-"49": n
-"50": s
-"51": p
-"52": l
-"53": a
-"54": s
-"55": h
-"56": .
-"57": c
-"58": o
-"59": m
-"60": /
-"61": "@"
-"62": b
-"63": r
-"64": e
-"65": t
-"66": t
-"67": _
-"68": j
-"69": o
-"70": r
-"71": d
-"72": a
-"73": n
-"74": "?"
-"75": u
-"76": t
-"77": m
-"78": _
-"79": s
-"80": o
-"81": u
-"82": r
-"83": c
-"84": e
-"85": =
-"86": u
-"87": n
-"88": s
-"89": p
-"90": l
-"91": a
-"92": s
-"93": h
-"94": "&"
-"95": u
-"96": t
-"97": m
-"98": _
-"99": m
-"100": e
-"101": d
-"102": i
-"103": u
-"104": m
-"105": =
-"106": r
-"107": e
-"108": f
-"109": e
-"110": r
-"111": r
-"112": a
-"113": l
-"114": "&"
-"115": u
-"116": t
-"117": m
-"118": _
-"119": c
-"120": o
-"121": n
-"122": t
-"123": e
-"124": n
-"125": t
-"126": =
-"127": c
-"128": r
-"129": e
-"130": d
-"131": i
-"132": t
-"133": C
-"134": o
-"135": p
-"136": y
-"137": T
-"138": e
-"139": x
-"140": t
-"141": )
-"142": _
 title: Self-hosted Email - Why and How?
 date: 2023-01-09T20:22:58.009Z
 featuredImage: brett-jordan-lpzy4da9aro-unsplash.jpg
+summary: "Question: What is one service on the internet that we use regularly and has become part of our day to day? **EMAIL** - 
+Chances are that is you use a computer, you have at the very leat ine email address, some people have more that one (I've lost count of how many I have). Why should you have your own?"
 tags:
   - email
   - self-hosted
   - mailcow
   - guide
 ---
+## Email
+Question: What is one service on the internet that we use regularly and has become part of our day to day? **EMAIL**
+
+Chances are that is you use a computer, you have at the very leat ine email address, some people have more that one (I've lost count of how many I have). That brings me to a firm belief of mine: if you work in IT in _any_ shape or form, your email should be your own, with your own domain name _(hello@evans.fr for example)_ instead of using @gmail.com @outlook.com or @aol.com _(that's an old one)_ or any other provider.
+
+## Why (self-host)
+I for one have used to host all of my email addresses on Google Apps _(now called Google Workspace)_. It was simple point the right mx records to their servers and boom your own email domain.
+
+Many other providers also let you do this but where google was clever, is that their service had a great free tier (as in free beer) until they decided to pull the rug out from under us all and sunsetted the free tier. (Another reason people may self-host their email is having full control over the service and not sharing any data with the FAANG companies)
+
+That got me thinking, why not host my own email someday. So to as with a lot of my research starts I go to Reddit.com and the general consensus is: Why bother. But still I continue my research and decide to continue. Afterall the best way to learn is to do it. How hard can it be?
+
+_but first, we need coffee..._
+{{<figure src="/img/bbt-first-coffee.gif">}}
+
+---
+_Photo by Brett Jordon @ [Unsplash.com](https://unsplash.com/@brett_jordan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
