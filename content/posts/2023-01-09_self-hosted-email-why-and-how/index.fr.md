@@ -2,7 +2,7 @@
 title: Mails auto-hébergé - Pourquoi et comment?
 date: 2023-01-15T14:00:58.009Z
 featuredImage: brett-jordan-lpzy4da9aro-unsplash.jpg
-summary:Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? **L'EMAIL**
+summary: "Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? **L'EMAIL**
 
 Il y a de fortes chances que si vous utilisez un ordinateur, vous ayez au moins une adresse e-mail, certains en ont plus d'une (j'ai perdu le compte). Pourquoi devriez-vous avoir le vôtre ?"
 tags:
