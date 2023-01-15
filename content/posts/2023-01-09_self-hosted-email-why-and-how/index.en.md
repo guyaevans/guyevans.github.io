@@ -1,6 +1,6 @@
 ---
 title: Self-hosted Email - Why and How?
-date: 2023-01-09T20:22:58.009Z
+date: 2023-01-15T14:00:58.009Z
 featuredImage: brett-jordan-lpzy4da9aro-unsplash.jpg
 summary: "Question: What is one service on the internet that we use regularly and has become part of our day to day? **EMAIL** - 
 Chances are that is you use a computer, you have at the very leat ine email address, some people have more that one (I've lost count of how many I have). Why should you have your own?"
