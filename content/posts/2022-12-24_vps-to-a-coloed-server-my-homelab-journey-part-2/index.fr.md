@@ -2,6 +2,7 @@
 title: "D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 2"
 date: 2023-01-07T16:04:28.538Z
 featuredImage: cbo-rack-mw2.jpg
+images: [cbo-rack-mw2.jpg]
 tags:
   - homelab
   - ovh
