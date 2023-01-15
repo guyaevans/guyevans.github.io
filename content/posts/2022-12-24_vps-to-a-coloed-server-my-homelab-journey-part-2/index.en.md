@@ -2,7 +2,7 @@
 title: VPS to a coloed server, my homelab journey - Part 2
 date: 2023-01-07T16:04:28.538Z
 featuredImage: cbo-rack-mw2.jpg
-images: [cbo-rack-mw2.jpg]
+images: [./posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/cbo-rack-mw2.jpg]
 tags:
   - homelab
   - ovh
