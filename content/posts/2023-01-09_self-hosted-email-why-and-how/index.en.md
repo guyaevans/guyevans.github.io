@@ -32,7 +32,7 @@ I won't be deep diving into how to set an email server as there are plenty of gu
 ### What we need
 
 1. A Domain name of your own
-2. A VM or VPS server with: 2 VCPUs, 4 GB of RAM (at minimum), 80 GB storage (or more), a clean IP address
+2. A VM or VPS server with: 2 VCPUs, 4 GB of RAM (at minimum), 80 GB storage (or more), a clean IP address _(I suggest [Milkywan](https://milkywan.fr/) or [Virtua.Cloud](https://www.virtua.cloud/) both are based in france and have great connectivity.)_
 3. Docker & Docker Compose (I suggest using docker as tt is fast to setup)
 4. [Mailcow Dockerized](https://mailcow.email/), my mail server of choice - it contains all the services needed and runs in docker containers
 
@@ -62,14 +62,14 @@ Once that is done we need to initialise mailcow and create a configuration file 
 ```bash
 ./generate_config.sh
 ```
-Once you have aswered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below
+Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below
 ```bash
 docker compose pull
 docker compose up -d
 ```
 CONGRATULATIONS ! You have setup a mail server (well almost)
 
-Now that the server is running, you can access https://${MAILCOW_HOSTNAME} with the default credentials admin + password moohoo and start setting up domains and email addresses.
+Now that the server is running, you can access https://${MAILCOW_HOSTNAME} with the default credentials ```admin``` + password ```moohoo``` and start setting up domains and email addresses.
 
 Mailcow has a great [help site](https://docs.mailcow.email/post_installation/firststeps-ssl/) which will walk you through most of the settings that I have not covered.
 
