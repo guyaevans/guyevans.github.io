@@ -2,24 +2,36 @@
 title: Backups with Restic
 date: 2023-03-27T17:14:38.050Z
 featuredImage: immo-wegmann-htsvneqf5fg-unsplash.jpg
+tags:
+ - backups
+ - restic
+ - self-hosted
+summary: After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire. I started searching for a decent backup solution and found Restic, lets take a look at how it works.
 ---
-After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire in Strasbourg. I did however loose the VPS that hosted the website for [www.evansmedia.fr](https://www.evansediafr)
+After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire[^ovhfire] :fire: in Strasbourg. I did however loose the VPS that hosted the website for [www.evansmedia.fr](https://www.evansedia.fr)
+
+[^ovhfire]: *10 March 2021* - Millions of websites offline after fire at French cloud services firm - [Reuters](https://www.reuters.com/article/us-france-ovh-fire-idUSKBN2B20NU)
 
 > The shoemaker always wears the worst shoes, right?
+>
+> {{<figure src="/img/this-is-fine.webp">}}
 
-Since then I may have become a bit paranoid about backups, especially for anything stored in my Nextcloud which hold just about anything to do with my personal life, including photos of our recent newborn. 
+I may have become a bit paranoid about backups, especially for anything stored in my Nextcloud which hold just about anything to do with my personal life, including photos of our recent newborn. 
 
 ## The 3-2-1 Rule
 I decided to base my backup strategy on the 3-2-1 rule (and you should too)
->The idea that a minimal backup solution should include three copies of the data, including two local copies and one remote copy.
 
-So that means I need: Two local backups at home (althougth the virtual machine I'm backing up is offsite) and one backup that is remote. 
+The idea that a minimal backup solution should include three copies of the data, including two copies on different media and one remote (offsite) copy.
+
+ {{<figure src="./3-2-1-Backup-Rule.png">}}
 
 ### Local Backups
 
 *(We are pretending that we are backing up a local server here but the Virtual Machine I'm backing up is actually hosted in a DC so I'm backing it up locally at home)*
 
-To perform my backups I am using two tools, Proxmox Backup Server^pbs which is a backup appliance built by the folks that build proxmox; and Restic, a modern app that backups files to loads of different services. Today we will be focusing on a single backup with Restic.
+To perform my backups I am using two tools, Proxmox Backup Server[^pbs] which is a backup appliance built by the folks that build proxmox; and Restic, a modern app that backups files to loads of different services. Today we will be focusing on a single backup tier with Restic.
+
+[^pbs]: [Proxmox Backup Server](https://www.proxmox.com/en/proxmox-backup-server) is an enterprise backup solution, for backing up and restoring VMs, containers, and physical hosts.
 
 ## Restic
 
@@ -124,11 +136,12 @@ _Note: my script is by no means perfect and may contain errors, feel free to cor
 # Restic variables
 export RESTIC_REPOSITORY=rest:http://my-rest-server:8000/backups
 export RESTIC_PASSWORD=super-secret-repo-password1234
+RESTIC_Folder="~/cat-pictures"
 # We define a log location here
-export Log_location=/var/log/restic-nas.log
+Log_location=/var/log/restic-nas.log
 # Telegram Variables (if not used you need to remove the telegram block)
-export TELEGRAM_token=
-export TELEGRAM_chatid= 
+TELEGRAM_token=
+TELEGRAM_chatid= 
 
 #Define a timestamp function
 timestamp() {
@@ -141,7 +154,7 @@ echo "--------------------------------------------------------------------------
 echo "$(timestamp): restic.sh - Rest Backup started" | tee -a $Log_location
 
 # Run Backups
-NAS_backup_log=$(restic backup ~/cat-pictures)
+NAS_backup_log=$(restic backup $RESTIC_Folder)
 echo "$NAS_backup_log" | tee -a $Log_location
 ## This is a dirty way to check that the backup was a sucess and added files to the repo otherwise we fail.
 if [[ "$NAS_backup_log" == *"Added to the repo"** ]]; then
