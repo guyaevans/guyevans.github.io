@@ -1,12 +1,15 @@
 ---
 title: Sauvegardes avec Restic
-date: 2023-03-27T17:14:38.050Z
+date: 2023-03-28T16:17:14.251Z
 featuredImage: immo-wegmann-htsvneqf5fg-unsplash.jpg
 tags:
- - backups
- - restic
- - self-hosted
-summary: Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud après l'incendie d'OVH, j'ai commencé à chercher une solution de sauvegarde décente et j'ai trouvé Restic. Voyons comment cela fonctionne.
+  - backups
+  - restic
+  - self-hosted
+summary: Après avoir eu la chance de ne perdre aucune de mes données
+  sauvegardées sur mon nextcloud après l'incendie d'OVH, j'ai commencé à
+  chercher une solution de sauvegarde décente et j'ai trouvé Restic. Voyons
+  comment cela fonctionne.
 ---
 Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud suite à l'incendie d'OVH[^ovhfire] :fire: à Strasbourg. J'ai cependant perdu le VPS qui hébergeait le site web de [www.evansmedia.fr](https://www.evansedia.fr)
 

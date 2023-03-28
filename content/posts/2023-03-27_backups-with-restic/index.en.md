@@ -1,12 +1,14 @@
 ---
 title: Backups with Restic
-date: 2023-03-27T17:14:38.050Z
+date: 2023-03-28T16:17:14.251Z
 featuredImage: immo-wegmann-htsvneqf5fg-unsplash.jpg
 tags:
- - backups
- - restic
- - self-hosted
-summary: After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire. I started searching for a decent backup solution and found Restic, lets take a look at how it works.
+  - backups
+  - restic
+  - self-hosted
+summary: After lucking out and not loosing any of my data saved to my nextcloud
+  after the OVH fire. I started searching for a decent backup solution and found
+  Restic, lets take a look at how it works.
 ---
 After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire[^ovhfire] :fire: in Strasbourg. I did however loose the VPS that hosted the website for [www.evansmedia.fr](https://www.evansedia.fr)
 
