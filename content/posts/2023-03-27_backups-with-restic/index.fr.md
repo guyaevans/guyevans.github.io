@@ -11,7 +11,7 @@ summary: Après avoir eu la chance de ne perdre aucune de mes données
   chercher une solution de sauvegarde décente et j'ai trouvé Restic. Voyons
   comment cela fonctionne.
 ---
-Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud suite à l'incendie d'OVH[^ovhfire] :fire: à Strasbourg. J'ai cependant perdu le VPS qui hébergeait le site web de [www.evansmedia.fr](https://www.evansedia.fr)
+Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud suite à l'incendie d'OVH[^ovhfire] :fire: à Strasbourg. J'ai cependant perdu le VPS qui hébergeait le site web de [www.evansmedia.fr](https://www.evansmedia.fr)
 
 [^ovhfire]: *10 mars 2021* - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - [Le Monde](https://www.lemonde.fr/societe/article/2021/03/10/)
 
