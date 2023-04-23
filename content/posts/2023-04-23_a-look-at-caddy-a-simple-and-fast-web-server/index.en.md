@@ -10,12 +10,12 @@ tags:
     - nginx
     - homelab
 summary: We've all used Apache and NGNIX when we have had to host a website and they are fin but let's be honest, I've never gotten along with their config. And that is what bought me to [Caddy](caddyserver.com/). Lets take a look at what [Caddy](caddyserver.com/) has to offer.
-featuredImage:
+featuredImage: valery-sysoev-p9OkL4yW3C8-unsplash.webp
 ---
 We've all used Apache and NGNIX when we have had to host a website and they are fin but let's be honest, I've never gotten along with their config. And that is what bought me to [Caddy](caddyserver.com/). Lets take a look at what [Caddy](caddyserver.com/) has to offer.
 
 # Caddy
-[Caddy](caddyserver.com/) is a unique web server with (at least I think) a modern feature set. You can use it as [reverse proxy and load balancer.](https://caddyserver.com/docs/proxy) [Host your PHP apps with it.](https://caddyserver.com/docs/fastcgi) Even [deploy your site](https://caddyserver.com/docs/git) with ```git push```. And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like [Lets Encrypt](https://letsencrypt.org/) and [ZeroSSL](https://zerossl.com/). 
+[Caddy](caddyserver.com/) is a unique _(at least I think)_ web server with a modern feature set. You can use it as [reverse proxy and load balancer.](https://caddyserver.com/docs/proxy) [Host your PHP apps with it.](https://caddyserver.com/docs/fastcgi) Even [deploy your site](https://caddyserver.com/docs/git) with ```git push```. And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like [Lets Encrypt](https://letsencrypt.org/) and [ZeroSSL](https://zerossl.com/). 
 
 Cool, Right?
 
@@ -23,7 +23,7 @@ Cool, Right?
 
 ## Installation
 
-Caddy is available as a single executable, a [docker image](https://hub.docker.com/_/caddy) or as usual via a package manager. Today we'll be using Debian. But the [docs](https://caddyserver.com/docs/install) gives you plenty of other options.
+Caddy is available as a single executable, a [docker image](https://hub.docker.com/_/caddy) or as usual via a package manager. Today we'll be using Debian. But the if you use another OS their [docs](https://caddyserver.com/docs/install) should have you covered.
 
 ```bash
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -37,7 +37,7 @@ Once installed the service will run automatically and serve the default welcome 
 
 ## Configuration
 
-As said above caddy can be configured using the file ```Caddyfile``` in ```/etc/caddy```. In this file we give it [directives](https://caddyserver.com/docs/caddyfile/directives) to either be a reverse proxy, web server, php front, etc.
+As said above caddy can be configured using the file ```Caddyfile``` written in JSON in ```/etc/caddy```. In this file we give it [directives](https://caddyserver.com/docs/caddyfile/directives) to either be a reverse proxy, web server, php front, etc. Caddy can also be configured using its [REST API](https://caddyserver.com/docs/api) if that's something that interests you.
 
 ### Reverse Proxy
 
@@ -69,3 +69,53 @@ A quick ```systemctl reload caddy``` later and Caddy is serving your static file
 [^HTTPS]: Caddy will only succeed at requesting a certificate if you have ports 80 and 443 open on your server. You can also [disable the certificate request](https://caddyserver.com/docs/automatic-https#activation) if not needed. Other [options](https://caddyserver.com/docs/automatic-https) like local HTTPS can also be used
 
 ### PHP-fpm
+
+You would usually use Ngninx as a front for PHP-fpm, well Caddy can do that too. And again with a simple config file.
+
+```json
+demo.website.com {
+        # where our files are stored
+        root * /var/www/demo.website.com
+        # we tell caddy where to find the php-fpm socket
+	    php_fastcgi /run/php/php8.2-fpm.sock	
+        file_server
+        encode gzip
+}
+```
+Again a quick ```systemctl reload caddy``` and we are now fronting a php app over HTTPS[^HTTPS].
+
+## Bonus
+
+### Docker & Docker Compose
+
+Caddy is also often run with Docker Compose and is still as simple. Here is a simple ```docker-compose.yml``` and we can use any example ```Caddyfile``` from above.
+
+```yml
+version: "3.7"
+
+services:
+  caddy:
+    image: caddy:<version>
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/caddy_data:/data
+      - $PWD/caddy_config:/config
+      - $PWD/site:/srv # If we wanted to serve static files in $PWD/site
+```
+
+{{< admonition info "Docs">}}
+Caddy has some of the best [documentation](https://caddyserver.com/docs/) I've seen in a while. There are plenty of other functions that I've not covered here.
+{{</ admonition>}}
+
+And with that, I think I have covered the basics of using Caddy. Do you use it? Tell me how and what you think.
+
+{{<figure src="/img/designated-survivor-beer.gif" title="Cheers - Designated Survivor" >}}
+
+
+_Feature photo by Valery Sysoev at [Unsplash](https://unsplash.com/@valerysysoev?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
+  
