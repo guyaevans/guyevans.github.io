@@ -117,5 +117,4 @@ And with that, I think I have covered the basics of using Caddy. Do you use it? 
 {{<figure src="/img/designated-survivor-beer.gif" title="Cheers - Designated Survivor" >}}
 
 
-_Feature photo by Valery Sysoev at [Unsplash](https://unsplash.com/@valerysysoev?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
-  
+_Original Feature photo by Valery Sysoev at [Unsplash](https://unsplash.com/@valerysysoev?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
