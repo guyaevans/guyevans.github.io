@@ -81,3 +81,40 @@ demo.website.com {
         file_server
         encode gzip
 }
+```
+Encore un rapide ```systemctl reload caddy``` et nous sommes maintenant en face d'une application php sur HTTPS[^HTTPS].
+
+## Bonus
+
+### Docker & Docker Compose
+
+Caddy est aussi souvent exécuté avec Docker Compose et est toujours aussi simple. Voici un simple ```docker-compose.yml``` et nous pouvons utiliser n'importe quel exemple de ```Caddyfile``` ci-dessus.
+
+```yml
+version: "3.7"
+
+services:
+  caddy:
+    image: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/caddy_data:/data
+      - $PWD/caddy_config:/config
+      - $PWD/site:/srv # Si nous voulons servir des fichiers statiques dans $PWD/site
+```
+
+{{< admonition info "Documentation">}}
+Caddy possède l'une des meilleures [documentation](https://caddyserver.com/docs/) que j'aie vues depuis longtemps. Il existe de nombreuses autres fonctions que je n'ai pas abordées ici.
+{{</ admonition>}}
+
+Sur ce, je pense avoir couvert les bases de l'utilisation de Caddy. L'utilisez-vous ? Dites-moi comment et ce que vous en pensez.
+
+{{<figure src="/img/designated-survivor-beer.gif">}}
+
+
+_Feature Photo originale de Valery Sysoev sur [Unsplash](https://unsplash.com/@valerysysoev?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)._
