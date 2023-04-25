@@ -117,7 +117,7 @@ defaultContentLanguage = "en"
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "https://guy-evans.com/img/ge-profile.jpg"
+      avatarURL = "https://guy-evans.com/img/ge-profile-2.jpg"
       # title shown in home page (HTML format is supported)
       title = "Guy Evans"
       # subtitle shown in home page (HTML format is supported)
