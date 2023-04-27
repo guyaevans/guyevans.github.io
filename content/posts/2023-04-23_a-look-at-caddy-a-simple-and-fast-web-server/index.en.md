@@ -37,7 +37,7 @@ Once installed the service will run automatically and serve the default welcome 
 
 ## Configuration
 
-As said above caddy can be configured using the file ```Caddyfile``` written in JSON in ```/etc/caddy```. In this file we give it [directives](https://caddyserver.com/docs/caddyfile/directives) to either be a reverse proxy, web server, php front, etc. Caddy can also be configured using its [REST API](https://caddyserver.com/docs/api) if that's something that interests you.
+As said above caddy can be configured using the file ```Caddyfile``` in ```/etc/caddy```. In this file we give it [directives](https://caddyserver.com/docs/caddyfile/directives) to either be a reverse proxy, web server, php front, etc. Caddy can also be configured using its [REST API](https://caddyserver.com/docs/api) if that's something that interests you.
 
 ### Reverse Proxy
 
