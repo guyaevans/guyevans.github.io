@@ -14,12 +14,38 @@ Imagine a situation where you have a public meeting room equipped with accessibl
 
 ## What do we need?
 
-* A RADIUS server - we are using Microsoft NPS
-* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an ARUBA 2930F (which is a nice switch by the way)
+* A RADIUS server (at IP 192.168.10.2) - we are using Microsoft NPS (I won't be detailing the configuration of NPS here but may do so in the futur)
+* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an ARUBA 2930F (which is a nice switch by the way, if only it could make it's way home from work ;) )
 * Some VLANs
   * Company VLAN: 10 - Public VLAN: 20
 * A Windows computer
 
+## Let's get configing
+### Switch Configuration
+#### VLAN Setup
 
+First thing we need to do is add the vlans if not already done. I've tagged the vlans on all the ports for simplicity sake.
 
+```vlan 10 name VLAN10_Company```
+```vlan 10 tagged all```
+```vlan 20 name VLAN20_Public```
+```vlan 20 tagged all```
+
+#### Radius Server and Authentication 
+Next we need to configure the remote RADIUS server (our NPS server) and tell the switch the 'secretkey'
+
+```radius-server host 192.168.10.2 key "secretkey"```
+
+Then we configure EAP-RADIUS, this enables the switch to forward the authentication packets from the clients to the Radius server.
+
+```aaa authentication port-access eap-radius```
+
+We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or seperate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)
+
+```aaa aaa port-access authenticator 1-10```
+```aaa aaa port-access authenticator 1-10 unauth-vid 20```
+```aaa aaa port-access authenticator 1-10 unauth-vid 10```
+```aaa aaa port-access authenticator active```
+
+With that our switch configuration is done.
 
