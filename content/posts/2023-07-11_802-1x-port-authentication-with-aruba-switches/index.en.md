@@ -15,9 +15,10 @@ Imagine a situation where you have a public meeting room equipped with accessibl
 ## What do we need?
 
 * A RADIUS server (at IP 192.168.10.2) - we are using Microsoft NPS (I won't be detailing the configuration of NPS here but may do so in the futur)
-* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an ARUBA 2930F (which is a nice switch by the way, if only it could make it's way home from work ;) )
+* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an [ARUBA 2930F](https://www.arubanetworks.com/products/switches/access/2930f-series/) (which is a nice switch by the way, if only it could make it's way home from work ;) )
 * Some VLANs
-  * Company VLAN: 10 - Public VLAN: 20
+  * Company VLAN: 10
+  * Public VLAN: 20
 * A Windows computer
 
 ## Let's get configing
@@ -26,18 +27,20 @@ Imagine a situation where you have a public meeting room equipped with accessibl
 
 First thing we need to do is add the vlans if not already done. I've tagged the vlans on all the ports for simplicity sake.
 
-```vlan 10 name VLAN10_Company```
-
-```vlan 10 tagged all```
-
-```vlan 20 name VLAN20_Public```
-
-```vlan 20 tagged all```
+```
+vlan 10 name VLAN10_Company
+vlan 10 tagged all
+vlan 20 name VLAN20_Public
+vlan 20 tagged all
+vlan 30 name VLAN30_Phones
+```
 
 #### Radius Server and Authentication 
 Next we need to configure the remote RADIUS server (our NPS server) and tell the switch the 'secretkey'
 
-```radius-server host 192.168.10.2 key "secretkey"```
+```
+radius-server host 192.168.10.2 key "secretkey"
+```
 
 Then we configure EAP-RADIUS, this enables the switch to forward the authentication packets from the clients to the Radius server.
 
@@ -45,13 +48,23 @@ Then we configure EAP-RADIUS, this enables the switch to forward the authenticat
 
 We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or seperate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)
 
-```aaa aaa port-access authenticator 1-10```
+```
+aaa aaa port-access authenticator 1-10
+aaa aaa port-access authenticator 1-10 unauth-vid 20
+aaa aaa port-access authenticator 1-10 unauth-vid 10
+aaa aaa port-access authenticator active
+```
 
-```aaa aaa port-access authenticator 1-10 unauth-vid 20```
+With that our switch configuration is done. Or is it?
 
-```aaa aaa port-access authenticator 1-10 unauth-vid 10```
+#### (Bonus) What about IP Phones?
+You may have noticed I included a vlan for phones, as this was a huge question I had on my first roll out of 802.1x. Will I need to add each phone to our Radius server and configure each phone for the authentication or use MAB[^MAB]?
 
-```aaa aaa port-access authenticator active```
+[^MAB]: MAC Authentication Bypass - [MAB - networklessons.com](https://networklessons.com/cisco/ccie-routing-switching-written/mac-authentication-bypass-mab)
 
-With that our switch configuration is done.
+No! Instead we will make the vlan a voice vlan with the following command which will allow the phone to use LLDP to fetch its assigned vlan bypassing its need for the authentication.
+
+```
+vlan 30 voice
+```
 
