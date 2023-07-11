@@ -27,8 +27,11 @@ Imagine a situation where you have a public meeting room equipped with accessibl
 First thing we need to do is add the vlans if not already done. I've tagged the vlans on all the ports for simplicity sake.
 
 ```vlan 10 name VLAN10_Company```
+
 ```vlan 10 tagged all```
+
 ```vlan 20 name VLAN20_Public```
+
 ```vlan 20 tagged all```
 
 #### Radius Server and Authentication 
@@ -43,8 +46,11 @@ Then we configure EAP-RADIUS, this enables the switch to forward the authenticat
 We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or seperate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)
 
 ```aaa aaa port-access authenticator 1-10```
+
 ```aaa aaa port-access authenticator 1-10 unauth-vid 20```
+
 ```aaa aaa port-access authenticator 1-10 unauth-vid 10```
+
 ```aaa aaa port-access authenticator active```
 
 With that our switch configuration is done.
