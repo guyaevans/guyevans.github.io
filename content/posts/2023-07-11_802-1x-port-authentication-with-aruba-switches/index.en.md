@@ -1,6 +1,15 @@
 ---
 title: 802.1x Port Authentication with ARUBA switches
-date: 2023-07-11T12:34:34.427Z
+date: 2023-07-13T12:34:34.427Z
+featuredImage: thomas-jensen-ISG-rUel0Uw-unsplash.jpg
+summary: "Imagine a situation where you have a public meeting room equipped with accessible Ethernet ports, and you want to ensure secure access to those ports. One of the options is 802.1X Port Authentication - Lets take a look at the configuration on the switch side"
+tags:
+  - 802.1X
+  - Radius
+  - Security
+  - Switch
+  - Aruba
+  - Vlan
 ---
 ## 802.1x - Why?
 
@@ -15,7 +24,7 @@ Imagine a situation where you have a public meeting room equipped with accessibl
 ## What do we need?
 
 * A RADIUS server (at IP 192.168.10.2) - we are using Microsoft NPS (I won't be detailing the configuration of NPS here but may do so in the futur)
-* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an [ARUBA 2930F](https://www.arubanetworks.com/products/switches/access/2930f-series/) (which is a nice switch by the way, if only it could make it's way home from work ;) )
+* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an [ARUBA 2930F](https://www.arubanetworks.com/products/switches/access/2930f-series/) (which is a nice switch by the way, if only it could make it's way home from work :wink: wink: )
 * Some VLANs
   * Company VLAN: 10
   * Public VLAN: 20
@@ -33,6 +42,7 @@ vlan 10 tagged all
 vlan 20 name VLAN20_Public
 vlan 20 tagged all
 vlan 30 name VLAN30_Phones
+vlan 30 tagged all
 ```
 
 #### Radius Server and Authentication 
@@ -76,3 +86,6 @@ Wired 802.1X offers port-level authentication and access control, ensuring only 
 In this blog post, I wanted to highlight the switch-side setup for 802.1X, focusing on the configuration process. When an unauthorized client is connected to the switch port, the system automatically assigns it to VLAN 10. Similarly, when a phone is plugged in, it seamlessly joins VLAN 30 without any additional setup. Moreover, authorized clients are automatically placed in VLAN 10.
 
 In summary, wired 802.1X offers port-level authentication and access control, ensuring only authorized devices can connect to the network. It enables dynamic VLAN assignment and eliminates the need for manual port management, enhancing network security.
+
+---
+_Photo by Thomas Jensen @ [Unsplash.com](https://unsplash.com/fr/photos/ISG-rUel0Uw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
