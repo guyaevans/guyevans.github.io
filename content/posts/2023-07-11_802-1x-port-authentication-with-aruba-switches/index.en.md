@@ -46,18 +46,19 @@ Then we configure EAP-RADIUS, this enables the switch to forward the authenticat
 
 ```aaa authentication port-access eap-radius```
 
-We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or seperate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)
+We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or separate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)
 
 ```
 aaa aaa port-access authenticator 1-10
 aaa aaa port-access authenticator 1-10 unauth-vid 20
-aaa aaa port-access authenticator 1-10 unauth-vid 10
+aaa aaa port-access authenticator 1-10 auth-vid 10
 aaa aaa port-access authenticator active
 ```
 
 With that our switch configuration is done. Or is it?
 
 #### (Bonus) What about IP Phones?
+
 You may have noticed I included a vlan for phones, as this was a huge question I had on my first roll out of 802.1x. Will I need to add each phone to our Radius server and configure each phone for the authentication or use MAB[^MAB]?
 
 [^MAB]: MAC Authentication Bypass - [MAB - networklessons.com](https://networklessons.com/cisco/ccie-routing-switching-written/mac-authentication-bypass-mab)
@@ -68,3 +69,10 @@ No! Instead we will make the vlan a voice vlan with the following command which 
 vlan 30 voice
 ```
 
+#### Conclusion
+
+Wired 802.1X offers port-level authentication and access control, ensuring only authorized devices can connect to the network. It enables dynamic VLAN assignment and eliminates the need for manual port management, enhancing network security.
+
+In this blog post, I wanted to highlight the switch-side setup for 802.1X, focusing on the configuration process. When an unauthorized client is connected to the switch port, the system automatically assigns it to VLAN 10. Similarly, when a phone is plugged in, it seamlessly joins VLAN 30 without any additional setup. Moreover, authorized clients are automatically placed in VLAN 10.
+
+In summary, wired 802.1X offers port-level authentication and access control, ensuring only authorized devices can connect to the network. It enables dynamic VLAN assignment and eliminates the need for manual port management, enhancing network security.
