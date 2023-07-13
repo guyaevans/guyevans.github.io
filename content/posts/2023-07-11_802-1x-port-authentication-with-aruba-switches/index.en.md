@@ -1,8 +1,11 @@
 ---
 title: 802.1x Port Authentication with ARUBA switches
-date: 2023-07-13T12:34:34.427Z
+date: 2023-07-13T14:32:51.515Z
 featuredImage: thomas-jensen-ISG-rUel0Uw-unsplash.jpg
-summary: "Imagine a situation where you have a public meeting room equipped with accessible Ethernet ports, and you want to ensure secure access to those ports. One of the options is 802.1X Port Authentication - Lets take a look at the configuration on the switch side"
+summary: Imagine a situation where you have a public meeting room equipped with
+  accessible Ethernet ports, and you want to ensure secure access to those
+  ports. One of the options is 802.1X Port Authentication - Lets take a look at
+  the configuration on the switch side
 tags:
   - 802.1X
   - Radius
