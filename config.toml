@@ -140,6 +140,7 @@ defaultContentLanguage = "en"
     Telegram = "guye06"
     Mastodon = "https://mastodon.xyz/@_guyevans"
     GitHub = ""
+    RSS = true 
 # Menu config
 
 [menu]
