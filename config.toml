@@ -181,10 +181,10 @@ defaultContentLanguage = "en"
 [params.analytics]
     enable = true
     # Umami
-    [params.analytics.umami]
-      id = ""
-      websiteId = "4d8524a0-ef19-4b23-bf6b-fa76b7614903"
-      jsLocation = "https://umami.evans.fr/umami.js"
+    # [params.analytics.umami]
+    #   id = ""
+    #   websiteId = "4d8524a0-ef19-4b23-bf6b-fa76b7614903"
+    #   jsLocation = "https://umami.evans.fr/umami.js"
     
     [params.analytics.matomo]
       url = "//matomo.evans.fr/"
