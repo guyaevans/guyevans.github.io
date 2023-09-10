@@ -130,7 +130,7 @@ defaultContentLanguage = "en"
 # Author config
 [author]
   name = "Guy Evans"
-  email = ""
+  email = "web@evans.fr"
   link = ""
 
 [params.social]
