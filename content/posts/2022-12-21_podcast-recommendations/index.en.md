@@ -4,6 +4,7 @@ date: 2022-12-21T17:20:57.646Z
 featuredImage: melanie-pongratz-becwwmiuj2k-unsplash.jpg
 summary: I could be described as a passionate podcast listener, whether I'm on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work
 tags: [podcast, audio, cyber, crime]
+rssFullText: true
 ---
 I could be described as a passionate podcast listener, whether I'm on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work I usually stick on a podcast. Here are some of my recomendations
 

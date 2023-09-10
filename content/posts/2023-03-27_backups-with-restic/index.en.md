@@ -9,6 +9,7 @@ tags:
 summary: After lucking out and not loosing any of my data saved to my nextcloud
   after the OVH fire. I started searching for a decent backup solution and found
   Restic, lets take a look at how it works.
+rssFullText: true
 ---
 After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire[^ovhfire] :fire: in Strasbourg. I did however loose the VPS that hosted the website for [www.evansmedia.fr](https://www.evansmedia.fr)
 

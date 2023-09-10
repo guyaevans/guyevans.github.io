@@ -10,6 +10,7 @@ tags:
   - self-hosted
   - mailcow
   - guide
+rssFullText: true
 ---
 ## Email
 Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? **L'EMAIL**

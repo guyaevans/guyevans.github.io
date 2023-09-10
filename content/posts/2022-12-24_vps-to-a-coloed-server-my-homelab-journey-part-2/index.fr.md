@@ -11,6 +11,7 @@ tags:
   - wordpress
   - colo
   - colocation
+rssFullText: true
 ---
 ## Après les serveurs virtuels
 

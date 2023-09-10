@@ -13,6 +13,7 @@ tags:
   - colocation
 series:
   - VPS to a coloed server my homelab journey
+rssFullText: true
 ---
 
 ## After the Virtual Private Servers

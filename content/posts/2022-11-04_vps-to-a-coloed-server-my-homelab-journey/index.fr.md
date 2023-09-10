@@ -10,7 +10,7 @@ tags:
   - wordpress
   - colo
   - colocation
-
+rssFullText: true
 ---
 J'ai toujours eu un intérêt pour les ordinateurs et la technologie. J'étais loin de me douter qu'il s'agirait de la base de mon parcours professionnel.
 
