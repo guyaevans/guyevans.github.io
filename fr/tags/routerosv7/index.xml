@@ -1,4 +1,56 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>routerosv7 - Balise - Guy Evans</title><link>https://guy-evans.com/fr/tags/routerosv7/</link><description>routerosv7 - Balise - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Sun, 13 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/tags/routerosv7/" rel="self" type="application/rss+xml"/><item><title>Config BGP IPv4 sur Mikrotik RouterOSv7</title><link>https://guy-evans.com/fr/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</link><pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/screen-router.png" referrerpolicy="no-referrer">
-            </div>Je connais quelques personnes qui font tourner leurs ASN sur des routeurs Mikrotik (sous RouterOS) car leur matériel est bon marché et facile à trouver. Moi y compris, je fait du BGP sur leur image CHR pour annoncer mon propre ASN et mes préfixes IP v4 et V6. RouterOS CHR est une image de RouterOS que vous pouvez exécuter sur votre propre matériel.
-Avant on utilisait plus RouterOS version 6, mais maintenant la version 7 a quelques versions stables et est supposée être plus stable et plus rapide pour faire du BGP, j&rsquo;ai pensé que je partagerais quelques configurations pour la version 7 car la syntaxe de la configuration a beaucoup changé.]]></description></item></channel></rss>
+            </div><p>Je connais quelques personnes qui font tourner leurs ASN sur des routeurs Mikrotik (sous RouterOS) car leur matériel est bon marché et facile à trouver. Moi y compris, je fait du BGP sur leur image CHR pour annoncer mon propre ASN et mes préfixes IP v4 et V6. RouterOS CHR est une image de RouterOS que vous pouvez exécuter sur votre propre matériel.</p>
+<p>Avant on utilisait plus RouterOS version 6, mais maintenant la version 7 a quelques versions stables et est supposée être plus stable et plus rapide pour faire du BGP, j&rsquo;ai pensé que je partagerais quelques configurations pour la version 7 car la syntaxe de la configuration a beaucoup changé. Aujourd&rsquo;hui je vais me concentrer sur IPv4 mais IPv6 est à peu près le même.</p>
+<h3 id="attendez--asn-bgp-vous-mavez-perdu-">Attendez ! ASN, BGP, vous m&rsquo;avez perdu &hellip;</h3>
+<h4 id="quest-ce-que-bgp-">Qu&rsquo;est-ce que BGP ?</h4>
+<blockquote>
+<p>Border Gateway Protocol (BGP) est le service postal d&rsquo;Internet. Lorsque quelqu&rsquo;un dépose une lettre dans une boîte aux lettres, le service postal traite ce courrier et choisit un itinéraire rapide et efficace pour livrer cette lettre à son destinataire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+</blockquote>
+<h4 id="quest-ce-quun-système-autonome-et-les-asn-">Qu&rsquo;est-ce qu&rsquo;un système autonome et les ASN ?</h4>
+<blockquote>
+<p>L&rsquo;Internet est un réseau de réseaux*, et les systèmes autonomes sont les grands réseaux qui composent l&rsquo;Internet. Plus précisément, un système autonome (AS) est un grand réseau ou groupe de réseaux qui possède une politique de routage unifiée. Chaque ordinateur ou dispositif qui se connecte à l&rsquo;Internet est connecté à un AS.</p>
+</blockquote>
+<blockquote>
+<p>Chaque AS se voit attribuer un numéro officiel, ou numéro de système autonome (ASN), de la même manière que chaque entreprise possède une licence commerciale avec un numéro unique et officiel. Mais contrairement aux entreprises, les parties externes font souvent référence aux AS par leur seul numéro.
+<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+</blockquote>
+<p></p>
+<h3 id="a-quoi-ressemble-la-configuration-">A quoi ressemble la configuration ?</h3>
+<p>Voici les exports de configuration pour annoncer mes préfixes via l&rsquo;AS 211486. Comme vous pouvez le voir, avant de faire quoi que ce soit, vous devez ajouter les préfixes que vous voulez annoncer à une liste de réseaux que vous spécifierez dans le modèle bgp. Le reste devrait être assez explicite mais j&rsquo;ai détaillé les points principaux ci-dessous.</p>
+<h4 id="modèlestemplates">Modèles/Templates</h4>
+<p>ROSv7 a également introduit le concept de modèles dans BGP, par exemple vous pouvez définir un modèle pour iBGP, un pour les IXP et un autre pour eBGP. La je n&rsquo;utilise q&rsquo;un seul</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/routing bgp template
+</span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip4 output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    routing-table<span class="o">=</span>main
+</span></span><span class="line"><span class="cl">add address-families<span class="o">=</span>ipv6 <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip6 output.network<span class="o">=</span>bgp routing-table<span class="o">=</span>main
+</span></span></code></pre></div><h4 id="filtres">Filtres</h4>
+<p>Comme dans toute configuration BGP, nous avons des filtres. Mikrotik a modifié la syntaxe des filtres dans ROSv7, cela ressemble un peu à bird. Leur <a href="https://help.mikrotik.com/docs/display/ROS/Route&#43;Selection&#43;and&#43;Filters#RouteSelectionandFilters-FilterSyntax" target="_blank" rel="noopener noreffer ">référence</a> est assez bonne.
+Voici un ensemble de base de filtres entrants et sortants. Les deux premières lignes autorisent toutes les routes réseau sous 0.0.0.0/0 mais pas 185.133.194.0/24 qui est le mien. La troisième ligne permet à mon préfixe d&rsquo;être annoncé et rien d&rsquo;autre. Si aucun filtre n&rsquo;est défini pour une route, elle sera rejetée.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/routing filter rule
+</span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 0.0.0.0/0) {set bgp-local-pref 90 ; accept}&#34;</span>
+</span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 185.133.194.0/24) {reject}&#34;</span>
+</span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-out <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 OUT Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if ( dst == 185.133.194.0/24 ) {accept}&#34;</span>
+</span></span></code></pre></div><h4 id="connexion">Connexion</h4>
+<p>Enfin, nous ajoutons la connexion qui référence le modèle, la liste de réseaux et les filtres que nous venons de créer.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/routing bgp connexion
+</span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in local.role<span class="o">=</span>ebgp <span class="nv">name</span><span class="o">=</span>ip4-mw output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="sb">``</span>
+</span></span><span class="line"><span class="cl">    remote.address<span class="o">=</span>80.67.167.166/32 router-id<span class="o">=</span>185.133.194.1 routing-table<span class="o">=</span>main <span class="nv">templates</span><span class="o">=</span>as211486-public-out-ip4
+</span></span></code></pre></div><h4 id="route-blackhole">Route Blackhole</h4>
+<p>Une chose que j&rsquo;oublie souvent est d&rsquo;ajouter une route blackhole à ma table de routage pour les préfixes que je voudrais annoncer. Sans cela, vous pouvez avoir les bons filtres mais rien ne sera annoncé car le routeur n&rsquo;annoncera que les préfixes qui se trouvent dans la table de routage.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/ip route
+</span></span><span class="line"><span class="cl">add blackhole <span class="nv">disabled</span><span class="o">=</span>no dst-address<span class="o">=</span>185.133.194.0/24
+</span></span></code></pre></div><p>Félicitations ! Vous annoncez maintenant un réseau avec BGP sur un RouterOSv7 de Mikrotik.</p>
+<p></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Source (Anglais): Qu&rsquo;est-ce que BGP ? | Le routage BGP expliqué - <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank" rel="noopener noreffer ">Cloudflare</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Source (Anglais): Qu&rsquo;est-ce qu&rsquo;un système autonome ? | Que sont les ASN ? - <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank" rel="noopener noreffer ">Cloudflare</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item></channel></rss>

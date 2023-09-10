@@ -1,3 +1,87 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>server - Tag - Guy Evans</title><link>https://guy-evans.com/tags/server/</link><description>server - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 23 Apr 2023 09:19:19 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/server/" rel="self" type="application/rss+xml"/><item><title>A look at Caddy - A simple and fast web server</title><link>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
-            </div>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fin but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to Caddy. Lets take a look at what Caddy has to offer.]]></description></item></channel></rss>
+            </div><p>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fin but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to <a href="caddyserver.com/" rel="">Caddy</a>. Lets take a look at what <a href="caddyserver.com/" rel="">Caddy</a> has to offer.</p>
+<h1 id="caddy">Caddy</h1>
+<p><a href="caddyserver.com/" rel="">Caddy</a> is a unique <em>(at least I think)</em> web server with a modern feature set. You can use it as <a href="https://caddyserver.com/docs/proxy" target="_blank" rel="noopener noreffer ">reverse proxy and load balancer.</a> <a href="https://caddyserver.com/docs/fastcgi" target="_blank" rel="noopener noreffer ">Host your PHP apps with it.</a> Even <a href="https://caddyserver.com/docs/git" target="_blank" rel="noopener noreffer ">deploy your site</a> with <code>git push</code>. And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer ">Lets Encrypt</a> and <a href="https://zerossl.com/" target="_blank" rel="noopener noreffer ">ZeroSSL</a>.</p>
+<p>Cool, Right?</p>
+<figure>
+</figure>
+
+<h2 id="installation">Installation</h2>
+<p>Caddy is available as a single executable, a <a href="https://hub.docker.com/_/caddy" target="_blank" rel="noopener noreffer ">docker image</a> or as usual via a package manager. Today we&rsquo;ll be using Debian. But the if you use another OS their <a href="https://caddyserver.com/docs/install" target="_blank" rel="noopener noreffer ">docs</a> should have you covered.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+</span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/gpg.key&#39;</span> <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+</span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt&#39;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/caddy-stable.list
+</span></span><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install caddy
+</span></span></code></pre></div><p>Once installed the service will run automatically and serve the default welcome page on port 80. Caddy can then be configured using the file <code>Caddyfile</code> in <code>/etc/caddy</code></p>
+<h2 id="configuration">Configuration</h2>
+<p>As said above caddy can be configured using the file <code>Caddyfile</code> in <code>/etc/caddy</code>. In this file we give it <a href="https://caddyserver.com/docs/caddyfile/directives" target="_blank" rel="noopener noreffer ">directives</a> to either be a reverse proxy, web server, php front, etc. Caddy can also be configured using its <a href="https://caddyserver.com/docs/api" target="_blank" rel="noopener noreffer ">REST API</a> if that&rsquo;s something that interests you.</p>
+<h3 id="reverse-proxy">Reverse Proxy</h3>
+<p>Let&rsquo;s say you had an app running on port 9999 that you wanted to reverse proxy to 443 (HTTPS). The config file would look like so:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">demo.app.com</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">reverse_proxy</span> <span class="err">127.0.0.1:9999</span>
+</span></span><span class="line"><span class="cl">    <span class="err">encode</span> <span class="err">gzip</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>For caddy to reload the <code>Caddyfile</code> we just need to run a <code>systemctl reload caddy</code>, Caddy will then reload the config file, request a certificate for <code>demo.app.com</code> and then serve your app over HTTPS<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h3 id="static-files">Static Files</h3>
+<p>Okay a reverse proxy is nice but my website (this one) is static and generated by <a href="gohugo.io" rel="">Hugo</a>, how could we serve it using caddy? Again only 4 lines of config is enough.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span> <span class="err">where</span> <span class="err">our</span> <span class="err">static</span> <span class="err">files</span> <span class="err">are</span> <span class="err">stored</span>
+</span></span><span class="line"><span class="cl">    <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.droapp.com/public</span>
+</span></span><span class="line"><span class="cl">    <span class="err">file_server</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>A quick <code>systemctl reload caddy</code> later and Caddy is serving your static files over HTTPS<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> at <code>demo.website.com</code></p>
+<h3 id="php-fpm">PHP-fpm</h3>
+<p>You would usually use Ngninx as a front for PHP-fpm, well Caddy can do that too. And again with a simple config file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">where</span> <span class="err">our</span> <span class="err">files</span> <span class="err">are</span> <span class="err">stored</span>
+</span></span><span class="line"><span class="cl">        <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.website.com</span>
+</span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">we</span> <span class="err">tell</span> <span class="err">caddy</span> <span class="err">where</span> <span class="err">to</span> <span class="err">find</span> <span class="err">the</span> <span class="err">php-fpm</span> <span class="err">socket</span>
+</span></span><span class="line"><span class="cl">	    <span class="err">php_fastcgi</span> <span class="err">/run/php/php8.2-fpm.sock</span>	
+</span></span><span class="line"><span class="cl">        <span class="err">file_server</span>
+</span></span><span class="line"><span class="cl">        <span class="err">encode</span> <span class="err">gzip</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Again a quick <code>systemctl reload caddy</code> and we are now fronting a php app over HTTPS<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h2 id="bonus">Bonus</h2>
+<h3 id="docker--docker-compose">Docker &amp; Docker Compose</h3>
+<p>Caddy is also often run with Docker Compose and is still as simple. Here is a simple <code>docker-compose.yml</code> and we can use any example <code>Caddyfile</code> from above.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.7&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">caddy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">caddy:&lt;version&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;80:80&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;443:443&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;443:443/udp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/Caddyfile:/etc/caddy/Caddyfile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/caddy_data:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/caddy_config:/config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/site:/srv</span><span class="w"> </span><span class="c"># If we wanted to serve static files in $PWD/site</span><span class="w">
+</span></span></span></code></pre></div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Docs<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Caddy has some of the best <a href="https://caddyserver.com/docs/" target="_blank" rel="noopener noreffer ">documentation</a> I&rsquo;ve seen in a while. There are plenty of other functions that I&rsquo;ve not covered here.</div>
+        </div>
+    </div>
+<p>And with that, I think I have covered the basics of using Caddy. Do you use it? Tell me how and what you think.</p>
+<figure><figcaption>
+            <h4>Cheers - Designated Survivor</h4>
+        </figcaption>
+</figure>
+
+<p><em>Original Feature photo by Valery Sysoev at <a href="https://unsplash.com/@valerysysoev?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash</a></em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Caddy will only succeed at requesting a certificate if you have ports 80 and 443 open on your server. You can also <a href="https://caddyserver.com/docs/automatic-https#activation" target="_blank" rel="noopener noreffer ">disable the certificate request</a> if not needed. Other <a href="https://caddyserver.com/docs/automatic-https" target="_blank" rel="noopener noreffer ">options</a> like local HTTPS can also be used&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item></channel></rss>

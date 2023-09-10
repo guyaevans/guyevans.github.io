@@ -1,3 +1,65 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Vlan - Balise - Guy Evans</title><link>https://guy-evans.com/fr/tags/vlan/</link><description>Vlan - Balise - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Thu, 13 Jul 2023 14:32:51 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/tags/vlan/" rel="self" type="application/rss+xml"/><item><title>Authentification des ports 802.1x avec des switches ARUBA</title><link>https://guy-evans.com/fr/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</link><pubDate>Thu, 13 Jul 2023 14:32:51 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/thomas-jensen-ISG-rUel0Uw-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Imaginez une situation où vous avez une salle de réunion publique équipée de ports Ethernet accessibles, et vous voulez assurer un accès sécurisé à ces ports. L&rsquo;une des options est l&rsquo;authentification de port 802.1X - Jetons un coup d&rsquo;œil à la configuration du côté du switch.]]></description></item></channel></rss>
+            </div><h2 id="8021x---pourquoi-">802.1x - Pourquoi ?</h2>
+<p>Dans les entreprises, nous utilisons souvent 802.1x pour sécuriser l&rsquo;accès aux réseaux câblés et sans fil. Pour les réseaux câblés, la norme 802.1x nous permet d&rsquo;exiger une authentification au niveau du port sur un switch compatible, ce qui nous permet également d&rsquo;attribuer dynamiquement des VLAN au port et à l&rsquo;appareil de connexion.</p>
+<p>Imaginez une situation dans laquelle vous disposez d&rsquo;une salle de réunion publique équipée de ports Ethernet accessibles et où vous souhaitez garantir un accès sécurisé à ces ports. Dans un tel scénario, deux options s&rsquo;offrent à vous :</p>
+<ol>
+<li>
+<p>La première option consiste à désactiver tous les ports inutilisés. Bien que cette approche offre un certain niveau de sécurité, elle présente un inconvénient. Que se passe-t-il si quelqu&rsquo;un a besoin d&rsquo;utiliser le port ? Dans ce cas, vous devrez vous connecter manuellement au switch, activer temporairement le port, puis le désactiver à nouveau une fois qu&rsquo;il n&rsquo;est plus utilisé. Ce processus peut être assez lourd et faire perdre du temps au personnel informatique.</p>
+</li>
+<li>
+<p>La deuxième option, plus efficace, consiste à mettre en œuvre la norme 802.1X. Cette norme offre une solution supérieure en maintenant les ports actifs à tout moment. Avec la norme 802.1X, lorsqu&rsquo;un appareil de l&rsquo;entreprise est branché sur le port, il accède automatiquement au réseau de l&rsquo;entreprise sur le VLAN attribué. En revanche, si un appareil inconnu est connecté, il sera affecté à un VLAN de votre choix, généralement un réseau public avec accès à l&rsquo;internet uniquement. Cette séparation garantit que les appareils non autorisés ne peuvent pas accéder au réseau de l&rsquo;entreprise. L&rsquo;avantage est que vous n&rsquo;avez plus besoin d&rsquo;activer et de désactiver manuellement les ports chaque fois qu&rsquo;un accès est nécessaire.</p>
+</li>
+</ol>
+<h2 id="de-quoi-avons-nous-besoin-">De quoi avons-nous besoin ?</h2>
+<ul>
+<li>Un serveur RADIUS (à l&rsquo;IP 192.168.10.2) - nous utilisons Microsoft NPS (je ne détaillerai pas la configuration de NPS ici mais je le ferai peut-être dans le futur).</li>
+<li>Un switch géré - Il peut s&rsquo;agir de n&rsquo;importe quel switch géré capable de faire de l&rsquo;authentification de port, je fais cela sur un <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (qui est un bon switch d&rsquo;ailleurs, si seulement je pouvais le ramener chez moi 😉 😉 )</li>
+<li>Quelques VLAN
+<ul>
+<li>VLAN d&rsquo;entreprise : 10</li>
+<li>VLAN public : 20</li>
+</ul>
+</li>
+<li>Un ordinateur Windows</li>
+</ul>
+<h2 id="commençons-à-configurer">Commençons à configurer</h2>
+<h3 id="configuration-du-switch">Configuration du switch</h3>
+<h4 id="configuration-des-vlan">Configuration des VLAN</h4>
+<p>La première chose à faire est d&rsquo;ajouter les vlans si ce n&rsquo;est pas déjà fait. J&rsquo;ai taggé les vlans sur tous les ports pour des raisons de simplicité.</p>
+<pre tabindex="0"><code>vlan 10 name VLAN10_Enterprise
+vlan 10 tagged all
+vlan 20 nom VLAN20_Publique
+vlan 20 tagged all
+vlan 30 name VLAN30_Telephonie
+vlan 30 tagged all
+</code></pre><h4 id="serveur-radius-et-authentification">Serveur Radius et authentification</h4>
+<p>Ensuite, nous devons configurer le serveur RADIUS distant (notre serveur NPS) et indiquer au switch la &ldquo;secretkey&rdquo;</p>
+<pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;
+</code></pre><p>Ensuite, nous configurons EAP-RADIUS, ce qui permet au commutateur de transmettre les paquets d&rsquo;authentification des clients au serveur Radius.</p>
+<pre tabindex="0"><code>aaa authentication port-access eap-radius
+</code></pre><p>Nous activons ensuite 802.1x sur les ports de notre commutateur, ici nous le faisons sur une série de ports mais vous pouvez spécifier des ports individuels, ou les séparer par une virgule. Nous demandons au switch de placer les clients autorisés sur le vlan 10 (auth-vid) et les clients non autorisés sur le vlan 20 (unauth-vid).</p>
+<pre tabindex="0"><code>aaa aaa port-access authenticator 1-10
+aaa aaa port-access authenticator 1-10 unauth-vid 20
+aaa aaa port-access authenticator 1-10 auth-vid 10
+aaa aaa port-access authenticator active
+</code></pre><p>La configuration de notre switch est ainsi terminée. Ou bien est-ce le cas ?</p>
+<h4 id="bonus-quen-est-il-des-téléphones-ip-">(Bonus) Qu&rsquo;en est-il des téléphones IP ?</h4>
+<p>Vous avez peut-être remarqué que j&rsquo;ai inclus un vlan pour les téléphones, car c&rsquo;était une question importante que je me posais lors de mon premier déploiement de 802.1x. Devrai-je ajouter chaque téléphone à notre serveur Radius et configurer chaque téléphone pour l&rsquo;authentification ou utiliser MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>
+<p>Non ! Au lieu de cela, nous allons faire du vlan un vlan voice avec la commande suivante, ce qui permettra au téléphone d&rsquo;utiliser LLDP pour récupérer le vlan qui lui a été assigné, sans avoir besoin de l&rsquo;authentification.</p>
+<pre tabindex="0"><code>vlan 30 voice
+</code></pre><h4 id="conclusion">Conclusion</h4>
+<p>La norme 802.1X câblée offre une authentification et un contrôle d&rsquo;accès au niveau du port, garantissant que seuls les appareils autorisés peuvent se connecter au réseau. Elle permet l&rsquo;attribution dynamique de VLAN et élimine la nécessité d&rsquo;une gestion manuelle des ports, ce qui renforce la sécurité du réseau.</p>
+<p>Dans cet article de blog, j&rsquo;ai voulu mettre en évidence la configuration côté commutateur de 802.1X, en me concentrant sur le processus de configuration. Lorsqu&rsquo;un client non autorisé est connecté au port du switch, le système l&rsquo;affecte automatiquement au VLAN 10. De même, lorsqu&rsquo;un téléphone est branché, il rejoint le VLAN 30 sans aucune configuration supplémentaire. En ce qui concerne les clients autorisés, ils sont automatiquement placés dans le VLAN 10.</p>
+<p>En résumé, la norme 802.1X câblée offre une authentification et un contrôle d&rsquo;accès au niveau du port, garantissant que seuls les appareils autorisés peuvent se connecter au réseau. Elle permet l&rsquo;attribution dynamique de VLAN et élimine la nécessité d&rsquo;une gestion manuelle des ports, ce qui renforce la sécurité du réseau.</p>
+<hr>
+<p><em>Photo par Thomas Jensen @ <a href="https://unsplash.com/fr/photos/ISG-rUel0Uw?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash.com</a></em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>MAC Authentication Bypass - <a href="https://networklessons.com/cisco/ccie-routing-switching-written/mac-authentication-bypass-mab" target="_blank" rel="noopener noreffer ">MAB - networklessons.com</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item></channel></rss>

@@ -1,25 +1,597 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Tous Posts - Guy Evans</title><link>https://guy-evans.com/fr/posts/</link><description>Tous Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Thu, 13 Jul 2023 14:32:51 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/posts/" rel="self" type="application/rss+xml"/><item><title>Authentification des ports 802.1x avec des switches ARUBA</title><link>https://guy-evans.com/fr/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</link><pubDate>Thu, 13 Jul 2023 14:32:51 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/thomas-jensen-ISG-rUel0Uw-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Imaginez une situation où vous avez une salle de réunion publique équipée de ports Ethernet accessibles, et vous voulez assurer un accès sécurisé à ces ports. L&rsquo;une des options est l&rsquo;authentification de port 802.1X - Jetons un coup d&rsquo;œil à la configuration du côté du switch.]]></description></item><item><title>Découverte de Caddy - un serveur web simple et rapide</title><link>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
+            </div><h2 id="8021x---pourquoi-">802.1x - Pourquoi ?</h2>
+<p>Dans les entreprises, nous utilisons souvent 802.1x pour sécuriser l&rsquo;accès aux réseaux câblés et sans fil. Pour les réseaux câblés, la norme 802.1x nous permet d&rsquo;exiger une authentification au niveau du port sur un switch compatible, ce qui nous permet également d&rsquo;attribuer dynamiquement des VLAN au port et à l&rsquo;appareil de connexion.</p>
+<p>Imaginez une situation dans laquelle vous disposez d&rsquo;une salle de réunion publique équipée de ports Ethernet accessibles et où vous souhaitez garantir un accès sécurisé à ces ports. Dans un tel scénario, deux options s&rsquo;offrent à vous :</p>
+<ol>
+<li>
+<p>La première option consiste à désactiver tous les ports inutilisés. Bien que cette approche offre un certain niveau de sécurité, elle présente un inconvénient. Que se passe-t-il si quelqu&rsquo;un a besoin d&rsquo;utiliser le port ? Dans ce cas, vous devrez vous connecter manuellement au switch, activer temporairement le port, puis le désactiver à nouveau une fois qu&rsquo;il n&rsquo;est plus utilisé. Ce processus peut être assez lourd et faire perdre du temps au personnel informatique.</p>
+</li>
+<li>
+<p>La deuxième option, plus efficace, consiste à mettre en œuvre la norme 802.1X. Cette norme offre une solution supérieure en maintenant les ports actifs à tout moment. Avec la norme 802.1X, lorsqu&rsquo;un appareil de l&rsquo;entreprise est branché sur le port, il accède automatiquement au réseau de l&rsquo;entreprise sur le VLAN attribué. En revanche, si un appareil inconnu est connecté, il sera affecté à un VLAN de votre choix, généralement un réseau public avec accès à l&rsquo;internet uniquement. Cette séparation garantit que les appareils non autorisés ne peuvent pas accéder au réseau de l&rsquo;entreprise. L&rsquo;avantage est que vous n&rsquo;avez plus besoin d&rsquo;activer et de désactiver manuellement les ports chaque fois qu&rsquo;un accès est nécessaire.</p>
+</li>
+</ol>
+<h2 id="de-quoi-avons-nous-besoin-">De quoi avons-nous besoin ?</h2>
+<ul>
+<li>Un serveur RADIUS (à l&rsquo;IP 192.168.10.2) - nous utilisons Microsoft NPS (je ne détaillerai pas la configuration de NPS ici mais je le ferai peut-être dans le futur).</li>
+<li>Un switch géré - Il peut s&rsquo;agir de n&rsquo;importe quel switch géré capable de faire de l&rsquo;authentification de port, je fais cela sur un <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (qui est un bon switch d&rsquo;ailleurs, si seulement je pouvais le ramener chez moi 😉 😉 )</li>
+<li>Quelques VLAN
+<ul>
+<li>VLAN d&rsquo;entreprise : 10</li>
+<li>VLAN public : 20</li>
+</ul>
+</li>
+<li>Un ordinateur Windows</li>
+</ul>
+<h2 id="commençons-à-configurer">Commençons à configurer</h2>
+<h3 id="configuration-du-switch">Configuration du switch</h3>
+<h4 id="configuration-des-vlan">Configuration des VLAN</h4>
+<p>La première chose à faire est d&rsquo;ajouter les vlans si ce n&rsquo;est pas déjà fait. J&rsquo;ai taggé les vlans sur tous les ports pour des raisons de simplicité.</p>
+<pre tabindex="0"><code>vlan 10 name VLAN10_Enterprise
+vlan 10 tagged all
+vlan 20 nom VLAN20_Publique
+vlan 20 tagged all
+vlan 30 name VLAN30_Telephonie
+vlan 30 tagged all
+</code></pre><h4 id="serveur-radius-et-authentification">Serveur Radius et authentification</h4>
+<p>Ensuite, nous devons configurer le serveur RADIUS distant (notre serveur NPS) et indiquer au switch la &ldquo;secretkey&rdquo;</p>
+<pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;
+</code></pre><p>Ensuite, nous configurons EAP-RADIUS, ce qui permet au commutateur de transmettre les paquets d&rsquo;authentification des clients au serveur Radius.</p>
+<pre tabindex="0"><code>aaa authentication port-access eap-radius
+</code></pre><p>Nous activons ensuite 802.1x sur les ports de notre commutateur, ici nous le faisons sur une série de ports mais vous pouvez spécifier des ports individuels, ou les séparer par une virgule. Nous demandons au switch de placer les clients autorisés sur le vlan 10 (auth-vid) et les clients non autorisés sur le vlan 20 (unauth-vid).</p>
+<pre tabindex="0"><code>aaa aaa port-access authenticator 1-10
+aaa aaa port-access authenticator 1-10 unauth-vid 20
+aaa aaa port-access authenticator 1-10 auth-vid 10
+aaa aaa port-access authenticator active
+</code></pre><p>La configuration de notre switch est ainsi terminée. Ou bien est-ce le cas ?</p>
+<h4 id="bonus-quen-est-il-des-téléphones-ip-">(Bonus) Qu&rsquo;en est-il des téléphones IP ?</h4>
+<p>Vous avez peut-être remarqué que j&rsquo;ai inclus un vlan pour les téléphones, car c&rsquo;était une question importante que je me posais lors de mon premier déploiement de 802.1x. Devrai-je ajouter chaque téléphone à notre serveur Radius et configurer chaque téléphone pour l&rsquo;authentification ou utiliser MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>
+<p>Non ! Au lieu de cela, nous allons faire du vlan un vlan voice avec la commande suivante, ce qui permettra au téléphone d&rsquo;utiliser LLDP pour récupérer le vlan qui lui a été assigné, sans avoir besoin de l&rsquo;authentification.</p>
+<pre tabindex="0"><code>vlan 30 voice
+</code></pre><h4 id="conclusion">Conclusion</h4>
+<p>La norme 802.1X câblée offre une authentification et un contrôle d&rsquo;accès au niveau du port, garantissant que seuls les appareils autorisés peuvent se connecter au réseau. Elle permet l&rsquo;attribution dynamique de VLAN et élimine la nécessité d&rsquo;une gestion manuelle des ports, ce qui renforce la sécurité du réseau.</p>
+<p>Dans cet article de blog, j&rsquo;ai voulu mettre en évidence la configuration côté commutateur de 802.1X, en me concentrant sur le processus de configuration. Lorsqu&rsquo;un client non autorisé est connecté au port du switch, le système l&rsquo;affecte automatiquement au VLAN 10. De même, lorsqu&rsquo;un téléphone est branché, il rejoint le VLAN 30 sans aucune configuration supplémentaire. En ce qui concerne les clients autorisés, ils sont automatiquement placés dans le VLAN 10.</p>
+<p>En résumé, la norme 802.1X câblée offre une authentification et un contrôle d&rsquo;accès au niveau du port, garantissant que seuls les appareils autorisés peuvent se connecter au réseau. Elle permet l&rsquo;attribution dynamique de VLAN et élimine la nécessité d&rsquo;une gestion manuelle des ports, ce qui renforce la sécurité du réseau.</p>
+<hr>
+<p><em>Photo par Thomas Jensen @ <a href="https://unsplash.com/fr/photos/ISG-rUel0Uw?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash.com</a></em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>MAC Authentication Bypass - <a href="https://networklessons.com/cisco/ccie-routing-switching-written/mac-authentication-bypass-mab" target="_blank" rel="noopener noreffer ">MAB - networklessons.com</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>Découverte de Caddy - un serveur web simple et rapide</title><link>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
-            </div>Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l&rsquo;aise avec leur configuration. Et c&rsquo;est ce qui m&rsquo;a amené à Caddy. Découvrons ce que Caddy a à offrir.]]></description></item><item><title>Sauvegardes avec Restic</title><link>https://guy-evans.com/fr/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-03-27_backups-with-restic/</guid><description><![CDATA[<div class="featured-image">
+            </div><p>Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l&rsquo;aise avec leur configuration. Et c&rsquo;est ce qui m&rsquo;a amené à <a href="caddyserver.com/" rel="">Caddy</a>. Découvrons ce que <a href="caddyserver.com/" rel="">Caddy</a> a à offrir.</p>
+<h1 id="caddy">Caddy</h1>
+<p><a href="caddyserver.com/" rel="">Caddy</a> est un serveur web unique <em>(du moins je le pense)</em> avec un jeu de fonctionnalités modernes. Vous pouvez l&rsquo;utiliser comme <a href="https://caddyserver.com/docs/proxy" target="_blank" rel="noopener noreffer ">reverse proxy et load balancer.</a> <a href="https://caddyserver.com/docs/fastcgi" target="_blank" rel="noopener noreffer ">héberger vos applications PHP avec lui.</a> Et même <a href="https://caddyserver.com/docs/git" target="_blank" rel="noopener noreffer ">déployer votre site</a> avec <code>git push</code>. Et j&rsquo;ai presque oublié l&rsquo;une des meilleures fonctionnalités ; le HTTPS automatique, avec des certificats utilisant des fournisseurs comme <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreffer ">Lets Encrypt</a> et <a href="https://zerossl.com/" target="_blank" rel="noopener noreffer ">ZeroSSL</a>.</p>
+<p>Cool, non ?</p>
+<figure>
+</figure>
+
+<h2 id="installation">Installation</h2>
+<p>Caddy est disponible sous la forme d&rsquo;un simple exécutable, d&rsquo;une <a href="https://hub.docker.com/_/caddy" target="_blank" rel="noopener noreffer ">image docker</a> ou, comme d&rsquo;habitude, via un gestionnaire de paquets. Aujourd&rsquo;hui, nous utiliserons Debian. Mais si vous utilisez un autre système d&rsquo;exploitation, leur <a href="https://caddyserver.com/docs/install" target="_blank" rel="noopener noreffer ">documentation</a> devrait vous couvrir.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+</span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/gpg.key&#39;</span> <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+</span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt&#39;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/caddy-stable.list
+</span></span><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install caddy
+</span></span></code></pre></div><p>Une fois installé, le service s&rsquo;exécutera automatiquement et servira la page de bienvenue par défaut sur le port 80. Caddy peut ensuite être configuré en utilisant le fichier <code>Caddyfile</code> dans <code>/etc/caddy</code></p>
+<h2 id="configuration">Configuration</h2>
+<p>Comme dit plus haut, caddy peut être configuré en utilisant le fichier <code>Caddyfile</code> écrit en JSON dans <code>/etc/caddy</code>. Dans ce fichier, nous lui donnons des <a href="https://caddyserver.com/docs/caddyfile/directives" target="_blank" rel="noopener noreffer ">directives</a> pour qu&rsquo;il soit soit un reverse proxy, un serveur web, un front php, etc. Caddy peut aussi être configuré en utilisant son <a href="https://caddyserver.com/docs/api" target="_blank" rel="noopener noreffer ">API REST</a> si c&rsquo;est quelque chose qui vous intéresse.</p>
+<h3 id="reverse-proxy">Reverse Proxy</h3>
+<p>Disons que vous avez une application qui fonctionne sur le port 9999 et que vous voulez faire un reverse proxy vers 443 (HTTPS). Le fichier de configuration ressemblerait à ceci :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">demo.app.com</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">reverse_proxy</span> <span class="err">127.0.0.1:9999</span>
+</span></span><span class="line"><span class="cl">    <span class="err">encode</span> <span class="err">gzip</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Pour que Caddy recharge le <code>Caddyfile</code>, il suffit de lancer un <code>systemctl reload caddy</code>, Caddy rechargera alors le fichier de configuration, demandera un certificat pour <code>demo.app.com</code> et servira votre application sur HTTPS<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h3 id="fichiers-statiques">Fichiers statiques</h3>
+<p>Ok un reverse proxy c&rsquo;est bien mais mon site web (celui-ci) est statique et généré par <a href="gohugo.io" rel="">Hugo</a>, comment pourrions-nous le servir en utilisant caddy ? Encore une fois, 4 lignes de configuration suffisent.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span> <span class="err">où</span> <span class="err">sont</span> <span class="err">stockés</span> <span class="err">nos</span> <span class="err">fichiers</span> <span class="err">statiques</span>
+</span></span><span class="line"><span class="cl">    <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.droapp.com/public</span>
+</span></span><span class="line"><span class="cl">    <span class="err">file_server</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Un rapide <code>systemctl reload caddy</code> plus tard et Caddy sert vos fichiers statiques sur HTTPS<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> à <code>demo.website.com</code>.</p>
+<h3 id="php-fpm">PHP-fpm</h3>
+<p>Vous utilisez habituellement Nginx comme façade/front pour PHP-fpm, mais Caddy peut aussi le faire. Et encore une fois avec un simple fichier de configuration.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">où</span> <span class="err">sont</span> <span class="err">stockés</span> <span class="err">nos</span> <span class="err">fichiers</span>
+</span></span><span class="line"><span class="cl">        <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.website.com</span>
+</span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">on</span> <span class="err">indique</span> <span class="err">à</span> <span class="err">caddy</span> <span class="err">où</span> <span class="err">trouver</span> <span class="err">le</span> <span class="err">socket</span> <span class="err">php-fpm</span>
+</span></span><span class="line"><span class="cl">	    <span class="err">php_fastcgi</span> <span class="err">/run/php/php8.2-fpm.sock</span>	
+</span></span><span class="line"><span class="cl">        <span class="err">file_server</span>
+</span></span><span class="line"><span class="cl">        <span class="err">encode</span> <span class="err">gzip</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Encore un rapide <code>systemctl reload caddy</code> et nous sommes maintenant en face d&rsquo;une application php sur HTTPS<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h2 id="bonus">Bonus</h2>
+<h3 id="docker--docker-compose">Docker &amp; Docker Compose</h3>
+<p>Caddy est aussi souvent exécuté avec Docker Compose et est toujours aussi simple. Voici un simple <code>docker-compose.yml</code> et nous pouvons utiliser n&rsquo;importe quel exemple de <code>Caddyfile</code> ci-dessus.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.7&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">caddy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">caddy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;80:80&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;443:443&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;443:443/udp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/Caddyfile:/etc/caddy/Caddyfile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/caddy_data:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/caddy_config:/config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/site:/srv</span><span class="w"> </span><span class="c"># Si nous voulons servir des fichiers statiques dans $PWD/site</span><span class="w">
+</span></span></span></code></pre></div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Documentation<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Caddy possède l&rsquo;une des meilleures <a href="https://caddyserver.com/docs/" target="_blank" rel="noopener noreffer ">documentation</a> que j&rsquo;aie vues depuis longtemps. Il existe de nombreuses autres fonctions que je n&rsquo;ai pas abordées ici.</div>
+        </div>
+    </div>
+<p>Sur ce, je pense avoir couvert les bases de l&rsquo;utilisation de Caddy. L&rsquo;utilisez-vous ? Dites-moi comment et ce que vous en pensez.</p>
+<figure>
+</figure>
+
+<p><em>Feature Photo originale de Valery Sysoev sur <a href="https://unsplash.com/@valerysysoev?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash</a>.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Caddy ne réussira à demander un certificat que si les ports 80 et 443 sont ouverts sur votre serveur. Vous pouvez également <a href="https://caddyserver.com/docs/automatic-https#activation" target="_blank" rel="noopener noreffer ">désactiver la demande de certificat</a> si vous n&rsquo;en avez pas besoin. D&rsquo;autres <a href="https://caddyserver.com/docs/automatic-https" target="_blank" rel="noopener noreffer ">options</a> comme le HTTPS local peuvent également être utilisées.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>Sauvegardes avec Restic</title><link>https://guy-evans.com/fr/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-03-27_backups-with-restic/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/immo-wegmann-htsvneqf5fg-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud après l&rsquo;incendie d&rsquo;OVH, j&rsquo;ai commencé à chercher une solution de sauvegarde décente et j&rsquo;ai trouvé Restic. Voyons comment cela fonctionne.]]></description></item><item><title>Mails auto-hébergé - Pourquoi et comment?</title><link>https://guy-evans.com/fr/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
+            </div><p>Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud suite à l&rsquo;incendie d&rsquo;OVH<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 🔥 à Strasbourg. J&rsquo;ai cependant perdu le VPS qui hébergeait le site web de <a href="https://www.evansmedia.fr" target="_blank" rel="noopener noreffer ">www.evansmedia.fr</a></p>
+<blockquote>
+<p>Les cordonniers sont toujours les plus mal chaussés, n&rsquo;est-ce pas ?</p>
+<figure>
+</figure>
+
+</blockquote>
+<p>Je suis peut-être devenu un peu paranoïaque en ce qui concerne les sauvegardes, en particulier pour tout ce qui est stocké dans mon Nextcloud, qui contient à peu près tout ce qui a trait à ma vie personnelle, y compris les photos de notre nouveau-né.</p>
+<h2 id="the-3-2-1-rule">The 3-2-1 Rule</h2>
+<p>J&rsquo;ai décidé de bâtir ma stratégie de sauvegarde sur la règle des 3-2-1 (et vous devriez en faire autant)</p>
+<p>L&rsquo;idée qu&rsquo;une solution de sauvegarde minimale devrait comprendre trois copies des données, dont deux copies sur des supports différents et une copie distante (hors site).</p>
+<figure>
+ </figure>
+
+<h3 id="sauvegardes-locales">Sauvegardes Locales</h3>
+<p><em>(Nous simulons ici la sauvegarde d&rsquo;un serveur local, mais la machine virtuelle que je sauvegarde est en fait hébergée dans un centre de données, je la sauvegarde donc localement à la maison)</em></p>
+<p>Pour effectuer mes sauvegardes, j&rsquo;utilise deux outils, Proxmox Backup Server<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> qui est une application de sauvegarde construite par les créateurs de proxmox ; et Restic, une application moderne qui sauvegarde des fichiers vers des tas de services différents. Aujourd&rsquo;hui, nous allons nous concentrer sur un seul niveau de sauvegarde avec Restic.</p>
+<h2 id="restic">Restic</h2>
+<blockquote>
+<p>restic est un logiciel de sauvegarde rapide, efficace et sûr. Il supporte les trois principaux systèmes d&rsquo;exploitation (Linux, macOS, Windows) et quelques autres plus petits (FreeBSD, OpenBSD).
+<a href="https://restic.net/" target="_blank" rel="noopener noreffer ">https://restic.net/</a></p>
+</blockquote>
+<h3 id="pourquoi-restic">Pourquoi Restic</h3>
+<ul>
+<li>il est simple et rapide à utiliser</li>
+<li>il permet de sauvegarder de nombreux emplacements de stockage différents, y compris des services auto-hébergés et en ligne (Amazon S3, Google Drive, Backblaze, etc.)</li>
+<li>ses sauvegardes peuvent être entièrement <strong>chiffrées</strong></li>
+<li>les restaurations sont simples et vous pouvez même monter le dépôt de sauvegarde et récupérer un seul fichier.</li>
+</ul>
+<h3 id="installer-restic">Installer Restic</h3>
+<p>Tout d&rsquo;abord, nous devons installer Restic, c&rsquo;est aussi simple que d&rsquo;utiliser APT sur Ubuntu/Debian (dans mon cas d&rsquo;utilisation).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install restic
+</span></span></code></pre></div><h3 id="initialiser-le-dépôt-de-stockage">Initialiser le dépôt de stockage</h3>
+<p>La beauté de Restic est que vous pouvez utiliser à peu près n&rsquo;importe quel type de stockage (local, Amazon S3, Minio Server, Backblaze B2, Azure, Google Cloud Storage, SFTP, etc.) pour votre repo (dépot) de sauvegarde et l&rsquo;interface reste en grande partie la même. Dans ce cas, j&rsquo;utilise leur propre backend de stockage. <a href="https://github.com/restic/rest-server" target="_blank" rel="noopener noreffer "><strong>Rest-Server</strong></a></p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Rest-Server<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Rest Server est un serveur HTTP haute performance qui met en œuvre l&rsquo;API REST de restic. Il fournit un moyen sûr et efficace de sauvegarder des données à distance, en utilisant le client de sauvegarde restic via l&rsquo;API rest : URL.</div>
+        </div>
+    </div>
+<p>Maintenant que vous avez choisi le backend de stockage pour votre dépôt, nous devons l&rsquo;initialiser.</p>
+<p>Disons que nous voulons nommer les sauvegardes de notre dépôt et nous pouvons utiliser la commande suivante pour l&rsquo;initialiser.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init
+</span></span></code></pre></div><p>Restic vous demandera de créer un mot de passe (gardez-le précieusement, nous en aurons besoin plus tard) et initialisera le dépôt. Nous pouvons utiliser <code>check</code> pour vérifier que le dépôt est initialisé.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups check
+</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
+</span></span><span class="line"><span class="cl">password is correct
+</span></span><span class="line"><span class="cl">create exclusive lock <span class="k">for</span> repository
+</span></span><span class="line"><span class="cl">load indexesY
+</span></span><span class="line"><span class="cl">check all packs
+</span></span><span class="line"><span class="cl">check snapshots, trees and blobs
+</span></span><span class="line"><span class="cl">no errors were found
+</span></span></code></pre></div><h3 id="la-sauvegarde">La Sauvegarde</h3>
+<p>Maintenant que nous avons un dépôt initialisé, nous pouvons commencer à sauvegarder nos photos de chats. Avec la commande <code>backup</code> et pointant vers le dépôt que nous avons créé. Ainsi, pour sauvegarder mon dossier <code>~/cat-pictures</code>, je lancerais la commande suivante</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures
+</span></span></code></pre></div><p>Oui, c&rsquo;est aussi simple que ça 😎</p>
+<p>A chaque fois qu&rsquo;une sauvegarde est lancée, restic crée un snapshot, vous pouvez les lister en utilisant la commande <code>snapshot</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
+</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
+</span></span><span class="line"><span class="cl">password is correct
+</span></span><span class="line"><span class="cl">ID        Date                 Host        Tags        Directory
+</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">ac8721ec  2023-03-26 20:18:16  my-pc              /home/bounty/cat-pictures
+</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
+</span></span><span class="line"><span class="cl"><span class="m">1</span> snapshots
+</span></span></code></pre></div><h3 id="restauration-des-photos-de-chats">Restauration des photos de chats</h3>
+<p>Qu&rsquo;est-ce qu&rsquo;une sauvegarde si vous n&rsquo;avez pas testé une restauration ? Ce n&rsquo;est pas une sauvegarde parce que vous ne savez pas si elle a fonctionné.</p>
+<p>Essayons donc de restaurer nos images de chats avec la commande <code>restore</code>. Nous devons spécifier l&rsquo;identifiant du snapshot <code>ac8721ec</code> et l&rsquo;endroit où nous voulons restaurer <code>~/restored-cat-pictures</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups restore ac8721ec --target ~/restored-cat-pictures/
+</span></span></code></pre></div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Astuces<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Vous pouvez utiliser <code>latest</code> à la place de l&rsquo;identifiant du snapshot pour référencer le dernier snapshot.</div>
+        </div>
+    </div>
+<p>C&rsquo;est aussi simple que la sauvegarde, non ?
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Autres commandes et documentation<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Restic possède de nombreuses autres commandes utiles que vous pouvez trouver dans leur excellente [documentation] (<a href="https://restic.readthedocs.io" target="_blank" rel="noopener noreffer ">https://restic.readthedocs.io</a>).</div>
+        </div>
+    </div></p>
+<h3 id="automatisation-avec-un-script-bash-et-cron">Automatisation avec un script Bash et Cron</h3>
+<p>Les sauvegardes manuelles sont bien mais vous risquez d&rsquo;oublier de les exécuter, nous allons donc automatiser notre sauvegarde avec un script bash et une entrée cron. Et pour les points bonus, assurons-nous d&rsquo;avoir un moyen de nous envoyer un message en cas d&rsquo;échec. Mon script de base est ci-dessous, chaque action est expliquée dans les commentaires.</p>
+<p><em>Note : mon script est loin d&rsquo;être parfait et peut contenir des erreurs, n&rsquo;hésitez pas à le corriger ou à suggérer des améliorations ci-dessous</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#This will run Restic backups</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Variables Restic</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span>rest:http://my-rest-server:8000/backups
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RESTIC_PASSWORD</span><span class="o">=</span>super-secret-repo-password1234
+</span></span><span class="line"><span class="cl"><span class="nv">RESTIC_Folder</span><span class="o">=</span><span class="s2">&#34;~/cat-pictures&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># On choisi ou on ecrit les logs</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Log_location</span><span class="o">=</span>/var/log/restic-nas.log
+</span></span><span class="line"><span class="cl"><span class="c1"># Variables Telegram (si elles ne sont pas utilisées, vous devez supprimer le bloc entier pour telegram)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TELEGRAM_token</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TELEGRAM_chatid</span><span class="o">=</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Defini une fonction d&#39;horodatage</span>
+</span></span><span class="line"><span class="cl">timestamp<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">date <span class="s2">&#34;+%b %d %Y %T %Z&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Inserer l&#39;horodatage et l&#39;en-tête dans le journal</span>
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s2">&#34;\n\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------------------------------&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">: restic.sh - Rest Backup started&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Executer des sauvegardes</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NAS_backup_log</span><span class="o">=</span><span class="k">$(</span>restic backup <span class="nv">$RESTIC_Folder</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$NAS_backup_log</span><span class="s2">&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Il s&#39;agit d&#39;un moyen simple de vérifier que la sauvegarde a été un succès et que les fichiers ont été ajoutés à la base de données, sinon nous échouons.</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$NAS_backup_log</span><span class="s2">&#34;</span> <span class="o">==</span> *<span class="s2">&#34;Added to the repo&#34;</span>** <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Si la sauvegarde a été réussie, nous pouvons continuer et écrire le résultat dans le journal.</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">printf</span> <span class="s2">&#34;\n\n&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------------------------------&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">: restic.sh - COMPLETED - Rest Backup&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Si la sauvegarde échoue, nous écrivons dans le journal et envoyons un message sur Telegram.</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">printf</span> <span class="s2">&#34;\n\n&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------------------------------&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">: restic.sh - FAILED - Rest Backup&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## envoyer un message à telegram</span>
+</span></span><span class="line"><span class="cl">	curl -X POST https://api.telegram.org/<span class="nv">$TELEGRAM_token</span>/sendMessage <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	       	--data <span class="nv">parse_mode</span><span class="o">=</span>HTML --data <span class="nv">chat_id</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$TELEGRAM_chatid</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>		--data <span class="nv">text</span><span class="o">=</span><span class="s2">&#34;&lt;b&gt;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">%0A FAILED - REST Backup&lt;/b&gt;%0A%0A&lt;pre&gt;</span><span class="nv">$NAS_backup_log</span><span class="s2">&lt;/pre&gt;&#34;</span> -4
+</span></span><span class="line"><span class="cl">	<span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></div><p>Une fois que nous avons sauvegardé notre script bash sous <code>~/restic_script.sh</code>, nous devons autoriser son exécution avec <code>chmod</code> et l&rsquo;ajouter à notre <a href="https://fr.wikipedia.org/wiki/Cron" target="_blank" rel="noopener noreffer ">crontab</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># permettre l&#39;exécution de notre script</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -e <span class="c1"># éditer notre crontab</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit this file to introduce tasks to be run by cron.</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># To define the time you can provide concrete values for</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># minute (m), hour (h), day of month (dom), month (mon),</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># m h  dom mon dow   command</span>
+</span></span><span class="line"><span class="cl"><span class="m">0</span> <span class="m">1</span> * * * ~/restic_script.sh <span class="c1"># exécutera notre script tous les soirs à 1 heure du matin</span>
+</span></span></code></pre></div><p>Vous avez maintenant automatisé vos sauvegardes.</p>
+<p>Je suis sûr que vous avez une meilleure façon de procéder, pourquoi ne pas partager vos idées dans les commentaires ?</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><em>10 mars 2021</em> - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - <a href="https://www.lemonde.fr/societe/article/2021/03/10/" target="_blank" rel="noopener noreffer ">Le Monde</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.proxmox.com/en/proxmox-backup-server" target="_blank" rel="noopener noreffer ">Proxmox Backup Server</a> est une solution de sauvegarde qui permet de sauvegarder et de restaurer des VM, des conteneurs et des hôtes physiques.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>Mails auto-hébergé - Pourquoi et comment?</title><link>https://guy-evans.com/fr/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/brett-jordan-lpzy4da9aro-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? <strong>L&rsquo;EMAIL</strong>
-Il y a de fortes chances que si vous utilisez un ordinateur, vous ayez au moins une adresse e-mail, certains en ont plus d&rsquo;une (j&rsquo;ai perdu le compte). Pourquoi devriez-vous avoir le vôtre ?]]></description></item><item><title>D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 2</title><link>https://guy-evans.com/fr/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</link><pubDate>Sat, 07 Jan 2023 16:04:28 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</guid><description><![CDATA[<div class="featured-image">
+            </div><h2 id="email">Email</h2>
+<p>Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? <strong>L&rsquo;EMAIL</strong></p>
+<p>Il y a de fortes chances que si vous utilisez un ordinateur, vous ayez au moins une adresse e-mail, certains en ont plus d&rsquo;une (j&rsquo;ai perdu le compte). Cela m&rsquo;amène à une conviction profonde : si vous travaillez dans l&rsquo;informatique sous une forme ou une autre, votre adresse électronique devrait être la vôtre, avec votre propre nom de domaine <em>(<a href="mailto:hello@evans.fr" rel="">hello@evans.fr</a> par exemple)</em> au lieu d&rsquo;utiliser un @gmail.com @outlook.com ou @aol.com _(c&rsquo;est vieux ça) _ ou tout autre fournisseur.</p>
+<h2 id="pourquoi-lauto-hébergement">Pourquoi (l&rsquo;auto-hébergement)</h2>
+<p>Pour ma part, j&rsquo;avais l&rsquo;habitude d&rsquo;héberger toutes mes adresses e-mail sur Google Apps <em>(maintenant appelé Google Workspace)</em>. Il était simple de faire pointer les bons enregistrements mx vers leurs serveurs et voila votre propre messagerie.</p>
+<p>De nombreux autres fournisseurs vous permettent également de faire cela, mais là où Google a été intelligent, c&rsquo;est que leur service avait un excellent niveau gratuit (comme la bière gratuite) jusqu&rsquo;à ce qu&rsquo;ils décident de supprimer le niveau gratuit. (Une autre raison pour laquelle les gens peuvent héberger eux-mêmes leurs e-mails est d&rsquo;avoir un contrôle total sur le service et de ne pas partager de données avec les GAFAM).</p>
+<p>Cela m&rsquo;a fait penser, pourquoi ne pas héberger mon propre email un jour. Donc, comme pour beaucoup de mes recherches, j&rsquo;ai commencer sur Reddit.com et le consensus général est : Pourquoi s&rsquo;embêter. Mais je continue quand même mes recherches et décide de continuer mon projet. Après tout, la meilleure façon d&rsquo;apprendre est de le faire. Comment cela peut-il être aussi difficile ?</p>
+<p><em>mais d&rsquo;abord, il nous faut du café&hellip;</em>
+<figure>
+</figure>
+</p>
+<h2 id="comment-en-utilisant-docker-et-mailcow">Comment (en utilisant Docker et Mailcow)</h2>
+<p>Je ne vais pas vous expliquer en détail comment configurer un serveur de messagerie, car il existe de nombreux guides à ce sujet, mais je vais au moins vous mettre sur la bonne voie.</p>
+<h3 id="ce-dont-nous-avons-besoin">Ce dont nous avons besoin</h3>
+<ol>
+<li>Un nom de domaine de votre choix</li>
+<li>Un serveur VM ou VPS avec : 2 VCPU, 4 Go de RAM (au minimum), 80 Go de stockage (ou plus), une adresse IP propre. <em>(Je suggère <a href="https://milkywan.fr/" target="_blank" rel="noopener noreffer ">Milkywan</a> ou <a href="https://www.virtua.cloud/" target="_blank" rel="noopener noreffer ">Virtua.Cloud</a>, tous deux basés en France et disposant d&rsquo;une excellente connectivité).</em></li>
+<li>Docker &amp; Docker Compose (je suggère d&rsquo;utiliser Docker car il est plus rapide à mettre en place).</li>
+<li><a href="https://mailcow.email/" target="_blank" rel="noopener noreffer ">Mailcow Dockerized</a>, mon serveur de messagerie préféré - il contient tous les services nécessaires et fonctionne avec des conteneurs Docker.</li>
+</ol>
+<h3 id="configuration">Configuration</h3>
+<h4 id="dns">DNS</h4>
+<p>Pour que Mailcow fonctionne, vous devez configurer les enregistrements DNS suivants</p>
+<pre tabindex="0"><code># Name              Type       Value
+mail                IN A       1.2.3.4
+autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+@                   IN MX 10   mail.example.org. (your ${MAILCOW_HOSTNAME})
+</code></pre><h4 id="installation-de-mailcow">Installation de Mailcow</h4>
+<p>Une fois que les enregistrements DNS sont propagés, vous pouvez installer et configurer Mailcow.
+Tout d&rsquo;abord, nous clonons le référentiel et définissons les permissions sur les répertoires.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su
+</span></span><span class="line"><span class="cl"><span class="nb">umask</span>
+</span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Vérifier que c&#39;est bien 0022</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
+</span></span><span class="line"><span class="cl">git clone https://github.com/mailcow/mailcow-dockerized
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized
+</span></span></code></pre></div><p>Une fois que vous aurez répondu aux questions, le fichier de configuration sera généré pour vous. Une fois généré, nous pouvons lancer mailcow en utilisant les commandes suivantes</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose pull
+</span></span><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></div><p>FÉLICITATIONS ! Vous avez installé un serveur de messagerie (enfin presque).</p>
+<p>Maintenant que le serveur fonctionne, vous pouvez accéder à https://${MAILCOW_HOSTNAME} avec les informations d&rsquo;identification par défaut <code>admin</code> + le mot de passe <code>moohoo</code> et commencer à configurer les domaines et les adresses e-mail.</p>
+<p>Mailcow a un excellent <a href="https://docs.mailcow.email/post_installation/firststeps-ssl/" target="_blank" rel="noopener noreffer ">site d&rsquo;aide</a> qui vous guidera à propos de la plupart des paramètres que je n&rsquo;ai pas couverts.</p>
+<h2 id="fin">Fin</h2>
+<p>J&rsquo;espère qu&rsquo;avec ce court article, vous pouvez voir qu&rsquo;il n&rsquo;est pas vraiment difficile de mettre en place un serveur de messagerie. Ce qui est difficile, c&rsquo;est de garder ses addrresses hors des listes de spam et de combattre le spam entrant, mais pour un usage personnel et avec l&rsquo;aide de Mailcow, vous devriez vous en sortir.</p>
+<p>Une autre chose que vous ne devez pas oublier est &hellip; LES SAUVEGARDES.</p>
+<p>Si vous hébergez votre courriel principal sur ce serveur, vous devriez le sauvegarder régulièrement.</p>
+]]></description></item><item><title>D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 2</title><link>https://guy-evans.com/fr/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</link><pubDate>Sat, 07 Jan 2023 16:04:28 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/cbo-rack-mw2.jpg" referrerpolicy="no-referrer">
-            </div>Après les serveurs virtuels Après avoir perdu l&rsquo;un de mes serveurs privés virtuels ainsi que les données dans le &lsquo;The Great Fire of OVH 🔥&rsquo;1 (Oui je sais que j&rsquo;aurais dû avoir des sauvegardes de ce VPS2), je me suis dit pourquoi ne pas mettre en place un Cluster[^cluster] Proxmox3 sur quelques serveurs dédiés.
-Après quelques recherches et j&rsquo;ai trouvé OneProvider.com où vous pouvez louer des serveurs dédiés pour pas cher, leur matériel bon marché est vieux et la connectivité est correcte mais vous ne pouvez pas battre leurs prix (un serveur avec un Intel Atom C2750, 16 Go de RAM, 1 To de disque dur et 1 Go de bande passante &ldquo;illimitée&rdquo; coûtait 14 € par serveur/mois à l&rsquo;époque).]]></description></item><item><title>Recommendations de Podcasts</title><link>https://guy-evans.com/fr/posts/2022-12-21_podcast-recommendations/</link><pubDate>Wed, 21 Dec 2022 17:20:57 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-12-21_podcast-recommendations/</guid><description><![CDATA[<div class="featured-image">
+            </div><h2 id="après-les-serveurs-virtuels">Après les serveurs virtuels</h2>
+<p>Après avoir perdu l&rsquo;un de mes serveurs privés virtuels ainsi que les données dans le <em>&lsquo;The Great Fire of OVH</em> 🔥&rsquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (Oui je sais que j&rsquo;aurais dû avoir des sauvegardes de ce VPS<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>), je me suis dit pourquoi ne pas mettre en place un Cluster[^cluster] Proxmox<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> sur quelques serveurs dédiés.</p>
+<p>Après quelques recherches et j&rsquo;ai trouvé <a href="https://oneprovider.com" target="_blank" rel="noopener noreffer ">OneProvider.com</a> où vous pouvez louer des serveurs dédiés pour pas cher, leur matériel bon marché est vieux et la connectivité est correcte mais vous ne pouvez pas battre leurs prix (un serveur avec un Intel Atom C2750, 16 Go de RAM, 1 To de disque dur et 1 Go de bande passante &ldquo;illimitée&rdquo; coûtait 14 € par serveur/mois à l&rsquo;époque). Cela s&rsquo;est bien passé pendant quelques mois, mais j&rsquo;étais de plus en plus frustré de ne pas avoir le contrôle total du matériel et de mon intérêt croissant pour BGP <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> et la façon dont Internet n&rsquo;est en fait qu&rsquo;un ensemble de (petits) réseaux interconnectés. Après quelques essais et erreurs, j&rsquo;ai décidé que je devais revoir les objectifs de mon home-lab et repenser ma liste d&rsquo;achats.</p>
+<figure>
+</figure>
+
+<h2 id="la-liste-des-achats">La liste des achats</h2>
+<p>Alors, qu&rsquo;est-ce que je voulais ?</p>
+<ul>
+<li>Mon propre matériel (récent)</li>
+<li>Un hébergeur convenable pour mon matériel (fournisseur de colocation)</li>
+<li>Une connexion de transit BGP avec mon propre bloc d&rsquo;adresses IP /24 louées.</li>
+</ul>
+<p>Bonus :</p>
+<ul>
+<li>Une connexion de 10 Gb à l&rsquo;internet</li>
+</ul>
+<p>J&rsquo;avais maintenant un plan et une liste d&rsquo;achats décente, bien que nous n&rsquo;ayons pas parlé du budget. Disons environ 700 € pour le matériel et 100 à 120 € par mois pour l&rsquo;hébergement.</p>
+<h3 id="un-hébergeur">Un Hébergeur</h3>
+<p>J&rsquo;ai trouvé un excellent hébergeur pour mon matériel en parcourant <a href="https://lafibre.info/" target="_blank" rel="noopener noreffer ">LaFibre.info</a> un forum français sur la FTTH en france et l&rsquo;informatique en général. L&rsquo;hébergeur que j&rsquo;ai choisi est <a href="https://milkywan.fr" target="_blank" rel="noopener noreffer "><em>MilkyWan</em></a>, c&rsquo;est un petit fournisseur de services Internet à but non lucratif géré par une petite équipe passionnée.</p>
+<p>Ils sont spécialisés dans la fourniture de serveurs virtuels, l&rsquo;hébergement, l&rsquo;ADSL et l&rsquo;Internet par fibre. Ils ont également plusieurs points de présence dans des centres de données français où ils peuvent héberger du matériel et fournir du transit BGP. Ils ont également une grande communauté sur telegram.</p>
+<p>Coût : 75 € pour un serveur 1U, une alimentation et une connexion réseau.</p>
+<p>Bonus : Ils peuvent fournir une connexion 10Gb à internet.</p>
+<p><em>J&rsquo;ai mentionné qu&rsquo;ils ont une grande communauté, étant géré par une association à but non lucratif et cela signifie qu&rsquo;ils ont à cœur les meilleurs intérêts de leurs membres et le reseau. Depuis la fin de 2022, je suis également élu comme représentant des membres de l&rsquo;association.</em></p>
+<h3 id="mon-propre-matériel">Mon propre matériel</h3>
+<p>Maintenant que j&rsquo;avais trouvé un endroit pour mon équipement, j&rsquo;avais besoin de cet équipement. J&rsquo;ai trouvé ce dont j&rsquo;avais besoin sur <a href="https://www.bargainhardware.co.uk/" target="_blank" rel="noopener noreffer ">BargainHardware.co.uk</a>, ils sont spécialisés dans le matériel d&rsquo;entreprise d&rsquo;occasion et ont des prix très intéressants.</p>
+<p>Voici le serveur que j&rsquo;ai choisi :</p>
+<p><strong>Dell Poweredge R620</strong></p>
+<ul>
+<li>2 x Intel Xeon E5-2660 V2 2.20Ghz CPUs Dix cœurs</li>
+<li>96 Go de RAM DDR3</li>
+<li>2 x 240 Go Crucial SSD pour les disques de démarrage (Ils seront en Raid 1 pour assurer la redondance en cas de défaillance d&rsquo;un disque)</li>
+<li>6 disques durs SAS de 900 Go pour les disques de données, ce qui nous donne un total de 5 To d&rsquo;espace utilisable (il s&rsquo;agira du pool de stockage principal et il sera dans un pool ZFS pour assurer la redondance en cas de défaillance d&rsquo;un disque).</li>
+<li>1 x carte réseau Dell BCM57800S Quad Port - 1GbE, 10GbE SFP+, RJ45</li>
+</ul>
+<p>Coût : 700 €, y compris les frais d&rsquo;expédition vers la France.</p>
+<p>Pas trop vieux pour être peu rentable et pas trop récent pour faire exploser la tirelire. Cela devrait me fournir beaucoup de puissance pour de multiples machines virtuelles.</p>
+<h2 id="tout-mettre-en-place">Tout mettre en place</h2>
+<p>Après avoir commandé le serveur et l&rsquo;hébergement, il ne me restait plus qu&rsquo;à configurer <a href="https://www.proxmox.com" target="_blank" rel="noopener noreffer ">Proxmox</a> et à envoyer mon tout nouveau serveur à <em>Milkywan</em> qui me l&rsquo;a installé dans son centre de données.</p>
+<p>Je dispose maintenant de mon propre matériel avec une connexion 10G dans un centre de données français. Vous pouvez remarquer dans l&rsquo;image du speedtest ci-dessous que mon nom apparaît comme le FAI, c&rsquo;est parce que je suis effectivement devenu mon propre FAI puisque je fournis à mon serveur l&rsquo;internet via mon propre ASN (<a href="https://bgp.he.net/AS211486" target="_blank" rel="noopener noreffer ">AS211486</a>) et mes IPs. (Cloudflare a un excellent article sur BGP <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>)</p>
+<p>Mon serveur héberge la plupart de mon &lsquo;homelab&rsquo;, y compris certaines parties de ce site web, comme le système de commentaires et les statistiques. J&rsquo;ai également une petite installation à la maison avec un NAS et un microserveur dont je vais probablement écrire un autre billet à ce sujet.</p>
+<p><figure><a class="lightgallery" href="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png" title="10G Proof" data-thumbnail="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png" data-sub-html="<h2>Presque 10G mais c&#39;est une autre histoire</h2><p>10G Proof</p>">
+        
+    </a><figcaption class="image-caption">Presque 10G mais c'est une autre histoire</figcaption>
+    </figure></p>
+<p>Mon serveur est la dernière machine dans le rack sur l&rsquo;image d&rsquo;en-tête de ce post. Avez-vous voulu ou avez-vous mis en place votre propre homelab ? Partagez vos commentaires ci-dessous.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><em>10 mars 2021</em> - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - <a href="https://www.lemonde.fr/societe/article/2021/03/10/a-strasbourg-un-important-incendie-sur-le-site-de-l-entreprise-ovh-classe-seveso_6072548_3224.html" target="_blank" rel="noopener noreffer ">Le Monde</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Serveur privé virtuel&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://www.proxmox.com" target="_blank" rel="noopener noreffer ">Proxmox Virtual Environment (PVE)</a> est une solution de virtualisation gratuite et open source qui permet le déploiement de systèmes virtualisés&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Border Gateway Protocol (BGP) est le service postal d&rsquo;Internet. Lorsque quelqu&rsquo;un dépose une lettre dans une boîte aux lettres, le service postal traite ce courrier et choisit un itinéraire rapide et efficace pour livrer cette lettre à son destinataire&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>Recommendations de Podcasts</title><link>https://guy-evans.com/fr/posts/2022-12-21_podcast-recommendations/</link><pubDate>Wed, 21 Dec 2022 17:20:57 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-12-21_podcast-recommendations/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/melanie-pongratz-becwwmiuj2k-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>I could be described as a passionate podcast listener, whether I&rsquo;m on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work]]></description></item><item><title>Config BGP IPv4 sur Mikrotik RouterOSv7</title><link>https://guy-evans.com/fr/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</link><pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</guid><description><![CDATA[<div class="featured-image">
+            </div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Note: Article uniquement en Anglais<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Désolé, mais comme j&rsquo;écoute des podcasts uniquement en anglais, cet article ne sera qu&rsquo;en anglais.</div>
+        </div>
+    </div>
+<p>I could be described as a passionate podcast listener, whether I&rsquo;m on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work I usually stick on a podcast. Here are some of my recomendations</p>
+<h2 id="it--cybersecurity">IT &amp; Cybersecurity</h2>
+<h3 id="darknet-diaries---jack-rhysider">Darknet Diaries - Jack Rhysider</h3>
+<figure>
+</figure>
+
+<p>Host Jack takes you on journeys about hackers,breaches, shadow government activity and cybercrime. Jack is a great story teller and his episodes are extremely well written and researched, sound design is also on point.</p>
+<p><a href="https://darknetdiaries.com/" target="_blank" rel="noopener noreffer ">darknetdiaries.com</a></p>
+<h3 id="risky-business---patrick-gray">Risky Business - Patrick Gray</h3>
+<figure>
+</figure>
+
+<p>Risky Business is a weekly podcast that features mostly IT &amp; security news and great in-depth commentary from security industry experts. Hosted by journalist Patrick Grey it is always worth a listen.</p>
+<p><a href="https://risky.biz/" target="_blank" rel="noopener noreffer ">risky.biz</a></p>
+<h3 id="the-lazarus-hiest---geoff-white--jean-lee">The Lazarus Hiest - Geoff White &amp; Jean Lee</h3>
+<figure>
+</figure>
+
+<p>Geoff White and Jean Lee take you on the story of &ldquo;Almost the Perfect Crime&rdquo;. Starts with a hacking ring and an attempt to steal a billion dollars. Investigators point to North Korea. Again another podcast that is well researched and written.</p>
+<p><a href="https://www.bbc.co.uk/programmes/w13xtvg9/episodes/downloads" target="_blank" rel="noopener noreffer ">BBC World Service</a></p>
+<!-- raw HTML omitted -->
+<h2 id="crypto-scams">Crypto Scams</h2>
+<h3 id="the-missing-cryptoqueen---jamie-bartlett">The Missing Cryptoqueen - Jamie Bartlett</h3>
+<figure>
+</figure>
+
+<p>Jamie Bartlett and his team of researchers take you one the story of Dr Ruja Ignatova and the thrilling rise and fall of the biggest cryptocurrency ponzi schemes in history. Need I say more? Great story.</p>
+<p><a href="https://www.bbc.co.uk/programmes/p07nkd84/episodes/downloads" target="_blank" rel="noopener noreffer ">BBC Radio 5 Live</a></p>
+<h3 id="exit-scam---threats-media">Exit Scam - Threats Media</h3>
+<figure>
+</figure>
+
+<p>Another Podcast about a crypto scam. Gerald Cotten, the founder of Canada&rsquo;s biggest Bitcoin exchange died under mysterious circumstances during a honeymoon trip to India in 2018.</p>
+<p>His customers were told that the $215 million they&rsquo;d deposited on the exchange was lost forever — because Gerry had forgotten to leave behind his passwords.</p>
+<p>However quite a lot of people don&rsquo;t believe that he&rsquo;s dead.</p>
+<p><a href="https://www.exitscam.show/" target="_blank" rel="noopener noreffer ">ExitScam.show</a></p>
+<h2 id="crime">Crime</h2>
+<h3 id="hunting-warhead---cbc-podcasts--vg">Hunting Warhead - CBC Podcasts &amp; VG</h3>
+<figure>
+</figure>
+
+<p>A story of rescuing child abuse victims around the world, Hunting Wardhead follows the journalists and the police exposing the darkest corners of the internet. Great podcast although can be hard to listen to at times due to the subject matter.</p>
+<p><a href="https://www.cbc.ca/listen/cbc-podcasts/387-hunting-warhead" target="_blank" rel="noopener noreffer ">CBC Podcasts</a></p>
+<h3 id="death-in-ice-valley---bbc-world-service--nrk">Death in Ice Valley - BBC World Service &amp; NRK</h3>
+<p><figure>
+</figure>
+
+Marit Higraff and Neil McCarth follows a two your investigation into the <a href="https://en.wikipedia.org/wiki/Isdal_Woman" target="_blank" rel="noopener noreffer ">Isdal Women</a> case, an unknown women whose burned body was found in western Norway in 1970.</p>
+<p>Due to the interest in the podcast, new leads were gathered by crowd-source researchers, finally convinving the Bergen Police to reopen the case in 2016.
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<hr>
+<p>Thats all for now. Have you got a podcast suggestion? Drop it in the comments below</p>
+<hr>
+<p><em>Photo by Melanie Pongratz @ <a href="https://unsplash.com/s/photos/headphones-podcast?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash.com</a></em></p>
+]]></description></item><item><title>Config BGP IPv4 sur Mikrotik RouterOSv7</title><link>https://guy-evans.com/fr/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</link><pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/screen-router.png" referrerpolicy="no-referrer">
-            </div>Je connais quelques personnes qui font tourner leurs ASN sur des routeurs Mikrotik (sous RouterOS) car leur matériel est bon marché et facile à trouver. Moi y compris, je fait du BGP sur leur image CHR pour annoncer mon propre ASN et mes préfixes IP v4 et V6. RouterOS CHR est une image de RouterOS que vous pouvez exécuter sur votre propre matériel.
-Avant on utilisait plus RouterOS version 6, mais maintenant la version 7 a quelques versions stables et est supposée être plus stable et plus rapide pour faire du BGP, j&rsquo;ai pensé que je partagerais quelques configurations pour la version 7 car la syntaxe de la configuration a beaucoup changé.]]></description></item><item><title> D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 1</title><link>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
+            </div><p>Je connais quelques personnes qui font tourner leurs ASN sur des routeurs Mikrotik (sous RouterOS) car leur matériel est bon marché et facile à trouver. Moi y compris, je fait du BGP sur leur image CHR pour annoncer mon propre ASN et mes préfixes IP v4 et V6. RouterOS CHR est une image de RouterOS que vous pouvez exécuter sur votre propre matériel.</p>
+<p>Avant on utilisait plus RouterOS version 6, mais maintenant la version 7 a quelques versions stables et est supposée être plus stable et plus rapide pour faire du BGP, j&rsquo;ai pensé que je partagerais quelques configurations pour la version 7 car la syntaxe de la configuration a beaucoup changé. Aujourd&rsquo;hui je vais me concentrer sur IPv4 mais IPv6 est à peu près le même.</p>
+<h3 id="attendez--asn-bgp-vous-mavez-perdu-">Attendez ! ASN, BGP, vous m&rsquo;avez perdu &hellip;</h3>
+<h4 id="quest-ce-que-bgp-">Qu&rsquo;est-ce que BGP ?</h4>
+<blockquote>
+<p>Border Gateway Protocol (BGP) est le service postal d&rsquo;Internet. Lorsque quelqu&rsquo;un dépose une lettre dans une boîte aux lettres, le service postal traite ce courrier et choisit un itinéraire rapide et efficace pour livrer cette lettre à son destinataire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+</blockquote>
+<h4 id="quest-ce-quun-système-autonome-et-les-asn-">Qu&rsquo;est-ce qu&rsquo;un système autonome et les ASN ?</h4>
+<blockquote>
+<p>L&rsquo;Internet est un réseau de réseaux*, et les systèmes autonomes sont les grands réseaux qui composent l&rsquo;Internet. Plus précisément, un système autonome (AS) est un grand réseau ou groupe de réseaux qui possède une politique de routage unifiée. Chaque ordinateur ou dispositif qui se connecte à l&rsquo;Internet est connecté à un AS.</p>
+</blockquote>
+<blockquote>
+<p>Chaque AS se voit attribuer un numéro officiel, ou numéro de système autonome (ASN), de la même manière que chaque entreprise possède une licence commerciale avec un numéro unique et officiel. Mais contrairement aux entreprises, les parties externes font souvent référence aux AS par leur seul numéro.
+<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+</blockquote>
+<p></p>
+<h3 id="a-quoi-ressemble-la-configuration-">A quoi ressemble la configuration ?</h3>
+<p>Voici les exports de configuration pour annoncer mes préfixes via l&rsquo;AS 211486. Comme vous pouvez le voir, avant de faire quoi que ce soit, vous devez ajouter les préfixes que vous voulez annoncer à une liste de réseaux que vous spécifierez dans le modèle bgp. Le reste devrait être assez explicite mais j&rsquo;ai détaillé les points principaux ci-dessous.</p>
+<h4 id="modèlestemplates">Modèles/Templates</h4>
+<p>ROSv7 a également introduit le concept de modèles dans BGP, par exemple vous pouvez définir un modèle pour iBGP, un pour les IXP et un autre pour eBGP. La je n&rsquo;utilise q&rsquo;un seul</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/routing bgp template
+</span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip4 output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    routing-table<span class="o">=</span>main
+</span></span><span class="line"><span class="cl">add address-families<span class="o">=</span>ipv6 <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip6 output.network<span class="o">=</span>bgp routing-table<span class="o">=</span>main
+</span></span></code></pre></div><h4 id="filtres">Filtres</h4>
+<p>Comme dans toute configuration BGP, nous avons des filtres. Mikrotik a modifié la syntaxe des filtres dans ROSv7, cela ressemble un peu à bird. Leur <a href="https://help.mikrotik.com/docs/display/ROS/Route&#43;Selection&#43;and&#43;Filters#RouteSelectionandFilters-FilterSyntax" target="_blank" rel="noopener noreffer ">référence</a> est assez bonne.
+Voici un ensemble de base de filtres entrants et sortants. Les deux premières lignes autorisent toutes les routes réseau sous 0.0.0.0/0 mais pas 185.133.194.0/24 qui est le mien. La troisième ligne permet à mon préfixe d&rsquo;être annoncé et rien d&rsquo;autre. Si aucun filtre n&rsquo;est défini pour une route, elle sera rejetée.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/routing filter rule
+</span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 0.0.0.0/0) {set bgp-local-pref 90 ; accept}&#34;</span>
+</span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 185.133.194.0/24) {reject}&#34;</span>
+</span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-out <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 OUT Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if ( dst == 185.133.194.0/24 ) {accept}&#34;</span>
+</span></span></code></pre></div><h4 id="connexion">Connexion</h4>
+<p>Enfin, nous ajoutons la connexion qui référence le modèle, la liste de réseaux et les filtres que nous venons de créer.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/routing bgp connexion
+</span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in local.role<span class="o">=</span>ebgp <span class="nv">name</span><span class="o">=</span>ip4-mw output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="sb">``</span>
+</span></span><span class="line"><span class="cl">    remote.address<span class="o">=</span>80.67.167.166/32 router-id<span class="o">=</span>185.133.194.1 routing-table<span class="o">=</span>main <span class="nv">templates</span><span class="o">=</span>as211486-public-out-ip4
+</span></span></code></pre></div><h4 id="route-blackhole">Route Blackhole</h4>
+<p>Une chose que j&rsquo;oublie souvent est d&rsquo;ajouter une route blackhole à ma table de routage pour les préfixes que je voudrais annoncer. Sans cela, vous pouvez avoir les bons filtres mais rien ne sera annoncé car le routeur n&rsquo;annoncera que les préfixes qui se trouvent dans la table de routage.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">/ip route
+</span></span><span class="line"><span class="cl">add blackhole <span class="nv">disabled</span><span class="o">=</span>no dst-address<span class="o">=</span>185.133.194.0/24
+</span></span></code></pre></div><p>Félicitations ! Vous annoncez maintenant un réseau avec BGP sur un RouterOSv7 de Mikrotik.</p>
+<p></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Source (Anglais): Qu&rsquo;est-ce que BGP ? | Le routage BGP expliqué - <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank" rel="noopener noreffer ">Cloudflare</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Source (Anglais): Qu&rsquo;est-ce qu&rsquo;un système autonome ? | Que sont les ASN ? - <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank" rel="noopener noreffer ">Cloudflare</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 1</title><link>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/thomas-jensen-urtxbx5i5se-unsplash-2-.jpg" referrerpolicy="no-referrer">
-            </div>J&rsquo;ai toujours eu un intérêt pour les ordinateurs et la technologie. J&rsquo;étais loin de me douter qu&rsquo;il s&rsquo;agirait de la base de mon parcours professionnel.
-C&rsquo;est pourquoi je souhaite retracer mes pas et expliquer comment je me suis retrouvé avec un serveur situé dans un centre de données qui a fait de moi l&rsquo;administrateur système et réseau que je suis aujourd&rsquo;hui.
-Comment j&rsquo;ai commencé A 12 ans, j&rsquo;avais construit mon propre site web (mais c&rsquo;est une histoire pour un autre article).]]></description></item><item><title>Hello World</title><link>https://guy-evans.com/fr/posts/2022-10-22_hello_world/</link><pubDate>Sun, 23 Oct 2022 13:00:35 +0200</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-10-22_hello_world/</guid><description><![CDATA[<div class="featured-image">
+            </div><p>J&rsquo;ai toujours eu un intérêt pour les ordinateurs et la technologie. J&rsquo;étais loin de me douter qu&rsquo;il s&rsquo;agirait de la base de mon parcours professionnel.</p>
+<p>C&rsquo;est pourquoi je souhaite retracer mes pas et expliquer comment je me suis retrouvé avec un serveur situé dans un centre de données qui a fait de moi l&rsquo;administrateur système et réseau que je suis aujourd&rsquo;hui.</p>
+<h2 id="comment-jai-commencé">Comment j&rsquo;ai commencé</h2>
+<p>A 12 ans, j&rsquo;avais construit mon propre site web (mais c&rsquo;est une histoire pour un autre article).</p>
+<p>À 19 ans, j&rsquo;avais déjà appris à gérer des réseaux de petites entreprises et j&rsquo;en ai géré quelques-uns pour des entreprises familiales et des amis, mais je n&rsquo;avais pas d&rsquo;équipement ni rien pour apprendre et essayer des choses. C&rsquo;est alors que j&rsquo;ai appris ce qu&rsquo;était un Homelab.</p>
+<h3 id="quest-ce-quun-homelab-">Qu&rsquo;est-ce qu&rsquo;un Homelab ?</h3>
+<p>Vous derriere, je vous entends &hellip; Qu&rsquo;est-ce qu&rsquo;un Homelab ?</p>
+<blockquote>
+<p>Un homelab, dans les termes les plus simples, est un environnement où vous pouvez apprendre et jouer avec des technologies nouvelles ou peu familières.  Il peut s&rsquo;agir d&rsquo;un simple ensemble de machines virtuelles sur un vieux PC ou un ordinateur portable ou d&rsquo;un réseau complet complexe avec son propre ASN (nous y viendrons, éventuellement&hellip;).</p>
+</blockquote>
+<h3 id="serveurs-privés-virtuels-avec-ovh">Serveurs privés virtuels avec OVH</h3>
+<h4 id="vps-numéro-1--le-site-web">VPS Numéro 1 : Le site web</h4>
+<p>Après avoir fait quelques recherches, j&rsquo;ai conclu deux choses :</p>
+<ol>
+<li>Le service que je voulais héberger : mon site web.</li>
+<li>L&rsquo;emplacement approximatif où je voulais qu&rsquo;il soit hébergé : La France</li>
+</ol>
+<p>Après quelques recherches, j&rsquo;ai trouvé <a href="https://ovh.fr" target="_blank" rel="noopener noreffer ">OVH</a>, un hébergeur basé en France. OVH proposait et propose toujours des serveurs privés virtuels bon marché et de très bonne qualité. J&rsquo;ai choisi un serveur 1vCore et 512 Mb RAM pour faire tourner mon site web basé sur Wordpress <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>Ce VPS <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> a fini par héberger le site web d&rsquo;EvansMedia, ma société de services informatiques et web jusqu&rsquo;au 10 mars 2021 et ce que je nomme <em>&lsquo;Le BBQ d&rsquo;OVH</em>&rsquo; 🔥 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, où leurs quatre datacenters de Strasbourg sont partis en fumée (littéralement).</p>
+<h4 id="vps-numéro-2--le-serveur-de-stockage">VPS numéro 2 : Le serveur de stockage</h4>
+<p>Le prochain VPS <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> est arrivé lorsque je cherchais à synchroniser mes fichiers sur mes nombreux appareils, pour des raisons de confidentialité je ne voulais pas utiliser Google Drive ou un équivalent. Je me suis retrouvé sur Owncloud puis j&rsquo;ai migré vers Nextcloud qui est ce que j&rsquo;utilise encore aujourd&rsquo;hui. Nextcloud est fonctionnellement similaire à Dropbox, Office 365 ou Google Drive, il peut être hébergé dans le cloud ou sur votre propre serveur.</p>
+<p>La prochaine fois : Je reviendrai sur ce qui m&rsquo;a fait passer à un serveur dédié et peu après à mon propre matériel racké sans chez un operateur associatif.</p>
+<hr>
+<p><em>Photo par Thomas Jensen @ <a href="https://unsplash.com/@thomasjsn?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash.com</a></em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://wordpress.org" target="_blank" rel="noopener noreffer ">Wordpress</a> est un système de gestion de contenu gratuit et open-source. En 2021, 30% des sites web du monde fonctionnaient avec Wordpress.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Serveur privé virtuel&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><em>10 mars 2021</em> - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - <a href="https://www.lemonde.fr/societe/article/2021/03/10/a-strasbourg-un-important-incendie-sur-le-site-de-l-entreprise-ovh-classe-seveso_6072548_3224.html" target="_blank" rel="noopener noreffer ">Le Monde</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>Hello World</title><link>https://guy-evans.com/fr/posts/2022-10-22_hello_world/</link><pubDate>Sun, 23 Oct 2022 13:00:35 +0200</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-10-22_hello_world/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/vladislav-klapin-PVr9Gsj93Pc-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Hello world ! J&rsquo;ai longtemps songé à reconstruire un blog.
-Quel contenu y trouverez-vous ? Projets sur lesquels je travaille Pensées aléatoires Des trucs que j&rsquo;ai trouvés utiles Des extraits de l&rsquo;infrastructure que j&rsquo;ai déployée BEAUCOUP DE CHOSES ALÉATOIRES Photo: Vladislav Klapin @ unsplash.com]]></description></item></channel></rss>
+            </div><h2 id="hello-world-">Hello world !</h2>
+<p>J&rsquo;ai longtemps songé à reconstruire un blog.</p>
+<h3 id="quel-contenu-y-trouverez-vous-">Quel contenu y trouverez-vous ?</h3>
+<ul>
+<li>Projets sur lesquels je travaille</li>
+<li>Pensées aléatoires</li>
+<li>Des trucs que j&rsquo;ai trouvés utiles</li>
+<li>Des extraits de l&rsquo;infrastructure que j&rsquo;ai déployée</li>
+<li>BEAUCOUP DE CHOSES ALÉATOIRES</li>
+</ul>
+<hr>
+<p><em>Photo: Vladislav Klapin @ <a href="https://unsplash.com/photos/PVr9Gsj93Pc" target="_blank" rel="noopener noreffer ">unsplash.com</a></em></p>
+]]></description></item></channel></rss>

@@ -1,3 +1,54 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>email - Tag - Guy Evans</title><link>https://guy-evans.com/tags/email/</link><description>email - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 15 Jan 2023 14:00:58 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/email/" rel="self" type="application/rss+xml"/><item><title>Self-hosted Email - Why and How?</title><link>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/brett-jordan-lpzy4da9aro-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Question: What is one service on the internet that we use regularly and has become part of our day to day? <strong>EMAIL</strong> - Chances are that is you use a computer, you have at the very leat ine email address, some people have more that one (I&rsquo;ve lost count of how many I have). Why should you have your own?]]></description></item></channel></rss>
+            </div><h2 id="email">Email</h2>
+<p>Question: What is one service on the internet that we use regularly and has become part of our day to day? <strong>EMAIL</strong></p>
+<p>Chances are that if you use a computer, you have at the very least one email address, some people have more that one (I&rsquo;ve lost count). That brings me to a firm belief of mine: if you work in IT in <em>any</em> shape or form, your email should be your own, with your own domain name <em>(<a href="mailto:hello@evans.fr" rel="">hello@evans.fr</a> for example)</em> instead of using a @gmail.com @outlook.com or @aol.com <em>(that&rsquo;s an old one)</em> or any other provider.</p>
+<h2 id="why-self-host">Why (self-host)</h2>
+<p>I for one have used to host all of my email addresses on Google Apps <em>(now called Google Workspace)</em>. It was simple point the right mx records to their servers and boom your own email domain.</p>
+<p>Many other providers also let you do this but where google was clever, is that their service had a great free tier (as in free beer) until they decided to pull the rug out from under us all and sunsetted the free tier. (Another reason people may self-host their email is having full control over the service and not sharing any data with the FAANG companies)</p>
+<p>That got me thinking, why not host my own email someday. So to as with a lot of my research starts I go to Reddit.com and the general consensus is: Why bother. But still I continue my research and decide to continue. Afterall the best way to learn is to do it. How hard can it be?</p>
+<p><em>but first, we need coffee&hellip;</em>
+<figure>
+</figure>
+</p>
+<h2 id="how-using-docker--mailcow">How (Using Docker &amp; Mailcow)</h2>
+<p>I won&rsquo;t be deep diving into how to set an email server as there are plenty of guides to be found but I will at least point you in the right direction.</p>
+<h3 id="what-we-need">What we need</h3>
+<ol>
+<li>A Domain name of your own</li>
+<li>A VM or VPS server with: 2 VCPUs, 4 GB of RAM (at minimum), 80 GB storage (or more), a clean IP address <em>(I suggest <a href="https://milkywan.fr/" target="_blank" rel="noopener noreffer ">Milkywan</a> or <a href="https://www.virtua.cloud/" target="_blank" rel="noopener noreffer ">Virtua.Cloud</a> both are based in france and have great connectivity.)</em></li>
+<li>Docker &amp; Docker Compose (I suggest using docker as tt is fast to setup)</li>
+<li><a href="https://mailcow.email/" target="_blank" rel="noopener noreffer ">Mailcow Dockerized</a>, my mail server of choice - it contains all the services needed and runs in docker containers</li>
+</ol>
+<h3 id="setup">Setup</h3>
+<h4 id="dns">DNS</h4>
+<p>You will need to setup the following DNS records for Mailcow to work</p>
+<pre tabindex="0"><code># Name              Type       Value
+mail                IN A       1.2.3.4
+autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+@                   IN MX 10   mail.example.org. (your ${MAILCOW_HOSTNAME})
+</code></pre><h4 id="installing-mailcow">Installing Mailcow</h4>
+<p>Once the DNS records are propagated, you can install and setup mailcow.
+First we clone the repository and set the permissions on the folders</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su
+</span></span><span class="line"><span class="cl"><span class="nb">umask</span>
+</span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Verify it is 0022</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
+</span></span><span class="line"><span class="cl">git clone https://github.com/mailcow/mailcow-dockerized
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized
+</span></span></code></pre></div><p>Once that is done we need to initialise mailcow and create a configuration file using the command below, It will ask for your FQDN (domain name)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./generate_config.sh
+</span></span></code></pre></div><p>Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose pull
+</span></span><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></div><p>CONGRATULATIONS ! You have setup a mail server (well almost)</p>
+<p>Now that the server is running, you can access https://${MAILCOW_HOSTNAME} with the default credentials <code>admin</code> + password <code>moohoo</code> and start setting up domains and email addresses.</p>
+<p>Mailcow has a great <a href="https://docs.mailcow.email/post_installation/firststeps-ssl/" target="_blank" rel="noopener noreffer ">help site</a> which will walk you through most of the settings that I have not covered.</p>
+<h2 id="end">End</h2>
+<p>I hope that with this short post, you can see that it&rsquo;s not actually hard to setup a mailserver. What is hard is keeping of spam lists and fighting incoming spam, but for personal use and with the help of Mailcow you should be fine.</p>
+<p>Another thing you should not forget is &hellip; BACKUPS.</p>
+<p>If you host your main email on this server, you should back it up regularly.</p>
+<hr>
+<p><em>Photo by Brett Jordon @ <a href="https://unsplash.com/@brett_jordan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash.com</a></em></p>
+]]></description></item></channel></rss>

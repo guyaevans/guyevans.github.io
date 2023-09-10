@@ -1,8 +1,106 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>serveurs - Balise - Guy Evans</title><link>https://guy-evans.com/fr/tags/serveurs/</link><description>serveurs - Balise - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Sat, 07 Jan 2023 16:04:28 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/tags/serveurs/" rel="self" type="application/rss+xml"/><item><title>D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 2</title><link>https://guy-evans.com/fr/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</link><pubDate>Sat, 07 Jan 2023 16:04:28 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/cbo-rack-mw2.jpg" referrerpolicy="no-referrer">
-            </div>Après les serveurs virtuels Après avoir perdu l&rsquo;un de mes serveurs privés virtuels ainsi que les données dans le &lsquo;The Great Fire of OVH 🔥&rsquo;1 (Oui je sais que j&rsquo;aurais dû avoir des sauvegardes de ce VPS2), je me suis dit pourquoi ne pas mettre en place un Cluster[^cluster] Proxmox3 sur quelques serveurs dédiés.
-Après quelques recherches et j&rsquo;ai trouvé OneProvider.com où vous pouvez louer des serveurs dédiés pour pas cher, leur matériel bon marché est vieux et la connectivité est correcte mais vous ne pouvez pas battre leurs prix (un serveur avec un Intel Atom C2750, 16 Go de RAM, 1 To de disque dur et 1 Go de bande passante &ldquo;illimitée&rdquo; coûtait 14 € par serveur/mois à l&rsquo;époque).]]></description></item><item><title> D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 1</title><link>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
+            </div><h2 id="après-les-serveurs-virtuels">Après les serveurs virtuels</h2>
+<p>Après avoir perdu l&rsquo;un de mes serveurs privés virtuels ainsi que les données dans le <em>&lsquo;The Great Fire of OVH</em> 🔥&rsquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (Oui je sais que j&rsquo;aurais dû avoir des sauvegardes de ce VPS<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>), je me suis dit pourquoi ne pas mettre en place un Cluster[^cluster] Proxmox<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> sur quelques serveurs dédiés.</p>
+<p>Après quelques recherches et j&rsquo;ai trouvé <a href="https://oneprovider.com" target="_blank" rel="noopener noreffer ">OneProvider.com</a> où vous pouvez louer des serveurs dédiés pour pas cher, leur matériel bon marché est vieux et la connectivité est correcte mais vous ne pouvez pas battre leurs prix (un serveur avec un Intel Atom C2750, 16 Go de RAM, 1 To de disque dur et 1 Go de bande passante &ldquo;illimitée&rdquo; coûtait 14 € par serveur/mois à l&rsquo;époque). Cela s&rsquo;est bien passé pendant quelques mois, mais j&rsquo;étais de plus en plus frustré de ne pas avoir le contrôle total du matériel et de mon intérêt croissant pour BGP <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> et la façon dont Internet n&rsquo;est en fait qu&rsquo;un ensemble de (petits) réseaux interconnectés. Après quelques essais et erreurs, j&rsquo;ai décidé que je devais revoir les objectifs de mon home-lab et repenser ma liste d&rsquo;achats.</p>
+<figure>
+</figure>
+
+<h2 id="la-liste-des-achats">La liste des achats</h2>
+<p>Alors, qu&rsquo;est-ce que je voulais ?</p>
+<ul>
+<li>Mon propre matériel (récent)</li>
+<li>Un hébergeur convenable pour mon matériel (fournisseur de colocation)</li>
+<li>Une connexion de transit BGP avec mon propre bloc d&rsquo;adresses IP /24 louées.</li>
+</ul>
+<p>Bonus :</p>
+<ul>
+<li>Une connexion de 10 Gb à l&rsquo;internet</li>
+</ul>
+<p>J&rsquo;avais maintenant un plan et une liste d&rsquo;achats décente, bien que nous n&rsquo;ayons pas parlé du budget. Disons environ 700 € pour le matériel et 100 à 120 € par mois pour l&rsquo;hébergement.</p>
+<h3 id="un-hébergeur">Un Hébergeur</h3>
+<p>J&rsquo;ai trouvé un excellent hébergeur pour mon matériel en parcourant <a href="https://lafibre.info/" target="_blank" rel="noopener noreffer ">LaFibre.info</a> un forum français sur la FTTH en france et l&rsquo;informatique en général. L&rsquo;hébergeur que j&rsquo;ai choisi est <a href="https://milkywan.fr" target="_blank" rel="noopener noreffer "><em>MilkyWan</em></a>, c&rsquo;est un petit fournisseur de services Internet à but non lucratif géré par une petite équipe passionnée.</p>
+<p>Ils sont spécialisés dans la fourniture de serveurs virtuels, l&rsquo;hébergement, l&rsquo;ADSL et l&rsquo;Internet par fibre. Ils ont également plusieurs points de présence dans des centres de données français où ils peuvent héberger du matériel et fournir du transit BGP. Ils ont également une grande communauté sur telegram.</p>
+<p>Coût : 75 € pour un serveur 1U, une alimentation et une connexion réseau.</p>
+<p>Bonus : Ils peuvent fournir une connexion 10Gb à internet.</p>
+<p><em>J&rsquo;ai mentionné qu&rsquo;ils ont une grande communauté, étant géré par une association à but non lucratif et cela signifie qu&rsquo;ils ont à cœur les meilleurs intérêts de leurs membres et le reseau. Depuis la fin de 2022, je suis également élu comme représentant des membres de l&rsquo;association.</em></p>
+<h3 id="mon-propre-matériel">Mon propre matériel</h3>
+<p>Maintenant que j&rsquo;avais trouvé un endroit pour mon équipement, j&rsquo;avais besoin de cet équipement. J&rsquo;ai trouvé ce dont j&rsquo;avais besoin sur <a href="https://www.bargainhardware.co.uk/" target="_blank" rel="noopener noreffer ">BargainHardware.co.uk</a>, ils sont spécialisés dans le matériel d&rsquo;entreprise d&rsquo;occasion et ont des prix très intéressants.</p>
+<p>Voici le serveur que j&rsquo;ai choisi :</p>
+<p><strong>Dell Poweredge R620</strong></p>
+<ul>
+<li>2 x Intel Xeon E5-2660 V2 2.20Ghz CPUs Dix cœurs</li>
+<li>96 Go de RAM DDR3</li>
+<li>2 x 240 Go Crucial SSD pour les disques de démarrage (Ils seront en Raid 1 pour assurer la redondance en cas de défaillance d&rsquo;un disque)</li>
+<li>6 disques durs SAS de 900 Go pour les disques de données, ce qui nous donne un total de 5 To d&rsquo;espace utilisable (il s&rsquo;agira du pool de stockage principal et il sera dans un pool ZFS pour assurer la redondance en cas de défaillance d&rsquo;un disque).</li>
+<li>1 x carte réseau Dell BCM57800S Quad Port - 1GbE, 10GbE SFP+, RJ45</li>
+</ul>
+<p>Coût : 700 €, y compris les frais d&rsquo;expédition vers la France.</p>
+<p>Pas trop vieux pour être peu rentable et pas trop récent pour faire exploser la tirelire. Cela devrait me fournir beaucoup de puissance pour de multiples machines virtuelles.</p>
+<h2 id="tout-mettre-en-place">Tout mettre en place</h2>
+<p>Après avoir commandé le serveur et l&rsquo;hébergement, il ne me restait plus qu&rsquo;à configurer <a href="https://www.proxmox.com" target="_blank" rel="noopener noreffer ">Proxmox</a> et à envoyer mon tout nouveau serveur à <em>Milkywan</em> qui me l&rsquo;a installé dans son centre de données.</p>
+<p>Je dispose maintenant de mon propre matériel avec une connexion 10G dans un centre de données français. Vous pouvez remarquer dans l&rsquo;image du speedtest ci-dessous que mon nom apparaît comme le FAI, c&rsquo;est parce que je suis effectivement devenu mon propre FAI puisque je fournis à mon serveur l&rsquo;internet via mon propre ASN (<a href="https://bgp.he.net/AS211486" target="_blank" rel="noopener noreffer ">AS211486</a>) et mes IPs. (Cloudflare a un excellent article sur BGP <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>)</p>
+<p>Mon serveur héberge la plupart de mon &lsquo;homelab&rsquo;, y compris certaines parties de ce site web, comme le système de commentaires et les statistiques. J&rsquo;ai également une petite installation à la maison avec un NAS et un microserveur dont je vais probablement écrire un autre billet à ce sujet.</p>
+<p><figure><a class="lightgallery" href="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png" title="10G Proof" data-thumbnail="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png" data-sub-html="<h2>Presque 10G mais c&#39;est une autre histoire</h2><p>10G Proof</p>">
+        
+    </a><figcaption class="image-caption">Presque 10G mais c'est une autre histoire</figcaption>
+    </figure></p>
+<p>Mon serveur est la dernière machine dans le rack sur l&rsquo;image d&rsquo;en-tête de ce post. Avez-vous voulu ou avez-vous mis en place votre propre homelab ? Partagez vos commentaires ci-dessous.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><em>10 mars 2021</em> - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - <a href="https://www.lemonde.fr/societe/article/2021/03/10/a-strasbourg-un-important-incendie-sur-le-site-de-l-entreprise-ovh-classe-seveso_6072548_3224.html" target="_blank" rel="noopener noreffer ">Le Monde</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Serveur privé virtuel&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://www.proxmox.com" target="_blank" rel="noopener noreffer ">Proxmox Virtual Environment (PVE)</a> est une solution de virtualisation gratuite et open source qui permet le déploiement de systèmes virtualisés&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Border Gateway Protocol (BGP) est le service postal d&rsquo;Internet. Lorsque quelqu&rsquo;un dépose une lettre dans une boîte aux lettres, le service postal traite ce courrier et choisit un itinéraire rapide et efficace pour livrer cette lettre à son destinataire&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 1</title><link>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/thomas-jensen-urtxbx5i5se-unsplash-2-.jpg" referrerpolicy="no-referrer">
-            </div>J&rsquo;ai toujours eu un intérêt pour les ordinateurs et la technologie. J&rsquo;étais loin de me douter qu&rsquo;il s&rsquo;agirait de la base de mon parcours professionnel.
-C&rsquo;est pourquoi je souhaite retracer mes pas et expliquer comment je me suis retrouvé avec un serveur situé dans un centre de données qui a fait de moi l&rsquo;administrateur système et réseau que je suis aujourd&rsquo;hui.
-Comment j&rsquo;ai commencé A 12 ans, j&rsquo;avais construit mon propre site web (mais c&rsquo;est une histoire pour un autre article).]]></description></item></channel></rss>
+            </div><p>J&rsquo;ai toujours eu un intérêt pour les ordinateurs et la technologie. J&rsquo;étais loin de me douter qu&rsquo;il s&rsquo;agirait de la base de mon parcours professionnel.</p>
+<p>C&rsquo;est pourquoi je souhaite retracer mes pas et expliquer comment je me suis retrouvé avec un serveur situé dans un centre de données qui a fait de moi l&rsquo;administrateur système et réseau que je suis aujourd&rsquo;hui.</p>
+<h2 id="comment-jai-commencé">Comment j&rsquo;ai commencé</h2>
+<p>A 12 ans, j&rsquo;avais construit mon propre site web (mais c&rsquo;est une histoire pour un autre article).</p>
+<p>À 19 ans, j&rsquo;avais déjà appris à gérer des réseaux de petites entreprises et j&rsquo;en ai géré quelques-uns pour des entreprises familiales et des amis, mais je n&rsquo;avais pas d&rsquo;équipement ni rien pour apprendre et essayer des choses. C&rsquo;est alors que j&rsquo;ai appris ce qu&rsquo;était un Homelab.</p>
+<h3 id="quest-ce-quun-homelab-">Qu&rsquo;est-ce qu&rsquo;un Homelab ?</h3>
+<p>Vous derriere, je vous entends &hellip; Qu&rsquo;est-ce qu&rsquo;un Homelab ?</p>
+<blockquote>
+<p>Un homelab, dans les termes les plus simples, est un environnement où vous pouvez apprendre et jouer avec des technologies nouvelles ou peu familières.  Il peut s&rsquo;agir d&rsquo;un simple ensemble de machines virtuelles sur un vieux PC ou un ordinateur portable ou d&rsquo;un réseau complet complexe avec son propre ASN (nous y viendrons, éventuellement&hellip;).</p>
+</blockquote>
+<h3 id="serveurs-privés-virtuels-avec-ovh">Serveurs privés virtuels avec OVH</h3>
+<h4 id="vps-numéro-1--le-site-web">VPS Numéro 1 : Le site web</h4>
+<p>Après avoir fait quelques recherches, j&rsquo;ai conclu deux choses :</p>
+<ol>
+<li>Le service que je voulais héberger : mon site web.</li>
+<li>L&rsquo;emplacement approximatif où je voulais qu&rsquo;il soit hébergé : La France</li>
+</ol>
+<p>Après quelques recherches, j&rsquo;ai trouvé <a href="https://ovh.fr" target="_blank" rel="noopener noreffer ">OVH</a>, un hébergeur basé en France. OVH proposait et propose toujours des serveurs privés virtuels bon marché et de très bonne qualité. J&rsquo;ai choisi un serveur 1vCore et 512 Mb RAM pour faire tourner mon site web basé sur Wordpress <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>Ce VPS <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> a fini par héberger le site web d&rsquo;EvansMedia, ma société de services informatiques et web jusqu&rsquo;au 10 mars 2021 et ce que je nomme <em>&lsquo;Le BBQ d&rsquo;OVH</em>&rsquo; 🔥 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, où leurs quatre datacenters de Strasbourg sont partis en fumée (littéralement).</p>
+<h4 id="vps-numéro-2--le-serveur-de-stockage">VPS numéro 2 : Le serveur de stockage</h4>
+<p>Le prochain VPS <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> est arrivé lorsque je cherchais à synchroniser mes fichiers sur mes nombreux appareils, pour des raisons de confidentialité je ne voulais pas utiliser Google Drive ou un équivalent. Je me suis retrouvé sur Owncloud puis j&rsquo;ai migré vers Nextcloud qui est ce que j&rsquo;utilise encore aujourd&rsquo;hui. Nextcloud est fonctionnellement similaire à Dropbox, Office 365 ou Google Drive, il peut être hébergé dans le cloud ou sur votre propre serveur.</p>
+<p>La prochaine fois : Je reviendrai sur ce qui m&rsquo;a fait passer à un serveur dédié et peu après à mon propre matériel racké sans chez un operateur associatif.</p>
+<hr>
+<p><em>Photo par Thomas Jensen @ <a href="https://unsplash.com/@thomasjsn?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash.com</a></em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://wordpress.org" target="_blank" rel="noopener noreffer ">Wordpress</a> est un système de gestion de contenu gratuit et open-source. En 2021, 30% des sites web du monde fonctionnaient avec Wordpress.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Serveur privé virtuel&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><em>10 mars 2021</em> - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - <a href="https://www.lemonde.fr/societe/article/2021/03/10/a-strasbourg-un-important-incendie-sur-le-site-de-l-entreprise-ovh-classe-seveso_6072548_3224.html" target="_blank" rel="noopener noreffer ">Le Monde</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item></channel></rss>

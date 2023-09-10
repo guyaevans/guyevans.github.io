@@ -1,5 +1,222 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>self-hosted - Tag - Guy Evans</title><link>https://guy-evans.com/tags/self-hosted/</link><description>self-hosted - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 28 Mar 2023 16:17:14 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/self-hosted/" rel="self" type="application/rss+xml"/><item><title>Backups with Restic</title><link>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</guid><description>&lt;div class="featured-image">
-&lt;img src="/immo-wegmann-htsvneqf5fg-unsplash.jpg" referrerpolicy="no-referrer">
-&lt;/div>After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire. I started searching for a decent backup solution and found Restic, lets take a look at how it works.</description></item><item><title>Self-hosted Email - Why and How?</title><link>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>self-hosted - Tag - Guy Evans</title><link>https://guy-evans.com/tags/self-hosted/</link><description>self-hosted - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 28 Mar 2023 16:17:14 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/self-hosted/" rel="self" type="application/rss+xml"/><item><title>Backups with Restic</title><link>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/immo-wegmann-htsvneqf5fg-unsplash.jpg" referrerpolicy="no-referrer">
+            </div><p>After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 🔥 in Strasbourg. I did however loose the VPS that hosted the website for <a href="https://www.evansmedia.fr" target="_blank" rel="noopener noreffer ">www.evansmedia.fr</a></p>
+<blockquote>
+<p>The shoemaker always wears the worst shoes, right?</p>
+<figure>
+</figure>
+
+</blockquote>
+<p>I may have become a bit paranoid about backups, especially for anything stored in my Nextcloud which hold just about anything to do with my personal life, including photos of our recent newborn.</p>
+<h2 id="the-3-2-1-rule">The 3-2-1 Rule</h2>
+<p>I decided to base my backup strategy on the 3-2-1 rule (and you should too)</p>
+<p>The idea that a minimal backup solution should include three copies of the data, including two copies on different media and one remote (offsite) copy.</p>
+<figure>
+ </figure>
+
+<h3 id="local-backups">Local Backups</h3>
+<p><em>(We are pretending that we are backing up a local server here but the Virtual Machine I&rsquo;m backing up is actually hosted in a DC so I&rsquo;m backing it up locally at home)</em></p>
+<p>To perform my backups I am using two tools, Proxmox Backup Server<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> which is a backup appliance built by the folks that build proxmox; and Restic, a modern app that backups files to loads of different services. Today we will be focusing on a single backup tier with Restic.</p>
+<h2 id="restic">Restic</h2>
+<blockquote>
+<p>restic is a backup program that is fast, efficient and secure. It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD).
+<a href="https://restic.net/" target="_blank" rel="noopener noreffer ">https://restic.net/</a></p>
+</blockquote>
+<h3 id="why-restic">Why Restic</h3>
+<ul>
+<li>
+<p>it is simple and fast to use</p>
+</li>
+<li>
+<p>it enables backup many different storage locations including self-hosted and online services (Amazon S3, Google Drive, Backblaze etc.)</p>
+</li>
+<li>
+<p>it&rsquo;s backups can be fully <strong>encrypted</strong></p>
+</li>
+<li>
+<p>restores are simple and you can even mount the backup repository and retrieve a single file.</p>
+</li>
+</ul>
+<h3 id="install-restic">Install Restic</h3>
+<p>First and formost we need to install restic, this is a simple as running as using APT on Ubuntu/Debian (in my use case)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install restic
+</span></span></code></pre></div><h3 id="init-the-storage-repo">Init the storage repo</h3>
+<p>The beauty of restic is that you can use just about any type of storage backend (local, Amazon S3, Minio Server, Backblaze B2, Azure, Google Cloud Storage, SFTP, etc.) for your backup repo and the interface stays for the most part the same. In this case i&rsquo;m using their own storage backend <a href="https://github.com/restic/rest-server" target="_blank" rel="noopener noreffer "><strong>Rest-Server</strong></a></p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Rest-Server<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Rest Server is a high performance HTTP server that implements restic&rsquo;s REST backend API. It provides secure and efficient way to backup data remotely, using restic backup client via the rest: URL.</div>
+        </div>
+    </div>
+<p>So now you have chosen the storage backend for your repo, we need to initialise it.</p>
+<p>Let&rsquo;s say that we want to name our repository backups and we can use the following command to initialise it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init
+</span></span></code></pre></div><p>Restic will ask you to create a password (keep this safe we will need this later) and will initialise the repo. We can use <code>check</code> to verify that the repository is initialised.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups check
+</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
+</span></span><span class="line"><span class="cl">password is correct
+</span></span><span class="line"><span class="cl">create exclusive lock <span class="k">for</span> repository
+</span></span><span class="line"><span class="cl">load indexesY
+</span></span><span class="line"><span class="cl">check all packs
+</span></span><span class="line"><span class="cl">check snapshots, trees and blobs
+</span></span><span class="line"><span class="cl">no errors were found
+</span></span></code></pre></div><h3 id="backing-up-all-the-things">Backing up all the things</h3>
+<p>Now we have an initialised repository we can start backing up our cat pictures. With the <code>backup</code> and pointing to the repository we created. So to backup my <code>~/cat-pictures</code> folder I would run this command</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures
+</span></span></code></pre></div><p>Yes it&rsquo;s that simple 😎</p>
+<p>Everytime a backup is run, restic creates a <code>snapshot</code>, you can list these using the <code>snapshot</code> command.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
+</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
+</span></span><span class="line"><span class="cl">password is correct
+</span></span><span class="line"><span class="cl">ID        Date                 Host        Tags        Directory
+</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">ac8721ec  2023-03-26 20:18:16  my-pc              /home/bounty/cat-pictures
+</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
+</span></span><span class="line"><span class="cl"><span class="m">1</span> snapshots
+</span></span></code></pre></div><h3 id="restoring-the-cat-pictures">Restoring the cat pictures</h3>
+<p>What is a backup if you have not tested a restore? Well it&rsquo;s not a backup because you don&rsquo;t know it it worked.</p>
+<p>So let&rsquo;s try restoring our cat pictures with the <code>restore</code> command. We need to specify the snapshot id <code>ac8721ec</code> and where we want to restore to <code>~/restored-cat-pictures</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups restore ac8721ec --target ~/restored-cat-pictures/
+</span></span></code></pre></div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">You can use <code>latest</code> in place of the snapshot id to reference the last snapshot.</div>
+        </div>
+    </div>
+<p>Thats as simple as the backup, right?
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Other Commands and Documentation<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Restic has loads of other useful commands that you can find in their great <a href="https://restic.readthedocs.io" target="_blank" rel="noopener noreffer ">documentation</a></div>
+        </div>
+    </div></p>
+<h3 id="automating-with-a-bash-script-and-cron">Automating with a Bash script and Cron</h3>
+<p>Manual backups are ok but you might forget to run them, so lets automate our backup with a bash script and a cron entry. And for bonus points lets make sure we have a way to send us message in case of failure. My basic script is below, each action is explained in the comments.</p>
+<p><em>Note: my script is by no means perfect and may contain errors, feel free to correct it or suggest improvments below</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#This will run Restic backups</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Restic variables</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span>rest:http://my-rest-server:8000/backups
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RESTIC_PASSWORD</span><span class="o">=</span>super-secret-repo-password1234
+</span></span><span class="line"><span class="cl"><span class="nv">RESTIC_Folder</span><span class="o">=</span><span class="s2">&#34;~/cat-pictures&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># We define a log location here</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Log_location</span><span class="o">=</span>/var/log/restic-nas.log
+</span></span><span class="line"><span class="cl"><span class="c1"># Telegram Variables (if not used you need to remove the telegram block)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TELEGRAM_token</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TELEGRAM_chatid</span><span class="o">=</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Define a timestamp function</span>
+</span></span><span class="line"><span class="cl">timestamp<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">date <span class="s2">&#34;+%b %d %Y %T %Z&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Insert timestamp abd header into log</span>
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s2">&#34;\n\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------------------------------&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">: restic.sh - Rest Backup started&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Run Backups</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NAS_backup_log</span><span class="o">=</span><span class="k">$(</span>restic backup <span class="nv">$RESTIC_Folder</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$NAS_backup_log</span><span class="s2">&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## This is a dirty way to check that the backup was a sucess and added files to the repo otherwise we fail.</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$NAS_backup_log</span><span class="s2">&#34;</span> <span class="o">==</span> *<span class="s2">&#34;Added to the repo&#34;</span>** <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## If backup was successul lets move on and write the result to the log</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">printf</span> <span class="s2">&#34;\n\n&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------------------------------&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">: restic.sh - COMPLETED - Rest Backup&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## If the backup fails, we write to the log and send a message on Telegram</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">printf</span> <span class="s2">&#34;\n\n&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------------------------------&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">: restic.sh - FAILED - Rest Backup&#34;</span> <span class="p">|</span> tee -a <span class="nv">$Log_location</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## If failed send message to telegram</span>
+</span></span><span class="line"><span class="cl">	curl -X POST https://api.telegram.org/<span class="nv">$TELEGRAM_token</span>/sendMessage <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	       	--data <span class="nv">parse_mode</span><span class="o">=</span>HTML --data <span class="nv">chat_id</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$TELEGRAM_chatid</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>		--data <span class="nv">text</span><span class="o">=</span><span class="s2">&#34;&lt;b&gt;</span><span class="k">$(</span>timestamp<span class="k">)</span><span class="s2">%0A FAILED - REST Backup&lt;/b&gt;%0A%0A&lt;pre&gt;</span><span class="nv">$NAS_backup_log</span><span class="s2">&lt;/pre&gt;&#34;</span> -4
+</span></span><span class="line"><span class="cl">	<span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></div><p>Once we have saved our bash script to say <code>~/restic_script.sh</code> we need to allow its execution with <code>chmod</code> and add it to our <a href="https://en.wikipedia.org/wiki/Cron" target="_blank" rel="noopener noreffer ">crontab</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># allow execution of our script</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -e <span class="c1"># edit our crontab</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit this file to introduce tasks to be run by cron.</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># To define the time you can provide concrete values for</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># minute (m), hour (h), day of month (dom), month (mon),</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># m h  dom mon dow   command</span>
+</span></span><span class="line"><span class="cl"><span class="m">0</span> <span class="m">1</span> * * * ~/restic_script.sh <span class="c1"># will run our script every night a 1 AM</span>
+</span></span></code></pre></div><p>With that you now have automated the your backups.</p>
+<p>I&rsquo;m sure you my have a better way of doing this, why not share your thoughts in the comments?</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><em>10 March 2021</em> - Millions of websites offline after fire at French cloud services firm - <a href="https://www.reuters.com/article/us-france-ovh-fire-idUSKBN2B20NU" target="_blank" rel="noopener noreffer ">Reuters</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.proxmox.com/en/proxmox-backup-server" target="_blank" rel="noopener noreffer ">Proxmox Backup Server</a> is an enterprise backup solution, for backing up and restoring VMs, containers, and physical hosts.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>Self-hosted Email - Why and How?</title><link>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/brett-jordan-lpzy4da9aro-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Question: What is one service on the internet that we use regularly and has become part of our day to day? <strong>EMAIL</strong> - Chances are that is you use a computer, you have at the very leat ine email address, some people have more that one (I&rsquo;ve lost count of how many I have). Why should you have your own?]]></description></item></channel></rss>
+            </div><h2 id="email">Email</h2>
+<p>Question: What is one service on the internet that we use regularly and has become part of our day to day? <strong>EMAIL</strong></p>
+<p>Chances are that if you use a computer, you have at the very least one email address, some people have more that one (I&rsquo;ve lost count). That brings me to a firm belief of mine: if you work in IT in <em>any</em> shape or form, your email should be your own, with your own domain name <em>(<a href="mailto:hello@evans.fr" rel="">hello@evans.fr</a> for example)</em> instead of using a @gmail.com @outlook.com or @aol.com <em>(that&rsquo;s an old one)</em> or any other provider.</p>
+<h2 id="why-self-host">Why (self-host)</h2>
+<p>I for one have used to host all of my email addresses on Google Apps <em>(now called Google Workspace)</em>. It was simple point the right mx records to their servers and boom your own email domain.</p>
+<p>Many other providers also let you do this but where google was clever, is that their service had a great free tier (as in free beer) until they decided to pull the rug out from under us all and sunsetted the free tier. (Another reason people may self-host their email is having full control over the service and not sharing any data with the FAANG companies)</p>
+<p>That got me thinking, why not host my own email someday. So to as with a lot of my research starts I go to Reddit.com and the general consensus is: Why bother. But still I continue my research and decide to continue. Afterall the best way to learn is to do it. How hard can it be?</p>
+<p><em>but first, we need coffee&hellip;</em>
+<figure>
+</figure>
+</p>
+<h2 id="how-using-docker--mailcow">How (Using Docker &amp; Mailcow)</h2>
+<p>I won&rsquo;t be deep diving into how to set an email server as there are plenty of guides to be found but I will at least point you in the right direction.</p>
+<h3 id="what-we-need">What we need</h3>
+<ol>
+<li>A Domain name of your own</li>
+<li>A VM or VPS server with: 2 VCPUs, 4 GB of RAM (at minimum), 80 GB storage (or more), a clean IP address <em>(I suggest <a href="https://milkywan.fr/" target="_blank" rel="noopener noreffer ">Milkywan</a> or <a href="https://www.virtua.cloud/" target="_blank" rel="noopener noreffer ">Virtua.Cloud</a> both are based in france and have great connectivity.)</em></li>
+<li>Docker &amp; Docker Compose (I suggest using docker as tt is fast to setup)</li>
+<li><a href="https://mailcow.email/" target="_blank" rel="noopener noreffer ">Mailcow Dockerized</a>, my mail server of choice - it contains all the services needed and runs in docker containers</li>
+</ol>
+<h3 id="setup">Setup</h3>
+<h4 id="dns">DNS</h4>
+<p>You will need to setup the following DNS records for Mailcow to work</p>
+<pre tabindex="0"><code># Name              Type       Value
+mail                IN A       1.2.3.4
+autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+@                   IN MX 10   mail.example.org. (your ${MAILCOW_HOSTNAME})
+</code></pre><h4 id="installing-mailcow">Installing Mailcow</h4>
+<p>Once the DNS records are propagated, you can install and setup mailcow.
+First we clone the repository and set the permissions on the folders</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su
+</span></span><span class="line"><span class="cl"><span class="nb">umask</span>
+</span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Verify it is 0022</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
+</span></span><span class="line"><span class="cl">git clone https://github.com/mailcow/mailcow-dockerized
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized
+</span></span></code></pre></div><p>Once that is done we need to initialise mailcow and create a configuration file using the command below, It will ask for your FQDN (domain name)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./generate_config.sh
+</span></span></code></pre></div><p>Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose pull
+</span></span><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></div><p>CONGRATULATIONS ! You have setup a mail server (well almost)</p>
+<p>Now that the server is running, you can access https://${MAILCOW_HOSTNAME} with the default credentials <code>admin</code> + password <code>moohoo</code> and start setting up domains and email addresses.</p>
+<p>Mailcow has a great <a href="https://docs.mailcow.email/post_installation/firststeps-ssl/" target="_blank" rel="noopener noreffer ">help site</a> which will walk you through most of the settings that I have not covered.</p>
+<h2 id="end">End</h2>
+<p>I hope that with this short post, you can see that it&rsquo;s not actually hard to setup a mailserver. What is hard is keeping of spam lists and fighting incoming spam, but for personal use and with the help of Mailcow you should be fine.</p>
+<p>Another thing you should not forget is &hellip; BACKUPS.</p>
+<p>If you host your main email on this server, you should back it up regularly.</p>
+<hr>
+<p><em>Photo by Brett Jordon @ <a href="https://unsplash.com/@brett_jordan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreffer ">Unsplash.com</a></em></p>
+]]></description></item></channel></rss>

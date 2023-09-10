@@ -1,4 +1,50 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>mailcow - Balise - Guy Evans</title><link>https://guy-evans.com/fr/tags/mailcow/</link><description>mailcow - Balise - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Sun, 15 Jan 2023 14:00:58 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/tags/mailcow/" rel="self" type="application/rss+xml"/><item><title>Mails auto-hébergé - Pourquoi et comment?</title><link>https://guy-evans.com/fr/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/brett-jordan-lpzy4da9aro-unsplash.jpg" referrerpolicy="no-referrer">
-            </div>Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? <strong>L&rsquo;EMAIL</strong>
-Il y a de fortes chances que si vous utilisez un ordinateur, vous ayez au moins une adresse e-mail, certains en ont plus d&rsquo;une (j&rsquo;ai perdu le compte). Pourquoi devriez-vous avoir le vôtre ?]]></description></item></channel></rss>
+            </div><h2 id="email">Email</h2>
+<p>Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? <strong>L&rsquo;EMAIL</strong></p>
+<p>Il y a de fortes chances que si vous utilisez un ordinateur, vous ayez au moins une adresse e-mail, certains en ont plus d&rsquo;une (j&rsquo;ai perdu le compte). Cela m&rsquo;amène à une conviction profonde : si vous travaillez dans l&rsquo;informatique sous une forme ou une autre, votre adresse électronique devrait être la vôtre, avec votre propre nom de domaine <em>(<a href="mailto:hello@evans.fr" rel="">hello@evans.fr</a> par exemple)</em> au lieu d&rsquo;utiliser un @gmail.com @outlook.com ou @aol.com _(c&rsquo;est vieux ça) _ ou tout autre fournisseur.</p>
+<h2 id="pourquoi-lauto-hébergement">Pourquoi (l&rsquo;auto-hébergement)</h2>
+<p>Pour ma part, j&rsquo;avais l&rsquo;habitude d&rsquo;héberger toutes mes adresses e-mail sur Google Apps <em>(maintenant appelé Google Workspace)</em>. Il était simple de faire pointer les bons enregistrements mx vers leurs serveurs et voila votre propre messagerie.</p>
+<p>De nombreux autres fournisseurs vous permettent également de faire cela, mais là où Google a été intelligent, c&rsquo;est que leur service avait un excellent niveau gratuit (comme la bière gratuite) jusqu&rsquo;à ce qu&rsquo;ils décident de supprimer le niveau gratuit. (Une autre raison pour laquelle les gens peuvent héberger eux-mêmes leurs e-mails est d&rsquo;avoir un contrôle total sur le service et de ne pas partager de données avec les GAFAM).</p>
+<p>Cela m&rsquo;a fait penser, pourquoi ne pas héberger mon propre email un jour. Donc, comme pour beaucoup de mes recherches, j&rsquo;ai commencer sur Reddit.com et le consensus général est : Pourquoi s&rsquo;embêter. Mais je continue quand même mes recherches et décide de continuer mon projet. Après tout, la meilleure façon d&rsquo;apprendre est de le faire. Comment cela peut-il être aussi difficile ?</p>
+<p><em>mais d&rsquo;abord, il nous faut du café&hellip;</em>
+<figure>
+</figure>
+</p>
+<h2 id="comment-en-utilisant-docker-et-mailcow">Comment (en utilisant Docker et Mailcow)</h2>
+<p>Je ne vais pas vous expliquer en détail comment configurer un serveur de messagerie, car il existe de nombreux guides à ce sujet, mais je vais au moins vous mettre sur la bonne voie.</p>
+<h3 id="ce-dont-nous-avons-besoin">Ce dont nous avons besoin</h3>
+<ol>
+<li>Un nom de domaine de votre choix</li>
+<li>Un serveur VM ou VPS avec : 2 VCPU, 4 Go de RAM (au minimum), 80 Go de stockage (ou plus), une adresse IP propre. <em>(Je suggère <a href="https://milkywan.fr/" target="_blank" rel="noopener noreffer ">Milkywan</a> ou <a href="https://www.virtua.cloud/" target="_blank" rel="noopener noreffer ">Virtua.Cloud</a>, tous deux basés en France et disposant d&rsquo;une excellente connectivité).</em></li>
+<li>Docker &amp; Docker Compose (je suggère d&rsquo;utiliser Docker car il est plus rapide à mettre en place).</li>
+<li><a href="https://mailcow.email/" target="_blank" rel="noopener noreffer ">Mailcow Dockerized</a>, mon serveur de messagerie préféré - il contient tous les services nécessaires et fonctionne avec des conteneurs Docker.</li>
+</ol>
+<h3 id="configuration">Configuration</h3>
+<h4 id="dns">DNS</h4>
+<p>Pour que Mailcow fonctionne, vous devez configurer les enregistrements DNS suivants</p>
+<pre tabindex="0"><code># Name              Type       Value
+mail                IN A       1.2.3.4
+autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
+@                   IN MX 10   mail.example.org. (your ${MAILCOW_HOSTNAME})
+</code></pre><h4 id="installation-de-mailcow">Installation de Mailcow</h4>
+<p>Une fois que les enregistrements DNS sont propagés, vous pouvez installer et configurer Mailcow.
+Tout d&rsquo;abord, nous clonons le référentiel et définissons les permissions sur les répertoires.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su
+</span></span><span class="line"><span class="cl"><span class="nb">umask</span>
+</span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Vérifier que c&#39;est bien 0022</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
+</span></span><span class="line"><span class="cl">git clone https://github.com/mailcow/mailcow-dockerized
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized
+</span></span></code></pre></div><p>Une fois que vous aurez répondu aux questions, le fichier de configuration sera généré pour vous. Une fois généré, nous pouvons lancer mailcow en utilisant les commandes suivantes</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose pull
+</span></span><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></div><p>FÉLICITATIONS ! Vous avez installé un serveur de messagerie (enfin presque).</p>
+<p>Maintenant que le serveur fonctionne, vous pouvez accéder à https://${MAILCOW_HOSTNAME} avec les informations d&rsquo;identification par défaut <code>admin</code> + le mot de passe <code>moohoo</code> et commencer à configurer les domaines et les adresses e-mail.</p>
+<p>Mailcow a un excellent <a href="https://docs.mailcow.email/post_installation/firststeps-ssl/" target="_blank" rel="noopener noreffer ">site d&rsquo;aide</a> qui vous guidera à propos de la plupart des paramètres que je n&rsquo;ai pas couverts.</p>
+<h2 id="fin">Fin</h2>
+<p>J&rsquo;espère qu&rsquo;avec ce court article, vous pouvez voir qu&rsquo;il n&rsquo;est pas vraiment difficile de mettre en place un serveur de messagerie. Ce qui est difficile, c&rsquo;est de garder ses addrresses hors des listes de spam et de combattre le spam entrant, mais pour un usage personnel et avec l&rsquo;aide de Mailcow, vous devriez vous en sortir.</p>
+<p>Une autre chose que vous ne devez pas oublier est &hellip; LES SAUVEGARDES.</p>
+<p>Si vous hébergez votre courriel principal sur ce serveur, vous devriez le sauvegarder régulièrement.</p>
+]]></description></item></channel></rss>
