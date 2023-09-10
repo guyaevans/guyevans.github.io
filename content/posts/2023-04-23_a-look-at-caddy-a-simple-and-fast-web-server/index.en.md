@@ -10,7 +10,7 @@ tags:
     - nginx
     - homelab
 summary: We've all used Apache and NGNIX when we have had to host a website and they are fin but let's be honest, I've never gotten along with their config. And that is what bought me to Caddy. Lets take a look at what Caddy has to offer.
-featuredImage: https://guy-evans.com/posts/valery-sysoev-p9OkL4yW3C8-unsplash.webp
+featuredImage: https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp
 rssFullText: true
 ---
 We've all used Apache and NGNIX when we have had to host a website and they are fin but let's be honest, I've never gotten along with their config. And that is what bought me to [Caddy](caddyserver.com/). Lets take a look at what [Caddy](caddyserver.com/) has to offer.
