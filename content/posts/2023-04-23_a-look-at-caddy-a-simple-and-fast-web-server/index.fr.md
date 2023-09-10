@@ -10,7 +10,7 @@ tags:
     - nginx
     - homelab
 summary: Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l'aise avec leur configuration. Et c'est ce qui m'a amené à Caddy. Découvrons ce que Caddy a à offrir.
-featuredImage: valery-sysoev-p9OkL4yW3C8-unsplash.webp
+featuredImage: https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp
 rssFullText: true
 ---
 Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l'aise avec leur configuration. Et c'est ce qui m'a amené à [Caddy](caddyserver.com/). Découvrons ce que [Caddy](caddyserver.com/) a à offrir.
