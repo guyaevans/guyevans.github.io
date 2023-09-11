@@ -19,7 +19,7 @@ After lucking out and not loosing any of my data saved to my nextcloud after the
 >
 > {{<figure src="/img/this-is-fine.webp">}}
 
-I may have become a bit paranoid about backups, especially for anything stored in my Nextcloud which hold just about anything to do with my personal life, including photos of our recent newborn. 
+I may have become a bit paranoid about backups, especially for anything stored in my Nextcloud which holds just about anything to do with my personal life, including photos of our recent newborn. 
 
 ## The 3-2-1 Rule
 I decided to base my backup strategy on the 3-2-1 rule (and you should too)
