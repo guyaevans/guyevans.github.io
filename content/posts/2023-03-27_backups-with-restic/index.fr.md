@@ -121,7 +121,7 @@ Vous pouvez utiliser ``latest`` à la place de l'identifiant du snapshot pour r�
 
 C'est aussi simple que la sauvegarde, non ?
 {{< admonition info "Autres commandes et documentation">}}
-Restic possède de nombreuses autres commandes utiles que vous pouvez trouver dans leur excellente [documentation] (https://restic.readthedocs.io).
+Restic possède de nombreuses autres commandes utiles que vous pouvez trouver dans leur excellente [documentation](https://restic.readthedocs.io).
 {{</ admonition>}}
 
 ### Automatisation avec un script Bash et Cron
