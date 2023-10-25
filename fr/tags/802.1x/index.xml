@@ -39,10 +39,10 @@ vlan 30 tagged all
 </code></pre><p>Ensuite, nous configurons EAP-RADIUS, ce qui permet au commutateur de transmettre les paquets d&rsquo;authentification des clients au serveur Radius.</p>
 <pre tabindex="0"><code>aaa authentication port-access eap-radius
 </code></pre><p>Nous activons ensuite 802.1x sur les ports de notre commutateur, ici nous le faisons sur une série de ports mais vous pouvez spécifier des ports individuels, ou les séparer par une virgule. Nous demandons au switch de placer les clients autorisés sur le vlan 10 (auth-vid) et les clients non autorisés sur le vlan 20 (unauth-vid).</p>
-<pre tabindex="0"><code>aaa aaa port-access authenticator 1-10
-aaa aaa port-access authenticator 1-10 unauth-vid 20
-aaa aaa port-access authenticator 1-10 auth-vid 10
-aaa aaa port-access authenticator active
+<pre tabindex="0"><code>aaa port-access authenticator 1-10
+aaa port-access authenticator 1-10 unauth-vid 20
+aaa port-access authenticator 1-10 auth-vid 10
+aaa port-access authenticator active
 </code></pre><p>La configuration de notre switch est ainsi terminée. Ou bien est-ce le cas ?</p>
 <h4 id="bonus-quen-est-il-des-téléphones-ip-">(Bonus) Qu&rsquo;en est-il des téléphones IP ?</h4>
 <p>Vous avez peut-être remarqué que j&rsquo;ai inclus un vlan pour les téléphones, car c&rsquo;était une question importante que je me posais lors de mon premier déploiement de 802.1x. Devrai-je ajouter chaque téléphone à notre serveur Radius et configurer chaque téléphone pour l&rsquo;authentification ou utiliser MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>

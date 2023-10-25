@@ -14,7 +14,7 @@
 <h2 id="what-do-we-need">What do we need?</h2>
 <ul>
 <li>A RADIUS server (at IP 192.168.10.2) - we are using Microsoft NPS (I won&rsquo;t be detailing the configuration of NPS here but may do so in the futur)</li>
-<li>A Managed Switch - Could be any any managed switch which can do port authentication, I&rsquo;m doing this on an <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (which is a nice switch by the way, if only it could make it&rsquo;s way home from work 😉 wink: )</li>
+<li>A Managed Switch - Could be any any managed switch which can do port authentication, I&rsquo;m doing this on an <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (which is a nice switch by the way, if only it could make it&rsquo;s way home from work 😉 😉 )</li>
 <li>Some VLANs
 <ul>
 <li>Company VLAN: 10</li>
@@ -39,10 +39,10 @@ vlan 30 tagged all
 </code></pre><p>Then we configure EAP-RADIUS, this enables the switch to forward the authentication packets from the clients to the Radius server.</p>
 <p><code>aaa authentication port-access eap-radius</code></p>
 <p>We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or separate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)</p>
-<pre tabindex="0"><code>aaa aaa port-access authenticator 1-10
-aaa aaa port-access authenticator 1-10 unauth-vid 20
-aaa aaa port-access authenticator 1-10 auth-vid 10
-aaa aaa port-access authenticator active
+<pre tabindex="0"><code>aaa port-access authenticator 1-10
+aaa port-access authenticator 1-10 unauth-vid 20
+aaa port-access authenticator 1-10 auth-vid 10
+aaa port-access authenticator active
 </code></pre><p>With that our switch configuration is done. Or is it?</p>
 <h4 id="bonus-what-about-ip-phones">(Bonus) What about IP Phones?</h4>
 <p>You may have noticed I included a vlan for phones, as this was a huge question I had on my first roll out of 802.1x. Will I need to add each phone to our Radius server and configure each phone for the authentication or use MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>
