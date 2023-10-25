@@ -28,7 +28,7 @@ Imagine a situation where you have a public meeting room equipped with accessibl
 ## What do we need?
 
 * A RADIUS server (at IP 192.168.10.2) - we are using Microsoft NPS (I won't be detailing the configuration of NPS here but may do so in the futur)
-* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an [ARUBA 2930F](https://www.arubanetworks.com/products/switches/access/2930f-series/) (which is a nice switch by the way, if only it could make it's way home from work :wink: wink: )
+* A Managed Switch - Could be any any managed switch which can do port authentication, I'm doing this on an [ARUBA 2930F](https://www.arubanetworks.com/products/switches/access/2930f-series/) (which is a nice switch by the way, if only it could make it's way home from work :wink: :wink: )
 * Some VLANs
   * Company VLAN: 10
   * Public VLAN: 20
@@ -63,10 +63,10 @@ Then we configure EAP-RADIUS, this enables the switch to forward the authenticat
 We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or separate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)
 
 ```
-aaa aaa port-access authenticator 1-10
-aaa aaa port-access authenticator 1-10 unauth-vid 20
-aaa aaa port-access authenticator 1-10 auth-vid 10
-aaa aaa port-access authenticator active
+aaa port-access authenticator 1-10
+aaa port-access authenticator 1-10 unauth-vid 20
+aaa port-access authenticator 1-10 auth-vid 10
+aaa port-access authenticator active
 ```
 
 With that our switch configuration is done. Or is it?

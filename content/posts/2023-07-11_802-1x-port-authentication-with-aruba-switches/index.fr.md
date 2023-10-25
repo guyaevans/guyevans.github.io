@@ -65,10 +65,10 @@ aaa authentication port-access eap-radius
 Nous activons ensuite 802.1x sur les ports de notre commutateur, ici nous le faisons sur une série de ports mais vous pouvez spécifier des ports individuels, ou les séparer par une virgule. Nous demandons au switch de placer les clients autorisés sur le vlan 10 (auth-vid) et les clients non autorisés sur le vlan 20 (unauth-vid).
 
 ```
-aaa aaa port-access authenticator 1-10
-aaa aaa port-access authenticator 1-10 unauth-vid 20
-aaa aaa port-access authenticator 1-10 auth-vid 10
-aaa aaa port-access authenticator active
+aaa port-access authenticator 1-10
+aaa port-access authenticator 1-10 unauth-vid 20
+aaa port-access authenticator 1-10 auth-vid 10
+aaa port-access authenticator active
 ```
 
 La configuration de notre switch est ainsi terminée. Ou bien est-ce le cas ?
