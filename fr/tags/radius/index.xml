@@ -14,7 +14,7 @@
 <h2 id="de-quoi-avons-nous-besoin-">De quoi avons-nous besoin ?</h2>
 <ul>
 <li>Un serveur RADIUS (à l&rsquo;IP 192.168.10.2) - nous utilisons Microsoft NPS (je ne détaillerai pas la configuration de NPS ici mais je le ferai peut-être dans le futur).</li>
-<li>Un switch géré - Il peut s&rsquo;agir de n&rsquo;importe quel switch géré capable de faire de l&rsquo;authentification de port, je fais cela sur un <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (qui est un bon switch d&rsquo;ailleurs, si seulement je pouvais le ramener chez moi 😉 😉 )</li>
+<li>Un switch géré - Il peut s&rsquo;agir de n&rsquo;importe quel switch géré capable de faire de l&rsquo;authentification de port, je fais cela sur un <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (qui est un bon switch d&rsquo;ailleurs, si seulement je pouvais le ramener chez moi &#x1f609; &#x1f609; )</li>
 <li>Quelques VLAN
 <ul>
 <li>VLAN d&rsquo;entreprise : 10</li>

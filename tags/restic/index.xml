@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>restic - Tag - Guy Evans</title><link>https://guy-evans.com/tags/restic/</link><description>restic - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Tue, 28 Mar 2023 16:17:14 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/restic/" rel="self" type="application/rss+xml"/><item><title>Backups with Restic</title><link>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/immo-wegmann-htsvneqf5fg-unsplash.jpg" referrerpolicy="no-referrer">
-            </div><p>After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 🔥 in Strasbourg. I did however loose the VPS that hosted the website for <a href="https://www.evansmedia.fr" target="_blank" rel="noopener noreffer ">www.evansmedia.fr</a></p>
+            </div><p>After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> &#x1f525; in Strasbourg. I did however loose the VPS that hosted the website for <a href="https://www.evansmedia.fr" target="_blank" rel="noopener noreffer ">www.evansmedia.fr</a></p>
 <blockquote>
 <p>The shoemaker always wears the worst shoes, right?</p>
 <figure>
@@ -65,7 +65,7 @@
 </span></span></code></pre></div><h3 id="backing-up-all-the-things">Backing up all the things</h3>
 <p>Now we have an initialised repository we can start backing up our cat pictures. With the <code>backup</code> and pointing to the repository we created. So to backup my <code>~/cat-pictures</code> folder I would run this command</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures
-</span></span></code></pre></div><p>Yes it&rsquo;s that simple 😎</p>
+</span></span></code></pre></div><p>Yes it&rsquo;s that simple &#x1f60e;</p>
 <p>Everytime a backup is run, restic creates a <code>snapshot</code>, you can list these using the <code>snapshot</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
 </span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:

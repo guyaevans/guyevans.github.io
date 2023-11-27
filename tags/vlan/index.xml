@@ -14,7 +14,7 @@
 <h2 id="what-do-we-need">What do we need?</h2>
 <ul>
 <li>A RADIUS server (at IP 192.168.10.2) - we are using Microsoft NPS (I won&rsquo;t be detailing the configuration of NPS here but may do so in the futur)</li>
-<li>A Managed Switch - Could be any any managed switch which can do port authentication, I&rsquo;m doing this on an <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (which is a nice switch by the way, if only it could make it&rsquo;s way home from work 😉 😉 )</li>
+<li>A Managed Switch - Could be any any managed switch which can do port authentication, I&rsquo;m doing this on an <a href="https://www.arubanetworks.com/products/switches/access/2930f-series/" target="_blank" rel="noopener noreffer ">ARUBA 2930F</a> (which is a nice switch by the way, if only it could make it&rsquo;s way home from work &#x1f609; &#x1f609; )</li>
 <li>Some VLANs
 <ul>
 <li>Company VLAN: 10</li>

@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>backups - Balise - Guy Evans</title><link>https://guy-evans.com/fr/tags/backups/</link><description>backups - Balise - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Tue, 28 Mar 2023 16:17:14 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/tags/backups/" rel="self" type="application/rss+xml"/><item><title>Sauvegardes avec Restic</title><link>https://guy-evans.com/fr/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author>Guy Evans</author><guid>https://guy-evans.com/fr/posts/2023-03-27_backups-with-restic/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/immo-wegmann-htsvneqf5fg-unsplash.jpg" referrerpolicy="no-referrer">
-            </div><p>Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud suite à l&rsquo;incendie d&rsquo;OVH<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 🔥 à Strasbourg. J&rsquo;ai cependant perdu le VPS qui hébergeait le site web de <a href="https://www.evansmedia.fr" target="_blank" rel="noopener noreffer ">www.evansmedia.fr</a></p>
+            </div><p>Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud suite à l&rsquo;incendie d&rsquo;OVH<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> &#x1f525; à Strasbourg. J&rsquo;ai cependant perdu le VPS qui hébergeait le site web de <a href="https://www.evansmedia.fr" target="_blank" rel="noopener noreffer ">www.evansmedia.fr</a></p>
 <blockquote>
 <p>Les cordonniers sont toujours les plus mal chaussés, n&rsquo;est-ce pas ?</p>
 <figure>
@@ -57,7 +57,7 @@
 </span></span></code></pre></div><h3 id="la-sauvegarde">La Sauvegarde</h3>
 <p>Maintenant que nous avons un dépôt initialisé, nous pouvons commencer à sauvegarder nos photos de chats. Avec la commande <code>backup</code> et pointant vers le dépôt que nous avons créé. Ainsi, pour sauvegarder mon dossier <code>~/cat-pictures</code>, je lancerais la commande suivante</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures
-</span></span></code></pre></div><p>Oui, c&rsquo;est aussi simple que ça 😎</p>
+</span></span></code></pre></div><p>Oui, c&rsquo;est aussi simple que ça &#x1f60e;</p>
 <p>A chaque fois qu&rsquo;une sauvegarde est lancée, restic crée un snapshot, vous pouvez les lister en utilisant la commande <code>snapshot</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
 </span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
