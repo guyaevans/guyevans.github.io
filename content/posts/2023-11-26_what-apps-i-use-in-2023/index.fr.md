@@ -14,12 +14,12 @@ rssFullText: true
 J'ai vu cette idée apparaître sur [BrainBaking](https://brainbaking.com/post/2023/11/app-defaults-in-late-2023/) et comme je suis toujours intéressée par les outils et les applications que les autres utilisent, je me suis dit qu'il fallait que je participe. Voici donc une sélection de mes applications préférées que j'utilise au quotidien.
 
 * :technologist: Navigateur: Firefox & Safari on iOS - [(Pourquoi vous devriez laisser tomber Chrome)](https://twitter.com/vxunderground/status/1725290175419277450)
-* :email: Email: Gmail - Google Travailspace & Mailcow (Personnel) - Outlook - Office365 (Travail)
-* :white_check_mark: Tâches: Obsidian - Planner/Projects - Notebook/PostIt Notes and a nice [Rotring 600](https://amzn.to/3GhBQLV)
+* :email: Email: Gmail - Google Travailspace & Mailcow (Perso) - Outlook - Office365 (Travail)
+* :white_check_mark: Tâches: Obsidian - Planner/Projects - Notebook/PostIt Notes et un [Rotring 600](https://amzn.to/3GhBQLV)
 * :newspaper: RSS: Nextcloud News & NextNews App iOS
-* :cloud: Stockage Cloud: auto-hébergé Nextcloud (Personnel) - OneDrive (Travail)
+* :cloud: Stockage Cloud: auto-hébergé Nextcloud (Perso) - OneDrive (Travail)
 * :framed_picture: Photo-montage: Adobe Photoshop
-* :calendar: Agenda/Calandrier: Apple Calendar with Google Calendar (Personnel) & Outlook Calendar (Travail)
+* :calendar: Agenda/Calandrier: Apple Calendar avec Google Calendar (Perso) & Outlook Calendar (Travail)
 * :studio_microphone: Podcasts: Overcast
 * :musical_note: Musique: Spotify
 * :people_holding_hands: Réseaux sociaux: X - Instagram - Reddit
@@ -28,7 +28,7 @@ J'ai vu cette idée apparaître sur [BrainBaking](https://brainbaking.com/post/2
 * :notebook: Notes: Markdown in VSCode or Obsidian & Notebook & Pen
 * :film_projector: Présentations: [Marp](https://marp.app/) & VSCode
 * :pencil: Éditeur de texte: Visual Code & Markdown
-* :computer: Terminal: iTerm (MacOS) - Terminal with WSL2 (Windows) - both with [Oh My Zsh](https://ohmyz.sh/)
+* :computer: Terminal: iTerm (MacOS) - Terminal with WSL2 (Windows) - les deux avec [Oh My Zsh](https://ohmyz.sh/)
 * :house: Domotique: [Home Assistant](https://www.home-assistant.io/)
 
 Vous avez une application préférée que vous utilisez tous les jours ? Partagez-la avec nous !
