@@ -10,14 +10,14 @@ tags:
 rssFullText: true
 ---
 ## Too many bags
-I am a fan of traveling, although I haven't been able to travel much since the birth of the little one but I digress. 
+I am a fan of travelling, although I haven't been able to travel much since the birth of the little one but I digress. 
 
-Back to Onebag travel: Many of us have dealt with the hassle of managing multiple, often large bags while traveling. How often have you arrived at a destination before being able to check in to your accommodation? In such cases, I usually start exploring the destination, but the challenge is dealing with large bags. Ideally, you can either A) leave your bags at your accommodation, B) find a bag storage location, or C) wait until you can check in.
+Back to Onebag travel: Many of us have dealt with the hassle of managing multiple, often large bags while travelling. How often have you arrived at a destination before being able to check in to your accommodation? In such cases, I usually start exploring the destination, but the challenge is dealing with large bags. Ideally, you can either A) leave your bags at your accommodation, B) find a bag storage location, or C) wait until you can check in.
 
 ## Onebag Travel?
 But what if I told you there is another way? Well there is ... get rid of all but one bag. 
 
-Onebag travel, also known as one-bagging, is a minimalist approach to travel that involves packing and traveling with only a single piece of luggage, typically a carry-on-sized backpack or suitcase. The goal is to simplify the travel experience by minimizing the amount of belongings one carries, focusing on essential items, and avoiding the need for multiple bags or checked luggage.
+Onebag travel, also known as one-bagging, is a minimalist approach to travel that involves packing and travelling with only a single piece of luggage, typically a carry-on-sized backpack or suitcase. The goal is to simplify the travel experience by minimizing the amount of belongings one carries, focusing on essential items, and avoiding the need for multiple bags or checked luggage.
 ### Why Onebag Travel?
 Now we know what Onebag travel is, here a just a few upsides:
 
@@ -29,7 +29,7 @@ Flexibility: Onebag travel encourages a mindset of simplicity. Travelers learn t
 
 ## The Bag
 
-Okay so now we know about onebag travel and some of its advantages, we need to choose a bag. I'll spare you most of my research as everyone has different criterias. Here are mine:
+Okay so now we know about onebag travel and some of its advantages, we need to choose a bag. I'll spare you most of my research as everyone has different criteria. Here are mine:
 
 The bag:
 * be cheap - no more than 100 Euros
@@ -42,9 +42,9 @@ The bag:
 
 {{< figure src="/img/going-to-need-more-coffee-bbt.gif">}}
 
-I started my research on reddit (as I usually do) and quicly stumbled on a goldmine; [r/onebag](https://www.reddit.com/r/onebag/), a reddit community dedicated to onebagging.
+I started my research on reddit (as I usually do) and quickly stumbled on a goldmine; [r/onebag](https://www.reddit.com/r/onebag/), a reddit community dedicated to onebagging.
 
-After hours of browsing a bag cought my eye - The Decathlon NH500 Escape Rolltop which checked most of my requirements:
+After hours of browsing a bag caught my eye - The Decathlon NH500 Escape 23L Rolltop which checked most of my requirements:
 
 * Cheap - 49 Euros in Store
 * fits plenty
@@ -55,3 +55,60 @@ After some browsing I actually bought mine on Vinted for 35 Euros so a win win I
 {{< figure src="sac-a-dos-de-randonnee-23l-nh-escape-500-rolltop.jpg">}}
 ## The Contents
 
+Now the fun part what do we put in the bag? Here is my base list. I won't go into detail for each item but I will include some thoughts for some items.
+
+
+### Packing cubes
+
+I usually use 2 packing cubes:
+- 1 [Peak Design Medium](https://amzn.to/48k3dRM) for clothes 
+- 1 Small cheap Ono cube for underwear and socks. 
+
+### Clothes:
+Here is my clothes list, usually good for 4 days and autumn temperatures. Could also work for colder temps.
+- 2 Polo shirts, 1 blue and 1 white - 
+- 2 Normal Cotton t-shirts (1 worn for travel)
+- 2 Uniqlo Airisism Cotton t-shirts - these are great for travel as they fold up small
+- 1 Uniqlo Beige Jeans - these easily can pass as chinos in a pinch
+- 1 Uniqlo Ultra Stretch Jeans (Worn) - these are some of the comfiest jeans for travel. 
+- Plenty of underwear - I had two extra
+- Socks: 
+  - 1 pair Darn Tough Socks (Merino)
+  - 1 pair Smartwool (Merino)
+  - 2 pairs of cheap socks for backup
+  
+  The key here as I've learnt recently is merino wool. Merino wool is lightweight, durable, odore resistant and antimicrobial and breathable.
+- Smart looking Primark Jumper
+- Zip-Up Hoody (Worn)
+- Running shorts that double as swim shorts (not shown)
+- Patagonia Nano-Puff Jacket
+- Arc’teryx baseball cap - great for rain and sunny weather
+- Adidas Advantage shoes - once broken in they are so comfy
+
+### Electronics:
+- [Anker PowerCore 20 000 mAh battery](https://amzn.to/3TkAAiZ) - way too big but a nice to have
+- [Anker 40W USB C Charger](https://amzn.to/4ansg7Y)
+- Lightning to USB C
+- Apple Watch Cable
+- [USB C cable](https://amzn.to/4alrgBh)
+- Apple airpods pros
+- Spare wired headphones + lightning to headphone jack
+- 4G wifi router - bought for friends as I get a lot of data in the EU
+- [Amazon Kindle Paperwhite](https://amzn.to/3RmaN7p)
+- Flashlight: D4v2 - always have a decent flash light … don’t ask 😉
+
+### Hygiene:
+- Toothbrush + bought toothpaste on arrival
+- Shower-gel
+- Deodorant 
+- Contact lens solution and case
+- Disposable razor
+- Paracetamol
+- Ear-plugs
+
+### Misc:
+- Sunglasses
+- Glasses - for when I don’t wear contact lenses. 
+
+---
+_Note: some links may be affiliate links. As an Amazon Associate I my earn a small commission from qualifying purchases at no extra cost to the buyer._
