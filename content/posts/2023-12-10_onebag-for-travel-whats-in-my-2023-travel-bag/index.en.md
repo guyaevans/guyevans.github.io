@@ -1,6 +1,6 @@
 ---
-title: Onebag for Travel - Whats in my 2023 travel bag
-date: 2023-12-10T20:25:17.186Z
+title: Onebag for Travel - Whats in my 2023/2024 travel bag
+date: 2024-03-02T14:24:11.803Z
 featuredImage: feature.jpg
 tags:
   - travel

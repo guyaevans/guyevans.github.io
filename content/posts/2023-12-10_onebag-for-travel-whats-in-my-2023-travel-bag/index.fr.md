@@ -1,6 +1,6 @@
 ---
-title: Onebag for Travel - Ce que contient mon sac de voyage en 2023
-date: 2023-12-10T20:25:17.186Z
+title: Un seul sac de voyage - Que contient mon sac de voyage en 2023/2024
+date: 2024-03-02T14:24:11.803Z
 featuredImage: feature.jpg
 tags:
   - travel
