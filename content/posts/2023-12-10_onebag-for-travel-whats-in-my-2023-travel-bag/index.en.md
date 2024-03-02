@@ -1,12 +1,12 @@
 ---
 title: Onebag for Travel - Whats in my 2023 travel bag
 date: 2023-12-10T20:25:17.186Z
+featuredImage: feature.jpg
 tags:
   - travel
   - bag
   - edc
-# summary: Do you use a lot of different apps during your day? So do I and I
-#   thought I would share some of my favourites for 2023.
+  - onebag
 rssFullText: true
 ---
 ## Too many bags
@@ -47,26 +47,30 @@ I started my research on reddit (as I usually do) and quickly stumbled on a gold
 After hours of browsing a bag caught my eye - The Decathlon NH500 Escape 23L Rolltop which checked most of my requirements:
 
 * Cheap - 49 Euros in Store
-* fits plenty
-* can carry a laptop and tablet
-* _bonus_: designed by Decathlon, a french company :fr: and available in their stores
+* Fits plenty
+* Can carry a laptop and tablet
+* Roll-top - Can be expanded from 23L to something like 30L
+* _Bonus_: designed by Decathlon, a french company :fr: and available in their stores
 
 After some browsing I actually bought mine on Vinted for 35 Euros so a win win I guess.
 {{< figure src="sac-a-dos-de-randonnee-23l-nh-escape-500-rolltop.jpg">}}
+
 ## The Contents
+
+{{< figure src="./IMG_4754.jpeg">}}
 
 Now the fun part what do we put in the bag? Here is my base list. I won't go into detail for each item but I will include some thoughts for some items.
 
 
 ### Packing cubes
-
+{{< figure src="./IMG_4756.jpeg">}}
 I usually use 2 packing cubes:
 - 1 [Peak Design Medium](https://amzn.to/48k3dRM) for clothes 
 - 1 Small cheap Ono cube for underwear and socks. 
 
 ### Clothes:
 Here is my clothes list, usually good for 4 days and autumn temperatures. Could also work for colder temps.
-- 2 Polo shirts, 1 blue and 1 white - 
+- 2 Polo shirts, 1 blue and 1 white
 - 2 Normal Cotton t-shirts (1 worn for travel)
 - 2 Uniqlo Airisism Cotton t-shirts - these are great for travel as they fold up small
 - 1 Uniqlo Beige Jeans - these easily can pass as chinos in a pinch
@@ -77,11 +81,11 @@ Here is my clothes list, usually good for 4 days and autumn temperatures. Could 
   - 1 pair Smartwool (Merino)
   - 2 pairs of cheap socks for backup
   
-  The key here as I've learnt recently is merino wool. Merino wool is lightweight, durable, odore resistant and antimicrobial and breathable.
+  The key here as I've learnt recently is merino wool. Merino wool is lightweight, durable, odor resistant and antimicrobial and breathable.
 - Smart looking Primark Jumper
 - Zip-Up Hoody (Worn)
 - Running shorts that double as swim shorts (not shown)
-- Patagonia Nano-Puff Jacket
+- [Patagonia Nano-Puff Jacket](https://amzn.to/49SGz3u)
 - Arc’teryx baseball cap - great for rain and sunny weather
 - Adidas Advantage shoes - once broken in they are so comfy
 
@@ -109,6 +113,8 @@ Here is my clothes list, usually good for 4 days and autumn temperatures. Could 
 ### Misc:
 - Sunglasses
 - Glasses - for when I don’t wear contact lenses. 
+
+Do you travel with one or more bags? What's in your travel bag(s)? 
 
 ---
 _Note: some links may be affiliate links. As an Amazon Associate I my earn a small commission from qualifying purchases at no extra cost to the buyer._
