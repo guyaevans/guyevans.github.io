@@ -12,19 +12,26 @@ Mikrotik has a built in tool for that:
 > The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network "bottlenecks" - [Mikrotik](https://help.mikrotik.com/docs/display/ROS/Bandwidth+Test)
 
 
-Well I volunteered my CHR [^1] instance. What could go wrong? 
+Well I volunteered my CHR [^1] instance. </br></br></br>
+
+{{<figure src="/img/jack_whatcouldgowrong.gif">}}
 
 So I dm’d him some connection details and he started his tests!
 
 [^1]: Cloud Hosted Router (CHR) is a RouterOS version intended for running as a virtual machine. It supports the x86 64-bit architecture and can be used on most of the popular hypervisors such as VMWare, Hyper-V, Proxmox - [Mikrotik - Help](https://help.mikrotik.com/docs/display/ROS/Cloud+Hosted+Router%2C+CHR)
 
-![[IMG_4388.jpeg]]Transmitting at 2.7G - not bad!
+{{< figure src="./IMG_4388.jpeg" title="Transmitting at 2.7G - not bad!">}}
+
 
 After some back and forth we managed 4G. (I forgot to take a screenshot) Ok but still not quite our the target. 
 
+
 I then noticed something …
 
-![[IMG_4389.jpeg]]A bottleneck - I only ever gave my CHR instance 4 vCPUs because why should I need more? Simple solution for that problem:  Throw more vCPUs at it. I gave the VM 10 vCPUs and restarted it. 
+
+{{<figure src="IMG_4389.jpeg" title="A bottleneck">}}
+
+I only ever gave my CHR instance 4 vCPUs because why should I need more? Simple solution for that problem:  Throw more vCPUs at it. I gave the VM 10 vCPUs and restarted it. 
 
 ![[IMG_4390.jpeg]]Another test later, according to Milkywan’s weathermap [^wm] that got us to 5G but we wanted more. 
 
