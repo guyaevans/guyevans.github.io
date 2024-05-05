@@ -134,8 +134,8 @@ defaultContentLanguage = "en"
       # whether to show social links
       social = true
 
-# Author config
-[params.author]
+# Author confi
+[author]
   name = "Guy Evans"
   email = "web@evans.fr"
   link = ""
