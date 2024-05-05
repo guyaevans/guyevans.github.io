@@ -57,6 +57,11 @@ collections:
         widget: list
         i18n: true
         required: false
+      - name: series
+        label: Series
+        widget: list
+        i18n: true
+        required: false
       - label: Full Text RSS
         name: rssFullText
         widget: boolean
