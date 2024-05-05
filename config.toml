@@ -1,12 +1,11 @@
 baseURL = "https://guy-evans.com"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "DoIt"
 title = "Guy Evans"
 description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
 enableEmoji = true
-
 
 enableRobotsTXT = true
 
@@ -21,11 +20,15 @@ enableRobotsTXT = true
 #   taxonomy = ["HTML", "RSS"]
 #   taxonomyTerm = ["HTML"]
 [params]
+  version = "0.3.X"
   # website title
   title = "Guy Evans"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
+  # Do it version
+  
   [params.page]
+
     [params.page.comment]
       enable = true
       [params.page.comment.isso]
@@ -56,6 +59,7 @@ defaultContentLanguage = "en"
 [languages]
   [languages.en]
     weight = 1
+    title = "My New Hugo Site"
     languageCode = "en"
     languageName = "English"
     [[languages.en.menu.main]]
@@ -140,7 +144,7 @@ defaultContentLanguage = "en"
     # Telegram = "guye06"
     Bluesky = "guy.evans.fr"
     Mastodon = "https://mastodon.xyz/@_guyevans"
-    GitHub = ""
+    # GitHub = ""
     RSS = true 
 # Menu config
 
