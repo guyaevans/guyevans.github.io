@@ -1,4 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Guy Evans</title><link>https://guy-evans.com/</link><description>Sysadmin -- Net Admin -- IT Tech -- DIYer</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 02 Mar 2024 14:24:11 +0000</lastBuildDate><atom:link href="https://guy-evans.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Onebag for Travel - Whats in my 2023/2024 travel bag</title><link>https://guy-evans.com/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Guy Evans</title><link>https://guy-evans.com/</link><description>Sysadmin -- Net Admin -- IT Tech -- DIYer</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Sat, 02 Mar 2024 14:24:11 +0000</lastBuildDate><atom:link href="https://guy-evans.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Onebag for Travel - Whats in my 2023/2024 travel bag</title><link>https://guy-evans.com/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/feature.jpg" referrerpolicy="no-referrer">
             </div><h2 id="too-many-bags" class="headerLink">
     <a href="#too-many-bags" class="header-mark" aria-label="Header mark for 'Too many bags'"></a>Too many bags</h2><p>I am a fan of travelling, although I haven&rsquo;t been able to travel much since the birth of the little one but I digress.</p>
@@ -132,7 +132,7 @@ I usually use 2 packing cubes:</p>
 <p>Do you travel with one or more bags? What&rsquo;s in your travel bag(s)?</p>
 <hr>
 <p><em>Note: some links may be affiliate links. As an Amazon Associate I my earn a small commission from qualifying purchases at no extra cost to the buyer.</em></p>
-]]></description></item><item><title>What Apps I use in 2023</title><link>https://guy-evans.com/posts/2023-11-26_what-apps-i-use-in-2023/</link><pubDate>Mon, 27 Nov 2023 20:54:48 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2023-11-26_what-apps-i-use-in-2023/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>What Apps I use in 2023</title><link>https://guy-evans.com/posts/2023-11-26_what-apps-i-use-in-2023/</link><pubDate>Mon, 27 Nov 2023 20:54:48 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-11-26_what-apps-i-use-in-2023/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-11-26_what-apps-i-use-in-2023/feature.jpg" referrerpolicy="no-referrer">
             </div><p>I saw this idea pop-up on <a href="https://brainbaking.com/post/2023/11/app-defaults-in-late-2023/" target="_blank" rel="noopener noreferrer">BrainBaking</a> and as I&rsquo;m always interested in seeing what tools and apps other people are using I thought I should join in. So here is a selection of my favourite apps I use on a daily basis.</p>
 <ul>
@@ -158,7 +158,7 @@ I usually use 2 packing cubes:</p>
 <hr>
 <p><em>Photo by SCREEN POST @ <a href="https://www.pexels.com/photo/pc-keyboard-laying-on-desk-before-monitor-glowing-pink-9976568/" target="_blank" rel="noopener noreferrer">Pexels.com</a></em></p>
 <p><em>Note: some links may be affiliate links. As an Amazon Associate I my earn a small commission from qualifying purchases at no extra cost to the buyer.</em></p>
-]]></description></item><item><title>802.1x Port Authentication with ARUBA switches</title><link>https://guy-evans.com/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</link><pubDate>Thu, 13 Jul 2023 14:32:51 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>802.1x Port Authentication with ARUBA switches</title><link>https://guy-evans.com/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</link><pubDate>Thu, 13 Jul 2023 14:32:51 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-07-11_802-1x-port-authentication-with-aruba-switches/thomas-jensen-ISG-rUel0Uw-unsplash.jpg" referrerpolicy="no-referrer">
             </div><h2 id="8021x---why" class="headerLink">
     <a href="#8021x---why" class="header-mark" aria-label="Header mark for '802.1x - Why?'"></a>802.1x - Why?</h2><p>In the enterprise, we often use 802.1x to secure access to wired and wireless networks. For wired networks 802.1x allows us to require authentication at the port level on a supported switch which also allows us to dynamically assign VLANs to the port or connecting device.</p>
@@ -594,7 +594,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </li>
 </ol>
 </div>
-]]></description></item><item><title>A look at Caddy - A simple and fast web server</title><link>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>A look at Caddy - A simple and fast web server</title><link>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
             </div><p>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fin but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to <a href="caddyserver.com/" rel="">Caddy</a>. Lets take a look at what <a href="caddyserver.com/" rel="">Caddy</a> has to offer.</p>
 <h1 id="caddy" class="headerLink">
@@ -1094,7 +1094,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-5" 
+    id="codeblock-id-1" 
     class="
       chroma 
       !tw-block 
@@ -1149,7 +1149,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </li>
 </ol>
 </div>
-]]></description></item><item><title>Backups with Restic</title><link>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>Backups with Restic</title><link>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</link><pubDate>Tue, 28 Mar 2023 16:17:14 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-03-27_backups-with-restic/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-03-27_backups-with-restic/immo-wegmann-htsvneqf5fg-unsplash.jpg" referrerpolicy="no-referrer">
             </div><p>After lucking out and not loosing any of my data saved to my nextcloud after the OVH fire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> &#x1f525; in Strasbourg. I did however loose the VPS that hosted the website for <a href="https://www.evansmedia.fr" target="_blank" rel="noopener noreferrer">www.evansmedia.fr</a></p>
 <blockquote>
@@ -2259,7 +2259,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </li>
 </ol>
 </div>
-]]></description></item><item><title>Self-hosted Email - Why and How?</title><link>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>Self-hosted Email - Why and How?</title><link>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</link><pubDate>Sun, 15 Jan 2023 14:00:58 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-01-09_self-hosted-email-why-and-how/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-01-09_self-hosted-email-why-and-how/brett-jordan-lpzy4da9aro-unsplash.jpg" referrerpolicy="no-referrer">
             </div><h2 id="email" class="headerLink">
     <a href="#email" class="header-mark" aria-label="Header mark for 'Email'"></a>Email</h2><p>Question: What is one service on the internet that we use regularly and has become part of our day to day? <strong>EMAIL</strong></p>
@@ -2684,7 +2684,7 @@ First we clone the repository and set the permissions on the folders</p>
 <p>If you host your main email on this server, you should back it up regularly.</p>
 <hr>
 <p><em>Photo by Brett Jordon @ <a href="https://unsplash.com/@brett_jordan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash.com</a></em></p>
-]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 2</title><link>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</link><pubDate>Sat, 07 Jan 2023 16:04:28 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 2</title><link>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</link><pubDate>Sat, 07 Jan 2023 16:04:28 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/cbo-rack-mw2.jpg" referrerpolicy="no-referrer">
             </div><h2 id="after-the-virtual-private-servers" class="headerLink">
     <a href="#after-the-virtual-private-servers" class="header-mark" aria-label="Header mark for 'After the Virtual Private Servers'"></a>After the Virtual Private Servers</h2><p>After loosing one of my virtual private servers along with the data in the <em>&lsquo;The Great Fire of OVH</em> &#x1f525;&rsquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (Yes I know I should have had backups of that VPS<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>), I thought why not setup a Proxmox<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> Cluster<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> on a couple dedicated servers.</p>
@@ -2774,7 +2774,7 @@ Other posts in this series:</p>
 </li>
 </ol>
 </div>
-]]></description></item><item><title>Podcast Recommendations</title><link>https://guy-evans.com/posts/2022-12-21_podcast-recommendations/</link><pubDate>Wed, 21 Dec 2022 17:20:57 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2022-12-21_podcast-recommendations/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>Podcast Recommendations</title><link>https://guy-evans.com/posts/2022-12-21_podcast-recommendations/</link><pubDate>Wed, 21 Dec 2022 17:20:57 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-12-21_podcast-recommendations/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-12-21_podcast-recommendations/melanie-pongratz-becwwmiuj2k-unsplash.jpg" referrerpolicy="no-referrer">
             </div><p>I could be described as a passionate podcast listener, whether I&rsquo;m on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work I usually stick on a podcast. Here are some of my recomendations</p>
 <h2 id="it--cybersecurity" class="headerLink">
@@ -2832,7 +2832,7 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
 <p>Thats all for now. Have you got a podcast suggestion? Drop it in the comments below</p>
 <hr>
 <p><em>Photo by Melanie Pongratz @ <a href="https://unsplash.com/s/photos/headphones-podcast?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash.com</a></em></p>
-]]></description></item><item><title>BGP IPv4 Config on Mikrotik RouterOSv7</title><link>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</link><pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>BGP IPv4 Config on Mikrotik RouterOSv7</title><link>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</link><pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/screen-router.png" referrerpolicy="no-referrer">
             </div><p>So I know a couple people who run their ASNs on Mikrotik routers (running RouterOS) as their hardware is cheap and easy to find. That includes me, I run BGP on their CHR image to announce my own ASN and IP v4 and V6 subnets. RouterOS CHR which is an image of RouterOS that you can run on your own hardware.</p>
 <p>You would prevously use RouterOS version 6, but now version 7 has a couple stable releases and is supposed to be more stable and faster for BGP, I thought I would post some of my configs for version 7 as the config syntax has changed quite a bit. Today I&rsquo;ll focus on IPv4 but IPv6 is pretty much the same.</p>
@@ -3365,7 +3365,7 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
 </li>
 </ol>
 </div>
-]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 1</title><link>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 1</title><link>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/thomas-jensen-urtxbx5i5se-unsplash-2-.jpg" referrerpolicy="no-referrer">
             </div><p>As a young child I always had an interest in computers and tech, little did I know that it would foundation for my carear path that I have chosen today.</p>
 <p>So where I am retracing my steps of how I ended up with a server colocated in a datacenter that made me the sys and net admin I am today</p>

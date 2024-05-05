@@ -1,4 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Homelab - Tag - Guy Evans</title><link>https://guy-evans.com/tags/homelab/</link><description>Homelab - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 23 Apr 2023 09:19:19 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/homelab/" rel="self" type="application/rss+xml"/><item><title>A look at Caddy - A simple and fast web server</title><link>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Homelab - Tag - Guy Evans</title><link>https://guy-evans.com/tags/homelab/</link><description>Homelab - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Sun, 23 Apr 2023 09:19:19 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/homelab/" rel="self" type="application/rss+xml"/><item><title>A look at Caddy - A simple and fast web server</title><link>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
             </div><p>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fin but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to <a href="caddyserver.com/" rel="">Caddy</a>. Lets take a look at what <a href="caddyserver.com/" rel="">Caddy</a> has to offer.</p>
 <h1 id="caddy" class="headerLink">
@@ -498,7 +498,7 @@
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-5" 
+    id="codeblock-id-1" 
     class="
       chroma 
       !tw-block 
@@ -553,7 +553,7 @@
 </li>
 </ol>
 </div>
-]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 2</title><link>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</link><pubDate>Sat, 07 Jan 2023 16:04:28 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 2</title><link>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</link><pubDate>Sat, 07 Jan 2023 16:04:28 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-12-24_vps-to-a-coloed-server-my-homelab-journey-part-2/cbo-rack-mw2.jpg" referrerpolicy="no-referrer">
             </div><h2 id="after-the-virtual-private-servers" class="headerLink">
     <a href="#after-the-virtual-private-servers" class="header-mark" aria-label="Header mark for 'After the Virtual Private Servers'"></a>After the Virtual Private Servers</h2><p>After loosing one of my virtual private servers along with the data in the <em>&lsquo;The Great Fire of OVH</em> &#x1f525;&rsquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (Yes I know I should have had backups of that VPS<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>), I thought why not setup a Proxmox<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> Cluster<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> on a couple dedicated servers.</p>
@@ -643,7 +643,7 @@ Other posts in this series:</p>
 </li>
 </ol>
 </div>
-]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 1</title><link>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author><name>Author</name></author><guid>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
+]]></description></item><item><title>VPS to a coloed server, my homelab journey - Part 1</title><link>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/thomas-jensen-urtxbx5i5se-unsplash-2-.jpg" referrerpolicy="no-referrer">
             </div><p>As a young child I always had an interest in computers and tech, little did I know that it would foundation for my carear path that I have chosen today.</p>
 <p>So where I am retracing my steps of how I ended up with a server colocated in a datacenter that made me the sys and net admin I am today</p>
