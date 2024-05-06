@@ -12,6 +12,8 @@ tags:
   - colo
   - colocation
 rssFullText: true
+series:
+  - Un VPS à un serveur en colocation
 ---
 ## Après les serveurs virtuels
 

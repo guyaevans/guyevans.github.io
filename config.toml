@@ -1,12 +1,9 @@
 baseURL = "https://guy-evans.com"
-
-# Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "DoIt"
 title = "Guy Evans"
 description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
 enableEmoji = true
-
 
 enableRobotsTXT = true
 
@@ -14,18 +11,28 @@ enableRobotsTXT = true
     tag = "tags"
     category = "categories"
     series = "series"
-# [outputs]
-#   home = ["HTML", "RSS", "JSON"]
-#   page = ["HTML", "MarkDown"]
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+# page = ["HTML", "RSS", "JSON"]
 #   section = ["HTML", "RSS"]
 #   taxonomy = ["HTML", "RSS"]
 #   taxonomyTerm = ["HTML"]
 [params]
+
+  version = "0.3.X"
   # website title
   title = "Guy Evans"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
 
+  # Do it version
+  
   [params.page]
+   [params.page.toc]
+      # whether to enable the table of the contents
+      enable = true
+      keepStatic = false
+      # whether to make the table of the contents in the sidebar automatically collapsed
+      auto = true
     [params.page.comment]
       enable = true
       [params.page.comment.isso]
@@ -127,7 +134,7 @@ defaultContentLanguage = "en"
       # whether to show social links
       social = true
 
-# Author config
+# Author confi
 [author]
   name = "Guy Evans"
   email = "web@evans.fr"
@@ -140,7 +147,7 @@ defaultContentLanguage = "en"
     # Telegram = "guye06"
     Bluesky = "guy.evans.fr"
     Mastodon = "https://mastodon.xyz/@_guyevans"
-    GitHub = ""
+    # GitHub = ""
     RSS = true 
 # Menu config
 
@@ -190,3 +197,21 @@ defaultContentLanguage = "en"
     
     [params.analytics.matomo]
       url = "//matomo.evans.fr/"
+
+
+[params.search]
+  enable = true
+  # type of search engine ("algolia", "fuse")
+  type = "fuse"
+  [params.search.fuse]
+    #  [DoIt NEW | 0.2.12]  https://fusejs.io/api/options.html
+    isCaseSensitive = false
+    minMatchCharLength = 2
+    findAllMatches = false
+    location = 0
+    threshold = 0.3
+    distance = 100
+    ignoreLocation = false
+    useExtendedSearch = true
+    ignoreFieldNorm = false
+

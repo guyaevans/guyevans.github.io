@@ -1,7 +1,8 @@
 ---
 title: The road to 10 Gbps internet - Mikrotik CHR Strangeness
-date: 2024-04-30T20:12:10.480Z
+date: 2024-05-06T22:40:12+02:00
 featuredImage: feature.jpeg
+rssFullText: true
 ---
 ## How it started
 My server[^Homelab] that lives in [Milywan](https://milkywan.fr)'s Croissy-Beaubourg/CBO location actually has a 10G NIC, as it was one of my requirements when setting it up. Something I have never really used its full potential. 

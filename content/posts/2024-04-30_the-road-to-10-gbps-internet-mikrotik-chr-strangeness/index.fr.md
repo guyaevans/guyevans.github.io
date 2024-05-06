@@ -1,6 +1,6 @@
 ---
 title: "Vers l'internet 10 Gbps - Bizarrerie Mikrotik CHR "
-date: 2024-04-30T20:12:10.480Z
+date: 2024-05-06T22:40:12+02:00
 featuredImage: feature.jpeg
 ---
 ## Le début

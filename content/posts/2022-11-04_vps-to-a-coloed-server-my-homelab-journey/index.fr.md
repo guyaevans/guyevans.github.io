@@ -1,5 +1,5 @@
 ---
-title: " D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 1"
+title: "D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 1"
 date: 2022-11-04T21:01:45.853Z
 featuredImage: thomas-jensen-urtxbx5i5se-unsplash-2-.jpg
 tags:
@@ -11,6 +11,8 @@ tags:
   - colo
   - colocation
 rssFullText: true
+series:
+  - Un VPS à un serveur en colocation
 ---
 J'ai toujours eu un intérêt pour les ordinateurs et la technologie. J'étais loin de me douter qu'il s'agirait de la base de mon parcours professionnel.
 
