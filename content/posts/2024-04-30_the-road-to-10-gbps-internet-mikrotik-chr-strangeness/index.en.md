@@ -1,54 +1,65 @@
 ---
 title: The road to 10 Gbps internet - Mikrotik CHR Strangeness
 date: 2024-04-30T20:12:10.480Z
+featuredImage: feature.jpeg
 ---
-My server that lives in Milywan's Croissy-Beaubourg/CBO location actually has a 10G NIC, as it was one of my requirements when setting it up. Something I have never really used its full potential. Today that changed (sort of). 
+## How it started
+My server[^Homelab] that lives in [Milywan](https://milkywan.fr)'s Croissy-Beaubourg/CBO location actually has a 10G NIC, as it was one of my requirements when setting it up. Something I have never really used its full potential. 
+
+__Today that changed__ _(sort of)._
+
+[^Homelab]: [I posted two articles](https://guy-evans.com/series/vps-to-a-coloed-server-my-homelab-journey/) about going from a single to virtual private server to my own server in a colocated rack.
 
 Milkywan has a group chat on telegram where we talk about tech and other things between members. One of the guys there was looking for someone with a Mikrotik router “on-net” to run some bandwidth tests. 
 
-— *I’m trying to find out why I’m limited to 1G*
+— *I’m trying to find out if and why I’m limited to 1G*
 
 Mikrotik has a built in tool for that:
 > The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network "bottlenecks" - [Mikrotik](https://help.mikrotik.com/docs/display/ROS/Bandwidth+Test)
 
 
 Well I volunteered my CHR [^1] instance. </br></br></br>
-
 {{<figure src="/img/jack_whatcouldgowrong.gif">}}
-
+## A good start
 So I dm’d him some connection details and he started his tests!
 
 [^1]: Cloud Hosted Router (CHR) is a RouterOS version intended for running as a virtual machine. It supports the x86 64-bit architecture and can be used on most of the popular hypervisors such as VMWare, Hyper-V, Proxmox - [Mikrotik - Help](https://help.mikrotik.com/docs/display/ROS/Cloud+Hosted+Router%2C+CHR)
 
-{{< figure src="./IMG_4388.jpeg" title="Transmitting at 2.7G - not bad!">}}
+{{< figure src="./IMG_4388.jpeg" caption="Transmitting at 2.7G - not bad!">}}
 
+Not bad for an old R620 - After some changes - my colleague ran another test ...
 
-After some back and forth we managed 4G. (I forgot to take a screenshot) Ok but still not quite our the target. 
+We managed 4G. (I forgot to take a screenshot) Ok but still not quite our the target. 
 
+## The bottleneck
 
 I then noticed something …
 
+{{<figure src="IMG_4389.jpeg" caption="AH! - A bottleneck">}}
 
-{{<figure src="IMG_4389.jpeg" title="A bottleneck">}}
+I only ever gave my CHR instance 4 vCPUs because why should I need more? But with out tests we were maxing them out. Simple solution for that problem:  Throw more vCPUs at it. I gave the VM 10 vCPUs and restarted it. 
 
-I only ever gave my CHR instance 4 vCPUs because why should I need more? Simple solution for that problem:  Throw more vCPUs at it. I gave the VM 10 vCPUs and restarted it. 
+Another test later, according to Milkywan’s weathermap [^wm] that got us to 5G but we wanted more. 
 
-![[IMG_4390.jpeg]]Another test later, according to Milkywan’s weathermap [^wm] that got us to 5G but we wanted more. 
+{{<figure src="IMG_4390.jpeg" caption="You can see 5Gbps coming in from the router named cer2024.edge.tls (lower middle)">}} 
 
 [^wm]: A Weathermap is a map that displays the carriers network with overlays displaying statistics
 
-While discussing some more ideaswe left the test running until we got a message in the group chat:
+## The ban and an oddity
+
+While discussing some more ideas we left the test running until we got a message in the group chat:
 
 — *Hey guys, your triggering alerts on our monitoring systems* 🤣 
-_One of the admins_
+_-One of the admins_
 
 Well yes 5Gbps constant traffic will make a NOC at a small ISP look at whats happening. 
 
-So I decided to throw it a another socket of 12 vCPUs for a total of 24 vCPUs thinking more cpu = more bandwidth. 
+So I decided to throw it a another socket of 12 vCPUs for a total of 24 vCPUs thinking **more cpu = more bandwidth.**
+{{<figure src="/img/jeremy-clarkson-sometimes-my-genius.gif">}}
 
-Thats where I found and oddity with CHR, it won’t recognise a second CPU socket. So another restart later we had a single socket cpu with 24 vCPUs. Which got us to 6G. 
+That's where I found and oddity with CHR, it won’t recognise a second CPU socket. So another restart later we had a single socket cpu with 24 vCPUs. Which got us to 6G. 
 
-While my colleague was running some other tests in parallele we got another message:
+While my colleague was running some other tests in parallel we got another message:
 
 — *Well you’ve just triggered the automatic DDoS mitigation*[^anti-ddos] 😅
 

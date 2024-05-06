@@ -1,56 +1,72 @@
 ---
 title: "Vers l'internet 10 Gbps - Bizarrerie Mikrotik CHR "
 date: 2024-04-30T20:12:10.480Z
+featuredImage: feature.jpeg
 ---
-My server that lives in Milywan's Croissy-Beaubourg/CBO location actually has a 10G NIC, as it was one of my requirements when setting it up. Something I have never really used its full potential. Today that changed (sort of). 
+## Le début
+Mon serveur [^Homelab] qui se trouve dans baie réseau de [Milywan](https://milkywan.fr) à Croissy-Beaubourg/CBO et dispose d'une carte réseau 10G, car c'était l'une de mes exigences lors de sa mise en place. Une chose que je n'ai jamais vraiment utilisée à son plein potentiel. 
 
-Milkywan has a group chat on telegram where we talk about tech and other things between members. One of the guys there was looking for someone with a Mikrotik router “on-net” to run some bandwidth tests. 
+__Aujourd'hui, cela a changé__ _(en quelque sorte)._
 
-— *I’m trying to find out why I’m limited to 1G*
+[^Homelab]: [J'ai posté deux articles](https://guy-evans.com/series/vps-to-a-coloed-server-my-homelab-journey/) sur le passage d'un serveur virtuel et à mon propre serveur dans un rack colo.
 
-Mikrotik has a built in tool for that:
-> The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network "bottlenecks" - [Mikrotik](https://help.mikrotik.com/docs/display/ROS/Bandwidth+Test)
+Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d'autres choses entre membres. L'un des membres du groupe cherchait quelqu'un ayant un routeur Mikrotik "on-net" pour effectuer des tests de bande passante. 
+
+- J'essaie de comprendre pourquoi et si je suis limité à 1G.
+
+Mikrotik dispose d'un outil intégré pour cela :
+> Le Bandwidth Tester peut être utilisé pour mesurer le débit vers un autre routeur MikroTik (avec ou sans fil) et ainsi aider à découvrir les "goulots d'étranglement" du réseau. - [Mikrotik](https://help.mikrotik.com/docs/display/ROS/Bandwidth+Test)
 
 
-Well I volunteered my CHR [^1] instance. What could go wrong? 
+J'ai proposé mon instance CHR </br></br></br>
+{{<figure src="/img/jack_whatcouldgowrong.gif">}}
+## Un bon début
+Je lui ai donc envoyé par dm les détails de la connexion et il a commencé ses tests !
 
-So I dm’d him some connection details and he started his tests!
+[^1]: Cloud Hosted Router (CHR) est une version de RouterOS destinée à fonctionner en tant que machine virtuelle. Elle prend en charge l'architecture x86 64 bits et peut être utilisée sur la plupart des hyperviseurs populaires tels que VMWare, Hyper-V, Proxmox, etc. - [Mikrotik - Help](https://help.mikrotik.com/docs/display/ROS/Cloud+Hosted+Router%2C+CHR)
 
-[^1]: Cloud Hosted Router (CHR) is a RouterOS version intended for running as a virtual machine. It supports the x86 64-bit architecture and can be used on most of the popular hypervisors such as VMWare, Hyper-V, Proxmox - [Mikrotik - Help](https://help.mikrotik.com/docs/display/ROS/Cloud+Hosted+Router%2C+CHR)
+{{< figure src="IMG_4388.jpeg" caption="Transmission à 2,7G - pas mal !">}}
 
-![[IMG_4388.jpeg]]Transmitting at 2.7G - not bad!
+Pas mal pour un vieux R620 - Après quelques changements - mon collègue a fait un autre test ...
 
-After some back and forth we managed 4G. (I forgot to take a screenshot) Ok but still not quite our the target. 
+Nous avons réussi à avoir 4G. (J'ai oublié de faire une capture d'écran) Ok mais toujours pas tout à fait notre objectif.
 
-I then noticed something …
+## Le goulot d'étranglement
 
-![[IMG_4389.jpeg]]A bottleneck - I only ever gave my CHR instance 4 vCPUs because why should I need more? Simple solution for that problem:  Throw more vCPUs at it. I gave the VM 10 vCPUs and restarted it. 
+J'ai alors remarqué quelque chose ...
 
-![[IMG_4390.jpeg]]Another test later, according to Milkywan’s weathermap [^wm] that got us to 5G but we wanted more. 
+{{<figure src="IMG_4389.jpeg" caption="AH ! - Un problème">}}
 
-[^wm]: A Weathermap is a map that displays the carriers network with overlays displaying statistics
+J'avais donné que 4 vCPUs à mon instance CHR, pourquoi aurais-je besoin de plus ? Mais avec nos tests, nous les utilisions au maximum. Solution simple à ce problème : ajouter plus de vCPUs. J'ai donné à la VM 10 vCPU et je l'ai redémarrée. 
 
-While discussing some more ideaswe left the test running until we got a message in the group chat:
+Un autre test plus tard, selon la weathermap[^wm] de Milkywan cela nous a permis d'atteindre 5G, mais nous voulions plus. 
 
-— *Hey guys, your triggering alerts on our monitoring systems* 🤣 
-_One of the admins_
+{{<figure src="IMG_4390.jpeg" caption="YVous pouvez voir 5Gbps provenant du routeur nommé cer2024.edge.tls (en bas au milieu).">}} 
 
-Well yes 5Gbps constant traffic will make a NOC at a small ISP look at whats happening. 
+[^wm]: Un Weathermap est une carte qui affiche le réseau des opérateurs avec des statistiques superposées.
 
-So I decided to throw it a another socket of 12 vCPUs for a total of 24 vCPUs thinking more cpu = more bandwidth. 
+## Un ban et une bizarrerie
 
-Thats where I found and oddity with CHR, it won’t recognise a second CPU socket. So another restart later we had a single socket cpu with 24 vCPUs. Which got us to 6G. 
+Tout en discutant de quelques idées supplémentaires, nous avons laissé le test se dérouler jusqu'à ce que nous recevions un message dans le chat du groupe :
 
-While my colleague was running some other tests in parallele we got another message:
+- _Hé les gars, vous déclenchez des alertes sur nos systèmes de surveillance_ 🤣 
+_-L'un des admins_
 
-— *Well you’ve just triggered the automatic DDoS mitigation*[^anti-ddos] 😅
+Oui, un trafic constant de 5 Gbps incitera le NOC d'un petit fournisseur d'accès à regarder ce qui se passe. 
 
-[^anti-ddos]: **DDoS mitigation** is a set of [network management](https://en.wikipedia.org/wiki/Network_management "Network management") techniques and/or tools, for resisting or mitigating the impact of [distributed denial-of-service attack](https://en.wikipedia.org/wiki/Distributed_denial-of-service_attack "Distributed denial-of-service attack")
+J'ai donc décidé d'ajouter un autre socket de 12 vCPUs pour un total de 24 vCPUs en pensant que **plus de cpu = plus de bande passante.**
+{{<figure src="/img/jeremy-clarkson-sometimes-my-genius.gif">}}
+C'est là que j'ai trouvé une bizarrerie avec CHR, il ne reconnaît pas un deuxième socket CPU. Donc, un autre redémarrage plus tard, nous avions un cpu à socket unique avec 24 vCPUs. Ce qui nous a permis d'atteindre 6G. 
 
-That locked us out for 15 mins. But after that we ran another test and got … 6 G … again. 
+Pendant que mon collègue effectuait d'autres tests en parallèle, nous avons reçu un autre message :
 
-We also found out after the fact that we triggering the ddos mitigation on another of Milkywan’s routers. 
+— *Les gars? Vous venez de déclencher l'anti-DDoS*. 😅
 
-We stopped after because we could continue optimising all night, trigger more DDOS mitigation and get nowhere further.
 
-I’m still happy though, my little R620 in the colo can pull decent traffic from the internet. I’ll be waiting for my next opportunity to chase the missing 4Gb. 
+Cela nous a bloqués pendant 15 minutes. Mais après cela, nous avons effectué un autre test et nous avons obtenu ... 6 G ... à nouveau. 
+
+Nous avons également découvert après coup que nous avions déclenché la mitigation DDOS sur un autre des routeurs de Milkywan. 
+
+Nous avons arrêté après parce que nous pouvions continuer à optimiser toute la nuit, déclencher plus de mitigation DDOS et n'arriver à rien de plus.
+
+Je suis quand même content, mon petit R620 dans la colo peut tirer un trafic décent de l'internet. J'attendrai la prochaine occasion pour aller chercher les 4Go manquants. 
