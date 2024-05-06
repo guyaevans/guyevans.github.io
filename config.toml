@@ -33,6 +33,9 @@ enableRobotsTXT = true
       keepStatic = false
       # whether to make the table of the contents in the sidebar automatically collapsed
       auto = true
+    [params.page.related]
+      enable = true
+      count = 5
     [params.page.comment]
       enable = true
       [params.page.comment.isso]

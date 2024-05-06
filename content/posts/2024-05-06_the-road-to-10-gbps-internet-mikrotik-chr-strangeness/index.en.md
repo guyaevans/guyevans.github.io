@@ -2,6 +2,11 @@
 title: The road to 10 Gbps internet - Mikrotik CHR Strangeness
 date: 2024-05-06T22:40:12+02:00
 featuredImage: feature.jpeg
+tags:
+  - homelab
+  - Mikrotik
+  - ChR
+  - Network
 rssFullText: true
 ---
 ## How it started

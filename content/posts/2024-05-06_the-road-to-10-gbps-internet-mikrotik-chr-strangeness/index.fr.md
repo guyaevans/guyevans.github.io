@@ -1,14 +1,19 @@
 ---
 title: "Vers l'internet 10 Gbps - Bizarrerie Mikrotik CHR "
 date: 2024-05-06T22:40:12+02:00
+tags:
+  - homelab
+  - Mikrotik
+  - ChR
+  - Network
 featuredImage: feature.jpeg
 ---
 ## Le début
-Mon serveur [^Homelab] qui se trouve dans baie réseau de [Milywan](https://milkywan.fr) à Croissy-Beaubourg/CBO et dispose d'une carte réseau 10G, car c'était l'une de mes exigences lors de sa mise en place. Une chose que je n'ai jamais vraiment utilisée à son plein potentiel. 
+Mon serveur [^Homelab] qui se trouve dans une baie réseau de [Milywan](https://milkywan.fr) à Croissy-Beaubourg/CBO et dispose d'une carte réseau 10G, car c'était l'une de mes exigences lors de sa mise en place. Une chose que je n'ai jamais vraiment utilisée à son plein potentiel. 
 
 __Aujourd'hui, cela a changé__ _(en quelque sorte)._
 
-[^Homelab]: [J'ai posté deux articles](https://guy-evans.com/series/vps-to-a-coloed-server-my-homelab-journey/) sur le passage d'un serveur virtuel et à mon propre serveur dans un rack colo.
+[^Homelab]: [J'ai posté deux articles](https://guy-evans.com/fr/series/un-vps-%C3%A0-un-serveur-en-colocation/) sur le passage d'un serveur virtuel et à mon propre serveur dans un rack colo.
 
 Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d'autres choses entre membres. L'un des membres du groupe cherchait quelqu'un ayant un routeur Mikrotik "on-net" pour effectuer des tests de bande passante. 
 
