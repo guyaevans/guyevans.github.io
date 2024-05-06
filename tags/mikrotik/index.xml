@@ -1,4 +1,78 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Mikrotik - Tag - Guy Evans</title><link>https://guy-evans.com/tags/mikrotik/</link><description>Mikrotik - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Sun, 13 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://guy-evans.com/tags/mikrotik/" rel="self" type="application/rss+xml"/><item><title>BGP IPv4 Config on Mikrotik RouterOSv7</title><link>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</link><pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Mikrotik - Tag - Guy Evans</title><link>https://guy-evans.com/tags/mikrotik/</link><description>Mikrotik - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Mon, 06 May 2024 22:40:12 +0200</lastBuildDate><atom:link href="https://guy-evans.com/tags/mikrotik/" rel="self" type="application/rss+xml"/><item><title>The road to 10 Gbps internet - Mikrotik CHR Strangeness</title><link>https://guy-evans.com/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</link><pubDate>Mon, 06 May 2024 22:40:12 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/feature.jpeg" referrerpolicy="no-referrer">
+            </div><h2 id="how-it-started" class="headerLink">
+    <a href="#how-it-started" class="header-mark" aria-label="Header mark for 'How it started'"></a>How it started</h2><p>My server<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that lives in <a href="https://milkywan.fr" target="_blank" rel="noopener noreferrer">Milywan</a>&rsquo;s Croissy-Beaubourg/CBO location actually has a 10G NIC, as it was one of my requirements when setting it up. Something I have never really used its full potential.</p>
+<p><strong>Today that changed</strong> <em>(sort of).</em></p>
+<p>Milkywan has a group chat on telegram where we talk about tech and other things between members. One of the guys there was looking for someone with a Mikrotik router “on-net” to run some bandwidth tests.</p>
+<p>— <em>I’m trying to find out if and why I’m limited to 1G</em></p>
+<p>Mikrotik has a built in tool for that:</p>
+<blockquote>
+<p>The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network &ldquo;bottlenecks&rdquo; - <a href="https://help.mikrotik.com/docs/display/ROS/Bandwidth&#43;Test" target="_blank" rel="noopener noreferrer">Mikrotik</a></p>
+</blockquote>
+<p>Well I volunteered my CHR <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> instance. <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->
+<figure><img src="/img/jack_whatcouldgowrong.gif">
+</figure>
+</p>
+<h2 id="a-good-start" class="headerLink">
+    <a href="#a-good-start" class="header-mark" aria-label="Header mark for 'A good start'"></a>A good start</h2><p>So I dm’d him some connection details and he started his tests!</p>
+<figure><img src="./IMG_4388.jpeg"
+    alt="Transmitting at 2.7G - not bad!"><figcaption>
+      <p>Transmitting at 2.7G - not bad!</p>
+    </figcaption>
+</figure>
+
+<p>Not bad for an old R620 - After some changes - my colleague ran another test &hellip;</p>
+<p>We managed 4G. (I forgot to take a screenshot) Ok but still not quite our the target.</p>
+<h2 id="the-bottleneck" class="headerLink">
+    <a href="#the-bottleneck" class="header-mark" aria-label="Header mark for 'The bottleneck'"></a>The bottleneck</h2><p>I then noticed something …</p>
+<figure><img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/IMG_4389.jpeg"
+    alt="AH! - A bottleneck"><figcaption>
+      <p>AH! - A bottleneck</p>
+    </figcaption>
+</figure>
+
+<p>I only ever gave my CHR instance 4 vCPUs because why should I need more? But with out tests we were maxing them out. Simple solution for that problem:  Throw more vCPUs at it. I gave the VM 10 vCPUs and restarted it.</p>
+<p>Another test later, according to Milkywan’s weathermap <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> that got us to 5G but we wanted more.</p>
+<figure><img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/IMG_4390.jpeg"
+    alt="You can see 5Gbps coming in from the router named cer2024.edge.tls (lower middle)"><figcaption>
+      <p>You can see 5Gbps coming in from the router named cer2024.edge.tls (lower middle)</p>
+    </figcaption>
+</figure>
+
+<h2 id="the-ban-and-an-oddity" class="headerLink">
+    <a href="#the-ban-and-an-oddity" class="header-mark" aria-label="Header mark for 'The ban and an oddity'"></a>The ban and an oddity</h2><p>While discussing some more ideas we left the test running until we got a message in the group chat:</p>
+<p>— <em>Hey guys, your triggering alerts on our monitoring systems</em> 🤣
+<em>-One of the admins</em></p>
+<p>Well yes 5Gbps constant traffic will make a NOC at a small ISP look at whats happening.</p>
+<p>So I decided to throw it a another socket of 12 vCPUs for a total of 24 vCPUs thinking <strong>more cpu = more bandwidth.</strong>
+<figure><img src="/img/jeremy-clarkson-sometimes-my-genius.gif">
+</figure>
+</p>
+<p>That&rsquo;s where I found and oddity with CHR, it won’t recognise a second CPU socket. So another restart later we had a single socket cpu with 24 vCPUs. Which got us to 6G.</p>
+<p>While my colleague was running some other tests in parallel we got another message:</p>
+<p>— <em>Well you’ve just triggered the automatic DDoS mitigation</em><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> 😅</p>
+<p>That locked us out for 15 mins. But after that we ran another test and got … 6 G … again.</p>
+<p>We also found out after the fact that we triggering the ddos mitigation on another of Milkywan’s routers.</p>
+<p>We stopped after because we could continue optimising all night, trigger more DDOS mitigation and get nowhere further.</p>
+<p>I’m still happy though, my little R620 in the colo can pull decent traffic from the internet. I’ll be waiting for my next opportunity to chase the missing 4Gb.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://guy-evans.com/series/vps-to-a-coloed-server-my-homelab-journey/" target="_blank" rel="noopener noreferrer">I posted two articles</a> about going from a single to virtual private server to my own server in a colocated rack.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Cloud Hosted Router (CHR) is a RouterOS version intended for running as a virtual machine. It supports the x86 64-bit architecture and can be used on most of the popular hypervisors such as VMWare, Hyper-V, Proxmox - <a href="https://help.mikrotik.com/docs/display/ROS/Cloud&#43;Hosted&#43;Router%2C&#43;CHR" target="_blank" rel="noopener noreferrer">Mikrotik - Help</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>A Weathermap is a map that displays the carriers network with overlays displaying statistics&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><strong>DDoS mitigation</strong> is a set of <a href="https://en.wikipedia.org/wiki/Network_management" title="Network management" target="_blank" rel="noopener noreferrer">network management</a> techniques and/or tools, for resisting or mitigating the impact of <a href="https://en.wikipedia.org/wiki/Distributed_denial-of-service_attack" title="Distributed denial-of-service attack" target="_blank" rel="noopener noreferrer">distributed denial-of-service attack</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>BGP IPv4 Config on Mikrotik RouterOSv7</title><link>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</link><pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-11-13_bgp-ipv4-config-on-mikrotik-routerosv7/screen-router.png" referrerpolicy="no-referrer">
             </div><p>So I know a couple people who run their ASNs on Mikrotik routers (running RouterOS) as their hardware is cheap and easy to find. That includes me, I run BGP on their CHR image to announce my own ASN and IP v4 and V6 subnets. RouterOS CHR which is an image of RouterOS that you can run on your own hardware.</p>
 <p>You would prevously use RouterOS version 6, but now version 7 has a couple stable releases and is supposed to be more stable and faster for BGP, I thought I would post some of my configs for version 7 as the config syntax has changed quite a bit. Today I&rsquo;ll focus on IPv4 but IPv6 is pretty much the same.</p>

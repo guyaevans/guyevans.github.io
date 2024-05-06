@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Toutes les Posts - Guy Evans</title><link>https://guy-evans.com/fr/posts/</link><description>Toutes les Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Mon, 06 May 2024 22:40:12 +0200</lastBuildDate><atom:link href="https://guy-evans.com/fr/posts/" rel="self" type="application/rss+xml"/><item><title>Vers l'internet 10 Gbps - Bizarrerie Mikrotik CHR</title><link>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</link><pubDate>Mon, 06 May 2024 22:40:12 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/feature.jpeg" referrerpolicy="no-referrer">
-            </div>Le débutMon serveur 1 qui se trouve dans baie réseau de Milywan à Croissy-Beaubourg/CBO et dispose d&rsquo;une carte réseau 10G, car c&rsquo;était l&rsquo;une de mes exigences lors de sa mise en place. Une chose que je n&rsquo;ai jamais vraiment utilisée à son plein potentiel.
+            </div>Le débutMon serveur 1 qui se trouve dans une baie réseau de Milywan à Croissy-Beaubourg/CBO et dispose d&rsquo;une carte réseau 10G, car c&rsquo;était l&rsquo;une de mes exigences lors de sa mise en place. Une chose que je n&rsquo;ai jamais vraiment utilisée à son plein potentiel.
 Aujourd&rsquo;hui, cela a changé (en quelque sorte).
-Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d&rsquo;autres choses entre membres. L&rsquo;un des membres du groupe cherchait quelqu&rsquo;un ayant un routeur Mikrotik &ldquo;on-net&rdquo; pour effectuer des tests de bande passante.]]></description></item><item><title>Un seul sac de voyage - Que contient mon sac de voyage en 2023/2024</title><link>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
+Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d&rsquo;autres choses entre membres.]]></description></item><item><title>Un seul sac de voyage - Que contient mon sac de voyage en 2023/2024</title><link>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/feature.jpg" referrerpolicy="no-referrer">
             </div><h2 id="trops-de-sacs" class="headerLink">
     <a href="#trops-de-sacs" class="header-mark" aria-label="Header mark for 'Trops de sacs'"></a>Trops de sacs</h2><p>J&rsquo;aime voyager, bien que je n&rsquo;aie pas pu beaucoup voyager depuis la naissance de la petite &hellip; mais je m&rsquo;égare.</p>
@@ -972,7 +972,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-1" 
+    id="codeblock-id-3" 
     class="
       chroma 
       !tw-block 
@@ -1073,7 +1073,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-2" 
+    id="codeblock-id-4" 
     class="
       chroma 
       !tw-block 
@@ -1178,7 +1178,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-3" 
+    id="codeblock-id-5" 
     class="
       chroma 
       !tw-block 

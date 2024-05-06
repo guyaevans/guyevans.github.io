@@ -1,4 +1,8 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Homelab - Balise - Guy Evans</title><link>https://guy-evans.com/fr/tags/homelab/</link><description>Homelab - Balise - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Sun, 23 Apr 2023 09:19:19 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/tags/homelab/" rel="self" type="application/rss+xml"/><item><title>Découverte de Caddy - un serveur web simple et rapide</title><link>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Homelab - Balise - Guy Evans</title><link>https://guy-evans.com/fr/tags/homelab/</link><description>Homelab - Balise - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Mon, 06 May 2024 22:40:12 +0200</lastBuildDate><atom:link href="https://guy-evans.com/fr/tags/homelab/" rel="self" type="application/rss+xml"/><item><title>Vers l'internet 10 Gbps - Bizarrerie Mikrotik CHR</title><link>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</link><pubDate>Mon, 06 May 2024 22:40:12 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/feature.jpeg" referrerpolicy="no-referrer">
+            </div>Le débutMon serveur 1 qui se trouve dans une baie réseau de Milywan à Croissy-Beaubourg/CBO et dispose d&rsquo;une carte réseau 10G, car c&rsquo;était l&rsquo;une de mes exigences lors de sa mise en place. Une chose que je n&rsquo;ai jamais vraiment utilisée à son plein potentiel.
+Aujourd&rsquo;hui, cela a changé (en quelque sorte).
+Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d&rsquo;autres choses entre membres.]]></description></item><item><title>Découverte de Caddy - un serveur web simple et rapide</title><link>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
             </div><p>Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l&rsquo;aise avec leur configuration. Et c&rsquo;est ce qui m&rsquo;a amené à <a href="caddyserver.com/" rel="">Caddy</a>. Découvrons ce que <a href="caddyserver.com/" rel="">Caddy</a> a à offrir.</p>
 <h1 id="caddy" class="headerLink">
@@ -292,7 +296,7 @@
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-1" 
+    id="codeblock-id-3" 
     class="
       chroma 
       !tw-block 
@@ -393,7 +397,7 @@
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-2" 
+    id="codeblock-id-4" 
     class="
       chroma 
       !tw-block 
@@ -498,7 +502,7 @@
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-3" 
+    id="codeblock-id-5" 
     class="
       chroma 
       !tw-block 
