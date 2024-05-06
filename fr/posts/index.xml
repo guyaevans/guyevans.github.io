@@ -1,4 +1,8 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Toutes les Posts - Guy Evans</title><link>https://guy-evans.com/fr/posts/</link><description>Toutes les Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Sat, 02 Mar 2024 14:24:11 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/posts/" rel="self" type="application/rss+xml"/><item><title>Un seul sac de voyage - Que contient mon sac de voyage en 2023/2024</title><link>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Toutes les Posts - Guy Evans</title><link>https://guy-evans.com/fr/posts/</link><description>Toutes les Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Mon, 06 May 2024 22:40:12 +0200</lastBuildDate><atom:link href="https://guy-evans.com/fr/posts/" rel="self" type="application/rss+xml"/><item><title>Vers l'internet 10 Gbps - Bizarrerie Mikrotik CHR</title><link>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</link><pubDate>Mon, 06 May 2024 22:40:12 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/feature.jpeg" referrerpolicy="no-referrer">
+            </div>Le débutMon serveur 1 qui se trouve dans baie réseau de Milywan à Croissy-Beaubourg/CBO et dispose d&rsquo;une carte réseau 10G, car c&rsquo;était l&rsquo;une de mes exigences lors de sa mise en place. Une chose que je n&rsquo;ai jamais vraiment utilisée à son plein potentiel.
+Aujourd&rsquo;hui, cela a changé (en quelque sorte).
+Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d&rsquo;autres choses entre membres. L&rsquo;un des membres du groupe cherchait quelqu&rsquo;un ayant un routeur Mikrotik &ldquo;on-net&rdquo; pour effectuer des tests de bande passante.]]></description></item><item><title>Un seul sac de voyage - Que contient mon sac de voyage en 2023/2024</title><link>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/feature.jpg" referrerpolicy="no-referrer">
             </div><h2 id="trops-de-sacs" class="headerLink">
     <a href="#trops-de-sacs" class="header-mark" aria-label="Header mark for 'Trops de sacs'"></a>Trops de sacs</h2><p>J&rsquo;aime voyager, bien que je n&rsquo;aie pas pu beaucoup voyager depuis la naissance de la petite &hellip; mais je m&rsquo;égare.</p>
@@ -968,7 +972,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-3" 
+    id="codeblock-id-1" 
     class="
       chroma 
       !tw-block 
@@ -1069,7 +1073,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-4" 
+    id="codeblock-id-2" 
     class="
       chroma 
       !tw-block 
@@ -1174,7 +1178,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-5" 
+    id="codeblock-id-3" 
     class="
       chroma 
       !tw-block 
@@ -3226,46 +3230,6 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
 </li>
 <li id="fn:2">
 <p>Source (Anglais): Qu&rsquo;est-ce qu&rsquo;un système autonome ? | Que sont les ASN ? - <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank" rel="noopener noreferrer">Cloudflare</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
-]]></description></item><item><title>D'un VPS à un serveur en colocation, l'evolution de mon homelab - Partie 1</title><link>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</link><pubDate>Fri, 04 Nov 2022 21:01:45 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022-11-04_vps-to-a-coloed-server-my-homelab-journey/thomas-jensen-urtxbx5i5se-unsplash-2-.jpg" referrerpolicy="no-referrer">
-            </div><p>J&rsquo;ai toujours eu un intérêt pour les ordinateurs et la technologie. J&rsquo;étais loin de me douter qu&rsquo;il s&rsquo;agirait de la base de mon parcours professionnel.</p>
-<p>C&rsquo;est pourquoi je souhaite retracer mes pas et expliquer comment je me suis retrouvé avec un serveur situé dans un centre de données qui a fait de moi l&rsquo;administrateur système et réseau que je suis aujourd&rsquo;hui.</p>
-<h2 id="comment-jai-commencé" class="headerLink">
-    <a href="#comment-jai-commenc%c3%a9" class="header-mark" aria-label="Header mark for 'Comment j&amp;rsquo;ai commencé'"></a>Comment j&rsquo;ai commencé</h2><p>A 12 ans, j&rsquo;avais construit mon propre site web (mais c&rsquo;est une histoire pour un autre article).</p>
-<p>À 19 ans, j&rsquo;avais déjà appris à gérer des réseaux de petites entreprises et j&rsquo;en ai géré quelques-uns pour des entreprises familiales et des amis, mais je n&rsquo;avais pas d&rsquo;équipement ni rien pour apprendre et essayer des choses. C&rsquo;est alors que j&rsquo;ai appris ce qu&rsquo;était un Homelab.</p>
-<h3 id="quest-ce-quun-homelab-" class="headerLink">
-    <a href="#quest-ce-quun-homelab-" class="header-mark" aria-label="Header mark for 'Qu&amp;rsquo;est-ce qu&amp;rsquo;un Homelab ?'"></a>Qu&rsquo;est-ce qu&rsquo;un Homelab ?</h3><p>Vous derriere, je vous entends &hellip; Qu&rsquo;est-ce qu&rsquo;un Homelab ?</p>
-<blockquote>
-<p>Un homelab, dans les termes les plus simples, est un environnement où vous pouvez apprendre et jouer avec des technologies nouvelles ou peu familières.  Il peut s&rsquo;agir d&rsquo;un simple ensemble de machines virtuelles sur un vieux PC ou un ordinateur portable ou d&rsquo;un réseau complet complexe avec son propre ASN (nous y viendrons, éventuellement&hellip;).</p>
-</blockquote>
-<h3 id="serveurs-privés-virtuels-avec-ovh" class="headerLink">
-    <a href="#serveurs-priv%c3%a9s-virtuels-avec-ovh" class="header-mark" aria-label="Header mark for 'Serveurs privés virtuels avec OVH'"></a>Serveurs privés virtuels avec OVH</h3><h4 id="vps-numéro-1--le-site-web" class="headerLink">
-    <a href="#vps-num%c3%a9ro-1--le-site-web" class="header-mark" aria-label="Header mark for 'VPS Numéro 1 : Le site web'"></a>VPS Numéro 1 : Le site web</h4><p>Après avoir fait quelques recherches, j&rsquo;ai conclu deux choses :</p>
-<ol>
-<li>Le service que je voulais héberger : mon site web.</li>
-<li>L&rsquo;emplacement approximatif où je voulais qu&rsquo;il soit hébergé : La France</li>
-</ol>
-<p>Après quelques recherches, j&rsquo;ai trouvé <a href="https://ovh.fr" target="_blank" rel="noopener noreferrer">OVH</a>, un hébergeur basé en France. OVH proposait et propose toujours des serveurs privés virtuels bon marché et de très bonne qualité. J&rsquo;ai choisi un serveur 1vCore et 512 Mb RAM pour faire tourner mon site web basé sur Wordpress <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
-<p>Ce VPS <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> a fini par héberger le site web d&rsquo;EvansMedia, ma société de services informatiques et web jusqu&rsquo;au 10 mars 2021 et ce que je nomme <em>&lsquo;Le BBQ d&rsquo;OVH</em>&rsquo; &#x1f525; <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, où leurs quatre datacenters de Strasbourg sont partis en fumée (littéralement).</p>
-<h4 id="vps-numéro-2--le-serveur-de-stockage" class="headerLink">
-    <a href="#vps-num%c3%a9ro-2--le-serveur-de-stockage" class="header-mark" aria-label="Header mark for 'VPS numéro 2 : Le serveur de stockage'"></a>VPS numéro 2 : Le serveur de stockage</h4><p>Le prochain VPS <sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> est arrivé lorsque je cherchais à synchroniser mes fichiers sur mes nombreux appareils, pour des raisons de confidentialité je ne voulais pas utiliser Google Drive ou un équivalent. Je me suis retrouvé sur Owncloud puis j&rsquo;ai migré vers Nextcloud qui est ce que j&rsquo;utilise encore aujourd&rsquo;hui. Nextcloud est fonctionnellement similaire à Dropbox, Office 365 ou Google Drive, il peut être hébergé dans le cloud ou sur votre propre serveur.</p>
-<p>La prochaine fois : Je reviendrai sur ce qui m&rsquo;a fait passer à un serveur dédié et peu après à mon propre matériel racké sans chez un operateur associatif.</p>
-<hr>
-<p><em>Photo par Thomas Jensen @ <a href="https://unsplash.com/@thomasjsn?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash.com</a></em></p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p><a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">Wordpress</a> est un système de gestion de contenu gratuit et open-source. En 2021, 30% des sites web du monde fonctionnaient avec Wordpress.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>Serveur privé virtuel&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p><em>10 mars 2021</em> - Le site de l’entreprise OVH à Strasbourg touché par un « important incendie » - <a href="https://www.lemonde.fr/societe/article/2021/03/10/a-strasbourg-un-important-incendie-sur-le-site-de-l-entreprise-ovh-classe-seveso_6072548_3224.html" target="_blank" rel="noopener noreferrer">Le Monde</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
