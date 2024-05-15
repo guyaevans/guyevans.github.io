@@ -23,6 +23,7 @@ jobs:
             - name: Build website with Hugo
               run: hugo --minify
             - name: Deploy website with rsync
+              if: github.ref == 'refs/heads/master'
               uses: burnett01/rsync-deployments@5.2
               with:
                   switches: -avzr --quiet --delete
