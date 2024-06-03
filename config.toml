@@ -38,18 +38,25 @@ enableRobotsTXT = true
       count = 5
     [params.page.comment]
       enable = true
-      [params.page.comment.isso]
-        enabled = true
-        data = "https://isso.evans.fr/"
-        id = "thread-id"
-        css = true
-        lang = ""
-        replyToSelf = true
-        requireAuthor = true
-        requireEmail = false
-        avatar = true
-        avatar-bg = "#f0f0f0"
-        jsLocation = "https://isso.evans.fr/js/embed.min.js"
+      [params.page.comment.remark42]
+        enable = true
+        host = "https://comments.evans.fr"
+        site_id = "remark"
+        max_shown_comments = 15
+        show_email_subscription = true
+        simple_view = false
+      # [params.page.comment.isso]
+      #   enabled = true
+      #   data = "https://isso.evans.fr/"
+      #   id = "thread-id"
+      #   css = true
+      #   lang = ""
+      #   replyToSelf = true
+      #   requireAuthor = true
+      #   requireEmail = false
+      #   avatar = true
+      #   avatar-bg = "#f0f0f0"
+      #   jsLocation = "https://isso.evans.fr/js/embed.min.js"
 
 
 # # language code ["en", "zh-CN", "fr", "pl", ...]
