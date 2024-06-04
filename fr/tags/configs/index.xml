@@ -25,7 +25,7 @@
     <a href="#a-quoi-ressemble-la-configuration-" class="header-mark" aria-label="Header mark for 'A quoi ressemble la configuration ?'"></a>A quoi ressemble la configuration ?</h3><p>Voici les exports de configuration pour annoncer mes préfixes via l&rsquo;AS 211486. Comme vous pouvez le voir, avant de faire quoi que ce soit, vous devez ajouter les préfixes que vous voulez annoncer à une liste de réseaux que vous spécifierez dans le modèle bgp. Le reste devrait être assez explicite mais j&rsquo;ai détaillé les points principaux ci-dessous.</p>
 <h4 id="modèlestemplates" class="headerLink">
     <a href="#mod%c3%a8lestemplates" class="header-mark" aria-label="Header mark for 'Modèles/Templates'"></a>Modèles/Templates</h4><p>ROSv7 a également introduit le concept de modèles dans BGP, par exemple vous pouvez définir un modèle pour iBGP, un pour les IXP et un autre pour eBGP. La je n&rsquo;utilise q&rsquo;un seul</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -125,7 +125,7 @@
 <h4 id="filtres" class="headerLink">
     <a href="#filtres" class="header-mark" aria-label="Header mark for 'Filtres'"></a>Filtres</h4><p>Comme dans toute configuration BGP, nous avons des filtres. Mikrotik a modifié la syntaxe des filtres dans ROSv7, cela ressemble un peu à bird. Leur <a href="https://help.mikrotik.com/docs/display/ROS/Route&#43;Selection&#43;and&#43;Filters#RouteSelectionandFilters-FilterSyntax" target="_blank" rel="noopener noreferrer">référence</a> est assez bonne.
 Voici un ensemble de base de filtres entrants et sortants. Les deux premières lignes autorisent toutes les routes réseau sous 0.0.0.0/0 mais pas 185.133.194.0/24 qui est le mien. La troisième ligne permet à mon préfixe d&rsquo;être annoncé et rien d&rsquo;autre. Si aucun filtre n&rsquo;est défini pour une route, elle sera rejetée.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -224,7 +224,7 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
 </div>
 <h4 id="connexion" class="headerLink">
     <a href="#connexion" class="header-mark" aria-label="Header mark for 'Connexion'"></a>Connexion</h4><p>Enfin, nous ajoutons la connexion qui référence le modèle, la liste de réseaux et les filtres que nous venons de créer.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -322,7 +322,7 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
 </div>
 <h4 id="route-blackhole" class="headerLink">
     <a href="#route-blackhole" class="header-mark" aria-label="Header mark for 'Route Blackhole'"></a>Route Blackhole</h4><p>Une chose que j&rsquo;oublie souvent est d&rsquo;ajouter une route blackhole à ma table de routage pour les préfixes que je voudrais annoncer. Sans cela, vous pouvez avoir les bons filtres mais rien ne sera annoncé car le routeur n&rsquo;annoncera que les préfixes qui se trouvent dans la table de routage.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     

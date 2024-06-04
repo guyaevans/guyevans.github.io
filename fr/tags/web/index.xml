@@ -9,7 +9,7 @@
 
 <h2 id="installation" class="headerLink">
     <a href="#installation" class="header-mark" aria-label="Header mark for 'Installation'"></a>Installation</h2><p>Caddy est disponible sous la forme d&rsquo;un simple exécutable, d&rsquo;une <a href="https://hub.docker.com/_/caddy" target="_blank" rel="noopener noreferrer">image docker</a> ou, comme d&rsquo;habitude, via un gestionnaire de paquets. Aujourd&rsquo;hui, nous utiliserons Debian. Mais si vous utilisez un autre système d&rsquo;exploitation, leur <a href="https://caddyserver.com/docs/install" target="_blank" rel="noopener noreferrer">documentation</a> devrait vous couvrir.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -112,7 +112,7 @@
     <a href="#configuration" class="header-mark" aria-label="Header mark for 'Configuration'"></a>Configuration</h2><p>Comme dit plus haut, caddy peut être configuré en utilisant le fichier <code>Caddyfile</code> écrit en JSON dans <code>/etc/caddy</code>. Dans ce fichier, nous lui donnons des <a href="https://caddyserver.com/docs/caddyfile/directives" target="_blank" rel="noopener noreferrer">directives</a> pour qu&rsquo;il soit soit un reverse proxy, un serveur web, un front php, etc. Caddy peut aussi être configuré en utilisant son <a href="https://caddyserver.com/docs/api" target="_blank" rel="noopener noreferrer">API REST</a> si c&rsquo;est quelque chose qui vous intéresse.</p>
 <h3 id="reverse-proxy" class="headerLink">
     <a href="#reverse-proxy" class="header-mark" aria-label="Header mark for 'Reverse Proxy'"></a>Reverse Proxy</h3><p>Disons que vous avez une application qui fonctionne sur le port 9999 et que vous voulez faire un reverse proxy vers 443 (HTTPS). Le fichier de configuration ressemblerait à ceci :</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -212,7 +212,7 @@
 <p>Pour que Caddy recharge le <code>Caddyfile</code>, il suffit de lancer un <code>systemctl reload caddy</code>, Caddy rechargera alors le fichier de configuration, demandera un certificat pour <code>demo.app.com</code> et servira votre application sur HTTPS<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <h3 id="fichiers-statiques" class="headerLink">
     <a href="#fichiers-statiques" class="header-mark" aria-label="Header mark for 'Fichiers statiques'"></a>Fichiers statiques</h3><p>Ok un reverse proxy c&rsquo;est bien mais mon site web (celui-ci) est statique et généré par <a href="gohugo.io" rel="">Hugo</a>, comment pourrions-nous le servir en utilisant caddy ? Encore une fois, 4 lignes de configuration suffisent.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -313,7 +313,7 @@
 <p>Un rapide <code>systemctl reload caddy</code> plus tard et Caddy sert vos fichiers statiques sur HTTPS<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> à <code>demo.website.com</code>.</p>
 <h3 id="php-fpm" class="headerLink">
     <a href="#php-fpm" class="header-mark" aria-label="Header mark for 'PHP-fpm'"></a>PHP-fpm</h3><p>Vous utilisez habituellement Nginx comme façade/front pour PHP-fpm, mais Caddy peut aussi le faire. Et encore une fois avec un simple fichier de configuration.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -418,7 +418,7 @@
 <h2 id="bonus" class="headerLink">
     <a href="#bonus" class="header-mark" aria-label="Header mark for 'Bonus'"></a>Bonus</h2><h3 id="docker--docker-compose" class="headerLink">
     <a href="#docker--docker-compose" class="header-mark" aria-label="Header mark for 'Docker &amp;amp; Docker Compose'"></a>Docker &amp; Docker Compose</h3><p>Caddy est aussi souvent exécuté avec Docker Compose et est toujours aussi simple. Voici un simple <code>docker-compose.yml</code> et nous pouvons utiliser n&rsquo;importe quel exemple de <code>Caddyfile</code> ci-dessus.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     

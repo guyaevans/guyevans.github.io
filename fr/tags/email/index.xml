@@ -23,7 +23,7 @@
 <h3 id="configuration" class="headerLink">
     <a href="#configuration" class="header-mark" aria-label="Header mark for 'Configuration'"></a>Configuration</h3><h4 id="dns" class="headerLink">
     <a href="#dns" class="header-mark" aria-label="Header mark for 'DNS'"></a>DNS</h4><p>Pour que Mailcow fonctionne, vous devez configurer les enregistrements DNS suivants</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -124,7 +124,7 @@ autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 <h4 id="installation-de-mailcow" class="headerLink">
     <a href="#installation-de-mailcow" class="header-mark" aria-label="Header mark for 'Installation de Mailcow'"></a>Installation de Mailcow</h4><p>Une fois que les enregistrements DNS sont propagés, vous pouvez installer et configurer Mailcow.
 Tout d&rsquo;abord, nous clonons le référentiel et définissons les permissions sur les répertoires.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -224,7 +224,7 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized</span></span></code></pre>
 </div>
 <p>Une fois que vous aurez répondu aux questions, le fichier de configuration sera généré pour vous. Une fois généré, nous pouvons lancer mailcow en utilisant les commandes suivantes</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     

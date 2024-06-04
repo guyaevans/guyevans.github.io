@@ -27,7 +27,7 @@
     <a href="#commen%c3%a7ons-%c3%a0-configurer" class="header-mark" aria-label="Header mark for 'Commençons à configurer'"></a>Commençons à configurer</h2><h3 id="configuration-du-switch" class="headerLink">
     <a href="#configuration-du-switch" class="header-mark" aria-label="Header mark for 'Configuration du switch'"></a>Configuration du switch</h3><h4 id="configuration-des-vlan" class="headerLink">
     <a href="#configuration-des-vlan" class="header-mark" aria-label="Header mark for 'Configuration des VLAN'"></a>Configuration des VLAN</h4><p>La première chose à faire est d&rsquo;ajouter les vlans si ce n&rsquo;est pas déjà fait. J&rsquo;ai taggé les vlans sur tous les ports pour des raisons de simplicité.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -128,7 +128,7 @@ vlan 30 tagged all</code></pre></code></pre>
 </div>
 <h4 id="serveur-radius-et-authentification" class="headerLink">
     <a href="#serveur-radius-et-authentification" class="header-mark" aria-label="Header mark for 'Serveur Radius et authentification'"></a>Serveur Radius et authentification</h4><p>Ensuite, nous devons configurer le serveur RADIUS distant (notre serveur NPS) et indiquer au switch la &ldquo;secretkey&rdquo;</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -223,7 +223,7 @@ vlan 30 tagged all</code></pre></code></pre>
       tw-overflow-x-auto"><pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;</code></pre></code></pre>
 </div>
 <p>Ensuite, nous configurons EAP-RADIUS, ce qui permet au commutateur de transmettre les paquets d&rsquo;authentification des clients au serveur Radius.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -318,7 +318,7 @@ vlan 30 tagged all</code></pre></code></pre>
       tw-overflow-x-auto"><pre tabindex="0"><code>aaa authentication port-access eap-radius</code></pre></code></pre>
 </div>
 <p>Nous activons ensuite 802.1x sur les ports de notre commutateur, ici nous le faisons sur une série de ports mais vous pouvez spécifier des ports individuels, ou les séparer par une virgule. Nous demandons au switch de placer les clients autorisés sur le vlan 10 (auth-vid) et les clients non autorisés sur le vlan 20 (unauth-vid).</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -419,7 +419,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <h4 id="bonus-quen-est-il-des-téléphones-ip-" class="headerLink">
     <a href="#bonus-quen-est-il-des-t%c3%a9l%c3%a9phones-ip-" class="header-mark" aria-label="Header mark for '(Bonus) Qu&amp;rsquo;en est-il des téléphones IP ?'"></a>(Bonus) Qu&rsquo;en est-il des téléphones IP ?</h4><p>Vous avez peut-être remarqué que j&rsquo;ai inclus un vlan pour les téléphones, car c&rsquo;était une question importante que je me posais lors de mon premier déploiement de 802.1x. Devrai-je ajouter chaque téléphone à notre serveur Radius et configurer chaque téléphone pour l&rsquo;authentification ou utiliser MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>
 <p>Non ! Au lieu de cela, nous allons faire du vlan un vlan voice avec la commande suivante, ce qui permettra au téléphone d&rsquo;utiliser LLDP pour récupérer le vlan qui lui a été assigné, sans avoir besoin de l&rsquo;authentification.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     

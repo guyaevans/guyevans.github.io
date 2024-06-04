@@ -261,7 +261,7 @@ I usually use 2 packing cubes:</p>
     <a href="#lets-get-configing" class="header-mark" aria-label="Header mark for 'Let&amp;rsquo;s get configing'"></a>Let&rsquo;s get configing</h2><h3 id="switch-configuration" class="headerLink">
     <a href="#switch-configuration" class="header-mark" aria-label="Header mark for 'Switch Configuration'"></a>Switch Configuration</h3><h4 id="vlan-setup" class="headerLink">
     <a href="#vlan-setup" class="header-mark" aria-label="Header mark for 'VLAN Setup'"></a>VLAN Setup</h4><p>First thing we need to do is add the vlans if not already done. I&rsquo;ve tagged the vlans on all the ports for simplicity sake.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -362,7 +362,7 @@ vlan 30 tagged all</code></pre></code></pre>
 </div>
 <h4 id="radius-server-and-authentication" class="headerLink">
     <a href="#radius-server-and-authentication" class="header-mark" aria-label="Header mark for 'Radius Server and Authentication'"></a>Radius Server and Authentication</h4><p>Next we need to configure the remote RADIUS server (our NPS server) and tell the switch the &lsquo;secretkey&rsquo;</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -459,7 +459,7 @@ vlan 30 tagged all</code></pre></code></pre>
 <p>Then we configure EAP-RADIUS, this enables the switch to forward the authentication packets from the clients to the Radius server.</p>
 <p><code>aaa authentication port-access eap-radius</code></p>
 <p>We then enable 802.1x on our switch ports, here we are doing it on a a range of ports but you can specify individual ports, or separate them with a comma. We tell the switch to put autorised clients on vlan 10 (auth-vid) and non autorised clients on vlan 20 (unauth-vid)</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -560,7 +560,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <h4 id="bonus-what-about-ip-phones" class="headerLink">
     <a href="#bonus-what-about-ip-phones" class="header-mark" aria-label="Header mark for '(Bonus) What about IP Phones?'"></a>(Bonus) What about IP Phones?</h4><p>You may have noticed I included a vlan for phones, as this was a huge question I had on my first roll out of 802.1x. Will I need to add each phone to our Radius server and configure each phone for the authentication or use MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>
 <p>No! Instead we will make the vlan a voice vlan with the following command which will allow the phone to use LLDP to fetch its assigned vlan bypassing its need for the authentication.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -679,7 +679,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 
 <h2 id="installation" class="headerLink">
     <a href="#installation" class="header-mark" aria-label="Header mark for 'Installation'"></a>Installation</h2><p>Caddy is available as a single executable, a <a href="https://hub.docker.com/_/caddy" target="_blank" rel="noopener noreferrer">docker image</a> or as usual via a package manager. Today we&rsquo;ll be using Debian. But the if you use another OS their <a href="https://caddyserver.com/docs/install" target="_blank" rel="noopener noreferrer">docs</a> should have you covered.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -782,7 +782,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     <a href="#configuration" class="header-mark" aria-label="Header mark for 'Configuration'"></a>Configuration</h2><p>As said above caddy can be configured using the file <code>Caddyfile</code> in <code>/etc/caddy</code>. In this file we give it <a href="https://caddyserver.com/docs/caddyfile/directives" target="_blank" rel="noopener noreferrer">directives</a> to either be a reverse proxy, web server, php front, etc. Caddy can also be configured using its <a href="https://caddyserver.com/docs/api" target="_blank" rel="noopener noreferrer">REST API</a> if that&rsquo;s something that interests you.</p>
 <h3 id="reverse-proxy" class="headerLink">
     <a href="#reverse-proxy" class="header-mark" aria-label="Header mark for 'Reverse Proxy'"></a>Reverse Proxy</h3><p>Let&rsquo;s say you had an app running on port 9999 that you wanted to reverse proxy to 443 (HTTPS). The config file would look like so:</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -882,7 +882,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <p>For caddy to reload the <code>Caddyfile</code> we just need to run a <code>systemctl reload caddy</code>, Caddy will then reload the config file, request a certificate for <code>demo.app.com</code> and then serve your app over HTTPS<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <h3 id="static-files" class="headerLink">
     <a href="#static-files" class="header-mark" aria-label="Header mark for 'Static Files'"></a>Static Files</h3><p>Okay a reverse proxy is nice but my website (this one) is static and generated by <a href="gohugo.io" rel="">Hugo</a>, how could we serve it using caddy? Again only 4 lines of config is enough.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -983,7 +983,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <p>A quick <code>systemctl reload caddy</code> later and Caddy is serving your static files over HTTPS<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> at <code>demo.website.com</code></p>
 <h3 id="php-fpm" class="headerLink">
     <a href="#php-fpm" class="header-mark" aria-label="Header mark for 'PHP-fpm'"></a>PHP-fpm</h3><p>You would usually use Ngninx as a front for PHP-fpm, well Caddy can do that too. And again with a simple config file.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1088,7 +1088,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <h2 id="bonus" class="headerLink">
     <a href="#bonus" class="header-mark" aria-label="Header mark for 'Bonus'"></a>Bonus</h2><h3 id="docker--docker-compose" class="headerLink">
     <a href="#docker--docker-compose" class="header-mark" aria-label="Header mark for 'Docker &amp;amp; Docker Compose'"></a>Docker &amp; Docker Compose</h3><p>Caddy is also often run with Docker Compose and is still as simple. Here is a simple <code>docker-compose.yml</code> and we can use any example <code>Caddyfile</code> from above.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1168,7 +1168,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-1" 
+    id="codeblock-id-5" 
     class="
       chroma 
       !tw-block 
@@ -1264,7 +1264,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </ul>
 <h3 id="install-restic" class="headerLink">
     <a href="#install-restic" class="header-mark" aria-label="Header mark for 'Install Restic'"></a>Install Restic</h3><p>First and formost we need to install restic, this is a simple as running as using APT on Ubuntu/Debian (in my use case)</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1374,7 +1374,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
 <p>So now you have chosen the storage backend for your repo, we need to initialise it.</p>
 <p>Let&rsquo;s say that we want to name our repository backups and we can use the following command to initialise it.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1469,7 +1469,7 @@ aaa port-access authenticator active</code></pre></code></pre>
       tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init</span></span></code></pre>
 </div>
 <p>Restic will ask you to create a password (keep this safe we will need this later) and will initialise the repo. We can use <code>check</code> to verify that the repository is initialised.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1572,7 +1572,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </div>
 <h3 id="backing-up-all-the-things" class="headerLink">
     <a href="#backing-up-all-the-things" class="header-mark" aria-label="Header mark for 'Backing up all the things'"></a>Backing up all the things</h3><p>Now we have an initialised repository we can start backing up our cat pictures. With the <code>backup</code> and pointing to the repository we created. So to backup my <code>~/cat-pictures</code> folder I would run this command</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1668,7 +1668,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </div>
 <p>Yes it&rsquo;s that simple &#x1f60e;</p>
 <p>Everytime a backup is run, restic creates a <code>snapshot</code>, you can list these using the <code>snapshot</code> command.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1772,7 +1772,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <h3 id="restoring-the-cat-pictures" class="headerLink">
     <a href="#restoring-the-cat-pictures" class="header-mark" aria-label="Header mark for 'Restoring the cat pictures'"></a>Restoring the cat pictures</h3><p>What is a backup if you have not tested a restore? Well it&rsquo;s not a backup because you don&rsquo;t know it it worked.</p>
 <p>So let&rsquo;s try restoring our cat pictures with the <code>restore</code> command. We need to specify the snapshot id <code>ac8721ec</code> and where we want to restore to <code>~/restored-cat-pictures</code></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2031,7 +2031,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </span></span><span class="line"><span class="cl"><span class="k">fi</span></span></span></code></pre>
 </div>
 <p>Once we have saved our bash script to say <code>~/restic_script.sh</code> we need to allow its execution with <code>chmod</code> and add it to our <a href="https://en.wikipedia.org/wiki/Cron" target="_blank" rel="noopener noreferrer">crontab</a></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2125,7 +2125,7 @@ aaa port-access authenticator active</code></pre></code></pre>
       tw-overflow-y-hidden
       tw-overflow-x-auto"><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># allow execution of our script</span></span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2219,7 +2219,7 @@ aaa port-access authenticator active</code></pre></code></pre>
       tw-overflow-y-hidden
       tw-overflow-x-auto"><span class="line"><span class="cl">crontab -e <span class="c1"># edit our crontab</span></span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2358,7 +2358,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <h3 id="setup" class="headerLink">
     <a href="#setup" class="header-mark" aria-label="Header mark for 'Setup'"></a>Setup</h3><h4 id="dns" class="headerLink">
     <a href="#dns" class="header-mark" aria-label="Header mark for 'DNS'"></a>DNS</h4><p>You will need to setup the following DNS records for Mailcow to work</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2459,7 +2459,7 @@ autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 <h4 id="installing-mailcow" class="headerLink">
     <a href="#installing-mailcow" class="header-mark" aria-label="Header mark for 'Installing Mailcow'"></a>Installing Mailcow</h4><p>Once the DNS records are propagated, you can install and setup mailcow.
 First we clone the repository and set the permissions on the folders</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2559,7 +2559,7 @@ First we clone the repository and set the permissions on the folders</p>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized</span></span></code></pre>
 </div>
 <p>Once that is done we need to initialise mailcow and create a configuration file using the command below, It will ask for your FQDN (domain name)</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2654,7 +2654,7 @@ First we clone the repository and set the permissions on the folders</p>
       tw-overflow-x-auto"><span class="line"><span class="cl">./generate_config.sh</span></span></code></pre>
 </div>
 <p>Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -2932,7 +2932,7 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
 <h3 id="what-does-the-config-look-like" class="headerLink">
     <a href="#what-does-the-config-look-like" class="header-mark" aria-label="Header mark for 'What does the config look like?'"></a>What does the config look like?</h3><p>Here are my config exports to announce one subnet via AS 211486. As you can see, before doing anything you need to add your prefixes that you want to announce to a network list which you will specify in the bgp template. The rest should be pretty self explanitory but I&rsquo;ve detailed the main points below.</p>
 <h4 id="network-list" class="headerLink">
-    <a href="#network-list" class="header-mark" aria-label="Header mark for 'Network List'"></a>Network List</h4><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#network-list" class="header-mark" aria-label="Header mark for 'Network List'"></a>Network List</h4><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -3029,7 +3029,7 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
 </div>
 <h4 id="templates" class="headerLink">
     <a href="#templates" class="header-mark" aria-label="Header mark for 'Templates'"></a>Templates</h4><p>ROSv7 also introduced the concept of templates to BGP, you could define one template for iBGP, one for IXPs and another for eBGP</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -3129,7 +3129,7 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
 <h4 id="filters" class="headerLink">
     <a href="#filters" class="header-mark" aria-label="Header mark for 'Filters'"></a>Filters</h4><p>As with any BGP setup we have filters. Mikrotik changed the filter syntax in ROSv7, it feels quite a bit like bird. Their <a href="https://help.mikrotik.com/docs/display/ROS/Route&#43;Selection&#43;and&#43;Filters#RouteSelectionandFilters-FilterSyntax" target="_blank" rel="noopener noreferrer">reference</a> is pretty good.
 Here is a basic set of incoming and outgoing filters. The first two lines allow any network routes under 0.0.0.0/0 but not 185.133.194.0/24 which is mine. The third line allows my prefix the be annonced and nothing else. If no filter is defined for a route it will be rejected.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -3228,7 +3228,7 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
 </div>
 <h4 id="connection" class="headerLink">
     <a href="#connection" class="header-mark" aria-label="Header mark for 'Connection'"></a>Connection</h4><p>Lastly we add the connection which references the template, network list and filters we have just created.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -3326,7 +3326,7 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
 </div>
 <h4 id="blackhole-route" class="headerLink">
     <a href="#blackhole-route" class="header-mark" aria-label="Header mark for 'Blackhole route'"></a>Blackhole route</h4><p>One thing I often forget is to add a blackhole route to my routing table for the prefixes I would like to announce. Without this, you may have the correct filters be nothing will be announced as the router will only announce prefixes in its routing table.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     

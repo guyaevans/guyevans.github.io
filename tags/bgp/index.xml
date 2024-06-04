@@ -24,7 +24,7 @@
 <h3 id="what-does-the-config-look-like" class="headerLink">
     <a href="#what-does-the-config-look-like" class="header-mark" aria-label="Header mark for 'What does the config look like?'"></a>What does the config look like?</h3><p>Here are my config exports to announce one subnet via AS 211486. As you can see, before doing anything you need to add your prefixes that you want to announce to a network list which you will specify in the bgp template. The rest should be pretty self explanitory but I&rsquo;ve detailed the main points below.</p>
 <h4 id="network-list" class="headerLink">
-    <a href="#network-list" class="header-mark" aria-label="Header mark for 'Network List'"></a>Network List</h4><div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+    <a href="#network-list" class="header-mark" aria-label="Header mark for 'Network List'"></a>Network List</h4><div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -121,7 +121,7 @@
 </div>
 <h4 id="templates" class="headerLink">
     <a href="#templates" class="header-mark" aria-label="Header mark for 'Templates'"></a>Templates</h4><p>ROSv7 also introduced the concept of templates to BGP, you could define one template for iBGP, one for IXPs and another for eBGP</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -221,7 +221,7 @@
 <h4 id="filters" class="headerLink">
     <a href="#filters" class="header-mark" aria-label="Header mark for 'Filters'"></a>Filters</h4><p>As with any BGP setup we have filters. Mikrotik changed the filter syntax in ROSv7, it feels quite a bit like bird. Their <a href="https://help.mikrotik.com/docs/display/ROS/Route&#43;Selection&#43;and&#43;Filters#RouteSelectionandFilters-FilterSyntax" target="_blank" rel="noopener noreferrer">reference</a> is pretty good.
 Here is a basic set of incoming and outgoing filters. The first two lines allow any network routes under 0.0.0.0/0 but not 185.133.194.0/24 which is mine. The third line allows my prefix the be annonced and nothing else. If no filter is defined for a route it will be rejected.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -320,7 +320,7 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
 </div>
 <h4 id="connection" class="headerLink">
     <a href="#connection" class="header-mark" aria-label="Header mark for 'Connection'"></a>Connection</h4><p>Lastly we add the connection which references the template, network list and filters we have just created.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -418,7 +418,7 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
 </div>
 <h4 id="blackhole-route" class="headerLink">
     <a href="#blackhole-route" class="header-mark" aria-label="Header mark for 'Blackhole route'"></a>Blackhole route</h4><p>One thing I often forget is to add a blackhole route to my routing table for the prefixes I would like to announce. Without this, you may have the correct filters be nothing will be announced as the router will only announce prefixes in its routing table.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     

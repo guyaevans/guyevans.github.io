@@ -23,7 +23,7 @@
 <h3 id="setup" class="headerLink">
     <a href="#setup" class="header-mark" aria-label="Header mark for 'Setup'"></a>Setup</h3><h4 id="dns" class="headerLink">
     <a href="#dns" class="header-mark" aria-label="Header mark for 'DNS'"></a>DNS</h4><p>You will need to setup the following DNS records for Mailcow to work</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -124,7 +124,7 @@ autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 <h4 id="installing-mailcow" class="headerLink">
     <a href="#installing-mailcow" class="header-mark" aria-label="Header mark for 'Installing Mailcow'"></a>Installing Mailcow</h4><p>Once the DNS records are propagated, you can install and setup mailcow.
 First we clone the repository and set the permissions on the folders</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -224,7 +224,7 @@ First we clone the repository and set the permissions on the folders</p>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized</span></span></code></pre>
 </div>
 <p>Once that is done we need to initialise mailcow and create a configuration file using the command below, It will ask for your FQDN (domain name)</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -319,7 +319,7 @@ First we clone the repository and set the permissions on the folders</p>
       tw-overflow-x-auto"><span class="line"><span class="cl">./generate_config.sh</span></span></code></pre>
 </div>
 <p>Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     

@@ -39,7 +39,7 @@
 </ul>
 <h3 id="install-restic" class="headerLink">
     <a href="#install-restic" class="header-mark" aria-label="Header mark for 'Install Restic'"></a>Install Restic</h3><p>First and formost we need to install restic, this is a simple as running as using APT on Ubuntu/Debian (in my use case)</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -149,7 +149,7 @@
     </div>
 <p>So now you have chosen the storage backend for your repo, we need to initialise it.</p>
 <p>Let&rsquo;s say that we want to name our repository backups and we can use the following command to initialise it.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -244,7 +244,7 @@
       tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init</span></span></code></pre>
 </div>
 <p>Restic will ask you to create a password (keep this safe we will need this later) and will initialise the repo. We can use <code>check</code> to verify that the repository is initialised.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -347,7 +347,7 @@
 </div>
 <h3 id="backing-up-all-the-things" class="headerLink">
     <a href="#backing-up-all-the-things" class="header-mark" aria-label="Header mark for 'Backing up all the things'"></a>Backing up all the things</h3><p>Now we have an initialised repository we can start backing up our cat pictures. With the <code>backup</code> and pointing to the repository we created. So to backup my <code>~/cat-pictures</code> folder I would run this command</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -443,7 +443,7 @@
 </div>
 <p>Yes it&rsquo;s that simple &#x1f60e;</p>
 <p>Everytime a backup is run, restic creates a <code>snapshot</code>, you can list these using the <code>snapshot</code> command.</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -547,7 +547,7 @@
 <h3 id="restoring-the-cat-pictures" class="headerLink">
     <a href="#restoring-the-cat-pictures" class="header-mark" aria-label="Header mark for 'Restoring the cat pictures'"></a>Restoring the cat pictures</h3><p>What is a backup if you have not tested a restore? Well it&rsquo;s not a backup because you don&rsquo;t know it it worked.</p>
 <p>So let&rsquo;s try restoring our cat pictures with the <code>restore</code> command. We need to specify the snapshot id <code>ac8721ec</code> and where we want to restore to <code>~/restored-cat-pictures</code></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -806,7 +806,7 @@
 </span></span><span class="line"><span class="cl"><span class="k">fi</span></span></span></code></pre>
 </div>
 <p>Once we have saved our bash script to say <code>~/restic_script.sh</code> we need to allow its execution with <code>chmod</code> and add it to our <a href="https://en.wikipedia.org/wiki/Cron" target="_blank" rel="noopener noreferrer">crontab</a></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -900,7 +900,7 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto"><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># allow execution of our script</span></span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -994,7 +994,7 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto"><span class="line"><span class="cl">crontab -e <span class="c1"># edit our crontab</span></span></span></code></pre>
 </div>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1133,7 +1133,7 @@
 <h3 id="setup" class="headerLink">
     <a href="#setup" class="header-mark" aria-label="Header mark for 'Setup'"></a>Setup</h3><h4 id="dns" class="headerLink">
     <a href="#dns" class="header-mark" aria-label="Header mark for 'DNS'"></a>DNS</h4><p>You will need to setup the following DNS records for Mailcow to work</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1234,7 +1234,7 @@ autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 <h4 id="installing-mailcow" class="headerLink">
     <a href="#installing-mailcow" class="header-mark" aria-label="Header mark for 'Installing Mailcow'"></a>Installing Mailcow</h4><p>Once the DNS records are propagated, you can install and setup mailcow.
 First we clone the repository and set the permissions on the folders</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1334,7 +1334,7 @@ First we clone the repository and set the permissions on the folders</p>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> mailcow-dockerized</span></span></code></pre>
 </div>
 <p>Once that is done we need to initialise mailcow and create a configuration file using the command below, It will ask for your FQDN (domain name)</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1429,7 +1429,7 @@ First we clone the repository and set the permissions on the folders</p>
       tw-overflow-x-auto"><span class="line"><span class="cl">./generate_config.sh</span></span></code></pre>
 </div>
 <p>Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below</p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
