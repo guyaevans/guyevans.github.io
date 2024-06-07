@@ -41,7 +41,7 @@ enableRobotsTXT = true
       [params.page.comment.remark42]
         enable = true
         host = "https://comments.evans.fr"
-        site_id = "remark"
+        site_id = "guy-evans.com"
         max_shown_comments = 15
         show_email_subscription = true
         simple_view = false
