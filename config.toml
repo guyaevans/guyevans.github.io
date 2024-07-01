@@ -213,7 +213,7 @@ defaultContentLanguage = "en"
 
 
 [params.search]
-  enable = true
+  enable = false
   # type of search engine ("algolia", "fuse")
   type = "fuse"
   # max index length of the chunked content
