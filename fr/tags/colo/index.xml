@@ -41,13 +41,8 @@
     <a href="#tout-mettre-en-place" class="header-mark" aria-label="Header mark for 'Tout mettre en place'"></a>Tout mettre en place</h2><p>Après avoir commandé le serveur et l&rsquo;hébergement, il ne me restait plus qu&rsquo;à configurer <a href="https://www.proxmox.com" target="_blank" rel="noopener noreferrer">Proxmox</a> et à envoyer mon tout nouveau serveur à <em>Milkywan</em> qui me l&rsquo;a installé dans son centre de données.</p>
 <p>Je dispose maintenant de mon propre matériel avec une connexion 10G dans un centre de données français. Vous pouvez remarquer dans l&rsquo;image du speedtest ci-dessous que mon nom apparaît comme le FAI, c&rsquo;est parce que je suis effectivement devenu mon propre FAI puisque je fournis à mon serveur l&rsquo;internet via mon propre ASN (<a href="https://bgp.he.net/AS211486" target="_blank" rel="noopener noreferrer">AS211486</a>) et mes IPs. (Cloudflare a un excellent article sur BGP <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>)</p>
 <p>Mon serveur héberge la plupart de mon &lsquo;homelab&rsquo;, y compris certaines parties de ce site web, comme le système de commentaires et les statistiques. J&rsquo;ai également une petite installation à la maison avec un NAS et un microserveur dont je vais probablement écrire un autre billet à ce sujet.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png"
-        srcset="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png, https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png 1.5x, https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png 2x"
-        title="10G Proof" ><figcaption class="image-caption">Presque 10G mais c'est une autre histoire</figcaption>
-    </figure></p>
+<p><figure><img  loading="lazy" src="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png"   alt="10G Proof"  ><figcaption class="image-caption">Presque 10G mais c'est une autre histoire</figcaption>
+</figure></p>
 <p>Mon serveur est la dernière machine dans le rack sur l&rsquo;image d&rsquo;en-tête de ce post. Avez-vous voulu ou avez-vous mis en place votre propre homelab ? Partagez vos commentaires ci-dessous.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>

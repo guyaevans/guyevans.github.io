@@ -19,12 +19,7 @@ Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie 
 <p>Chaque AS se voit attribuer un numéro officiel, ou numéro de système autonome (ASN), de la même manière que chaque entreprise possède une licence commerciale avec un numéro unique et officiel. Mais contrairement aux entreprises, les parties externes font souvent référence aux AS par leur seul numéro.
 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 </blockquote>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"
-        srcset="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g, https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g 1.5x, https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g 2x"
-        title="C&amp;rsquo;est joli ça gif" ></figure></p>
+<p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="C&amp;rsquo;est joli ça gif"  ></p>
 <h3 id="a-quoi-ressemble-la-configuration-" class="headerLink">
     <a href="#a-quoi-ressemble-la-configuration-" class="header-mark" aria-label="Header mark for 'A quoi ressemble la configuration ?'"></a>A quoi ressemble la configuration ?</h3><p>Voici les exports de configuration pour annoncer mes préfixes via l&rsquo;AS 211486. Comme vous pouvez le voir, avant de faire quoi que ce soit, vous devez ajouter les préfixes que vous voulez annoncer à une liste de réseaux que vous spécifierez dans le modèle bgp. Le reste devrait être assez explicite mais j&rsquo;ai détaillé les points principaux ci-dessous.</p>
 <h4 id="modèlestemplates" class="headerLink">
@@ -121,7 +116,9 @@ Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie 
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing bgp template
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing bgp template
 </span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip4 output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    routing-table<span class="o">=</span>main
 </span></span><span class="line"><span class="cl">add address-families<span class="o">=</span>ipv6 <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip6 output.network<span class="o">=</span>bgp routing-table<span class="o">=</span>main</span></span></code></pre>
@@ -221,7 +218,9 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing filter rule
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing filter rule
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 0.0.0.0/0) {set bgp-local-pref 90 ; accept}&#34;</span>
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 185.133.194.0/24) {reject}&#34;</span>
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-out <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 OUT Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if ( dst == 185.133.194.0/24 ) {accept}&#34;</span></span></span></code></pre>
@@ -320,7 +319,9 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing bgp connexion
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing bgp connexion
 </span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in local.role<span class="o">=</span>ebgp <span class="nv">name</span><span class="o">=</span>ip4-mw output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="sb">``</span>
 </span></span><span class="line"><span class="cl">    remote.address<span class="o">=</span>80.67.167.166/32 router-id<span class="o">=</span>185.133.194.1 routing-table<span class="o">=</span>main <span class="nv">templates</span><span class="o">=</span>as211486-public-out-ip4</span></span></code></pre>
 </div>
@@ -418,16 +419,13 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/ip route
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/ip route
 </span></span><span class="line"><span class="cl">add blackhole <span class="nv">disabled</span><span class="o">=</span>no dst-address<span class="o">=</span>185.133.194.0/24</span></span></code></pre>
 </div>
 <p>Félicitations ! Vous annoncez maintenant un réseau avec BGP sur un RouterOSv7 de Mikrotik.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp"
-        srcset="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp, https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp 1.5x, https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp 2x"
-        title="félicitations" ></figure></p>
+<p><img class="tw-inline" loading="lazy" src="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp"   alt="félicitations"  ></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>

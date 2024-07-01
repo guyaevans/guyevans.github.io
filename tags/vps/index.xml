@@ -41,13 +41,8 @@
     <a href="#putting-it-all-together" class="header-mark" aria-label="Header mark for 'Putting it all together'"></a>Putting it all together</h2><p>After ordering the server and ordering the hosting, all I had to do is setup <a href="https://www.proxmox.com" target="_blank" rel="noopener noreferrer">Proxmox</a>  and then ship my brand new server to <em>Milkywan</em> and they racked it for me in their datacenter.</p>
 <p>I now have my own hardware with a 10G connection in a french datacenter. You may notice in the image of the speedtest below that my name appears as the ISP, that&rsquo;s because I have effectively become my own ISP as I provide my server with internet via my own ASN (<a href="https://bgp.he.net/AS211486" target="_blank" rel="noopener noreferrer">AS211486</a>) and IPs. (Cloudflare has a great explainer on BGP<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>)</p>
 <p>My server hosts most of my &lsquo;homelab&rsquo; including parts of this website, like the comment system and the statistics. I also have a small setup at home with a NAS and a microserver which I will probably write another post about that.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png"
-        srcset="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png, https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png 1.5x, https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png 2x"
-        title="10G Proof" ><figcaption class="image-caption">Almost 10G but that's another story</figcaption>
-    </figure></p>
+<p><figure><img  loading="lazy" src="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png"   alt="10G Proof"  ><figcaption class="image-caption">Almost 10G but that's another story</figcaption>
+</figure></p>
 <p>My server is the last machine in the rack on the header image of this post. Have you wanted or have setup your own homelab? Share your thoughts below.</p>
 
 <hr/>

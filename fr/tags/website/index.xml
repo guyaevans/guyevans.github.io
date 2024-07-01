@@ -101,7 +101,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 </span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/gpg.key&#39;</span> <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 </span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt&#39;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/caddy-stable.list
 </span></span><span class="line"><span class="cl">sudo apt update
@@ -204,7 +206,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="err">demo.app.com</span> <span class="p">{</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="err">demo.app.com</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="err">reverse_proxy</span> <span class="err">127.0.0.1:9999</span>
 </span></span><span class="line"><span class="cl">    <span class="err">encode</span> <span class="err">gzip</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -304,7 +308,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="err">#</span> <span class="err">où</span> <span class="err">sont</span> <span class="err">stockés</span> <span class="err">nos</span> <span class="err">fichiers</span> <span class="err">statiques</span>
 </span></span><span class="line"><span class="cl">    <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.droapp.com/public</span>
 </span></span><span class="line"><span class="cl">    <span class="err">file_server</span> 
@@ -405,7 +411,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">où</span> <span class="err">sont</span> <span class="err">stockés</span> <span class="err">nos</span> <span class="err">fichiers</span>
 </span></span><span class="line"><span class="cl">        <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.website.com</span>
 </span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">on</span> <span class="err">indique</span> <span class="err">à</span> <span class="err">caddy</span> <span class="err">où</span> <span class="err">trouver</span> <span class="err">le</span> <span class="err">socket</span> <span class="err">php-fpm</span>
@@ -510,7 +518,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.7&#34;</span><span class="w">
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.7&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">caddy</span><span class="p">:</span><span class="w">
@@ -527,17 +537,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/site:/srv</span><span class="w"> </span><span class="c"># Si nous voulons servir des fichiers statiques dans $PWD/site</span></span></span></code></pre>
 </div>
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            Documentation
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Documentation<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Caddy possède l&rsquo;une des meilleures <a href="https://caddyserver.com/docs/" target="_blank" rel="noopener noreferrer">documentation</a> que j&rsquo;aie vues depuis longtemps. Il existe de nombreuses autres fonctions que je n&rsquo;ai pas abordées ici.</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">Caddy possède l&rsquo;une des meilleures <a href="https://caddyserver.com/docs/" target="_blank" rel="noopener noreferrer">documentation</a> que j&rsquo;aie vues depuis longtemps. Il existe de nombreuses autres fonctions que je n&rsquo;ai pas abordées ici.</div></div></div>
 <p>Sur ce, je pense avoir couvert les bases de l&rsquo;utilisation de Caddy. L&rsquo;utilisez-vous ? Dites-moi comment et ce que vous en pensez.</p>
 <figure><img src="/img/designated-survivor-beer.gif">
 </figure>

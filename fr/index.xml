@@ -270,7 +270,9 @@ J&rsquo;utilise généralement 2 cubes de rangement :</p>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>vlan 10 name VLAN10_Enterprise
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>vlan 10 name VLAN10_Enterprise
 vlan 10 tagged all
 vlan 20 nom VLAN20_Publique
 vlan 20 tagged all
@@ -371,7 +373,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;</code></pre></code></pre>
 </div>
 <p>Ensuite, nous configurons EAP-RADIUS, ce qui permet au commutateur de transmettre les paquets d&rsquo;authentification des clients au serveur Radius.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -466,7 +470,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>aaa authentication port-access eap-radius</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>aaa authentication port-access eap-radius</code></pre></code></pre>
 </div>
 <p>Nous activons ensuite 802.1x sur les ports de notre commutateur, ici nous le faisons sur une série de ports mais vous pouvez spécifier des ports individuels, ou les séparer par une virgule. Nous demandons au switch de placer les clients autorisés sur le vlan 10 (auth-vid) et les clients non autorisés sur le vlan 20 (unauth-vid).</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -561,7 +567,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>aaa port-access authenticator 1-10
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>aaa port-access authenticator 1-10
 aaa port-access authenticator 1-10 unauth-vid 20
 aaa port-access authenticator 1-10 auth-vid 10
 aaa port-access authenticator active</code></pre></code></pre>
@@ -662,7 +670,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>vlan 30 voice</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>vlan 30 voice</code></pre></code></pre>
 </div>
 <h4 id="conclusion" class="headerLink">
     <a href="#conclusion" class="header-mark" aria-label="Header mark for 'Conclusion'"></a>Conclusion</h4><p>La norme 802.1X câblée offre une authentification et un contrôle d&rsquo;accès au niveau du port, garantissant que seuls les appareils autorisés peuvent se connecter au réseau. Elle permet l&rsquo;attribution dynamique de VLAN et élimine la nécessité d&rsquo;une gestion manuelle des ports, ce qui renforce la sécurité du réseau.</p>
@@ -781,7 +791,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 </span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/gpg.key&#39;</span> <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 </span></span><span class="line"><span class="cl">curl -1sLf <span class="s1">&#39;https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt&#39;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/caddy-stable.list
 </span></span><span class="line"><span class="cl">sudo apt update
@@ -884,7 +896,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="err">demo.app.com</span> <span class="p">{</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="err">demo.app.com</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="err">reverse_proxy</span> <span class="err">127.0.0.1:9999</span>
 </span></span><span class="line"><span class="cl">    <span class="err">encode</span> <span class="err">gzip</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
@@ -984,7 +998,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="err">#</span> <span class="err">où</span> <span class="err">sont</span> <span class="err">stockés</span> <span class="err">nos</span> <span class="err">fichiers</span> <span class="err">statiques</span>
 </span></span><span class="line"><span class="cl">    <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.droapp.com/public</span>
 </span></span><span class="line"><span class="cl">    <span class="err">file_server</span> 
@@ -1085,7 +1101,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="err">demo.website.com</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">où</span> <span class="err">sont</span> <span class="err">stockés</span> <span class="err">nos</span> <span class="err">fichiers</span>
 </span></span><span class="line"><span class="cl">        <span class="err">root</span> <span class="err">*</span> <span class="err">/var/www/demo.website.com</span>
 </span></span><span class="line"><span class="cl">        <span class="err">#</span> <span class="err">on</span> <span class="err">indique</span> <span class="err">à</span> <span class="err">caddy</span> <span class="err">où</span> <span class="err">trouver</span> <span class="err">le</span> <span class="err">socket</span> <span class="err">php-fpm</span>
@@ -1190,7 +1208,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.7&#34;</span><span class="w">
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.7&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">caddy</span><span class="p">:</span><span class="w">
@@ -1207,17 +1227,13 @@ aaa port-access authenticator active</code></pre></code></pre>
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/site:/srv</span><span class="w"> </span><span class="c"># Si nous voulons servir des fichiers statiques dans $PWD/site</span></span></span></code></pre>
 </div>
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            Documentation
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Documentation<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Caddy possède l&rsquo;une des meilleures <a href="https://caddyserver.com/docs/" target="_blank" rel="noopener noreferrer">documentation</a> que j&rsquo;aie vues depuis longtemps. Il existe de nombreuses autres fonctions que je n&rsquo;ai pas abordées ici.</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">Caddy possède l&rsquo;une des meilleures <a href="https://caddyserver.com/docs/" target="_blank" rel="noopener noreferrer">documentation</a> que j&rsquo;aie vues depuis longtemps. Il existe de nombreuses autres fonctions que je n&rsquo;ai pas abordées ici.</div></div></div>
 <p>Sur ce, je pense avoir couvert les bases de l&rsquo;utilisation de Caddy. L&rsquo;utilisez-vous ? Dites-moi comment et ce que vous en pensez.</p>
 <figure><img src="/img/designated-survivor-beer.gif">
 </figure>
@@ -1356,24 +1372,119 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">sudo apt install restic</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">sudo apt install restic</span></span></code></pre>
 </div>
 <h3 id="initialiser-le-dépôt-de-stockage" class="headerLink">
     <a href="#initialiser-le-d%c3%a9p%c3%b4t-de-stockage" class="header-mark" aria-label="Header mark for 'Initialiser le dépôt de stockage'"></a>Initialiser le dépôt de stockage</h3><p>La beauté de Restic est que vous pouvez utiliser à peu près n&rsquo;importe quel type de stockage (local, Amazon S3, Minio Server, Backblaze B2, Azure, Google Cloud Storage, SFTP, etc.) pour votre repo (dépot) de sauvegarde et l&rsquo;interface reste en grande partie la même. Dans ce cas, j&rsquo;utilise leur propre backend de stockage. <a href="https://github.com/restic/rest-server" target="_blank" rel="noopener noreferrer"><strong>Rest-Server</strong></a></p>
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            Rest-Server
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Rest-Server<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Rest Server est un serveur HTTP haute performance qui met en œuvre l&rsquo;API REST de restic. Il fournit un moyen sûr et efficace de sauvegarder des données à distance, en utilisant le client de sauvegarde restic via l&rsquo;API rest : URL.</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">Rest Server est un serveur HTTP haute performance qui met en œuvre l&rsquo;API REST de restic. Il fournit un moyen sûr et efficace de sauvegarder des données à distance, en utilisant le client de sauvegarde restic via l&rsquo;API rest : URL.</div></div></div>
 <p>Maintenant que vous avez choisi le backend de stockage pour votre dépôt, nous devons l&rsquo;initialiser.</p>
 <p>Disons que nous voulons nommer les sauvegardes de notre dépôt et nous pouvons utiliser la commande suivante pour l&rsquo;initialiser.</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">bash</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-1" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init</span></span></code></pre>
+</div>
+<p>Restic vous demandera de créer un mot de passe (gardez-le précieusement, nous en aurons besoin plus tard) et initialisera le dépôt. Nous pouvons utiliser <code>check</code> pour vérifier que le dépôt est initialisé.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1466,9 +1577,19 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups check
+</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
+</span></span><span class="line"><span class="cl">password is correct
+</span></span><span class="line"><span class="cl">create exclusive lock <span class="k">for</span> repository
+</span></span><span class="line"><span class="cl">load indexesY
+</span></span><span class="line"><span class="cl">check all packs
+</span></span><span class="line"><span class="cl">check snapshots, trees and blobs
+</span></span><span class="line"><span class="cl">no errors were found</span></span></code></pre>
 </div>
-<p>Restic vous demandera de créer un mot de passe (gardez-le précieusement, nous en aurons besoin plus tard) et initialisera le dépôt. Nous pouvons utiliser <code>check</code> pour vérifier que le dépôt est initialisé.</p>
+<h3 id="la-sauvegarde" class="headerLink">
+    <a href="#la-sauvegarde" class="header-mark" aria-label="Header mark for 'La Sauvegarde'"></a>La Sauvegarde</h3><p>Maintenant que nous avons un dépôt initialisé, nous pouvons commencer à sauvegarder nos photos de chats. Avec la commande <code>backup</code> et pointant vers le dépôt que nous avons créé. Ainsi, pour sauvegarder mon dossier <code>~/cat-pictures</code>, je lancerais la commande suivante</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1561,17 +1682,12 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups check
-</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
-</span></span><span class="line"><span class="cl">password is correct
-</span></span><span class="line"><span class="cl">create exclusive lock <span class="k">for</span> repository
-</span></span><span class="line"><span class="cl">load indexesY
-</span></span><span class="line"><span class="cl">check all packs
-</span></span><span class="line"><span class="cl">check snapshots, trees and blobs
-</span></span><span class="line"><span class="cl">no errors were found</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures</span></span></code></pre>
 </div>
-<h3 id="la-sauvegarde" class="headerLink">
-    <a href="#la-sauvegarde" class="header-mark" aria-label="Header mark for 'La Sauvegarde'"></a>La Sauvegarde</h3><p>Maintenant que nous avons un dépôt initialisé, nous pouvons commencer à sauvegarder nos photos de chats. Avec la commande <code>backup</code> et pointant vers le dépôt que nous avons créé. Ainsi, pour sauvegarder mon dossier <code>~/cat-pictures</code>, je lancerais la commande suivante</p>
+<p>Oui, c&rsquo;est aussi simple que ça &#x1f60e;</p>
+<p>A chaque fois qu&rsquo;une sauvegarde est lancée, restic crée un snapshot, vous pouvez les lister en utilisant la commande <code>snapshot</code>.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1664,10 +1780,20 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
+</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
+</span></span><span class="line"><span class="cl">password is correct
+</span></span><span class="line"><span class="cl">ID        Date                 Host        Tags        Directory
+</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">ac8721ec  2023-03-26 20:18:16  my-pc              /home/bounty/cat-pictures
+</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
+</span></span><span class="line"><span class="cl"><span class="m">1</span> snapshots</span></span></code></pre>
 </div>
-<p>Oui, c&rsquo;est aussi simple que ça &#x1f60e;</p>
-<p>A chaque fois qu&rsquo;une sauvegarde est lancée, restic crée un snapshot, vous pouvez les lister en utilisant la commande <code>snapshot</code>.</p>
+<h3 id="restauration-des-photos-de-chats" class="headerLink">
+    <a href="#restauration-des-photos-de-chats" class="header-mark" aria-label="Header mark for 'Restauration des photos de chats'"></a>Restauration des photos de chats</h3><p>Qu&rsquo;est-ce qu&rsquo;une sauvegarde si vous n&rsquo;avez pas testé une restauration ? Ce n&rsquo;est pas une sauvegarde parce que vous ne savez pas si elle a fonctionné.</p>
+<p>Essayons donc de restaurer nos images de chats avec la commande <code>restore</code>. Nous devons spécifier l&rsquo;identifiant du snapshot <code>ac8721ec</code> et l&rsquo;endroit où nous voulons restaurer <code>~/restored-cat-pictures</code></p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1760,19 +1886,31 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
-</span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
-</span></span><span class="line"><span class="cl">password is correct
-</span></span><span class="line"><span class="cl">ID        Date                 Host        Tags        Directory
-</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
-</span></span><span class="line"><span class="cl">ac8721ec  2023-03-26 20:18:16  my-pc              /home/bounty/cat-pictures
-</span></span><span class="line"><span class="cl">----------------------------------------------------------------------
-</span></span><span class="line"><span class="cl"><span class="m">1</span> snapshots</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups restore ac8721ec --target ~/restored-cat-pictures/</span></span></code></pre>
 </div>
-<h3 id="restauration-des-photos-de-chats" class="headerLink">
-    <a href="#restauration-des-photos-de-chats" class="header-mark" aria-label="Header mark for 'Restauration des photos de chats'"></a>Restauration des photos de chats</h3><p>Qu&rsquo;est-ce qu&rsquo;une sauvegarde si vous n&rsquo;avez pas testé une restauration ? Ce n&rsquo;est pas une sauvegarde parce que vous ne savez pas si elle a fonctionné.</p>
-<p>Essayons donc de restaurer nos images de chats avec la commande <code>restore</code>. Nous devons spécifier l&rsquo;identifiant du snapshot <code>ac8721ec</code> et l&rsquo;endroit où nous voulons restaurer <code>~/restored-cat-pictures</code></p>
-<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+<div class="details admonition tip open">
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg></span>Astuces<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content">Vous pouvez utiliser <code>latest</code> à la place de l&rsquo;identifiant du snapshot pour référencer le dernier snapshot.</div></div></div>
+<p>C&rsquo;est aussi simple que la sauvegarde, non ?
+<div class="details admonition info open">
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Autres commandes et documentation<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content">Restic possède de nombreuses autres commandes utiles que vous pouvez trouver dans leur excellente <a href="https://restic.readthedocs.io" target="_blank" rel="noopener noreferrer">documentation</a>.</div></div></div></p>
+<h3 id="automatisation-avec-un-script-bash-et-cron" class="headerLink">
+    <a href="#automatisation-avec-un-script-bash-et-cron" class="header-mark" aria-label="Header mark for 'Automatisation avec un script Bash et Cron'"></a>Automatisation avec un script Bash et Cron</h3><p>Les sauvegardes manuelles sont bien mais vous risquez d&rsquo;oublier de les exécuter, nous allons donc automatiser notre sauvegarde avec un script bash et une entrée cron. Et pour les points bonus, assurons-nous d&rsquo;avoir un moyen de nous envoyer un message en cas d&rsquo;échec. Mon script de base est ci-dessous, chaque action est expliquée dans les commentaires.</p>
+<p><em>Note : mon script est loin d&rsquo;être parfait et peut contenir des erreurs, n&rsquo;hésitez pas à le corriger ou à suggérer des améliorations ci-dessous</em></p>
+<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
     
@@ -1864,129 +2002,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups restore ac8721ec --target ~/restored-cat-pictures/</span></span></code></pre>
-</div>
-<div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg></span>
-            Astuces
-            <span class="details-icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Vous pouvez utiliser <code>latest</code> à la place de l&rsquo;identifiant du snapshot pour référencer le dernier snapshot.</div>
-        </div>
-    </div>
-<p>C&rsquo;est aussi simple que la sauvegarde, non ?
-<div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            Autres commandes et documentation
-            <span class="details-icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Restic possède de nombreuses autres commandes utiles que vous pouvez trouver dans leur excellente <a href="https://restic.readthedocs.io" target="_blank" rel="noopener noreferrer">documentation</a>.</div>
-        </div>
-    </div></p>
-<h3 id="automatisation-avec-un-script-bash-et-cron" class="headerLink">
-    <a href="#automatisation-avec-un-script-bash-et-cron" class="header-mark" aria-label="Header mark for 'Automatisation avec un script Bash et Cron'"></a>Automatisation avec un script Bash et Cron</h3><p>Les sauvegardes manuelles sont bien mais vous risquez d&rsquo;oublier de les exécuter, nous allons donc automatiser notre sauvegarde avec un script bash et une entrée cron. Et pour les points bonus, assurons-nous d&rsquo;avoir un moyen de nous envoyer un message en cas d&rsquo;échec. Mon script de base est ci-dessous, chaque action est expliquée dans les commentaires.</p>
-<p><em>Note : mon script est loin d&rsquo;être parfait et peut contenir des erreurs, n&rsquo;hésitez pas à le corriger ou à suggérer des améliorations ci-dessous</em></p>
-<div class="code-block highlight is-closed show-line-numbers  tw-group tw-my-2">
-  <div class="
-    code-block-title 
-    
-    tw-flex 
-    tw-flex-row 
-    tw-justify-between 
-    tw-w-full tw-bg-bgColor-secondary
-    ">      
-    <button 
-      class="
-        tw-select-none 
-        tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>
-    </div>
-    <div class="tw-flex">
-      <button 
-        class="
-          line-number-button
-          tw-select-none 
-          tw-mx-2 
-          tw-hidden 
-          group-[.is-open]:tw-block 
-          group-[.show-line-numbers]:tw-text-fgColor-link 
-          print:!tw-hidden" 
-        title="Toggle line numbers"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
-
-      <button 
-        class="
-          wrap-code-button
-          tw-select-none 
-          tw-mx-2 
-          tw-hidden 
-          group-[.is-open]:tw-block 
-          group-[.is-wrap]:tw-text-fgColor-link 
-          print:!tw-hidden" 
-        title="Toggle code wrap"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
-      
-      <button 
-        class="
-          copy-code-button
-          tw-select-none
-          tw-mx-2 
-          tw-hidden
-          group-[.is-open]:tw-block
-          hover:tw-text-fgColor-link 
-          print:!tw-hidden"
-        title="Copy code">
-          <span class="copy-icon tw-block"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
-          <span class="check-icon tw-hidden"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
-      </button>
-        
-      <button 
-        class="
-          tw-select-none 
-          tw-mx-2 
-          tw-block 
-          group-[.is-open]:tw-hidden 
-          print:!tw-hidden" 
-        disabled
-        aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
-    </div>
-  </div>
-  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-7" 
-    class="
-      chroma 
-      !tw-block 
-      tw-p-0
-      tw-m-0
-      tw-transition-[max-height] 
-      tw-duration-500 
-      tw-ease-in-out 
-      group-[.is-closed]:!tw-max-h-0 
-      group-[.is-wrap]:tw-text-wrap
-      tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="cp">#!/bin/bash
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#This will run Restic backups</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Variables Restic</span>
@@ -2111,6 +2129,102 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-7" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># permettre l&#39;exécution de notre script</span></span></span></code></pre>
+</div>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">bash</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
     id="codeblock-id-8" 
     class="
       chroma 
@@ -2123,7 +2237,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># permettre l&#39;exécution de notre script</span></span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">crontab -e <span class="c1"># éditer notre crontab</span></span></span></code></pre>
 </div>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -2217,101 +2333,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">crontab -e <span class="c1"># éditer notre crontab</span></span></span></code></pre>
-</div>
-<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
-  <div class="
-    code-block-title 
-    
-    tw-flex 
-    tw-flex-row 
-    tw-justify-between 
-    tw-w-full tw-bg-bgColor-secondary
-    ">      
-    <button 
-      class="
-        tw-select-none 
-        tw-mx-2 
-        tw-block
-        group-[.is-open]:tw-rotate-90
-        tw-transition-[transform] 
-        tw-duration-500 
-        tw-ease-in-out
-        print:!tw-hidden"
-      disabled
-      aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
-
-    <div class="code-block-title-bar tw-w-full">
-      <p class="tw-select-none !tw-my-1">bash</p>
-    </div>
-    <div class="tw-flex">
-      <button 
-        class="
-          line-number-button
-          tw-select-none 
-          tw-mx-2 
-          tw-hidden 
-          group-[.is-open]:tw-block 
-          group-[.show-line-numbers]:tw-text-fgColor-link 
-          print:!tw-hidden" 
-        title="Toggle line numbers"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
-
-      <button 
-        class="
-          wrap-code-button
-          tw-select-none 
-          tw-mx-2 
-          tw-hidden 
-          group-[.is-open]:tw-block 
-          group-[.is-wrap]:tw-text-fgColor-link 
-          print:!tw-hidden" 
-        title="Toggle code wrap"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
-      
-      <button 
-        class="
-          copy-code-button
-          tw-select-none
-          tw-mx-2 
-          tw-hidden
-          group-[.is-open]:tw-block
-          hover:tw-text-fgColor-link 
-          print:!tw-hidden"
-        title="Copy code">
-          <span class="copy-icon tw-block"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
-          <span class="check-icon tw-hidden"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
-      </button>
-        
-      <button 
-        class="
-          tw-select-none 
-          tw-mx-2 
-          tw-block 
-          group-[.is-open]:tw-hidden 
-          print:!tw-hidden" 
-        disabled
-        aria-hidden="true"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
-    </div>
-  </div>
-  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-10" 
-    class="
-      chroma 
-      !tw-block 
-      tw-p-0
-      tw-m-0
-      tw-transition-[max-height] 
-      tw-duration-500 
-      tw-ease-in-out 
-      group-[.is-closed]:!tw-max-h-0 
-      group-[.is-wrap]:tw-text-wrap
-      tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="c1"># Edit this file to introduce tasks to be run by cron.</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="c1"># Edit this file to introduce tasks to be run by cron.</span>
 </span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># To define the time you can provide concrete values for</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># minute (m), hour (h), day of month (dom), month (mon),</span>
@@ -2450,7 +2474,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code># Name              Type       Value
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code># Name              Type       Value
 mail                IN A       1.2.3.4
 autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
@@ -2551,7 +2577,9 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">su
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">su
 </span></span><span class="line"><span class="cl"><span class="nb">umask</span>
 </span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Vérifier que c&#39;est bien 0022</span>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
@@ -2651,7 +2679,9 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">docker compose pull
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">docker compose pull
 </span></span><span class="line"><span class="cl">docker compose up -d</span></span></code></pre>
 </div>
 <p>FÉLICITATIONS ! Vous avez installé un serveur de messagerie (enfin presque).</p>
@@ -2704,13 +2734,8 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
     <a href="#tout-mettre-en-place" class="header-mark" aria-label="Header mark for 'Tout mettre en place'"></a>Tout mettre en place</h2><p>Après avoir commandé le serveur et l&rsquo;hébergement, il ne me restait plus qu&rsquo;à configurer <a href="https://www.proxmox.com" target="_blank" rel="noopener noreferrer">Proxmox</a> et à envoyer mon tout nouveau serveur à <em>Milkywan</em> qui me l&rsquo;a installé dans son centre de données.</p>
 <p>Je dispose maintenant de mon propre matériel avec une connexion 10G dans un centre de données français. Vous pouvez remarquer dans l&rsquo;image du speedtest ci-dessous que mon nom apparaît comme le FAI, c&rsquo;est parce que je suis effectivement devenu mon propre FAI puisque je fournis à mon serveur l&rsquo;internet via mon propre ASN (<a href="https://bgp.he.net/AS211486" target="_blank" rel="noopener noreferrer">AS211486</a>) et mes IPs. (Cloudflare a un excellent article sur BGP <sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>)</p>
 <p>Mon serveur héberge la plupart de mon &lsquo;homelab&rsquo;, y compris certaines parties de ce site web, comme le système de commentaires et les statistiques. J&rsquo;ai également une petite installation à la maison avec un NAS et un microserveur dont je vais probablement écrire un autre billet à ce sujet.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png"
-        srcset="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png, https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png 1.5x, https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png 2x"
-        title="10G Proof" ><figcaption class="image-caption">Presque 10G mais c'est une autre histoire</figcaption>
-    </figure></p>
+<p><figure><img  loading="lazy" src="https://www.speedtest.net/result/c/bca2e66f-818f-413c-9ac0-01f538aaf561.png"   alt="10G Proof"  ><figcaption class="image-caption">Presque 10G mais c'est une autre histoire</figcaption>
+</figure></p>
 <p>Mon serveur est la dernière machine dans le rack sur l&rsquo;image d&rsquo;en-tête de ce post. Avez-vous voulu ou avez-vous mis en place votre propre homelab ? Partagez vos commentaires ci-dessous.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
@@ -2732,15 +2757,13 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
 ]]></description></item><item><title>Recommendations de Podcasts</title><link>https://guy-evans.com/fr/posts/2022-12-21_podcast-recommendations/</link><pubDate>Wed, 21 Dec 2022 17:20:57 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2022-12-21_podcast-recommendations/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2022-12-21_podcast-recommendations/melanie-pongratz-becwwmiuj2k-unsplash.jpg" referrerpolicy="no-referrer">
             </div><div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Note: Article uniquement en Anglais<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Désolé, mais comme j&rsquo;écoute des podcasts uniquement en anglais, cet article ne sera qu&rsquo;en anglais.</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">Désolé, mais comme j&rsquo;écoute des podcasts uniquement en anglais, cet article ne sera qu&rsquo;en anglais.</div></div></div>
 <p>I could be described as a passionate podcast listener, whether I&rsquo;m on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work I usually stick on a podcast. Here are some of my recomendations</p>
 <h2 id="it--cybersecurity" class="headerLink">
     <a href="#it--cybersecurity" class="header-mark" aria-label="Header mark for 'IT &amp;amp; Cybersecurity'"></a>IT &amp; Cybersecurity</h2><h3 id="darknet-diaries---jack-rhysider" class="headerLink">
@@ -2813,12 +2836,7 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
 <p>Chaque AS se voit attribuer un numéro officiel, ou numéro de système autonome (ASN), de la même manière que chaque entreprise possède une licence commerciale avec un numéro unique et officiel. Mais contrairement aux entreprises, les parties externes font souvent référence aux AS par leur seul numéro.
 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 </blockquote>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"
-        srcset="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g, https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g 1.5x, https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g 2x"
-        title="C&amp;rsquo;est joli ça gif" ></figure></p>
+<p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="C&amp;rsquo;est joli ça gif"  ></p>
 <h3 id="a-quoi-ressemble-la-configuration-" class="headerLink">
     <a href="#a-quoi-ressemble-la-configuration-" class="header-mark" aria-label="Header mark for 'A quoi ressemble la configuration ?'"></a>A quoi ressemble la configuration ?</h3><p>Voici les exports de configuration pour annoncer mes préfixes via l&rsquo;AS 211486. Comme vous pouvez le voir, avant de faire quoi que ce soit, vous devez ajouter les préfixes que vous voulez annoncer à une liste de réseaux que vous spécifierez dans le modèle bgp. Le reste devrait être assez explicite mais j&rsquo;ai détaillé les points principaux ci-dessous.</p>
 <h4 id="modèlestemplates" class="headerLink">
@@ -2915,7 +2933,9 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing bgp template
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing bgp template
 </span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip4 output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    routing-table<span class="o">=</span>main
 </span></span><span class="line"><span class="cl">add address-families<span class="o">=</span>ipv6 <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip6 output.network<span class="o">=</span>bgp routing-table<span class="o">=</span>main</span></span></code></pre>
@@ -3015,7 +3035,9 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing filter rule
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing filter rule
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 0.0.0.0/0) {set bgp-local-pref 90 ; accept}&#34;</span>
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 185.133.194.0/24) {reject}&#34;</span>
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-out <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 OUT Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if ( dst == 185.133.194.0/24 ) {accept}&#34;</span></span></span></code></pre>
@@ -3114,7 +3136,9 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing bgp connexion
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing bgp connexion
 </span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in local.role<span class="o">=</span>ebgp <span class="nv">name</span><span class="o">=</span>ip4-mw output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="sb">``</span>
 </span></span><span class="line"><span class="cl">    remote.address<span class="o">=</span>80.67.167.166/32 router-id<span class="o">=</span>185.133.194.1 routing-table<span class="o">=</span>main <span class="nv">templates</span><span class="o">=</span>as211486-public-out-ip4</span></span></code></pre>
 </div>
@@ -3212,16 +3236,13 @@ Voici un ensemble de base de filtres entrants et sortants. Les deux premières l
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/ip route
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/ip route
 </span></span><span class="line"><span class="cl">add blackhole <span class="nv">disabled</span><span class="o">=</span>no dst-address<span class="o">=</span>185.133.194.0/24</span></span></code></pre>
 </div>
 <p>Félicitations ! Vous annoncez maintenant un réseau avec BGP sur un RouterOSv7 de Mikrotik.</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp"
-        srcset="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp, https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp 1.5x, https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp 2x"
-        title="félicitations" ></figure></p>
+<p><img class="tw-inline" loading="lazy" src="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp"   alt="félicitations"  ></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>

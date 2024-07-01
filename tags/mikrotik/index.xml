@@ -89,12 +89,7 @@
 <p>Each AS is assigned an official number, or autonomous system number (ASN), similar to how every business has a business license with an unique, official number. But unlike businesses, external parties often refer to ASes by their number alone.
 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 </blockquote>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"
-        srcset="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g, https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g 1.5x, https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g 2x"
-        title="That&amp;rsquo;s pretty slick gif" ></figure></p>
+<p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="That&amp;rsquo;s pretty slick gif"  ></p>
 <h3 id="what-does-the-config-look-like" class="headerLink">
     <a href="#what-does-the-config-look-like" class="header-mark" aria-label="Header mark for 'What does the config look like?'"></a>What does the config look like?</h3><p>Here are my config exports to announce one subnet via AS 211486. As you can see, before doing anything you need to add your prefixes that you want to announce to a network list which you will specify in the bgp template. The rest should be pretty self explanitory but I&rsquo;ve detailed the main points below.</p>
 <h4 id="network-list" class="headerLink">
@@ -190,7 +185,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/ip firewall address-list
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/ip firewall address-list
 </span></span><span class="line"><span class="cl">add <span class="nv">address</span><span class="o">=</span>185.133.194.0/24 <span class="nv">list</span><span class="o">=</span>bgp</span></span></code></pre>
 </div>
 <h4 id="templates" class="headerLink">
@@ -287,7 +284,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing bgp template
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing bgp template
 </span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip4 output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    routing-table<span class="o">=</span>main
 </span></span><span class="line"><span class="cl">add address-families<span class="o">=</span>ipv6 <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">name</span><span class="o">=</span>as211486-public-out-ip6 output.network<span class="o">=</span>bgp routing-table<span class="o">=</span>main</span></span></code></pre>
@@ -387,7 +386,9 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing filter rule
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing filter rule
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 0.0.0.0/0) {set bgp-local-pref 90; accept}&#34;</span>
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-in <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 IN Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if (dst in 185.133.194.0/24) {reject}&#34;</span>
 </span></span><span class="line"><span class="cl">add <span class="nv">chain</span><span class="o">=</span>bgp-out <span class="nv">comment</span><span class="o">=</span><span class="s2">&#34;STD IPv4 OUT Filter&#34;</span> <span class="nv">disabled</span><span class="o">=</span>no <span class="nv">rule</span><span class="o">=</span><span class="s2">&#34;if ( dst == 185.133.194.0/24 ) {accept}&#34;</span></span></span></code></pre>
@@ -486,7 +487,9 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/routing bgp connection
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/routing bgp connection
 </span></span><span class="line"><span class="cl">add <span class="nv">as</span><span class="o">=</span><span class="m">211486</span> <span class="nv">disabled</span><span class="o">=</span>no input.filter<span class="o">=</span>bgp-in local.role<span class="o">=</span>ebgp <span class="nv">name</span><span class="o">=</span>ip4-mw output.filter-chain<span class="o">=</span>bgp-out .network<span class="o">=</span>bgp <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    remote.address<span class="o">=</span>80.67.167.166/32 router-id<span class="o">=</span>185.133.194.1 routing-table<span class="o">=</span>main <span class="nv">templates</span><span class="o">=</span>as211486-public-out-ip4</span></span></code></pre>
 </div>
@@ -584,16 +587,13 @@ Here is a basic set of incoming and outgoing filters. The first two lines allow 
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">/ip route
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">/ip route
 </span></span><span class="line"><span class="cl">add blackhole <span class="nv">disabled</span><span class="o">=</span>no dst-address<span class="o">=</span>185.133.194.0/24</span></span></code></pre>
 </div>
 <p>Congratulations! You are now announcing a network with BGP on Mikrotik RouterOSv7</p>
-<p><figure><img
-        
-        loading="lazy"
-        src="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp"
-        srcset="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp, https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp 1.5x, https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp 2x"
-        title="congrats" ></figure></p>
+<p><img class="tw-inline" loading="lazy" src="https://i.giphy.com/media/D1wxiYaBi6euR8W0VX/giphy.webp"   alt="congrats"  ></p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>

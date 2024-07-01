@@ -115,7 +115,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code># Name              Type       Value
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code># Name              Type       Value
 mail                IN A       1.2.3.4
 autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
@@ -216,7 +218,9 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">su
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">su
 </span></span><span class="line"><span class="cl"><span class="nb">umask</span>
 </span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Vérifier que c&#39;est bien 0022</span>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
@@ -316,7 +320,9 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">docker compose pull
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">docker compose pull
 </span></span><span class="line"><span class="cl">docker compose up -d</span></span></code></pre>
 </div>
 <p>FÉLICITATIONS ! Vous avez installé un serveur de messagerie (enfin presque).</p>

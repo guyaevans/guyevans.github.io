@@ -119,7 +119,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>vlan 10 name VLAN10_Enterprise
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>vlan 10 name VLAN10_Enterprise
 vlan 10 tagged all
 vlan 20 nom VLAN20_Publique
 vlan 20 tagged all
@@ -220,7 +222,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;</code></pre></code></pre>
 </div>
 <p>Ensuite, nous configurons EAP-RADIUS, ce qui permet au commutateur de transmettre les paquets d&rsquo;authentification des clients au serveur Radius.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -315,7 +319,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>aaa authentication port-access eap-radius</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>aaa authentication port-access eap-radius</code></pre></code></pre>
 </div>
 <p>Nous activons ensuite 802.1x sur les ports de notre commutateur, ici nous le faisons sur une série de ports mais vous pouvez spécifier des ports individuels, ou les séparer par une virgule. Nous demandons au switch de placer les clients autorisés sur le vlan 10 (auth-vid) et les clients non autorisés sur le vlan 20 (unauth-vid).</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -410,7 +416,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>aaa port-access authenticator 1-10
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>aaa port-access authenticator 1-10
 aaa port-access authenticator 1-10 unauth-vid 20
 aaa port-access authenticator 1-10 auth-vid 10
 aaa port-access authenticator active</code></pre></code></pre>
@@ -511,7 +519,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>vlan 30 voice</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>vlan 30 voice</code></pre></code></pre>
 </div>
 <h4 id="conclusion" class="headerLink">
     <a href="#conclusion" class="header-mark" aria-label="Header mark for 'Conclusion'"></a>Conclusion</h4><p>La norme 802.1X câblée offre une authentification et un contrôle d&rsquo;accès au niveau du port, garantissant que seuls les appareils autorisés peuvent se connecter au réseau. Elle permet l&rsquo;attribution dynamique de VLAN et élimine la nécessité d&rsquo;une gestion manuelle des ports, ce qui renforce la sécurité du réseau.</p>

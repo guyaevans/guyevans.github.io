@@ -115,7 +115,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code># Name              Type       Value
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code># Name              Type       Value
 mail                IN A       1.2.3.4
 autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
@@ -216,7 +218,9 @@ First we clone the repository and set the permissions on the folders</p>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">su
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">su
 </span></span><span class="line"><span class="cl"><span class="nb">umask</span>
 </span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Verify it is 0022</span>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
@@ -316,7 +320,9 @@ First we clone the repository and set the permissions on the folders</p>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">./generate_config.sh</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">./generate_config.sh</span></span></code></pre>
 </div>
 <p>Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -411,7 +417,9 @@ First we clone the repository and set the permissions on the folders</p>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">docker compose pull
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">docker compose pull
 </span></span><span class="line"><span class="cl">docker compose up -d</span></span></code></pre>
 </div>
 <p>CONGRATULATIONS ! You have setup a mail server (well almost)</p>

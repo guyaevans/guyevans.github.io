@@ -131,22 +131,20 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">sudo apt install restic</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">sudo apt install restic</span></span></code></pre>
 </div>
 <h3 id="init-the-storage-repo" class="headerLink">
     <a href="#init-the-storage-repo" class="header-mark" aria-label="Header mark for 'Init the storage repo'"></a>Init the storage repo</h3><p>The beauty of restic is that you can use just about any type of storage backend (local, Amazon S3, Minio Server, Backblaze B2, Azure, Google Cloud Storage, SFTP, etc.) for your backup repo and the interface stays for the most part the same. In this case i&rsquo;m using their own storage backend <a href="https://github.com/restic/rest-server" target="_blank" rel="noopener noreferrer"><strong>Rest-Server</strong></a></p>
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            Rest-Server
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Rest-Server<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Rest Server is a high performance HTTP server that implements restic&rsquo;s REST backend API. It provides secure and efficient way to backup data remotely, using restic backup client via the rest: URL.</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">Rest Server is a high performance HTTP server that implements restic&rsquo;s REST backend API. It provides secure and efficient way to backup data remotely, using restic backup client via the rest: URL.</div></div></div>
 <p>So now you have chosen the storage backend for your repo, we need to initialise it.</p>
 <p>Let&rsquo;s say that we want to name our repository backups and we can use the following command to initialise it.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -241,7 +239,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups init</span></span></code></pre>
 </div>
 <p>Restic will ask you to create a password (keep this safe we will need this later) and will initialise the repo. We can use <code>check</code> to verify that the repository is initialised.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -336,7 +336,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups check
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups check
 </span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
 </span></span><span class="line"><span class="cl">password is correct
 </span></span><span class="line"><span class="cl">create exclusive lock <span class="k">for</span> repository
@@ -439,7 +441,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups backup ~/cat-pictures</span></span></code></pre>
 </div>
 <p>Yes it&rsquo;s that simple &#x1f60e;</p>
 <p>Everytime a backup is run, restic creates a <code>snapshot</code>, you can list these using the <code>snapshot</code> command.</p>
@@ -535,7 +539,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/snapshots
 </span></span><span class="line"><span class="cl">enter password <span class="k">for</span> repository:
 </span></span><span class="line"><span class="cl">password is correct
 </span></span><span class="line"><span class="cl">ID        Date                 Host        Tags        Directory
@@ -639,33 +645,27 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups restore ac8721ec --target ~/restored-cat-pictures/</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">restic -r rest:http://my-rest-server:8000/backups restore ac8721ec --target ~/restored-cat-pictures/</span></span></code></pre>
 </div>
 <div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg></span>
-            Tip
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg></span>Tip<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">You can use <code>latest</code> in place of the snapshot id to reference the last snapshot.</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">You can use <code>latest</code> in place of the snapshot id to reference the last snapshot.</div></div></div>
 <p>Thats as simple as the backup, right?
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            Other Commands and Documentation
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>Other Commands and Documentation<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Restic has loads of other useful commands that you can find in their great <a href="https://restic.readthedocs.io" target="_blank" rel="noopener noreferrer">documentation</a></div>
-        </div>
-    </div></p>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content">Restic has loads of other useful commands that you can find in their great <a href="https://restic.readthedocs.io" target="_blank" rel="noopener noreferrer">documentation</a></div></div></div></p>
 <h3 id="automating-with-a-bash-script-and-cron" class="headerLink">
     <a href="#automating-with-a-bash-script-and-cron" class="header-mark" aria-label="Header mark for 'Automating with a Bash script and Cron'"></a>Automating with a Bash script and Cron</h3><p>Manual backups are ok but you might forget to run them, so lets automate our backup with a bash script and a cron entry. And for bonus points lets make sure we have a way to send us message in case of failure. My basic script is below, each action is explained in the comments.</p>
 <p><em>Note: my script is by no means perfect and may contain errors, feel free to correct it or suggest improvments below</em></p>
@@ -761,7 +761,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="cp">#!/bin/bash
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">#This will run Restic backups</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Restic variables</span>
@@ -898,7 +900,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># allow execution of our script</span></span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">chmod +x ~/restic_script.sh <span class="c1"># allow execution of our script</span></span></span></code></pre>
 </div>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -992,7 +996,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">crontab -e <span class="c1"># edit our crontab</span></span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">crontab -e <span class="c1"># edit our crontab</span></span></span></code></pre>
 </div>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -1086,7 +1092,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl"><span class="c1"># Edit this file to introduce tasks to be run by cron.</span>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="c1"># Edit this file to introduce tasks to be run by cron.</span>
 </span></span><span class="line"><span class="cl"><span class="o">[</span>...<span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># To define the time you can provide concrete values for</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># minute (m), hour (h), day of month (dom), month (mon),</span>
@@ -1225,7 +1233,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code># Name              Type       Value
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code># Name              Type       Value
 mail                IN A       1.2.3.4
 autodiscover        IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
 autoconfig          IN CNAME   mail.example.org. (your ${MAILCOW_HOSTNAME})
@@ -1326,7 +1336,9 @@ First we clone the repository and set the permissions on the folders</p>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">su
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">su
 </span></span><span class="line"><span class="cl"><span class="nb">umask</span>
 </span></span><span class="line"><span class="cl"><span class="m">0022</span> <span class="c1"># &lt;- Verify it is 0022</span>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt
@@ -1426,7 +1438,9 @@ First we clone the repository and set the permissions on the folders</p>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">./generate_config.sh</span></span></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">./generate_config.sh</span></span></code></pre>
 </div>
 <p>Once you have answered the questions it will generate the configuration file for you. Once generated we can run mailcow using the commands below</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -1521,7 +1535,9 @@ First we clone the repository and set the permissions on the folders</p>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><span class="line"><span class="cl">docker compose pull
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl">docker compose pull
 </span></span><span class="line"><span class="cl">docker compose up -d</span></span></code></pre>
 </div>
 <p>CONGRATULATIONS ! You have setup a mail server (well almost)</p>

@@ -119,7 +119,9 @@
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>vlan 10 name VLAN10_Company
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>vlan 10 name VLAN10_Company
 vlan 10 tagged all
 vlan 20 name VLAN20_Public
 vlan 20 tagged all
@@ -220,7 +222,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>radius-server host 192.168.10.2 key &#34;secretkey&#34;</code></pre></code></pre>
 </div>
 <p>Then we configure EAP-RADIUS, this enables the switch to forward the authentication packets from the clients to the Radius server.</p>
 <p><code>aaa authentication port-access eap-radius</code></p>
@@ -317,7 +321,9 @@ vlan 30 tagged all</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>aaa port-access authenticator 1-10
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>aaa port-access authenticator 1-10
 aaa port-access authenticator 1-10 unauth-vid 20
 aaa port-access authenticator 1-10 auth-vid 10
 aaa port-access authenticator active</code></pre></code></pre>
@@ -418,7 +424,9 @@ aaa port-access authenticator active</code></pre></code></pre>
       group-[.is-closed]:!tw-max-h-0 
       group-[.is-wrap]:tw-text-wrap
       tw-overflow-y-hidden
-      tw-overflow-x-auto"><pre tabindex="0"><code>vlan 30 voice</code></pre></code></pre>
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><pre tabindex="0"><code>vlan 30 voice</code></pre></code></pre>
 </div>
 <h4 id="conclusion" class="headerLink">
     <a href="#conclusion" class="header-mark" aria-label="Header mark for 'Conclusion'"></a>Conclusion</h4><p>Wired 802.1X offers port-level authentication and access control, ensuring only authorized devices can connect to the network. It enables dynamic VLAN assignment and eliminates the need for manual port management, enhancing network security.</p>
