@@ -216,6 +216,14 @@ defaultContentLanguage = "en"
   enable = true
   # type of search engine ("algolia", "fuse")
   type = "fuse"
+  # max index length of the chunked content
+  contentLength = 4000
+  # placeholder of the search bar
+  placeholder = ""
+  # DoIt NEW | 0.2.1 max number of results length
+  maxResultLength = 10
+  # DoIt NEW | 0.2.3 snippet length of the result
+  snippetLength = 30
   [params.search.fuse]
     #  [DoIt NEW | 0.2.12]  https://fusejs.io/api/options.html
     isCaseSensitive = false
