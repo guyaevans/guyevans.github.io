@@ -13,10 +13,10 @@ summary: Nous avons tous utilisé Apache et NGNIX pour héberger un site web et 
 featuredImage: valery-sysoev-p9OkL4yW3C8-unsplash.webp
 rssFullText: true
 ---
-Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l'aise avec leur configuration. Et c'est ce qui m'a amené à [Caddy](caddyserver.com/). Découvrons ce que [Caddy](caddyserver.com/) a à offrir.
+Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l'aise avec leur configuration. Et c'est ce qui m'a amené à [Caddy](https://caddyserver.com/). Découvrons ce que [Caddy](https://caddyserver.com/)a à offrir.
 
 # Caddy
-[Caddy](caddyserver.com/) est un serveur web unique _(du moins je le pense)_ avec un jeu de fonctionnalités modernes. Vous pouvez l'utiliser comme [reverse proxy et load balancer.](https://caddyserver.com/docs/proxy) [héberger vos applications PHP avec lui.](https://caddyserver.com/docs/fastcgi) Et même [déployer votre site](https://caddyserver.com/docs/git) avec ``git push``. Et j'ai presque oublié l'une des meilleures fonctionnalités ; le HTTPS automatique, avec des certificats utilisant des fournisseurs comme [Lets Encrypt](https://letsencrypt.org/) et [ZeroSSL](https://zerossl.com/).
+[Caddy](https://caddyserver.com/) est un serveur web unique _(du moins je le pense)_ avec un jeu de fonctionnalités modernes. Vous pouvez l'utiliser comme [reverse proxy et load balancer.](https://caddyserver.com/docs/proxy) [héberger vos applications PHP avec lui.](https://caddyserver.com/docs/fastcgi) Et même [déployer votre site](https://caddyserver.com/docs/git) avec ``git push``. Et j'ai presque oublié l'une des meilleures fonctionnalités ; le HTTPS automatique, avec des certificats utilisant des fournisseurs comme [Lets Encrypt](https://letsencrypt.org/) et [ZeroSSL](https://zerossl.com/).
  
 Cool, non ?
 
@@ -55,7 +55,7 @@ Pour que Caddy recharge le ```Caddyfile```, il suffit de lancer un ```systemctl 
 
 ### Fichiers statiques
 
-Ok un reverse proxy c'est bien mais mon site web (celui-ci) est statique et généré par [Hugo](gohugo.io), comment pourrions-nous le servir en utilisant caddy ? Encore une fois, 4 lignes de configuration suffisent.
+Ok un reverse proxy c'est bien mais mon site web (celui-ci) est statique et généré par [Hugo](https://gohugo.io), comment pourrions-nous le servir en utilisant caddy ? Encore une fois, 4 lignes de configuration suffisent.
 
 ```json
 demo.website.com {
