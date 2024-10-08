@@ -23,6 +23,15 @@ enableRobotsTXT = true
   # website title
   title = "Guy Evans"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
+  
+  # [Experimental] cache remote images in markdown, more info: https://github.com/HEIGE-PCloud/DoIt/pull/860#issue-1574342372
+  cacheRemoteImages = true
+  # [Experimental] generate image srcset attribute with hugo image processing feature.
+  optimizeImages = true
+  # [Experimental] resize method for srcset attribute in optimizeImages, more info: https://gohugo.io/content-management/image-processing/#image-processing-options
+  srcsetSmallResizeMethod = "700x webp Lanczos q75"
+  srcsetDefaultResizeMethod = "1200x webp Lanczos q75"
+  srcsetLargeResizeMethod = "2000x webp Lanczos q75"
 
   # Do it version
   
@@ -61,7 +70,6 @@ enableRobotsTXT = true
       #   avatar-bg = "#f0f0f0"
       #   jsLocation = "https://isso.evans.fr/js/embed.min.js"
 
-
 # # language code ["en", "zh-CN", "fr", "pl", ...]
 # languageCode = "en"
 # # language name ["English", "简体中文", "Français", "Polski", ...]
@@ -72,6 +80,7 @@ defaultContentLanguage = "en"
  [params.app]
     # whether to omit favicon resource links
     noFavicon = true
+
 
 [languages]
   [languages.en]
@@ -235,4 +244,3 @@ defaultContentLanguage = "en"
     ignoreLocation = false
     useExtendedSearch = true
     ignoreFieldNorm = false
-
