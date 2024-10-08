@@ -66,6 +66,10 @@ collections:
         name: rssFullText
         widget: boolean
         default: true
+      - label: Light Gallery
+        name: lightgallery
+        widget: boolean
+        default: true
       - label: Body
         name: body
         widget: markdown
