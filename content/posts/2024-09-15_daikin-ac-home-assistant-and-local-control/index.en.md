@@ -6,13 +6,16 @@ tags:
   - IoT
   - AC
 rssFullText: true
-featuredImage: ac-workingimage.webp
+featuredImage: feature.jpg
 lightgallery: true
+summary: When we bought our apartment, the previous owners had installed a Daikin minisplit AC in the living room. Great, another thing to 'smartify' with Home Assistant.
 ---
-# Air Conditioning and Home Assistant
-When we bought our apartment, the previous owners had installed a Daikin minisplit airconditioner in the living room. Great, another thing to 'smartify' with Home Assistant.
+## Air Conditioning and Home Assistant
+When we bought our apartment, the previous owners had installed a Daikin minisplit AC in the living room. Great, another thing to 'smartify' with Home Assistant[^HA].
 
-I first did what I always have done in previous places and used a Broadlink Mini and the SmartIR intergration to enable smart control of the minisplit using Home Assistant. IR control is great but is lacking in some features, mainly feadback. If your device misses the IR command, well tough, they are now out of sync and you are none the wiser, and your AC did not turn on ...
+[^HA]: [Home Assistant](https://www.home-assistant.io/) - Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. 
+
+I first did what I always have done in previous places and used a Broadlink Mini and the SmartIR integration to enable smart control of the minisplit using Home Assistant. IR control is great but is lacking in some features, mainly feadback. If your device misses the IR command, well tough, they are now out of sync and you are none the wiser, and your AC did not turn on ...
 
 ## Daikin Modules and a random find
 
@@ -26,16 +29,56 @@ The promise is great: code and a PCB to enable plugin and play wifi function wit
 
 I decided to buy one along with some header wires, after all ... 
 
-{{<image src="/img/clarkson-how-hard.gif">}}
+{{<figure src="/img/clarkson-how-hard.gif">}}
 
-## Not very ...
+## Hardware setup
 
 I received the PCB and header wires rather quickly, thanks Amazon
 
-{{<image src="/posts/2024-09-15_daikin-ac-home-assistant-and-local-control/faikin_pcb.jpg" class="center" width="40%">}}
+{{<image src="/posts/2024-09-15_daikin-ac-home-assistant-and-local-control/faikin_pcb.jpg" class="center" width="40%" caption="Faikin ESP32">}}
 
 Now comes the fun part, hooking it all up. But first a warning
 
 {{< admonition type=danger title="Electricity is dangerous and can kill you">}}
 Turn off your main breaker before taking apart your AC unit, if unsure call a professional.
 *Don't say I didn't warn you when you get zapped or if you break something*{{< /admonition >}}
+
+Mini split units usually come apart rather easy. A screw or two and then a few clips hold the chassis on.
+
+{{<image src="/posts/2024-09-15_daikin-ac-home-assistant-and-local-control/naked_split.jpg" class="center" width="90%" caption="And look a naked minisplit">}}
+
+Once the AC has it's cover off we need to look for the main circuit board. Usually located on the side. And for my AC least the plug we need to use is labelled S21. **You don't want to touch anything else in here. Especially any capacitors**
+
+{{<image src="/posts/2024-09-15_daikin-ac-home-assistant-and-local-control/pcb_circuit.jpg" class="center" width="90%" caption="The AC circuit board and the installed Faikin PCB - **Don't touch that capacitor**">}}
+
+Once installed, we can put the metal covering back on. And there is a perfect space for the Faikin PCB below.
+
+{{<image src="/posts/2024-09-15_daikin-ac-home-assistant-and-local-control/installed_pcb.jpg" class="center" width="90%" caption="Final installation of the PCB">}}
+
+After putting all the covers back on the AC unit we can turn our main breaker back on. *You did turn it off right?*
+
+Once your AC has it's power back you will be able to connect to the Faikin via wifi
+
+{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi1.png?raw=true" width="90%">}}
+
+It will then ask you to enter your wifi network and MQTT server details
+
+{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi3.png?raw=true" width="90%">}}
+
+Once done you will be presented with some AC controls and guess what they work instantly.
+
+{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/Controls.png?raw=true" width="90%">}}
+
+Finally we need to setup the Home Assistant side.
+
+## Home Assistant
+
+Not much to do here. If your MQTT broker is setup correctly in Home Assistant. Your AC unit should show up on it's own.
+
+{{<image src="/posts/2024-09-15_daikin-ac-home-assistant-and-local-control/ha1.png" class="center" width="90%" caption="AC unit in Home Assistant">}}
+
+{{<image src="/posts/2024-09-15_daikin-ac-home-assistant-and-local-control/ha2.png" class="center" width="90%" caption="AC controls in Home Assistant">}}
+
+With that we now have full **local** control over our AC unit which includes feedback of the AC's state to Home Assistant.
+
+Not more wondering why the room is warm and why the AC did not turn on.

@@ -34,7 +34,13 @@ enableRobotsTXT = true
   srcsetLargeResizeMethod = "2000x webp Lanczos q75"
 
   # Do it version
-  
+
+  [params.image]
+    # cache remote images for better optimisations
+    cacheRemote = false
+    # Image resizing and optimisation
+    optimise = true
+
   [params.page]
    [params.page.toc]
       # whether to enable the table of the contents
