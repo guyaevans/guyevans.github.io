@@ -12,7 +12,7 @@
 </figure>
 </p>
 <h2 id="how-using-docker--mailcow" class="headerLink">
-    <a href="#how-using-docker--mailcow" class="header-mark" aria-label="Header mark for 'How (Using Docker &amp;amp; Mailcow)'"></a>How (Using Docker &amp; Mailcow)</h2><p>I won&rsquo;t be deep diving into how to set an email server as there are plenty of guides to be found but I will at least point you in the right direction.</p>
+    <a href="#how-using-docker--mailcow" class="header-mark" aria-label="Header mark for 'How (Using Docker &amp; Mailcow)'"></a>How (Using Docker &amp; Mailcow)</h2><p>I won&rsquo;t be deep diving into how to set an email server as there are plenty of guides to be found but I will at least point you in the right direction.</p>
 <h3 id="what-we-need" class="headerLink">
     <a href="#what-we-need" class="header-mark" aria-label="Header mark for 'What we need'"></a>What we need</h3><ol>
 <li>A Domain name of your own</li>

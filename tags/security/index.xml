@@ -24,7 +24,7 @@
 <li>A Windows computer</li>
 </ul>
 <h2 id="lets-get-configing" class="headerLink">
-    <a href="#lets-get-configing" class="header-mark" aria-label="Header mark for 'Let&amp;rsquo;s get configing'"></a>Let&rsquo;s get configing</h2><h3 id="switch-configuration" class="headerLink">
+    <a href="#lets-get-configing" class="header-mark" aria-label="Header mark for 'Let&rsquo;s get configing'"></a>Let&rsquo;s get configing</h2><h3 id="switch-configuration" class="headerLink">
     <a href="#switch-configuration" class="header-mark" aria-label="Header mark for 'Switch Configuration'"></a>Switch Configuration</h3><h4 id="vlan-setup" class="headerLink">
     <a href="#vlan-setup" class="header-mark" aria-label="Header mark for 'VLAN Setup'"></a>VLAN Setup</h4><p>First thing we need to do is add the vlans if not already done. I&rsquo;ve tagged the vlans on all the ports for simplicity sake.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">

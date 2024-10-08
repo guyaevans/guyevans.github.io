@@ -258,7 +258,7 @@ I usually use 2 packing cubes:</p>
 <li>A Windows computer</li>
 </ul>
 <h2 id="lets-get-configing" class="headerLink">
-    <a href="#lets-get-configing" class="header-mark" aria-label="Header mark for 'Let&amp;rsquo;s get configing'"></a>Let&rsquo;s get configing</h2><h3 id="switch-configuration" class="headerLink">
+    <a href="#lets-get-configing" class="header-mark" aria-label="Header mark for 'Let&rsquo;s get configing'"></a>Let&rsquo;s get configing</h2><h3 id="switch-configuration" class="headerLink">
     <a href="#switch-configuration" class="header-mark" aria-label="Header mark for 'Switch Configuration'"></a>Switch Configuration</h3><h4 id="vlan-setup" class="headerLink">
     <a href="#vlan-setup" class="header-mark" aria-label="Header mark for 'VLAN Setup'"></a>VLAN Setup</h4><p>First thing we need to do is add the vlans if not already done. I&rsquo;ve tagged the vlans on all the ports for simplicity sake.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -678,9 +678,9 @@ aaa port-access authenticator active</code></pre></code></pre>
 </div>
 ]]></description></item><item><title>A look at Caddy - A simple and fast web server</title><link>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
-            </div><p>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fin but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to <a href="caddyserver.com/" rel="">Caddy</a>. Lets take a look at what <a href="caddyserver.com/" rel="">Caddy</a> has to offer.</p>
+            </div><p>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fin but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a>. Lets take a look at what <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> has to offer.</p>
 <h1 id="caddy" class="headerLink">
-    <a href="#caddy" class="header-mark" aria-label="Header mark for 'Caddy'"></a>Caddy</h1><p><a href="caddyserver.com/" rel="">Caddy</a> is a unique <em>(at least I think)</em> web server with a modern feature set. You can use it as <a href="https://caddyserver.com/docs/proxy" target="_blank" rel="noopener noreferrer">reverse proxy and load balancer.</a> <a href="https://caddyserver.com/docs/fastcgi" target="_blank" rel="noopener noreferrer">Host your PHP apps with it.</a> Even <a href="https://caddyserver.com/docs/git" target="_blank" rel="noopener noreferrer">deploy your site</a> with <code>git push</code>. And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Lets Encrypt</a> and <a href="https://zerossl.com/" target="_blank" rel="noopener noreferrer">ZeroSSL</a>.</p>
+    <a href="#caddy" class="header-mark" aria-label="Header mark for 'Caddy'"></a>Caddy</h1><p><a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> is a unique <em>(at least I think)</em> web server with a modern feature set. You can use it as <a href="https://caddyserver.com/docs/proxy" target="_blank" rel="noopener noreferrer">reverse proxy and load balancer.</a> <a href="https://caddyserver.com/docs/fastcgi" target="_blank" rel="noopener noreferrer">Host your PHP apps with it.</a> Even <a href="https://caddyserver.com/docs/git" target="_blank" rel="noopener noreferrer">deploy your site</a> with <code>git push</code>. And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Lets Encrypt</a> and <a href="https://zerossl.com/" target="_blank" rel="noopener noreferrer">ZeroSSL</a>.</p>
 <p>Cool, Right?</p>
 <figure><img src="/img/bbt-give-it-to-me-amy.gif">
 </figure>
@@ -893,7 +893,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </div>
 <p>For caddy to reload the <code>Caddyfile</code> we just need to run a <code>systemctl reload caddy</code>, Caddy will then reload the config file, request a certificate for <code>demo.app.com</code> and then serve your app over HTTPS<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <h3 id="static-files" class="headerLink">
-    <a href="#static-files" class="header-mark" aria-label="Header mark for 'Static Files'"></a>Static Files</h3><p>Okay a reverse proxy is nice but my website (this one) is static and generated by <a href="gohugo.io" rel="">Hugo</a>, how could we serve it using caddy? Again only 4 lines of config is enough.</p>
+    <a href="#static-files" class="header-mark" aria-label="Header mark for 'Static Files'"></a>Static Files</h3><p>Okay a reverse proxy is nice but my website (this one) is static and generated by <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a>, how could we serve it using caddy? Again only 4 lines of config is enough.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1103,7 +1103,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <p>Again a quick <code>systemctl reload caddy</code> and we are now fronting a php app over HTTPS<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <h2 id="bonus" class="headerLink">
     <a href="#bonus" class="header-mark" aria-label="Header mark for 'Bonus'"></a>Bonus</h2><h3 id="docker--docker-compose" class="headerLink">
-    <a href="#docker--docker-compose" class="header-mark" aria-label="Header mark for 'Docker &amp;amp; Docker Compose'"></a>Docker &amp; Docker Compose</h3><p>Caddy is also often run with Docker Compose and is still as simple. Here is a simple <code>docker-compose.yml</code> and we can use any example <code>Caddyfile</code> from above.</p>
+    <a href="#docker--docker-compose" class="header-mark" aria-label="Header mark for 'Docker &amp; Docker Compose'"></a>Docker &amp; Docker Compose</h3><p>Caddy is also often run with Docker Compose and is still as simple. Here is a simple <code>docker-compose.yml</code> and we can use any example <code>Caddyfile</code> from above.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -2369,7 +2369,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </figure>
 </p>
 <h2 id="how-using-docker--mailcow" class="headerLink">
-    <a href="#how-using-docker--mailcow" class="header-mark" aria-label="Header mark for 'How (Using Docker &amp;amp; Mailcow)'"></a>How (Using Docker &amp; Mailcow)</h2><p>I won&rsquo;t be deep diving into how to set an email server as there are plenty of guides to be found but I will at least point you in the right direction.</p>
+    <a href="#how-using-docker--mailcow" class="header-mark" aria-label="Header mark for 'How (Using Docker &amp; Mailcow)'"></a>How (Using Docker &amp; Mailcow)</h2><p>I won&rsquo;t be deep diving into how to set an email server as there are plenty of guides to be found but I will at least point you in the right direction.</p>
 <h3 id="what-we-need" class="headerLink">
     <a href="#what-we-need" class="header-mark" aria-label="Header mark for 'What we need'"></a>What we need</h3><ol>
 <li>A Domain name of your own</li>
@@ -2877,7 +2877,7 @@ Other posts in this series:</p>
                 <img src="/posts/2022-12-21_podcast-recommendations/melanie-pongratz-becwwmiuj2k-unsplash.jpg" referrerpolicy="no-referrer">
             </div><p>I could be described as a passionate podcast listener, whether I&rsquo;m on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work I usually stick on a podcast. Here are some of my recomendations</p>
 <h2 id="it--cybersecurity" class="headerLink">
-    <a href="#it--cybersecurity" class="header-mark" aria-label="Header mark for 'IT &amp;amp; Cybersecurity'"></a>IT &amp; Cybersecurity</h2><h3 id="darknet-diaries---jack-rhysider" class="headerLink">
+    <a href="#it--cybersecurity" class="header-mark" aria-label="Header mark for 'IT &amp; Cybersecurity'"></a>IT &amp; Cybersecurity</h2><h3 id="darknet-diaries---jack-rhysider" class="headerLink">
     <a href="#darknet-diaries---jack-rhysider" class="header-mark" aria-label="Header mark for 'Darknet Diaries - Jack Rhysider'"></a>Darknet Diaries - Jack Rhysider</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/darknet-diaries-sm.jpg">
 </figure>
 
@@ -2890,7 +2890,7 @@ Other posts in this series:</p>
 <p>Risky Business is a weekly podcast that features mostly IT &amp; security news and great in-depth commentary from security industry experts. Hosted by journalist Patrick Grey it is always worth a listen.</p>
 <p><a href="https://risky.biz/" target="_blank" rel="noopener noreferrer">risky.biz</a></p>
 <h3 id="the-lazarus-hiest---geoff-white--jean-lee" class="headerLink">
-    <a href="#the-lazarus-hiest---geoff-white--jean-lee" class="header-mark" aria-label="Header mark for 'The Lazarus Hiest - Geoff White &amp;amp; Jean Lee'"></a>The Lazarus Hiest - Geoff White &amp; Jean Lee</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/lazarus.jpg">
+    <a href="#the-lazarus-hiest---geoff-white--jean-lee" class="header-mark" aria-label="Header mark for 'The Lazarus Hiest - Geoff White &amp; Jean Lee'"></a>The Lazarus Hiest - Geoff White &amp; Jean Lee</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/lazarus.jpg">
 </figure>
 
 <p>Geoff White and Jean Lee take you on the story of &ldquo;Almost the Perfect Crime&rdquo;. Starts with a hacking ring and an attempt to steal a billion dollars. Investigators point to North Korea. Again another podcast that is well researched and written.</p>
@@ -2913,13 +2913,13 @@ Other posts in this series:</p>
 <p><a href="https://www.exitscam.show/" target="_blank" rel="noopener noreferrer">ExitScam.show</a></p>
 <h2 id="crime" class="headerLink">
     <a href="#crime" class="header-mark" aria-label="Header mark for 'Crime'"></a>Crime</h2><h3 id="hunting-warhead---cbc-podcasts--vg" class="headerLink">
-    <a href="#hunting-warhead---cbc-podcasts--vg" class="header-mark" aria-label="Header mark for 'Hunting Warhead - CBC Podcasts &amp;amp; VG'"></a>Hunting Warhead - CBC Podcasts &amp; VG</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/promo-hunting-warhead.jpg">
+    <a href="#hunting-warhead---cbc-podcasts--vg" class="header-mark" aria-label="Header mark for 'Hunting Warhead - CBC Podcasts &amp; VG'"></a>Hunting Warhead - CBC Podcasts &amp; VG</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/promo-hunting-warhead.jpg">
 </figure>
 
 <p>A story of rescuing child abuse victims around the world, Hunting Wardhead follows the journalists and the police exposing the darkest corners of the internet. Great podcast although can be hard to listen to at times due to the subject matter.</p>
 <p><a href="https://www.cbc.ca/listen/cbc-podcasts/387-hunting-warhead" target="_blank" rel="noopener noreferrer">CBC Podcasts</a></p>
 <h3 id="death-in-ice-valley---bbc-world-service--nrk" class="headerLink">
-    <a href="#death-in-ice-valley---bbc-world-service--nrk" class="header-mark" aria-label="Header mark for 'Death in Ice Valley - BBC World Service &amp;amp; NRK'"></a>Death in Ice Valley - BBC World Service &amp; NRK</h3><p><figure><img src="/posts/2022-12-21_podcast-recommendations/icevalley.png">
+    <a href="#death-in-ice-valley---bbc-world-service--nrk" class="header-mark" aria-label="Header mark for 'Death in Ice Valley - BBC World Service &amp; NRK'"></a>Death in Ice Valley - BBC World Service &amp; NRK</h3><p><figure><img src="/posts/2022-12-21_podcast-recommendations/icevalley.png">
 </figure>
 
 Marit Higraff and Neil McCarth follows a two your investigation into the <a href="https://en.wikipedia.org/wiki/Isdal_Woman" target="_blank" rel="noopener noreferrer">Isdal Women</a> case, an unknown women whose burned body was found in western Norway in 1970.</p>
@@ -2936,7 +2936,7 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
             </div><p>So I know a couple people who run their ASNs on Mikrotik routers (running RouterOS) as their hardware is cheap and easy to find. That includes me, I run BGP on their CHR image to announce my own ASN and IP v4 and V6 subnets. RouterOS CHR which is an image of RouterOS that you can run on your own hardware.</p>
 <p>You would prevously use RouterOS version 6, but now version 7 has a couple stable releases and is supposed to be more stable and faster for BGP, I thought I would post some of my configs for version 7 as the config syntax has changed quite a bit. Today I&rsquo;ll focus on IPv4 but IPv6 is pretty much the same.</p>
 <h3 id="wait-asn-bgp-youve-lost-me-" class="headerLink">
-    <a href="#wait-asn-bgp-youve-lost-me-" class="header-mark" aria-label="Header mark for 'Wait! ASN, BGP, You&amp;rsquo;ve lost me &amp;hellip;'"></a>Wait! ASN, BGP, You&rsquo;ve lost me &hellip;</h3><h4 id="what-is-bgp" class="headerLink">
+    <a href="#wait-asn-bgp-youve-lost-me-" class="header-mark" aria-label="Header mark for 'Wait! ASN, BGP, You&rsquo;ve lost me &hellip;'"></a>Wait! ASN, BGP, You&rsquo;ve lost me &hellip;</h3><h4 id="what-is-bgp" class="headerLink">
     <a href="#what-is-bgp" class="header-mark" aria-label="Header mark for 'What is BGP?'"></a>What is BGP?</h4><blockquote>
 <p>Border Gateway Protocol (BGP) is the postal service of the Internet. When someone drops a letter into a mailbox, the Postal Service processes that piece of mail and chooses a fast, efficient route to deliver that letter to its recipient<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 </blockquote>
@@ -2948,7 +2948,7 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
 <p>Each AS is assigned an official number, or autonomous system number (ASN), similar to how every business has a business license with an unique, official number. But unlike businesses, external parties often refer to ASes by their number alone.
 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 </blockquote>
-<p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="That&amp;rsquo;s pretty slick gif"  ></p>
+<p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="That&rsquo;s pretty slick gif"  ></p>
 <h3 id="what-does-the-config-look-like" class="headerLink">
     <a href="#what-does-the-config-look-like" class="header-mark" aria-label="Header mark for 'What does the config look like?'"></a>What does the config look like?</h3><p>Here are my config exports to announce one subnet via AS 211486. As you can see, before doing anything you need to add your prefixes that you want to announce to a network list which you will specify in the bgp template. The rest should be pretty self explanitory but I&rsquo;ve detailed the main points below.</p>
 <h4 id="network-list" class="headerLink">

@@ -1,8 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Toutes les Posts - Guy Evans</title><link>https://guy-evans.com/fr/posts/</link><description>Toutes les Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Mon, 06 May 2024 22:40:12 +0200</lastBuildDate><atom:link href="https://guy-evans.com/fr/posts/" rel="self" type="application/rss+xml"/><item><title>Vers l'internet 10 Gbps - Bizarrerie Mikrotik CHR</title><link>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</link><pubDate>Mon, 06 May 2024 22:40:12 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/feature.jpeg" referrerpolicy="no-referrer">
-            </div>Le débutMon serveur 1 qui se trouve dans une baie réseau de Milywan à Croissy-Beaubourg/CBO et dispose d&rsquo;une carte réseau 10G, car c&rsquo;était l&rsquo;une de mes exigences lors de sa mise en place. Une chose que je n&rsquo;ai jamais vraiment utilisée à son plein potentiel.
-Aujourd&rsquo;hui, cela a changé (en quelque sorte).
-Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d&rsquo;autres choses entre membres.]]></description></item><item><title>Un seul sac de voyage - Que contient mon sac de voyage en 2023/2024</title><link>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
+            </div><h2 id="le-début" class="headerLink">
+    <a href="#le-d%c3%a9but" class="header-mark" aria-label="Header mark for 'Le début'"></a>Le début</h2><p>Mon serveur <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> qui se trouve dans une baie réseau de <a href="https://milkywan.fr" target="_blank" rel="noopener noreferrer">Milywan</a> à Croissy-Beaubourg/CBO et dispose d&rsquo;une carte réseau 10G, car c&rsquo;était l&rsquo;une de mes exigences lors de sa mise en place. Une chose que je n&rsquo;ai jamais vraiment utilisée à son plein potentiel.</p>
+<p><strong>Aujourd&rsquo;hui, cela a changé</strong> <em>(en quelque sorte).</em></p>
+<p>Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie et d&rsquo;autres choses entre membres. L&rsquo;un des membres du groupe cherchait quelqu&rsquo;un ayant un routeur Mikrotik &ldquo;on-net&rdquo; pour effectuer des tests de bande passante.</p>]]></description></item><item><title>Un seul sac de voyage - Que contient mon sac de voyage en 2023/2024</title><link>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</link><pubDate>Sat, 02 Mar 2024 14:24:11 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/feature.jpg" referrerpolicy="no-referrer">
             </div><h2 id="trops-de-sacs" class="headerLink">
     <a href="#trops-de-sacs" class="header-mark" aria-label="Header mark for 'Trops de sacs'"></a>Trops de sacs</h2><p>J&rsquo;aime voyager, bien que je n&rsquo;aie pas pu beaucoup voyager depuis la naissance de la petite &hellip; mais je m&rsquo;égare.</p>
@@ -28,7 +29,7 @@ Milkywan a un groupe de discussion sur Telegram où nous parlons de technologie 
 <li>être confortable quand on le porte</li>
 </ul>
 <h2 id="je-suppose-quil-est-temps-de-faire-des-recherches" class="headerLink">
-    <a href="#je-suppose-quil-est-temps-de-faire-des-recherches" class="header-mark" aria-label="Header mark for 'Je suppose qu&amp;rsquo;il est temps de faire des recherches.'"></a>Je suppose qu&rsquo;il est temps de faire des recherches.</h2><figure><img src="/img/going-to-need-more-coffee-bbt.gif">
+    <a href="#je-suppose-quil-est-temps-de-faire-des-recherches" class="header-mark" aria-label="Header mark for 'Je suppose qu&rsquo;il est temps de faire des recherches.'"></a>Je suppose qu&rsquo;il est temps de faire des recherches.</h2><figure><img src="/img/going-to-need-more-coffee-bbt.gif">
 </figure>
 
 <p>J&rsquo;ai commencé mes recherches sur Reddit (comme toujours &#x1f60e;) et j&rsquo;ai rapidement découvert une mine d&rsquo;or ; <a href="https://www.reddit.com/r/onebag/" target="_blank" rel="noopener noreferrer">r/onebag</a>, une communauté Reddit dédiée au &ldquo;one-bagging&rdquo;.</p>
@@ -576,7 +577,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </div>
 <p>La configuration de notre switch est ainsi terminée. Ou bien est-ce le cas ?</p>
 <h4 id="bonus-quen-est-il-des-téléphones-ip-" class="headerLink">
-    <a href="#bonus-quen-est-il-des-t%c3%a9l%c3%a9phones-ip-" class="header-mark" aria-label="Header mark for '(Bonus) Qu&amp;rsquo;en est-il des téléphones IP ?'"></a>(Bonus) Qu&rsquo;en est-il des téléphones IP ?</h4><p>Vous avez peut-être remarqué que j&rsquo;ai inclus un vlan pour les téléphones, car c&rsquo;était une question importante que je me posais lors de mon premier déploiement de 802.1x. Devrai-je ajouter chaque téléphone à notre serveur Radius et configurer chaque téléphone pour l&rsquo;authentification ou utiliser MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>
+    <a href="#bonus-quen-est-il-des-t%c3%a9l%c3%a9phones-ip-" class="header-mark" aria-label="Header mark for '(Bonus) Qu&rsquo;en est-il des téléphones IP ?'"></a>(Bonus) Qu&rsquo;en est-il des téléphones IP ?</h4><p>Vous avez peut-être remarqué que j&rsquo;ai inclus un vlan pour les téléphones, car c&rsquo;était une question importante que je me posais lors de mon premier déploiement de 802.1x. Devrai-je ajouter chaque téléphone à notre serveur Radius et configurer chaque téléphone pour l&rsquo;authentification ou utiliser MAB<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>?</p>
 <p>Non ! Au lieu de cela, nous allons faire du vlan un vlan voice avec la commande suivante, ce qui permettra au téléphone d&rsquo;utiliser LLDP pour récupérer le vlan qui lui a été assigné, sans avoir besoin de l&rsquo;authentification.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -690,9 +691,9 @@ aaa port-access authenticator active</code></pre></code></pre>
 </div>
 ]]></description></item><item><title>Découverte de Caddy - un serveur web simple et rapide</title><link>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/fr/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
-            </div><p>Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l&rsquo;aise avec leur configuration. Et c&rsquo;est ce qui m&rsquo;a amené à <a href="caddyserver.com/" rel="">Caddy</a>. Découvrons ce que <a href="caddyserver.com/" rel="">Caddy</a> a à offrir.</p>
+            </div><p>Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l&rsquo;aise avec leur configuration. Et c&rsquo;est ce qui m&rsquo;a amené à <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a>. Découvrons ce que <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a>a à offrir.</p>
 <h1 id="caddy" class="headerLink">
-    <a href="#caddy" class="header-mark" aria-label="Header mark for 'Caddy'"></a>Caddy</h1><p><a href="caddyserver.com/" rel="">Caddy</a> est un serveur web unique <em>(du moins je le pense)</em> avec un jeu de fonctionnalités modernes. Vous pouvez l&rsquo;utiliser comme <a href="https://caddyserver.com/docs/proxy" target="_blank" rel="noopener noreferrer">reverse proxy et load balancer.</a> <a href="https://caddyserver.com/docs/fastcgi" target="_blank" rel="noopener noreferrer">héberger vos applications PHP avec lui.</a> Et même <a href="https://caddyserver.com/docs/git" target="_blank" rel="noopener noreferrer">déployer votre site</a> avec <code>git push</code>. Et j&rsquo;ai presque oublié l&rsquo;une des meilleures fonctionnalités ; le HTTPS automatique, avec des certificats utilisant des fournisseurs comme <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Lets Encrypt</a> et <a href="https://zerossl.com/" target="_blank" rel="noopener noreferrer">ZeroSSL</a>.</p>
+    <a href="#caddy" class="header-mark" aria-label="Header mark for 'Caddy'"></a>Caddy</h1><p><a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> est un serveur web unique <em>(du moins je le pense)</em> avec un jeu de fonctionnalités modernes. Vous pouvez l&rsquo;utiliser comme <a href="https://caddyserver.com/docs/proxy" target="_blank" rel="noopener noreferrer">reverse proxy et load balancer.</a> <a href="https://caddyserver.com/docs/fastcgi" target="_blank" rel="noopener noreferrer">héberger vos applications PHP avec lui.</a> Et même <a href="https://caddyserver.com/docs/git" target="_blank" rel="noopener noreferrer">déployer votre site</a> avec <code>git push</code>. Et j&rsquo;ai presque oublié l&rsquo;une des meilleures fonctionnalités ; le HTTPS automatique, avec des certificats utilisant des fournisseurs comme <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Lets Encrypt</a> et <a href="https://zerossl.com/" target="_blank" rel="noopener noreferrer">ZeroSSL</a>.</p>
 <p>Cool, non ?</p>
 <figure><img src="/img/bbt-give-it-to-me-amy.gif">
 </figure>
@@ -905,7 +906,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 </div>
 <p>Pour que Caddy recharge le <code>Caddyfile</code>, il suffit de lancer un <code>systemctl reload caddy</code>, Caddy rechargera alors le fichier de configuration, demandera un certificat pour <code>demo.app.com</code> et servira votre application sur HTTPS<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <h3 id="fichiers-statiques" class="headerLink">
-    <a href="#fichiers-statiques" class="header-mark" aria-label="Header mark for 'Fichiers statiques'"></a>Fichiers statiques</h3><p>Ok un reverse proxy c&rsquo;est bien mais mon site web (celui-ci) est statique et généré par <a href="gohugo.io" rel="">Hugo</a>, comment pourrions-nous le servir en utilisant caddy ? Encore une fois, 4 lignes de configuration suffisent.</p>
+    <a href="#fichiers-statiques" class="header-mark" aria-label="Header mark for 'Fichiers statiques'"></a>Fichiers statiques</h3><p>Ok un reverse proxy c&rsquo;est bien mais mon site web (celui-ci) est statique et généré par <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a>, comment pourrions-nous le servir en utilisant caddy ? Encore une fois, 4 lignes de configuration suffisent.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1115,7 +1116,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <p>Encore un rapide <code>systemctl reload caddy</code> et nous sommes maintenant en face d&rsquo;une application php sur HTTPS<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <h2 id="bonus" class="headerLink">
     <a href="#bonus" class="header-mark" aria-label="Header mark for 'Bonus'"></a>Bonus</h2><h3 id="docker--docker-compose" class="headerLink">
-    <a href="#docker--docker-compose" class="header-mark" aria-label="Header mark for 'Docker &amp;amp; Docker Compose'"></a>Docker &amp; Docker Compose</h3><p>Caddy est aussi souvent exécuté avec Docker Compose et est toujours aussi simple. Voici un simple <code>docker-compose.yml</code> et nous pouvons utiliser n&rsquo;importe quel exemple de <code>Caddyfile</code> ci-dessus.</p>
+    <a href="#docker--docker-compose" class="header-mark" aria-label="Header mark for 'Docker &amp; Docker Compose'"></a>Docker &amp; Docker Compose</h3><p>Caddy est aussi souvent exécuté avec Docker Compose et est toujours aussi simple. Voici un simple <code>docker-compose.yml</code> et nous pouvons utiliser n&rsquo;importe quel exemple de <code>Caddyfile</code> ci-dessus.</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1196,7 +1197,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-1" 
+    id="codeblock-id-5" 
     class="
       chroma 
       !tw-block 
@@ -2363,7 +2364,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     <a href="#email" class="header-mark" aria-label="Header mark for 'Email'"></a>Email</h2><p>Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? <strong>L&rsquo;EMAIL</strong></p>
 <p>Il y a de fortes chances que si vous utilisez un ordinateur, vous ayez au moins une adresse e-mail, certains en ont plus d&rsquo;une (j&rsquo;ai perdu le compte). Cela m&rsquo;amène à une conviction profonde : si vous travaillez dans l&rsquo;informatique sous une forme ou une autre, votre adresse électronique devrait être la vôtre, avec votre propre nom de domaine <em>(<a href="mailto:hello@evans.fr" rel="">hello@evans.fr</a> par exemple)</em> au lieu d&rsquo;utiliser un @gmail.com @outlook.com ou @aol.com _(c&rsquo;est vieux ça) _ ou tout autre fournisseur.</p>
 <h2 id="pourquoi-lauto-hébergement" class="headerLink">
-    <a href="#pourquoi-lauto-h%c3%a9bergement" class="header-mark" aria-label="Header mark for 'Pourquoi (l&amp;rsquo;auto-hébergement)'"></a>Pourquoi (l&rsquo;auto-hébergement)</h2><p>Pour ma part, j&rsquo;avais l&rsquo;habitude d&rsquo;héberger toutes mes adresses e-mail sur Google Apps <em>(maintenant appelé Google Workspace)</em>. Il était simple de faire pointer les bons enregistrements mx vers leurs serveurs et voila votre propre messagerie.</p>
+    <a href="#pourquoi-lauto-h%c3%a9bergement" class="header-mark" aria-label="Header mark for 'Pourquoi (l&rsquo;auto-hébergement)'"></a>Pourquoi (l&rsquo;auto-hébergement)</h2><p>Pour ma part, j&rsquo;avais l&rsquo;habitude d&rsquo;héberger toutes mes adresses e-mail sur Google Apps <em>(maintenant appelé Google Workspace)</em>. Il était simple de faire pointer les bons enregistrements mx vers leurs serveurs et voila votre propre messagerie.</p>
 <p>De nombreux autres fournisseurs vous permettent également de faire cela, mais là où Google a été intelligent, c&rsquo;est que leur service avait un excellent niveau gratuit (comme la bière gratuite) jusqu&rsquo;à ce qu&rsquo;ils décident de supprimer le niveau gratuit. (Une autre raison pour laquelle les gens peuvent héberger eux-mêmes leurs e-mails est d&rsquo;avoir un contrôle total sur le service et de ne pas partager de données avec les GAFAM).</p>
 <p>Cela m&rsquo;a fait penser, pourquoi ne pas héberger mon propre email un jour. Donc, comme pour beaucoup de mes recherches, j&rsquo;ai commencer sur Reddit.com et le consensus général est : Pourquoi s&rsquo;embêter. Mais je continue quand même mes recherches et décide de continuer mon projet. Après tout, la meilleure façon d&rsquo;apprendre est de le faire. Comment cela peut-il être aussi difficile ?</p>
 <p><em>mais d&rsquo;abord, il nous faut du café&hellip;</em>
@@ -2766,7 +2767,7 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
         <div class="admonition-content">Désolé, mais comme j&rsquo;écoute des podcasts uniquement en anglais, cet article ne sera qu&rsquo;en anglais.</div></div></div>
 <p>I could be described as a passionate podcast listener, whether I&rsquo;m on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work I usually stick on a podcast. Here are some of my recomendations</p>
 <h2 id="it--cybersecurity" class="headerLink">
-    <a href="#it--cybersecurity" class="header-mark" aria-label="Header mark for 'IT &amp;amp; Cybersecurity'"></a>IT &amp; Cybersecurity</h2><h3 id="darknet-diaries---jack-rhysider" class="headerLink">
+    <a href="#it--cybersecurity" class="header-mark" aria-label="Header mark for 'IT &amp; Cybersecurity'"></a>IT &amp; Cybersecurity</h2><h3 id="darknet-diaries---jack-rhysider" class="headerLink">
     <a href="#darknet-diaries---jack-rhysider" class="header-mark" aria-label="Header mark for 'Darknet Diaries - Jack Rhysider'"></a>Darknet Diaries - Jack Rhysider</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/darknet-diaries-sm.jpg">
 </figure>
 
@@ -2779,7 +2780,7 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
 <p>Risky Business is a weekly podcast that features mostly IT &amp; security news and great in-depth commentary from security industry experts. Hosted by journalist Patrick Grey it is always worth a listen.</p>
 <p><a href="https://risky.biz/" target="_blank" rel="noopener noreferrer">risky.biz</a></p>
 <h3 id="the-lazarus-hiest---geoff-white--jean-lee" class="headerLink">
-    <a href="#the-lazarus-hiest---geoff-white--jean-lee" class="header-mark" aria-label="Header mark for 'The Lazarus Hiest - Geoff White &amp;amp; Jean Lee'"></a>The Lazarus Hiest - Geoff White &amp; Jean Lee</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/lazarus.jpg">
+    <a href="#the-lazarus-hiest---geoff-white--jean-lee" class="header-mark" aria-label="Header mark for 'The Lazarus Hiest - Geoff White &amp; Jean Lee'"></a>The Lazarus Hiest - Geoff White &amp; Jean Lee</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/lazarus.jpg">
 </figure>
 
 <p>Geoff White and Jean Lee take you on the story of &ldquo;Almost the Perfect Crime&rdquo;. Starts with a hacking ring and an attempt to steal a billion dollars. Investigators point to North Korea. Again another podcast that is well researched and written.</p>
@@ -2802,13 +2803,13 @@ Tout d&rsquo;abord, nous clonons le référentiel et définissons les permission
 <p><a href="https://www.exitscam.show/" target="_blank" rel="noopener noreferrer">ExitScam.show</a></p>
 <h2 id="crime" class="headerLink">
     <a href="#crime" class="header-mark" aria-label="Header mark for 'Crime'"></a>Crime</h2><h3 id="hunting-warhead---cbc-podcasts--vg" class="headerLink">
-    <a href="#hunting-warhead---cbc-podcasts--vg" class="header-mark" aria-label="Header mark for 'Hunting Warhead - CBC Podcasts &amp;amp; VG'"></a>Hunting Warhead - CBC Podcasts &amp; VG</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/promo-hunting-warhead.jpg">
+    <a href="#hunting-warhead---cbc-podcasts--vg" class="header-mark" aria-label="Header mark for 'Hunting Warhead - CBC Podcasts &amp; VG'"></a>Hunting Warhead - CBC Podcasts &amp; VG</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/promo-hunting-warhead.jpg">
 </figure>
 
 <p>A story of rescuing child abuse victims around the world, Hunting Wardhead follows the journalists and the police exposing the darkest corners of the internet. Great podcast although can be hard to listen to at times due to the subject matter.</p>
 <p><a href="https://www.cbc.ca/listen/cbc-podcasts/387-hunting-warhead" target="_blank" rel="noopener noreferrer">CBC Podcasts</a></p>
 <h3 id="death-in-ice-valley---bbc-world-service--nrk" class="headerLink">
-    <a href="#death-in-ice-valley---bbc-world-service--nrk" class="header-mark" aria-label="Header mark for 'Death in Ice Valley - BBC World Service &amp;amp; NRK'"></a>Death in Ice Valley - BBC World Service &amp; NRK</h3><p><figure><img src="/posts/2022-12-21_podcast-recommendations/icevalley.png">
+    <a href="#death-in-ice-valley---bbc-world-service--nrk" class="header-mark" aria-label="Header mark for 'Death in Ice Valley - BBC World Service &amp; NRK'"></a>Death in Ice Valley - BBC World Service &amp; NRK</h3><p><figure><img src="/posts/2022-12-21_podcast-recommendations/icevalley.png">
 </figure>
 
 Marit Higraff and Neil McCarth follows a two your investigation into the <a href="https://en.wikipedia.org/wiki/Isdal_Woman" target="_blank" rel="noopener noreferrer">Isdal Women</a> case, an unknown women whose burned body was found in western Norway in 1970.</p>
@@ -2824,19 +2825,19 @@ Marit Higraff and Neil McCarth follows a two your investigation into the <a href
             </div><p>Je connais quelques personnes qui font tourner leurs ASN sur des routeurs Mikrotik (sous RouterOS) car leur matériel est bon marché et facile à trouver. Moi y compris, je fait du BGP sur leur image CHR pour annoncer mon propre ASN et mes préfixes IP v4 et V6. RouterOS CHR est une image de RouterOS que vous pouvez exécuter sur votre propre matériel.</p>
 <p>Avant on utilisait plus RouterOS version 6, mais maintenant la version 7 a quelques versions stables et est supposée être plus stable et plus rapide pour faire du BGP, j&rsquo;ai pensé que je partagerais quelques configurations pour la version 7 car la syntaxe de la configuration a beaucoup changé. Aujourd&rsquo;hui je vais me concentrer sur IPv4 mais IPv6 est à peu près le même.</p>
 <h3 id="attendez--asn-bgp-vous-mavez-perdu-" class="headerLink">
-    <a href="#attendez--asn-bgp-vous-mavez-perdu-" class="header-mark" aria-label="Header mark for 'Attendez ! ASN, BGP, vous m&amp;rsquo;avez perdu &amp;hellip;'"></a>Attendez ! ASN, BGP, vous m&rsquo;avez perdu &hellip;</h3><h4 id="quest-ce-que-bgp-" class="headerLink">
-    <a href="#quest-ce-que-bgp-" class="header-mark" aria-label="Header mark for 'Qu&amp;rsquo;est-ce que BGP ?'"></a>Qu&rsquo;est-ce que BGP ?</h4><blockquote>
+    <a href="#attendez--asn-bgp-vous-mavez-perdu-" class="header-mark" aria-label="Header mark for 'Attendez ! ASN, BGP, vous m&rsquo;avez perdu &hellip;'"></a>Attendez ! ASN, BGP, vous m&rsquo;avez perdu &hellip;</h3><h4 id="quest-ce-que-bgp-" class="headerLink">
+    <a href="#quest-ce-que-bgp-" class="header-mark" aria-label="Header mark for 'Qu&rsquo;est-ce que BGP ?'"></a>Qu&rsquo;est-ce que BGP ?</h4><blockquote>
 <p>Border Gateway Protocol (BGP) est le service postal d&rsquo;Internet. Lorsque quelqu&rsquo;un dépose une lettre dans une boîte aux lettres, le service postal traite ce courrier et choisit un itinéraire rapide et efficace pour livrer cette lettre à son destinataire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 </blockquote>
 <h4 id="quest-ce-quun-système-autonome-et-les-asn-" class="headerLink">
-    <a href="#quest-ce-quun-syst%c3%a8me-autonome-et-les-asn-" class="header-mark" aria-label="Header mark for 'Qu&amp;rsquo;est-ce qu&amp;rsquo;un système autonome et les ASN ?'"></a>Qu&rsquo;est-ce qu&rsquo;un système autonome et les ASN ?</h4><blockquote>
+    <a href="#quest-ce-quun-syst%c3%a8me-autonome-et-les-asn-" class="header-mark" aria-label="Header mark for 'Qu&rsquo;est-ce qu&rsquo;un système autonome et les ASN ?'"></a>Qu&rsquo;est-ce qu&rsquo;un système autonome et les ASN ?</h4><blockquote>
 <p>L&rsquo;Internet est un réseau de réseaux*, et les systèmes autonomes sont les grands réseaux qui composent l&rsquo;Internet. Plus précisément, un système autonome (AS) est un grand réseau ou groupe de réseaux qui possède une politique de routage unifiée. Chaque ordinateur ou dispositif qui se connecte à l&rsquo;Internet est connecté à un AS.</p>
 </blockquote>
 <blockquote>
 <p>Chaque AS se voit attribuer un numéro officiel, ou numéro de système autonome (ASN), de la même manière que chaque entreprise possède une licence commerciale avec un numéro unique et officiel. Mais contrairement aux entreprises, les parties externes font souvent référence aux AS par leur seul numéro.
 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 </blockquote>
-<p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="C&amp;rsquo;est joli ça gif"  ></p>
+<p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="C&rsquo;est joli ça gif"  ></p>
 <h3 id="a-quoi-ressemble-la-configuration-" class="headerLink">
     <a href="#a-quoi-ressemble-la-configuration-" class="header-mark" aria-label="Header mark for 'A quoi ressemble la configuration ?'"></a>A quoi ressemble la configuration ?</h3><p>Voici les exports de configuration pour annoncer mes préfixes via l&rsquo;AS 211486. Comme vous pouvez le voir, avant de faire quoi que ce soit, vous devez ajouter les préfixes que vous voulez annoncer à une liste de réseaux que vous spécifierez dans le modèle bgp. Le reste devrait être assez explicite mais j&rsquo;ai détaillé les points principaux ci-dessous.</p>
 <h4 id="modèlestemplates" class="headerLink">
