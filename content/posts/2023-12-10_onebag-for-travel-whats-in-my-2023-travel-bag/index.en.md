@@ -117,4 +117,4 @@ Here is my clothes list, usually good for 4 days and autumn temperatures. Could 
 Do you travel with one or more bags? What's in your travel bag(s)? 
 
 ---
-_Note: some links may be affiliate links. As an Amazon Associate I my earn a small commission from qualifying purchases at no extra cost to the buyer._
+_Note: some links may be affiliate links. As an Amazon Associate I may earn a small commission from qualifying purchases at no extra cost to the buyer._
