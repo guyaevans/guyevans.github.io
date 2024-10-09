@@ -62,15 +62,15 @@ After putting all the covers back on the AC unit we can turn our main breaker ba
 
 Once your AC has it's power back you will be able to connect to the Faikin via wifi
 
-{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi1.png?raw=true" width="90%">}}
+{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi1.png?raw=true" width="90%" caption="Choose the wifi broadcast by the PCB">}}
 
 It will then ask you to enter your wifi network and MQTT server details
 
-{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi3.png?raw=true" width="90%">}}
+{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi3.png?raw=true" width="90%" caption="Enter your wifi and MQTT details">}}
 
 Once done you will be presented with some AC controls and guess what they work instantly.
 
-{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/Controls.png?raw=true" width="90%">}}
+{{<image src="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/Controls.png?raw=true" width="90%" caption="AC Commands">}}
 
 Finally we need to setup the Home Assistant side.
 
