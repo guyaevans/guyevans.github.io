@@ -37,7 +37,7 @@ I received the PCB and header wires rather quickly, thanks Amazon
 
 {{<image src="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/faikin_pcb.jpg" class="center" width="40%" caption="Faikin ESP32">}}
 
-Now comes the fun part, hooking it all up. *But first a warning:*
+Now comes the fun part, hooking it all up. *But first a warning* :zap: 🚨:
 
 {{< admonition type=danger title="Electricity is dangerous and can kill you">}}
 Turn off your main breaker before taking apart your AC unit, if unsure call a professional.
@@ -47,7 +47,7 @@ Mini split units usually come apart rather easy. A screw or two and then a few c
 
 {{<image src="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/naked_split.jpg" class="center" width="90%" caption="And look a naked minisplit">}}
 
-Once the AC has it's cover off we need to look for the main circuit board. Usually located on the side. And for my AC least the plug we need to use is labelled S21. **You don't want to touch anything else in here. Especially any capacitors**
+Once the AC has it's cover off we need to look for the main circuit board. Usually located on the side. And for my AC least the plug we need to use is labelled S21. **You don't want to touch anything else in here. Especially any capacitors :zap:**
 
 {{<image src="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/pcb_circuit.jpg" class="center" width="90%" caption="The AC circuit board and the installed Faikin PCB - **Don't touch that capacitor**">}}
 
@@ -57,7 +57,7 @@ Once installed, we can put the metal covering back on. And there is a perfect sp
 
 After putting all the covers back on the AC unit we can turn our main breaker back on.
 
-*You did turn it off right?*
+*You did turn it off right?* :eyes:
 
 
 Once your AC has it's power back you will be able to connect to the Faikin via wifi
@@ -84,7 +84,7 @@ Not much to do here. If your MQTT broker is setup correctly in Home Assistant. Y
 
 With that we now have full **local** control over our AC unit which includes feedback of the AC's state to Home Assistant.
 
-Not more wondering why the room is warm and why the AC did not turn on.
+No more wondering why the room is warm and why the AC did not turn on.
 
 ---
 _Note: some links may be affiliate links. As an Amazon Associate I may earn a small commission from qualifying purchases at no extra cost to the buyer._
