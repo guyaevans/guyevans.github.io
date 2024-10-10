@@ -1,10 +1,8 @@
 ---
-title: "~ Whoami"
-author: "Guy"
+title: ~ Whoami
+author: Guy
 ---
-
-
-## TL;DR 
+## TL;DR
 
 I’m a techie. No doubt about it. I’m into anything to do with computers, electronics and mechanics.
 
@@ -14,7 +12,7 @@ I was actually quite far down the road of becoming an accountant. But, once I di
 
 In the end, I decided to start my own business specialising in IT solutions, looking after small companies. I remember the thrill of getting my first client, followed shortly afterwards by the great reaction I got from the work I did for them.
 
-Five years later and a few jobs later, I'm now one of the lead Systems Administrators for a local council
+Five years later and a few jobs later, I work as full time as a system administrator
 
 I really enjoy the variety of the work with IT. Technology is great, but it does need handholding. And I don’t know from one day to the next, which hand I’ll have to hold. Also, the industry is ever evolving. You have to learn constantly just to keep up with all the different technologies. It’s challenging, but rewarding.
 
@@ -26,5 +24,6 @@ I enjoy building and learning about things. Not just computers and websites. I�
 
 Where I live currently—the south of France. There aren’t many places where you can live 30 minutes from the sea and the ski slopes.
 
-----
-_Adapted from a bio I wrote while working at [YFSOL](https://yfsol.com)_
+- - -
+
+*Adapted from a bio I wrote while working at [YFSOL](https://yfsol.com)*
