@@ -16,7 +16,7 @@ rssFullText: true
 We've all used Apache and NGNIX when we have had to host a website and they are fin but let's be honest, I've never gotten along with their config. And that is what bought me to [Caddy](https://caddyserver.com/). Lets take a look at what [Caddy](https://caddyserver.com/) has to offer.
 
 # Caddy
-[Caddy](https://caddyserver.com/) is a unique _(at least I think)_ web server with a modern feature set. You can use it as [reverse proxy and load balancer.](https://caddyserver.com/docs/proxy) [Host your PHP apps with it.](https://caddyserver.com/docs/fastcgi) Even [deploy your site](https://caddyserver.com/docs/git) with ```git push```. And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like [Lets Encrypt](https://letsencrypt.org/) and [ZeroSSL](https://zerossl.com/). 
+[Caddy](https://caddyserver.com/) is a unique _(at least I think)_ web server with a modern feature set. You can use it as [reverse proxy and load balancer.](https://caddyserver.com/docs/quick-starts/reverse-proxy) [Host your PHP apps with it.](https://caddyserver.com/docs/caddyfile/patterns#php). And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like [Lets Encrypt](https://letsencrypt.org/) and [ZeroSSL](https://zerossl.com/). 
 
 Cool, Right?
 
@@ -71,7 +71,7 @@ A quick ```systemctl reload caddy``` later and Caddy is serving your static file
 
 ### PHP-fpm
 
-You would usually use Ngninx as a front for PHP-fpm, well Caddy can do that too. And again with a simple config file.
+You would usually use Nginx as a front for PHP-fpm, well Caddy can do that too. And again with a simple config file.
 
 ```json
 demo.website.com {

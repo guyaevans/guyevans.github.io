@@ -16,7 +16,7 @@ rssFullText: true
 Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l'aise avec leur configuration. Et c'est ce qui m'a amené à [Caddy](https://caddyserver.com/). Découvrons ce que [Caddy](https://caddyserver.com/)a à offrir.
 
 # Caddy
-[Caddy](https://caddyserver.com/) est un serveur web unique _(du moins je le pense)_ avec un jeu de fonctionnalités modernes. Vous pouvez l'utiliser comme [reverse proxy et load balancer.](https://caddyserver.com/docs/proxy) [héberger vos applications PHP avec lui.](https://caddyserver.com/docs/fastcgi) Et même [déployer votre site](https://caddyserver.com/docs/git) avec ``git push``. Et j'ai presque oublié l'une des meilleures fonctionnalités ; le HTTPS automatique, avec des certificats utilisant des fournisseurs comme [Lets Encrypt](https://letsencrypt.org/) et [ZeroSSL](https://zerossl.com/).
+[Caddy](https://caddyserver.com/) est un serveur web unique _(du moins je le pense)_ avec un jeu de fonctionnalités modernes. Vous pouvez l'utiliser comme [reverse proxy et load balancer.](https://caddyserver.com/docs/quick-starts/reverse-proxy) [héberger vos applications PHP avec lui.](https://caddyserver.com/docs/caddyfile/patterns#php). Et j'ai presque oublié l'une des meilleures fonctionnalités ; le HTTPS automatique, avec des certificats utilisant des fournisseurs comme [Lets Encrypt](https://letsencrypt.org/) et [ZeroSSL](https://zerossl.com/).
  
 Cool, non ?
 
