@@ -1,8 +1,9 @@
 ---
-title: La publication de mon site avec Hugo, Caddy et Github actions
+title: Hugo, Caddy et Github actions - La publication de mon site
 date: 2024-10-11T15:28:00+02:00
 rssFullText: true
 lightgallery: true
+featuredImage: feature.jpg
 summary: Je me souviens avoir enregistré mon propre nom de domaine à l'âge de 13 ans et avoir créé mon premier site web avec [Microsoft Frontpage](https://fr.wikipedia.org/wiki/Microsoft_FrontPage), puis plus tard avec [Adobe Dreamweaver](https://en.wikipedia.org/wiki/Adobe_Dreamweaver). Plus tard, j'ai commencé une carrière dans l'informatique et j'ai conçu quelques sites web avec [Wordpress.](https://wordpress.org/) Voyons ce que j'utilise aujourd'hui pour publier ce site web.
 
 ---
@@ -117,3 +118,6 @@ est exécuté
 Comme vous le voyez, avec cet ensemble de technologies, je peux me concentrer sur l'écriture de contenu et ne pas me préoccuper de la technologie derrière mon site web. J'ai maintenant un flux de travail simple et rapide pour publier du contenu. Pas de PHP, pas de MYSQL, pas de plugins à se soucier. Comme d'habitude, tout est mieux avec la philosophie KISS[^kiss].
 
 [^kiss]: Keep it simple, stupid
+
+--
+_Photo par Negative Space sur [Pexels](https://www.pexels.com/photo/gray-laptop-computer-showing-html-codes-in-shallow-focus-photography-160107/)_

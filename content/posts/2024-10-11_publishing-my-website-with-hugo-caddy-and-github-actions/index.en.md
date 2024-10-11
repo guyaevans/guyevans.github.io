@@ -1,8 +1,9 @@
 ---
-title: Publishing my website with Hugo, Caddy and Github actions
+title: Hugo, Caddy and Github actions to publish my website
 date: 2024-10-11T15:28:00+02:00
 rssFullText: true
 lightgallery: true
+featuredImage: feature.jpg
 summary: I've always had some form of presence on the internet from a young age, I remember registering my own domain name aged 13 and building my first website with [Microsoft Frontpage](https://fr.wikipedia.org/wiki/Microsoft_FrontPage) and then later on with [Adobe Dreamweaver](https://en.wikipedia.org/wiki/Adobe_Dreamweaver). I later moved on to starting a career in IT and designing websites some websites with [Wordpress.](https://wordpress.org/). Let's take a look at what I use to publish this website today.
 ---
 ## Intro
@@ -111,3 +112,6 @@ Every time I make a commit to the master branch of my repo the workflow is run
 As you see with this tech stack I can concentrate on writing content and no worry about the tech behind my website. I now have a simple and fast workflow to publish content. No PHP, no MYSQL, No Plugins to worry about. As usual everything is better with the KISS[^kiss] philosophy
 
 [^kiss]: Keep it simple, stupid
+
+--
+_Photo by Negative Space at [Pexels](https://www.pexels.com/photo/gray-laptop-computer-showing-html-codes-in-shallow-focus-photography-160107/)_
