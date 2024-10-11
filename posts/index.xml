@@ -1,4 +1,288 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - Guy Evans</title><link>https://guy-evans.com/posts/</link><description>All Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Wed, 09 Oct 2024 21:23:43 +0200</lastBuildDate><atom:link href="https://guy-evans.com/posts/" rel="self" type="application/rss+xml"/><item><title>Daikin AC, Home Assistant and Local control</title><link>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</link><pubDate>Wed, 09 Oct 2024 21:23:43 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - Guy Evans</title><link>https://guy-evans.com/posts/</link><description>All Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>web@evans.fr (Guy Evans)</managingEditor><webMaster>web@evans.fr (Guy Evans)</webMaster><lastBuildDate>Fri, 11 Oct 2024 15:28:00 +0200</lastBuildDate><atom:link href="https://guy-evans.com/posts/" rel="self" type="application/rss+xml"/><item><title>Hugo, Caddy and Github actions to publish my website</title><link>https://guy-evans.com/posts/2024-10-11_publishing-my-website-with-hugo-caddy-and-github-actions/</link><pubDate>Fri, 11 Oct 2024 15:28:00 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2024-10-11_publishing-my-website-with-hugo-caddy-and-github-actions/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024-10-11_publishing-my-website-with-hugo-caddy-and-github-actions/feature.jpg" referrerpolicy="no-referrer">
+            </div><h2 id="intro" class="headerLink">
+    <a href="#intro" class="header-mark" aria-label="Header mark for 'Intro'"></a>Intro</h2><p>I&rsquo;ve always had some form of presence on the internet from a young age, I remember registering my own domain name aged 13 and building my first website with <a href="https://fr.wikipedia.org/wiki/Microsoft_FrontPage" target="_blank" rel="noopener noreferrer">Microsoft Frontpage</a> and then later on with <a href="https://en.wikipedia.org/wiki/Adobe_Dreamweaver" target="_blank" rel="noopener noreferrer">Adobe Dreamweaver</a>. I later moved on to starting a career in IT and designing websites some websites with <a href="https://wordpress.org/" target="_blank" rel="noopener noreferrer">Wordpress.</a>.</p>
+<p>These days I have moved away from Wordpress even though it is a great platform for posting a blog and building websites. (Wordpress is said to power 43 % of websites online)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> but my website has evolved from just a mere placeholder to somewhere where I regularly post thoughts and content that I find interesting and hope that someone else finds interesting (At least I try &hellip;).</p>
+<p>I no longer want to faff around with Wordpress, Php, Mysql, the endless theme and plugins updates. And the constant hand-holding that it needs. I just want to concentrate on writing, and this is how the tech stack for my website has come to life.</p>
+<p>So what am I using to build and publish this website? Grab a drink and let&rsquo;s dive in.</p>
+<a class="lightgallery" href="/img/bbt-penny-drinkswebp.webp" title="" data-thumbnail="/img/bbt-penny-drinkswebp.webp"><img  loading="lazy" src="/img/bbt-penny-drinkswebp.webp"     ></a>
+<h2 id="tech-stack" class="headerLink">
+    <a href="#tech-stack" class="header-mark" aria-label="Header mark for 'Tech Stack'"></a>Tech Stack</h2><p>I&rsquo;ve based it on three things at its core:</p>
+<ul>
+<li><a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> - An open-source static site generator</li>
+<li><a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> - The actual web server to host the site</li>
+<li><a href="https://github.com/features/actions" target="_blank" rel="noopener noreferrer">Github Actions</a> - A service to build the static files with hugo and push them to the server running Caddy</li>
+</ul>
+<p>Lets take a look at each service.</p>
+<h3 id="hugo" class="headerLink">
+    <a href="#hugo" class="header-mark" aria-label="Header mark for 'Hugo'"></a>Hugo</h3><p>If you look around there are plenty of static site generators around, like <a href="https://ghost.org/" target="_blank" rel="noopener noreferrer">Ghost</a>, <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>, <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jeykll</a> and <a href="https://jamstack.org/generators" target="_blank" rel="noopener noreferrer">a boot load more</a> each using a different programming language. I can&rsquo;t quite remember how I found Hugo but it did stand out for its simplicity.</p>
+<p><a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> is an open-source site generator. Yes you read that right, I&rsquo;m no web developer so no more PHP here.</p>
+<p>You feed it a theme, content written in <a href="https://www.markdownguide.org/" target="_blank" rel="noopener noreferrer">Markdown</a> (bonus point) and HTML if needed. It also supports emojis &#x1f604;, embedded videos, twitter posts (before Mister Elon killed it). Once your content is ready, Hugo converts everything into static HTML in seconds ready to upload to your web server.</p>
+<p><a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> also makes local development easy, by allowing you to spin up a local copy of your  website and get live feedback on your edits.</p>
+<p>To get started all you need to do is <a href="https://gohugo.io/getting-started/quick-start/" target="_blank" rel="noopener noreferrer">install it.</a></p>
+<h3 id="caddy" class="headerLink">
+    <a href="#caddy" class="header-mark" aria-label="Header mark for 'Caddy'"></a>Caddy</h3><p><a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a>, my love &hellip; Where to start? I never got along the the configs for Apache or Nginx but Caddy&rsquo;s is simple.</p>
+<p><a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> is a simple, fast and cross platform web server written in Go. I&rsquo;ve <a href="https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/" target="_blank" rel="noopener noreferrer">written about caddy here</a> in the past when it was only serving parts of this website namely the comment system and analytics. But recently I moved the core of my website back to caddy because it&rsquo;s so simple.</p>
+<p>Here the config for just the website (no comments or analytics)</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">Caddyfile</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-1" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="err">guy-evans.com</span> <span class="err">www.guy-evans.com</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="err">root</span> <span class="err">*</span> <span class="err">/srv/guy-evans.com</span>
+</span></span><span class="line"><span class="cl">	<span class="err">encode</span> <span class="err">zstd</span> <span class="err">gzip</span>
+</span></span><span class="line"><span class="cl">	<span class="err">file_server</span>
+</span></span><span class="line"><span class="cl">        <span class="err">log</span> <span class="err">{</span>
+</span></span><span class="line"><span class="cl">                <span class="err">output</span> <span class="err">file</span> <span class="err">/log/guy-evans-fr-caddy_access.log</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="err">}</span></span></span></code></pre>
+</div>
+<p>Yep, that&rsquo;s right. Eight lines of config to host the site 😎</p>
+<h3 id="github-actions" class="headerLink">
+    <a href="#github-actions" class="header-mark" aria-label="Header mark for 'Github Actions'"></a>Github Actions</h3><p><a href="https://github.com/features/actions" target="_blank" rel="noopener noreferrer">Github Actions</a> is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline.
+Basically speaking this allows me to automatically run <code>hugo</code> to build the static files and then upload them to my Caddy web server all from simple commit to the Github repo where I&rsquo;m storing source code.
+No more manually building the static files locally on my laptop and then using SFTP to upload them to the server, it is all done for me.</p>
+<div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
+  <div class="
+    code-block-title 
+    
+    tw-flex 
+    tw-flex-row 
+    tw-justify-between 
+    tw-w-full tw-bg-bgColor-secondary
+    ">      
+    <button 
+      class="
+        tw-select-none 
+        tw-mx-2 
+        tw-block
+        group-[.is-open]:tw-rotate-90
+        tw-transition-[transform] 
+        tw-duration-500 
+        tw-ease-in-out
+        print:!tw-hidden"
+      disabled
+      aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></button>
+
+    <div class="code-block-title-bar tw-w-full">
+      <p class="tw-select-none !tw-my-1">yaml</p>
+    </div>
+    <div class="tw-flex">
+      <button 
+        class="
+          line-number-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.show-line-numbers]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle line numbers"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M61.77 401l17.5-20.15a19.92 19.92 0 0 0 5.07-14.19v-3.31C84.34 356 80.5 352 73 352H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h22.83a157.41 157.41 0 0 0-11 12.31l-5.61 7c-4 5.07-5.25 10.13-2.8 14.88l1.05 1.93c3 5.76 6.29 7.88 12.25 7.88h4.73c10.33 0 15.94 2.44 15.94 9.09 0 4.72-4.2 8.22-14.36 8.22a41.54 41.54 0 0 1-15.47-3.12c-6.49-3.88-11.74-3.5-15.6 3.12l-5.59 9.31c-3.72 6.13-3.19 11.72 2.63 15.94 7.71 4.69 20.38 9.44 37 9.44 34.16 0 48.5-22.75 48.5-44.12-.03-14.38-9.12-29.76-28.73-34.88zM496 224H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h64a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H64V40a8 8 0 0 0-8-8H32a8 8 0 0 0-7.14 4.42l-8 16A8 8 0 0 0 24 64h8v64H16a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8zm-3.91 160H80a8 8 0 0 0 8-8v-16a8 8 0 0 0-8-8H41.32c3.29-10.29 48.34-18.68 48.34-56.44 0-29.06-25-39.56-44.47-39.56-21.36 0-33.8 10-40.46 18.75-4.37 5.59-3 10.84 2.8 15.37l8.58 6.88c5.61 4.56 11 2.47 16.12-2.44a13.44 13.44 0 0 1 9.46-3.84c3.33 0 9.28 1.56 9.28 8.75C51 248.19 0 257.31 0 304.59v4C0 316 5.08 320 12.09 320z"/></svg></button>
+
+      <button 
+        class="
+          wrap-code-button
+          tw-select-none 
+          tw-mx-2 
+          tw-hidden 
+          group-[.is-open]:tw-block 
+          group-[.is-wrap]:tw-text-fgColor-link 
+          print:!tw-hidden" 
+        title="Toggle code wrap"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg></button>
+      
+      <button 
+        class="
+          copy-code-button
+          tw-select-none
+          tw-mx-2 
+          tw-hidden
+          group-[.is-open]:tw-block
+          hover:tw-text-fgColor-link 
+          print:!tw-hidden"
+        title="Copy code">
+          <span class="copy-icon tw-block"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg></span>
+          <span class="check-icon tw-hidden"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg></span>
+      </button>
+        
+      <button 
+        class="
+          tw-select-none 
+          tw-mx-2 
+          tw-block 
+          group-[.is-open]:tw-hidden 
+          print:!tw-hidden" 
+        disabled
+        aria-hidden="true"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"/></svg></button>
+    </div>
+  </div>
+  <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
+    id="codeblock-id-2" 
+    class="
+      chroma 
+      !tw-block 
+      tw-p-0
+      tw-m-0
+      tw-transition-[max-height] 
+      tw-duration-500 
+      tw-ease-in-out 
+      group-[.is-closed]:!tw-max-h-0 
+      group-[.is-wrap]:tw-text-wrap
+      tw-overflow-y-hidden
+      tw-overflow-x-auto
+      tw-scrollbar-thin
+      "><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Hugo CI &amp; Deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">master</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">pull_request</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Allows you to run this workflow manually from the Actions tab</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build and deploy website</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># We checkout the master branch with any submodules</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># We setup Hugo with the version we want</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;latest&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># We ask Hugo to build the website static files</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build website with Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo --minify</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># If this is a commit to the master branch we then use Rsync to send the files to the web server using the secrets to connect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy website with rsync</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">github.ref == &#39;refs/heads/master&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">burnett01/rsync-deployments@5.2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">switches</span><span class="p">:</span><span class="w"> </span>-<span class="l">avzr --quiet --delete</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">public/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">remote_path</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.REMOTE_PATH }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">remote_host</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.REMOTE_HOST }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.REMOTE_USER }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">remote_key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.REMOTE_KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">remote_port</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.REMOTE_PORT }}</span></span></span></code></pre>
+</div>
+<p>Every time I make a commit to the master branch of my repo the workflow is run</p>
+<h2 id="wrap-up" class="headerLink">
+    <a href="#wrap-up" class="header-mark" aria-label="Header mark for 'Wrap Up'"></a>Wrap Up</h2><p>As you see with this tech stack I can concentrate on writing content and no worry about the tech behind my website. I now have a simple and fast workflow to publish content. No PHP, no MYSQL, No Plugins to worry about. As usual everything is better with the KISS<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> philosophy</p>
+<p>&ndash;
+<em>Photo by Negative Space at <a href="https://www.pexels.com/photo/gray-laptop-computer-showing-html-codes-in-shallow-focus-photography-160107/" target="_blank" rel="noopener noreferrer">Pexels</a></em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Report by <a href="https://w3techs.com/technologies/overview/content_management" target="_blank" rel="noopener noreferrer">W3 Techs</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Keep it simple, stupid&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item><item><title>Daikin AC, Home Assistant and Local control</title><link>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</link><pubDate>Wed, 09 Oct 2024 21:23:43 +0200</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/feature.jpg" referrerpolicy="no-referrer">
             </div><h2 id="air-conditioning-and-home-assistant" class="headerLink">
     <a href="#air-conditioning-and-home-assistant" class="header-mark" aria-label="Header mark for 'Air Conditioning and Home Assistant'"></a>Air Conditioning and Home Assistant</h2><p>When we bought our apartment, the previous owners had installed a Daikin minisplit AC in the living room. Great, another thing to &lsquo;smartify&rsquo; with Home Assistant<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
@@ -2943,62 +3227,4 @@ Other posts in this series:</p>
 </li>
 </ol>
 </div>
-]]></description></item><item><title>Podcast Recommendations</title><link>https://guy-evans.com/posts/2022-12-21_podcast-recommendations/</link><pubDate>Wed, 21 Dec 2022 17:20:57 +0000</pubDate><author><name>Guy Evans</name></author><guid>https://guy-evans.com/posts/2022-12-21_podcast-recommendations/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/posts/2022-12-21_podcast-recommendations/melanie-pongratz-becwwmiuj2k-unsplash.jpg" referrerpolicy="no-referrer">
-            </div><p>I could be described as a passionate podcast listener, whether I&rsquo;m on public transport, wondering around town, doing some odd jobs around the flat or during a quiet period at work I usually stick on a podcast. Here are some of my recomendations</p>
-<h2 id="it--cybersecurity" class="headerLink">
-    <a href="#it--cybersecurity" class="header-mark" aria-label="Header mark for 'IT &amp; Cybersecurity'"></a>IT &amp; Cybersecurity</h2><h3 id="darknet-diaries---jack-rhysider" class="headerLink">
-    <a href="#darknet-diaries---jack-rhysider" class="header-mark" aria-label="Header mark for 'Darknet Diaries - Jack Rhysider'"></a>Darknet Diaries - Jack Rhysider</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/darknet-diaries-sm.jpg">
-</figure>
-
-<p>Host Jack takes you on journeys about hackers,breaches, shadow government activity and cybercrime. Jack is a great story teller and his episodes are extremely well written and researched, sound design is also on point.</p>
-<p><a href="https://darknetdiaries.com/" target="_blank" rel="noopener noreferrer">darknetdiaries.com</a></p>
-<h3 id="risky-business---patrick-gray" class="headerLink">
-    <a href="#risky-business---patrick-gray" class="header-mark" aria-label="Header mark for 'Risky Business - Patrick Gray'"></a>Risky Business - Patrick Gray</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/rbipod2.jpg">
-</figure>
-
-<p>Risky Business is a weekly podcast that features mostly IT &amp; security news and great in-depth commentary from security industry experts. Hosted by journalist Patrick Grey it is always worth a listen.</p>
-<p><a href="https://risky.biz/" target="_blank" rel="noopener noreferrer">risky.biz</a></p>
-<h3 id="the-lazarus-hiest---geoff-white--jean-lee" class="headerLink">
-    <a href="#the-lazarus-hiest---geoff-white--jean-lee" class="header-mark" aria-label="Header mark for 'The Lazarus Hiest - Geoff White &amp; Jean Lee'"></a>The Lazarus Hiest - Geoff White &amp; Jean Lee</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/lazarus.jpg">
-</figure>
-
-<p>Geoff White and Jean Lee take you on the story of &ldquo;Almost the Perfect Crime&rdquo;. Starts with a hacking ring and an attempt to steal a billion dollars. Investigators point to North Korea. Again another podcast that is well researched and written.</p>
-<p><a href="https://www.bbc.co.uk/programmes/w13xtvg9/episodes/downloads" target="_blank" rel="noopener noreferrer">BBC World Service</a></p>
-<!-- raw HTML omitted -->
-<h2 id="crypto-scams" class="headerLink">
-    <a href="#crypto-scams" class="header-mark" aria-label="Header mark for 'Crypto Scams'"></a>Crypto Scams</h2><h3 id="the-missing-cryptoqueen---jamie-bartlett" class="headerLink">
-    <a href="#the-missing-cryptoqueen---jamie-bartlett" class="header-mark" aria-label="Header mark for 'The Missing Cryptoqueen - Jamie Bartlett'"></a>The Missing Cryptoqueen - Jamie Bartlett</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/the-missing-cryptoqueen.jpg">
-</figure>
-
-<p>Jamie Bartlett and his team of researchers take you on the story of Dr Ruja Ignatova and the thrilling rise and fall of the biggest cryptocurrency ponzi schemes in history. Need I say more? Great story.</p>
-<p><a href="https://www.bbc.co.uk/programmes/p07nkd84/episodes/downloads" target="_blank" rel="noopener noreferrer">BBC Radio 5 Live</a></p>
-<h3 id="exit-scam---threats-media" class="headerLink">
-    <a href="#exit-scam---threats-media" class="header-mark" aria-label="Header mark for 'Exit Scam - Threats Media'"></a>Exit Scam - Threats Media</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/exitscam.jpg">
-</figure>
-
-<p>Another Podcast about a crypto scam. Gerald Cotten, the founder of Canada&rsquo;s biggest Bitcoin exchange died under mysterious circumstances during a honeymoon trip to India in 2018.</p>
-<p>His customers were told that the $215 million they&rsquo;d deposited on the exchange was lost forever — because Gerry had forgotten to leave behind his passwords.</p>
-<p>However quite a lot of people don&rsquo;t believe that he&rsquo;s dead.</p>
-<p><a href="https://www.exitscam.show/" target="_blank" rel="noopener noreferrer">ExitScam.show</a></p>
-<h2 id="crime" class="headerLink">
-    <a href="#crime" class="header-mark" aria-label="Header mark for 'Crime'"></a>Crime</h2><h3 id="hunting-warhead---cbc-podcasts--vg" class="headerLink">
-    <a href="#hunting-warhead---cbc-podcasts--vg" class="header-mark" aria-label="Header mark for 'Hunting Warhead - CBC Podcasts &amp; VG'"></a>Hunting Warhead - CBC Podcasts &amp; VG</h3><figure><img src="/posts/2022-12-21_podcast-recommendations/promo-hunting-warhead.jpg">
-</figure>
-
-<p>A story of rescuing child abuse victims around the world, Hunting Wardhead follows the journalists and the police exposing the darkest corners of the internet. Great podcast although can be hard to listen to at times due to the subject matter.</p>
-<p><a href="https://www.cbc.ca/listen/cbc-podcasts/387-hunting-warhead" target="_blank" rel="noopener noreferrer">CBC Podcasts</a></p>
-<h3 id="death-in-ice-valley---bbc-world-service--nrk" class="headerLink">
-    <a href="#death-in-ice-valley---bbc-world-service--nrk" class="header-mark" aria-label="Header mark for 'Death in Ice Valley - BBC World Service &amp; NRK'"></a>Death in Ice Valley - BBC World Service &amp; NRK</h3><p><figure><img src="/posts/2022-12-21_podcast-recommendations/icevalley.png">
-</figure>
-
-Marit Higraff and Neil McCarth follows a two your investigation into the <a href="https://en.wikipedia.org/wiki/Isdal_Woman" target="_blank" rel="noopener noreferrer">Isdal Women</a> case, an unknown women whose burned body was found in western Norway in 1970.</p>
-<p>Due to the interest in the podcast, new leads were gathered by crowd-source researchers, finally convinving the Bergen Police to reopen the case in 2016.</p>
-<p><a href="https://www.bbc.co.uk/programmes/p060ms2h" target="_blank" rel="noopener noreferrer">BBC World Service</a>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<hr>
-<p>Thats all for now. Have you got a podcast suggestion? Drop it in the comments below</p>
-<hr>
-<p><em>Photo by Melanie Pongratz @ <a href="https://unsplash.com/s/photos/headphones-podcast?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash.com</a></em></p>
 ]]></description></item></channel></rss>
