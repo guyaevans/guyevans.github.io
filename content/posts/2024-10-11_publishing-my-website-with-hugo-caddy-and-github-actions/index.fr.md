@@ -4,6 +4,11 @@ date: 2024-10-11T15:28:00+02:00
 rssFullText: true
 lightgallery: true
 featuredImage: feature.jpg
+tags:
+    - "Site Internet"
+    - caddy
+    - hugo
+    - github
 summary: Je me souviens avoir enregistré mon propre nom de domaine à l'âge de 13 ans et avoir créé mon premier site web avec [Microsoft Frontpage](https://fr.wikipedia.org/wiki/Microsoft_FrontPage), puis plus tard avec [Adobe Dreamweaver](https://en.wikipedia.org/wiki/Adobe_Dreamweaver). Plus tard, j'ai commencé une carrière dans l'informatique et j'ai conçu quelques sites web avec [Wordpress.](https://wordpress.org/) Voyons ce que j'utilise aujourd'hui pour publier ce site web.
 
 ---

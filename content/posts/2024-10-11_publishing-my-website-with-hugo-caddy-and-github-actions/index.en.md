@@ -4,6 +4,11 @@ date: 2024-10-11T15:28:00+02:00
 rssFullText: true
 lightgallery: true
 featuredImage: feature.jpg
+tags:
+    - website
+    - caddy
+    - hugo
+    - github
 summary: I've always had some form of presence on the internet from a young age, I remember registering my own domain name aged 13 and building my first website with [Microsoft Frontpage](https://fr.wikipedia.org/wiki/Microsoft_FrontPage) and then later on with [Adobe Dreamweaver](https://en.wikipedia.org/wiki/Adobe_Dreamweaver). I later moved on to starting a career in IT and designing websites some websites with [Wordpress.](https://wordpress.org/). Let's take a look at what I use to publish this website today.
 ---
 ## Intro
