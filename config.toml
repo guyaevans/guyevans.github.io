@@ -109,6 +109,11 @@ defaultContentLanguage = "en"
       name = "~ Whoami"
       url = "/about/"
       title = ""
+    [languages.en.params.sponsor]
+        enable = true
+        bio = "If you find this post helpful, please consider buying me a coffee. Thank you!"
+        #link = "https://buymeacoffee.com/guyevans"
+        custom = "<a href=\"https://buymeacoffee.com/guyevans\" target=\"_blank\"><center><img src=\"https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png\" alt=\"Buy Me A Coffee\" style=\"height: 55px !important;width: 155 !important;\" ></center></a>"
 
   [languages.fr]
     weight = 2
@@ -130,6 +135,12 @@ defaultContentLanguage = "en"
       name = "~ Whoami"
       url = "/about/"
       title = ""
+    [languages.fr.params.sponsor]
+        enable = true
+        bio = "Si ce post vous a été utile, vous pouvez m'offrir un café. Merci!"
+        #link = "https://buymeacoffee.com/guyevans"
+        custom = "<a href=\"https://buymeacoffee.com/guyevans\" target=\"_blank\"><center><img src=\"https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png\" alt=\"Buy Me A Coffee\" style=\"height: 55px !important;width: 155 !important;\" ></center></a>"
+
 
 
 
@@ -166,7 +177,8 @@ defaultContentLanguage = "en"
 [author]
   name = "Guy Evans"
   email = "web@evans.fr"
-  link = ""
+  link = "https://guy-evans.com"
+  avatar = "/img/ge-profile-2.jpg"
 
 [params.social]
     # Linkedin = ""
