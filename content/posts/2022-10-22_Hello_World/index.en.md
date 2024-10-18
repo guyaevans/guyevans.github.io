@@ -4,6 +4,7 @@ date: 2022-10-23T13:00:35+02:00
 draft: false
 featuredImage: "vladislav-klapin-PVr9Gsj93Pc-unsplash.jpg"
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 
 ## Hello world !

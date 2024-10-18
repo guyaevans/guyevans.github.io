@@ -14,6 +14,7 @@ category: ["test"]
 series: 
   - VPS to a coloed server my homelab journey
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 As a young child I always had an interest in computers and tech, little did I know that it would foundation for my carear path that I have chosen today.
 

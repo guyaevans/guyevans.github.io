@@ -13,6 +13,7 @@ tags:
 rssFullText: true
 series:
   - Un VPS à un serveur en colocation
+  - authors: ["Guy Evans"]
 ---
 J'ai toujours eu un intérêt pour les ordinateurs et la technologie. J'étais loin de me douter qu'il s'agirait de la base de mon parcours professionnel.
 

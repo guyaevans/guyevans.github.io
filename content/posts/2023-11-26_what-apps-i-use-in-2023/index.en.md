@@ -8,6 +8,7 @@ tags:
 summary: Do you use a lot of different apps during your day? So do I and I
   thought I would share some of my favourites for 2023.
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 
 I saw this idea pop-up on [BrainBaking](https://brainbaking.com/post/2023/11/app-defaults-in-late-2023/) and as I'm always interested in seeing what tools and apps other people are using I thought I should join in. So here is a selection of my favourite apps I use on a daily basis.

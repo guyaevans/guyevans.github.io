@@ -8,6 +8,7 @@ tags:
   - edc
   - onebag
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 ## Trops de sacs
 

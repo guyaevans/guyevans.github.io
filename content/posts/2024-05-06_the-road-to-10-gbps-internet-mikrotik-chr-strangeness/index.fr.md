@@ -7,6 +7,7 @@ tags:
   - ChR
   - Network
 featuredImage: feature.jpeg
+authors: ["Guy Evans"]
 ---
 ## Le début
 Mon serveur [^Homelab] qui se trouve dans une baie réseau de [Milywan](https://milkywan.fr) à Croissy-Beaubourg/CBO et dispose d'une carte réseau 10G, car c'était l'une de mes exigences lors de sa mise en place. Une chose que je n'ai jamais vraiment utilisée à son plein potentiel. 

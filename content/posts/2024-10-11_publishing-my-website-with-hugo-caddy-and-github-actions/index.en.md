@@ -4,6 +4,7 @@ date: 2024-10-11T15:28:00+02:00
 rssFullText: true
 lightgallery: true
 featuredImage: feature.jpg
+authors: ["Guy Evans"]
 tags:
     - website
     - caddy

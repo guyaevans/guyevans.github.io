@@ -9,6 +9,7 @@ rssFullText: true
 featuredImage: feature.jpg
 lightgallery: true
 summary: When we bought our apartment, the previous owners had installed a Daikin minisplit AC in the living room. Great, another thing to 'smartify' with Home Assistant. But Daikin's Wifi modules are way to expensive and cloud dependent.
+authors: ["Guy Evans"]
 ---
 ## Air Conditioning and Home Assistant
 When we bought our apartment, the previous owners had installed a Daikin minisplit AC in the living room. Great, another thing to 'smartify' with Home Assistant[^HA].
