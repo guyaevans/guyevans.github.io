@@ -20,7 +20,7 @@ enableRobotsTXT = true
 #   taxonomyTerm = ["HTML"]
 [params]
 
-  version = "0.3.X"
+  # version = "0.3.X"
   # website title
   title = "Guy Evans"
   description = "Sysadmin -- Net Admin -- IT Tech -- DIYer"
