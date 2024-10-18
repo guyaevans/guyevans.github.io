@@ -8,6 +8,7 @@ tags:
   - ChR
   - Network
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 ## How it started
 My server[^Homelab] that lives in [Milywan](https://milkywan.fr)'s Croissy-Beaubourg/CBO location actually has a 10G NIC, as it was one of my requirements when setting it up. Something I have never really used its full potential. 

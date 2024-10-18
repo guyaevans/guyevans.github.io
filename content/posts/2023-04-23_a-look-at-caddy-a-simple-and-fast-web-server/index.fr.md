@@ -12,6 +12,7 @@ tags:
 summary: Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l'aise avec leur configuration. Et c'est ce qui m'a amené à Caddy. Découvrons ce que Caddy a à offrir.
 featuredImage: valery-sysoev-p9OkL4yW3C8-unsplash.webp
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 Nous avons tous utilisé Apache et NGNIX pour héberger un site web et ils sont très bien, mais pour être honnête, je ne me suis jamais vraiment senti à l'aise avec leur configuration. Et c'est ce qui m'a amené à [Caddy](https://caddyserver.com/). Découvrons ce que [Caddy](https://caddyserver.com/)a à offrir.
 

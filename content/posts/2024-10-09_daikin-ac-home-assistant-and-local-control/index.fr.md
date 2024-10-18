@@ -9,6 +9,7 @@ rssFullText: true
 featuredImage: feature.jpg
 lightgallery: true
 summary: Lorsque nous avons acheté notre appartement, les anciens propriétaires avaient installé un mini-split AC Daikin dans le salon. Super, encore une chose à intégrer avec Home Assistant. Mais les modules Wifi de Daikin sont beaucoup trop chers et dépendent du cloud.
+authors: ["Guy Evans"]
 ---
 ## Climatisation et Home Assistant
 Lorsque nous avons acheté notre appartement, les anciens propriétaires avaient installé un mini-split AC Daikin dans le salon. Super, encore une chose à intégrer avec Home Assistant.[^HA].

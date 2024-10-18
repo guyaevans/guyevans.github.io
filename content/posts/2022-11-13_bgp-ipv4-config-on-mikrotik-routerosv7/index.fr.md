@@ -9,6 +9,7 @@ tags:
   - bgp
   - configs
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 Je connais quelques personnes qui font tourner leurs ASN sur des routeurs Mikrotik (sous RouterOS) car leur matériel est bon marché et facile à trouver. Moi y compris, je fait du BGP sur leur image CHR pour annoncer mon propre ASN et mes préfixes IP v4 et V6. RouterOS CHR est une image de RouterOS que vous pouvez exécuter sur votre propre matériel.
 

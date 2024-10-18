@@ -14,6 +14,7 @@ tags:
 series:
   - VPS to a coloed server my homelab journey
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 
 ## After the Virtual Private Servers

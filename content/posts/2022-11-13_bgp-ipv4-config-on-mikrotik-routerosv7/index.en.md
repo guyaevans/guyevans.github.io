@@ -10,6 +10,7 @@ tags:
   - bgp
   - configs
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 So I know a couple people who run their ASNs on Mikrotik routers (running RouterOS) as their hardware is cheap and easy to find. That includes me, I run BGP on their CHR image to announce my own ASN and IP v4 and V6 subnets. RouterOS CHR which is an image of RouterOS that you can run on your own hardware.
 

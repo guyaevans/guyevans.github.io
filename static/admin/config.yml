@@ -48,7 +48,14 @@ collections:
       - label: Title
         name: title
         widget: string
-        i18n: true 
+        i18n: true
+      - label: "Authors"
+        name: "authors"
+        widget: "select"
+        options: ["Guy Evans"]
+        default: ["Guy Evans"]
+        i18n: duplicate
+        multiple: true
       - label: Date
         name: date
         widget: datetime

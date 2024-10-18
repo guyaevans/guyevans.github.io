@@ -11,6 +11,7 @@ tags:
   - mailcow
   - guide
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 ## Email
 Question : Quel est le service sur Internet que nous utilisons régulièrement et qui fait partie de notre quotidien ? **L'EMAIL**

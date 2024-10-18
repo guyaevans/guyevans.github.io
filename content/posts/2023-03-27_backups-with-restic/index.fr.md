@@ -11,6 +11,7 @@ summary: Après avoir eu la chance de ne perdre aucune de mes données
   chercher une solution de sauvegarde décente et j'ai trouvé Restic. Voyons
   comment cela fonctionne.
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 Après avoir eu la chance de ne perdre aucune de mes données sauvegardées sur mon nextcloud suite à l'incendie d'OVH[^ovhfire] :fire: à Strasbourg. J'ai cependant perdu le VPS qui hébergeait le site web de [www.evansmedia.fr](https://www.evansmedia.fr)
 

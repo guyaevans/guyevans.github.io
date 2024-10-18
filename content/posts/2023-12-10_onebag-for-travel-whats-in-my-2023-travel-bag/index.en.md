@@ -8,6 +8,7 @@ tags:
   - edc
   - onebag
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 ## Too many bags
 I am a fan of travelling, although I haven't been able to travel much since the birth of the little one but I digress. 

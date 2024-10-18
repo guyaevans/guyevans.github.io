@@ -14,6 +14,7 @@ tags:
   - Aruba
   - Vlan
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 ## 802.1x - Why?
 

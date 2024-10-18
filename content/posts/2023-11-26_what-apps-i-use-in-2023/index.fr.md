@@ -9,6 +9,7 @@ summary: Utilisez-vous beaucoup d'applications différentes au cours de votre
   journée ? Moi aussi, et j'ai pensé partager avec vous quelques-unes de mes
   applications préférées pour 2023.
 rssFullText: true
+authors: ["Guy Evans"]
 ---
 
 J'ai vu cette idée apparaître sur [BrainBaking](https://brainbaking.com/post/2023/11/app-defaults-in-late-2023/) et comme je suis toujours intéressée par les outils et les applications que les autres utilisent, je me suis dit qu'il fallait que je participe. Voici donc une sélection de mes applications préférées que j'utilise au quotidien.

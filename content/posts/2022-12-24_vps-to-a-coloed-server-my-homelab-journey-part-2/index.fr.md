@@ -14,6 +14,7 @@ tags:
 rssFullText: true
 series:
   - Un VPS à un serveur en colocation
+authors: ["Guy Evans"]
 ---
 ## Après les serveurs virtuels
 
