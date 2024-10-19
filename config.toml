@@ -112,7 +112,7 @@ defaultContentLanguage = "en"
       title = ""
     [languages.en.params.sponsor]
         enable = true
-        bio = "If you find this post helpful, please consider buying me a coffee. Thank you!"
+        bio = "If you find this post helpful, please consider buying me a coffee ☕️ (or a beer 🍺). Thank you!"
         #link = "https://buymeacoffee.com/guyevans"
         custom = "<a href=\"https://buymeacoffee.com/guyevans\" target=\"_blank\"><center><img src=\"https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png\" alt=\"Buy Me A Coffee\" style=\"height: 55px !important;width: 155 !important;\" ></center></a>"
 
@@ -138,7 +138,7 @@ defaultContentLanguage = "en"
       title = ""
     [languages.fr.params.sponsor]
         enable = true
-        bio = "Si ce post vous a été utile, vous pouvez m'offrir un café. Merci!"
+        bio = "Si ce post vous a été utile, vous pouvez m'offrir un café ☕️ (ou une bière 🍺). Merci!"
         #link = "https://buymeacoffee.com/guyevans"
         custom = "<a href=\"https://buymeacoffee.com/guyevans\" target=\"_blank\"><center><img src=\"https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png\" alt=\"Buy Me A Coffee\" style=\"height: 55px !important;width: 155 !important;\" ></center></a>"
 
