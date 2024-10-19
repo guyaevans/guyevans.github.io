@@ -24,7 +24,7 @@ J'ai vu cette idée apparaître sur [BrainBaking](https://brainbaking.com/post/2
 * :studio_microphone: Podcasts: Overcast
 * :musical_note: Musique: Spotify
 * :people_holding_hands: Réseaux sociaux: X - Instagram - Reddit
-* :book: Lecture: [Amazon Kindle](https://amzn.to/3utTUQh)
+* :book: Lecture: [Amazon Kindle](https://amzn.to/48i9yyi)
 * :lock: Mots de passes: [VaultWarden](https://github.com/dani-garcia/vaultwarden) (BitWarden auto-hébergé)
 * :notebook: Notes: Markdown in VSCode or Obsidian & Notebook & Pen
 * :film_projector: Présentations: [Marp](https://marp.app/) & VSCode

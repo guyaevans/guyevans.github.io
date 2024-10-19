@@ -110,7 +110,7 @@ Voici ma liste de vêtements, elle généralement suffisante pour 4 jours et des
 * Airpods Pro d'Apple
 * Casque filaire de rechange + adaptateur lightning vers prise casque
 * Routeur wifi 4G - pris pour des amis car j'ai beaucoup de données dans l'UE - Merci Free :wink:
-* [Amazon Kindle Paperwhite](https://amzn.to/3RmaN7p)
+* [Amazon Kindle Paperwhite](https://amzn.to/48i9yyi)
 * Lampe de poche : D4v2 - toujours avoir une lampe de poche décente ... ne demandez pas 😉
 
 Vous voyagez avec un ou plusieurs sacs ? Qu'y a-t-il dans votre(vos) sac(s) de voyage ?

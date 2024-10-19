@@ -23,7 +23,7 @@ I saw this idea pop-up on [BrainBaking](https://brainbaking.com/post/2023/11/app
 * :studio_microphone: Podcasts: Overcast
 * :musical_note: Music: Spotify
 * :people_holding_hands: Social: X - Instagram - Reddit
-* :book: Reading: [Amazon Kindle Paperwhite](https://amzn.to/3utTUQh)
+* :book: Reading: [Amazon Kindle Paperwhite](https://amzn.to/48i9yyi)
 * :lock: Passwords: [VaultWarden](https://github.com/dani-garcia/vaultwarden) (Selfhosted BitWarden)
 * :notebook: Notes: Markdown in VSCode or Obsidian & Notebook & Pen
 * :film_projector: Presentations: [Marp](https://marp.app/) & VSCode

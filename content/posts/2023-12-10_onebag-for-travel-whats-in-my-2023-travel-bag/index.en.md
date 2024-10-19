@@ -96,10 +96,10 @@ Here is my clothes list, usually good for 4 days and autumn temperatures. Could 
 - Lightning to USB C
 - Apple Watch Cable
 - [USB C cable](https://amzn.to/4alrgBh)
-- Apple airpods pros
+- Apple Airpods pros
 - Spare wired headphones + lightning to headphone jack
 - 4G wifi router - bought for friends as I get a lot of data in the EU
-- [Amazon Kindle Paperwhite](https://amzn.to/3RmaN7p)
+- [Amazon Kindle Paperwhite](https://amzn.to/48i9yyi)
 - Flashlight: D4v2 - always have a decent flash light … don’t ask 😉
 
 ### Hygiene:
