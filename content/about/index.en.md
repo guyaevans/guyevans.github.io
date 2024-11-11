@@ -14,7 +14,7 @@ I was actually quite far down the road of becoming an accountant. But, once I di
 
 In the end, I decided to start my own business specialising in IT solutions, looking after small companies. I remember the thrill of getting my first client, followed shortly afterwards by the great reaction I got from the work I did for them.
 
-Five years later and a few jobs later, I'm now one of the lead Systems Administrators for a local council
+Some years and a few jobs later, I'm now a systems administrators for a french IT engineering company.
 
 I really enjoy the variety of the work with IT. Technology is great, but it does need handholding. And I don’t know from one day to the next, which hand I’ll have to hold. Also, the industry is ever evolving. You have to learn constantly just to keep up with all the different technologies. It’s challenging, but rewarding.
 
