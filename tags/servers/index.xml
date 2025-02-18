@@ -93,8 +93,7 @@ Other posts in this series:</p>
 <h3 id="what-is-a-homelab" class="headerLink">
     <a href="#what-is-a-homelab" class="header-mark" aria-label="Header mark for 'What is a Homelab?'"></a>What is a Homelab?</h3><p>I can hear you in the back &hellip; What is a homelab?</p>
 <blockquote>
-<p>A homelab, in the simplest terms is a sandbox that you can learn and play with new or unfamiliar technologies.  They can be as simple as a set of VM’s on an old PC or laptop to as complex whole network with it&rsquo;s own ASN (we will get to that, eventually &hellip;)</p>
-</blockquote>
+<p>A homelab, in the simplest terms is a sandbox that you can learn and play with new or unfamiliar technologies.  They can be as simple as a set of VM’s on an old PC or laptop to as complex whole network with it&rsquo;s own ASN (we will get to that, eventually &hellip;)</p></blockquote>
 <h3 id="virtual-private-servers-with-ovh" class="headerLink">
     <a href="#virtual-private-servers-with-ovh" class="header-mark" aria-label="Header mark for 'Virtual Private Servers with OVH'"></a>Virtual Private Servers with OVH</h3><h4 id="vps-number-1-the-website" class="headerLink">
     <a href="#vps-number-1-the-website" class="header-mark" aria-label="Header mark for 'VPS Number 1: The website'"></a>VPS Number 1: The website</h4><p>After doing some research I new two things:</p>

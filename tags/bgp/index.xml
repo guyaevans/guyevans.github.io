@@ -5,16 +5,13 @@
 <h3 id="wait-asn-bgp-youve-lost-me-" class="headerLink">
     <a href="#wait-asn-bgp-youve-lost-me-" class="header-mark" aria-label="Header mark for 'Wait! ASN, BGP, You&rsquo;ve lost me &hellip;'"></a>Wait! ASN, BGP, You&rsquo;ve lost me &hellip;</h3><h4 id="what-is-bgp" class="headerLink">
     <a href="#what-is-bgp" class="header-mark" aria-label="Header mark for 'What is BGP?'"></a>What is BGP?</h4><blockquote>
-<p>Border Gateway Protocol (BGP) is the postal service of the Internet. When someone drops a letter into a mailbox, the Postal Service processes that piece of mail and chooses a fast, efficient route to deliver that letter to its recipient<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-</blockquote>
+<p>Border Gateway Protocol (BGP) is the postal service of the Internet. When someone drops a letter into a mailbox, the Postal Service processes that piece of mail and chooses a fast, efficient route to deliver that letter to its recipient<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p></blockquote>
 <h4 id="what-is-an-autonomous-system-and-asns" class="headerLink">
     <a href="#what-is-an-autonomous-system-and-asns" class="header-mark" aria-label="Header mark for 'What is an autonomous system and ASNs?'"></a>What is an autonomous system and ASNs?</h4><blockquote>
-<p>The Internet is a network of networks*, and autonomous systems are the big networks that make up the Internet. More specifically, an autonomous system (AS) is a large network or group of networks that has a unified routing policy. Every computer or device that connects to the Internet is connected to an AS.</p>
-</blockquote>
+<p>The Internet is a network of networks*, and autonomous systems are the big networks that make up the Internet. More specifically, an autonomous system (AS) is a large network or group of networks that has a unified routing policy. Every computer or device that connects to the Internet is connected to an AS.</p></blockquote>
 <blockquote>
 <p>Each AS is assigned an official number, or autonomous system number (ASN), similar to how every business has a business license with an unique, official number. But unlike businesses, external parties often refer to ASes by their number alone.
-<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-</blockquote>
+<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p></blockquote>
 <p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="That&rsquo;s pretty slick gif"  ></p>
 <h3 id="what-does-the-config-look-like" class="headerLink">
     <a href="#what-does-the-config-look-like" class="header-mark" aria-label="Header mark for 'What does the config look like?'"></a>What does the config look like?</h3><p>Here are my config exports to announce one subnet via AS 211486. As you can see, before doing anything you need to add your prefixes that you want to announce to a network list which you will specify in the bgp template. The rest should be pretty self explanitory but I&rsquo;ve detailed the main points below.</p>

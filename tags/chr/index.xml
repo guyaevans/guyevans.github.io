@@ -7,15 +7,14 @@
 <p>— <em>I’m trying to find out if and why I’m limited to 1G</em></p>
 <p>Mikrotik has a built in tool for that:</p>
 <blockquote>
-<p>The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network &ldquo;bottlenecks&rdquo; - <a href="https://help.mikrotik.com/docs/display/ROS/Bandwidth&#43;Test" target="_blank" rel="noopener noreferrer">Mikrotik</a></p>
-</blockquote>
+<p>The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network &ldquo;bottlenecks&rdquo; - <a href="https://help.mikrotik.com/docs/display/ROS/Bandwidth&#43;Test" target="_blank" rel="noopener noreferrer">Mikrotik</a></p></blockquote>
 <p>Well I volunteered my CHR <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> instance. <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->
 <figure><img src="/img/jack_whatcouldgowrong.gif">
 </figure>
 </p>
 <h2 id="a-good-start" class="headerLink">
     <a href="#a-good-start" class="header-mark" aria-label="Header mark for 'A good start'"></a>A good start</h2><p>So I dm’d him some connection details and he started his tests!</p>
-<figure><img src="./IMG_4388.jpeg"
+<figure><img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/IMG_4388.jpeg"
     alt="Transmitting at 2.7G - not bad!"><figcaption>
       <p>Transmitting at 2.7G - not bad!</p>
     </figcaption>

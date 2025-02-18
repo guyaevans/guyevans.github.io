@@ -7,15 +7,14 @@
 <p>— <em>I’m trying to find out if and why I’m limited to 1G</em></p>
 <p>Mikrotik has a built in tool for that:</p>
 <blockquote>
-<p>The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network &ldquo;bottlenecks&rdquo; - <a href="https://help.mikrotik.com/docs/display/ROS/Bandwidth&#43;Test" target="_blank" rel="noopener noreferrer">Mikrotik</a></p>
-</blockquote>
+<p>The Bandwidth Tester can be used to measure the throughput to another MikroTik router (either wired or wireless) and thereby help to discover network &ldquo;bottlenecks&rdquo; - <a href="https://help.mikrotik.com/docs/display/ROS/Bandwidth&#43;Test" target="_blank" rel="noopener noreferrer">Mikrotik</a></p></blockquote>
 <p>Well I volunteered my CHR <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> instance. <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->
 <figure><img src="/img/jack_whatcouldgowrong.gif">
 </figure>
 </p>
 <h2 id="a-good-start" class="headerLink">
     <a href="#a-good-start" class="header-mark" aria-label="Header mark for 'A good start'"></a>A good start</h2><p>So I dm’d him some connection details and he started his tests!</p>
-<figure><img src="./IMG_4388.jpeg"
+<figure><img src="/posts/2024-05-06_the-road-to-10-gbps-internet-mikrotik-chr-strangeness/IMG_4388.jpeg"
     alt="Transmitting at 2.7G - not bad!"><figcaption>
       <p>Transmitting at 2.7G - not bad!</p>
     </figcaption>
@@ -74,7 +73,7 @@
 </div>
 ]]></description></item><item><title>A look at Caddy - A simple and fast web server</title><link>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</link><pubDate>Sun, 23 Apr 2023 09:19:19 +0000</pubDate><author><name>Guy Evans</name><uri>https://guy-evans.com</uri><email>web@evans.fr</email></author><guid>https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/</guid><description><![CDATA[<div class="featured-image">
                 <img src="https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-and-fast-web-server/valery-sysoev-p9OkL4yW3C8-unsplash.webp" referrerpolicy="no-referrer">
-            </div><p>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fin but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a>. Lets take a look at what <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> has to offer.</p>
+            </div><p>We&rsquo;ve all used Apache and NGNIX when we have had to host a website and they are fine but let&rsquo;s be honest, I&rsquo;ve never gotten along with their config. And that is what bought me to <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a>. Lets take a look at what <a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> has to offer.</p>
 <h1 id="caddy" class="headerLink">
     <a href="#caddy" class="header-mark" aria-label="Header mark for 'Caddy'"></a>Caddy</h1><p><a href="https://caddyserver.com/" target="_blank" rel="noopener noreferrer">Caddy</a> is a unique <em>(at least I think)</em> web server with a modern feature set. You can use it as <a href="https://caddyserver.com/docs/quick-starts/reverse-proxy" target="_blank" rel="noopener noreferrer">reverse proxy and load balancer.</a> <a href="https://caddyserver.com/docs/caddyfile/patterns#php" target="_blank" rel="noopener noreferrer">Host your PHP apps with it.</a>. And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Lets Encrypt</a> and <a href="https://zerossl.com/" target="_blank" rel="noopener noreferrer">ZeroSSL</a>.</p>
 <p>Cool, Right?</p>
@@ -728,8 +727,7 @@ Other posts in this series:</p>
 <h3 id="what-is-a-homelab" class="headerLink">
     <a href="#what-is-a-homelab" class="header-mark" aria-label="Header mark for 'What is a Homelab?'"></a>What is a Homelab?</h3><p>I can hear you in the back &hellip; What is a homelab?</p>
 <blockquote>
-<p>A homelab, in the simplest terms is a sandbox that you can learn and play with new or unfamiliar technologies.  They can be as simple as a set of VM’s on an old PC or laptop to as complex whole network with it&rsquo;s own ASN (we will get to that, eventually &hellip;)</p>
-</blockquote>
+<p>A homelab, in the simplest terms is a sandbox that you can learn and play with new or unfamiliar technologies.  They can be as simple as a set of VM’s on an old PC or laptop to as complex whole network with it&rsquo;s own ASN (we will get to that, eventually &hellip;)</p></blockquote>
 <h3 id="virtual-private-servers-with-ovh" class="headerLink">
     <a href="#virtual-private-servers-with-ovh" class="header-mark" aria-label="Header mark for 'Virtual Private Servers with OVH'"></a>Virtual Private Servers with OVH</h3><h4 id="vps-number-1-the-website" class="headerLink">
     <a href="#vps-number-1-the-website" class="header-mark" aria-label="Header mark for 'VPS Number 1: The website'"></a>VPS Number 1: The website</h4><p>After doing some research I new two things:</p>

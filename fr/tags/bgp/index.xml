@@ -5,16 +5,13 @@
 <h3 id="attendez--asn-bgp-vous-mavez-perdu-" class="headerLink">
     <a href="#attendez--asn-bgp-vous-mavez-perdu-" class="header-mark" aria-label="Header mark for 'Attendez ! ASN, BGP, vous m&rsquo;avez perdu &hellip;'"></a>Attendez ! ASN, BGP, vous m&rsquo;avez perdu &hellip;</h3><h4 id="quest-ce-que-bgp-" class="headerLink">
     <a href="#quest-ce-que-bgp-" class="header-mark" aria-label="Header mark for 'Qu&rsquo;est-ce que BGP ?'"></a>Qu&rsquo;est-ce que BGP ?</h4><blockquote>
-<p>Border Gateway Protocol (BGP) est le service postal d&rsquo;Internet. Lorsque quelqu&rsquo;un dépose une lettre dans une boîte aux lettres, le service postal traite ce courrier et choisit un itinéraire rapide et efficace pour livrer cette lettre à son destinataire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
-</blockquote>
+<p>Border Gateway Protocol (BGP) est le service postal d&rsquo;Internet. Lorsque quelqu&rsquo;un dépose une lettre dans une boîte aux lettres, le service postal traite ce courrier et choisit un itinéraire rapide et efficace pour livrer cette lettre à son destinataire<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p></blockquote>
 <h4 id="quest-ce-quun-système-autonome-et-les-asn-" class="headerLink">
     <a href="#quest-ce-quun-syst%c3%a8me-autonome-et-les-asn-" class="header-mark" aria-label="Header mark for 'Qu&rsquo;est-ce qu&rsquo;un système autonome et les ASN ?'"></a>Qu&rsquo;est-ce qu&rsquo;un système autonome et les ASN ?</h4><blockquote>
-<p>L&rsquo;Internet est un réseau de réseaux*, et les systèmes autonomes sont les grands réseaux qui composent l&rsquo;Internet. Plus précisément, un système autonome (AS) est un grand réseau ou groupe de réseaux qui possède une politique de routage unifiée. Chaque ordinateur ou dispositif qui se connecte à l&rsquo;Internet est connecté à un AS.</p>
-</blockquote>
+<p>L&rsquo;Internet est un réseau de réseaux*, et les systèmes autonomes sont les grands réseaux qui composent l&rsquo;Internet. Plus précisément, un système autonome (AS) est un grand réseau ou groupe de réseaux qui possède une politique de routage unifiée. Chaque ordinateur ou dispositif qui se connecte à l&rsquo;Internet est connecté à un AS.</p></blockquote>
 <blockquote>
 <p>Chaque AS se voit attribuer un numéro officiel, ou numéro de système autonome (ASN), de la même manière que chaque entreprise possède une licence commerciale avec un numéro unique et officiel. Mais contrairement aux entreprises, les parties externes font souvent référence aux AS par leur seul numéro.
-<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-</blockquote>
+<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p></blockquote>
 <p><img class="tw-inline" loading="lazy" src="https://media4.giphy.com/media/U09CkmV0ewDbfGgAZR/giphy.gif?cid=790b7611acdfb9df5539d54ed990cfdf2d9c2469aaf1eee6&amp;rid=giphy.gif&amp;ct=g"   alt="C&rsquo;est joli ça gif"  ></p>
 <h3 id="a-quoi-ressemble-la-configuration-" class="headerLink">
     <a href="#a-quoi-ressemble-la-configuration-" class="header-mark" aria-label="Header mark for 'A quoi ressemble la configuration ?'"></a>A quoi ressemble la configuration ?</h3><p>Voici les exports de configuration pour annoncer mes préfixes via l&rsquo;AS 211486. Comme vous pouvez le voir, avant de faire quoi que ce soit, vous devez ajouter les préfixes que vous voulez annoncer à une liste de réseaux que vous spécifierez dans le modèle bgp. Le reste devrait être assez explicite mais j&rsquo;ai détaillé les points principaux ci-dessous.</p>

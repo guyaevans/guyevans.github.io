@@ -5,13 +5,12 @@
 <p>The shoemaker always wears the worst shoes, right?</p>
 <figure><img src="/img/this-is-fine.webp">
 </figure>
-
 </blockquote>
 <p>I may have become a bit paranoid about backups, especially for anything stored in my Nextcloud which holds just about anything to do with my personal life, including photos of our recent newborn.</p>
 <h2 id="the-3-2-1-rule" class="headerLink">
     <a href="#the-3-2-1-rule" class="header-mark" aria-label="Header mark for 'The 3-2-1 Rule'"></a>The 3-2-1 Rule</h2><p>I decided to base my backup strategy on the 3-2-1 rule (and you should too)</p>
 <p>The idea that a minimal backup solution should include three copies of the data, including two copies on different media and one remote (offsite) copy.</p>
-<figure><img src="./3-2-1-Backup-Rule.png">
+<figure><img src="/posts/2023-03-27_backups-with-restic/3-2-1-Backup-Rule.png">
  </figure>
 
 <h3 id="local-backups" class="headerLink">
@@ -20,8 +19,7 @@
 <h2 id="restic" class="headerLink">
     <a href="#restic" class="header-mark" aria-label="Header mark for 'Restic'"></a>Restic</h2><blockquote>
 <p>restic is a backup program that is fast, efficient and secure. It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD).
-<a href="https://restic.net/" target="_blank" rel="noopener noreferrer">https://restic.net/</a></p>
-</blockquote>
+<a href="https://restic.net/" target="_blank" rel="noopener noreferrer">https://restic.net/</a></p></blockquote>
 <h3 id="why-restic" class="headerLink">
     <a href="#why-restic" class="header-mark" aria-label="Header mark for 'Why Restic'"></a>Why Restic</h3><ul>
 <li>

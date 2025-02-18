@@ -394,12 +394,12 @@ est exécuté</p>
 </ul>
 <p>Après quelques recherches, j&rsquo;ai en fait acheté le mien sur Vinted. Neuf pour 35 euros donc une bonne affaire!</p>
 <h2 id="le-contenu" class="headerLink">
-    <a href="#le-contenu" class="header-mark" aria-label="Header mark for 'Le Contenu'"></a>Le Contenu</h2><figure><img src="./IMG_4754.jpeg">
+    <a href="#le-contenu" class="header-mark" aria-label="Header mark for 'Le Contenu'"></a>Le Contenu</h2><figure><img src="/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/IMG_4754.jpeg">
 </figure>
 
 <p>Maintenant la partie amusante, que mettons-nous dans le sac ? Voici ma liste de base. Je ne vais pas détailler chaque chose mais je donnerai quelques commentaires pour certains articles.</p>
 <h3 id="cubes-de-rangement" class="headerLink">
-    <a href="#cubes-de-rangement" class="header-mark" aria-label="Header mark for 'Cubes de rangement'"></a>Cubes de rangement</h3><p><figure><img src="./IMG_4756.jpeg">
+    <a href="#cubes-de-rangement" class="header-mark" aria-label="Header mark for 'Cubes de rangement'"></a>Cubes de rangement</h3><p><figure><img src="/posts/2023-12-10_onebag-for-travel-whats-in-my-2023-travel-bag/IMG_4756.jpeg">
 </figure>
 
 J&rsquo;utilise généralement 2 cubes de rangement :</p>
@@ -1606,13 +1606,12 @@ aaa port-access authenticator active</code></pre></code></pre>
 <p>Les cordonniers sont toujours les plus mal chaussés, n&rsquo;est-ce pas ?</p>
 <figure><img src="/img/this-is-fine.webp">
 </figure>
-
 </blockquote>
 <p>Je suis peut-être devenu un peu paranoïaque en ce qui concerne les sauvegardes, en particulier pour tout ce qui est stocké dans mon Nextcloud, qui contient à peu près tout ce qui a trait à ma vie personnelle, y compris les photos de notre nouveau-né.</p>
 <h2 id="the-3-2-1-rule" class="headerLink">
     <a href="#the-3-2-1-rule" class="header-mark" aria-label="Header mark for 'The 3-2-1 Rule'"></a>The 3-2-1 Rule</h2><p>J&rsquo;ai décidé de bâtir ma stratégie de sauvegarde sur la règle des 3-2-1 (et vous devriez en faire autant)</p>
 <p>L&rsquo;idée qu&rsquo;une solution de sauvegarde minimale devrait comprendre trois copies des données, dont deux copies sur des supports différents et une copie distante (hors site).</p>
-<figure><img src="./3-2-1-Backup-Rule.png">
+<figure><img src="/posts/2023-03-27_backups-with-restic/3-2-1-Backup-Rule.png">
  </figure>
 
 <h3 id="sauvegardes-locales" class="headerLink">
@@ -1621,8 +1620,7 @@ aaa port-access authenticator active</code></pre></code></pre>
 <h2 id="restic" class="headerLink">
     <a href="#restic" class="header-mark" aria-label="Header mark for 'Restic'"></a>Restic</h2><blockquote>
 <p>restic est un logiciel de sauvegarde rapide, efficace et sûr. Il supporte les trois principaux systèmes d&rsquo;exploitation (Linux, macOS, Windows) et quelques autres plus petits (FreeBSD, OpenBSD).
-<a href="https://restic.net/" target="_blank" rel="noopener noreferrer">https://restic.net/</a></p>
-</blockquote>
+<a href="https://restic.net/" target="_blank" rel="noopener noreferrer">https://restic.net/</a></p></blockquote>
 <h3 id="pourquoi-restic" class="headerLink">
     <a href="#pourquoi-restic" class="header-mark" aria-label="Header mark for 'Pourquoi Restic'"></a>Pourquoi Restic</h3><ul>
 <li>il est simple et rapide à utiliser</li>
