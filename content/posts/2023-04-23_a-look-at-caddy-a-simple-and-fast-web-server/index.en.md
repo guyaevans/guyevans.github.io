@@ -14,7 +14,7 @@ featuredImage: https://guy-evans.com/posts/2023-04-23_a-look-at-caddy-a-simple-a
 rssFullText: true
 authors: ["Guy Evans"]
 ---
-We've all used Apache and NGNIX when we have had to host a website and they are fin but let's be honest, I've never gotten along with their config. And that is what bought me to [Caddy](https://caddyserver.com/). Lets take a look at what [Caddy](https://caddyserver.com/) has to offer.
+We've all used Apache and NGNIX when we have had to host a website and they are fine but let's be honest, I've never gotten along with their config. And that is what bought me to [Caddy](https://caddyserver.com/). Lets take a look at what [Caddy](https://caddyserver.com/) has to offer.
 
 # Caddy
 [Caddy](https://caddyserver.com/) is a unique _(at least I think)_ web server with a modern feature set. You can use it as [reverse proxy and load balancer.](https://caddyserver.com/docs/quick-starts/reverse-proxy) [Host your PHP apps with it.](https://caddyserver.com/docs/caddyfile/patterns#php). And I almost forgot one of the best features; automatic HTTPS, with certificates using acme providers like [Lets Encrypt](https://letsencrypt.org/) and [ZeroSSL](https://zerossl.com/). 

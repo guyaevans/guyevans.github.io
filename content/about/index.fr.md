@@ -14,7 +14,7 @@ J'étais en fait assez loin dans la voie pour devenir assistant comptable. Mais,
 
 Finalement, j'ai décidé de créer ma propre entreprise spécialisée dans les solutions informatiques, en m'occupant notamment des petites entreprises. Je me souviens de la joie que m'a apportée l'obtention de mon premier client, suivie peu de temps après par la réaction enthousiaste que suscitait le travail que je faisais pour eux.
 
-Des annés et quelques emplois plus tard, je suis administrateurs systèmes pour une société française d'ingénierie Informatique.
+Des annés et quelques emplois plus tard, je suis administrateurs systèmes pour une société française d'infogerance Informatique.
 
 J'aime vraiment la variété du travail dans le domaine de l'informatique. La technologie est formidable, mais elle a besoin d'être accompagnée. Et je ne sais pas d'un jour à l'autre quelle main je vais devoir tenir. De plus, le secteur est en constante évolution. Il faut apprendre constamment pour rester au courant des différentes technologies. C'est un défi, mais c'est gratifiant.
 
