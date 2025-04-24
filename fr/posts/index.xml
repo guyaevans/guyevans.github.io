@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Toutes les Posts - Guy Evans</title><link>https://guy-evans.com/fr/posts/</link><description>Toutes les Posts | Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/posts/" rel="self" type="application/rss+xml"/><item><title>Blocklists Crowdsec et Pare-Feu Mikrotik</title><link>https://guy-evans.com/fr/posts/2025-04-24_crowdsec_blocklists_mikrotik/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><author><name>Guy Evans</name><uri>https://guy-evans.com</uri><email>web@evans.fr</email></author><guid>https://guy-evans.com/fr/posts/2025-04-24_crowdsec_blocklists_mikrotik/</guid><description><![CDATA[<div class="featured-image">
                 <img src="/posts/2025-04-24_crowdsec_blocklists_mikrotik/feature.webp" referrerpolicy="no-referrer">
-            </div><p>ne question récurrente lors de l&rsquo;auto-hébergement de servicee est :</p>
+            </div><p>Une question récurrente lors de l&rsquo;auto-hébergement de servicee est :</p>
 <blockquote>
 <p>Comment sécuriser vos services qui sont accessible publiquement ?</p></blockquote>
 <p>La réponse est généralement en couches. J&rsquo;utilise notamment le pare-feu de mon routeur Mirotik, placé devant tous mes services auto-hébergés. J&rsquo;utilise également Crowdsec, un système de détection et de prévention d&rsquo;intrusion (IDS/IPS) auto-hébergé, complété par des listes de blocage communautaires. Aujourd&rsquo;hui, nous allons configurer les deux pour que le Mikrotik puisse utiliser les listes de blocage de Crowdsec pour sécuriser mon réseau homelab directement à l&rsquo;entrée.</p>
@@ -2028,7 +2028,7 @@ J&rsquo;utilise généralement 2 cubes de rangement :</p>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-11" 
+    id="codeblock-id-6" 
     class="
       chroma 
       !tw-block 
@@ -2131,7 +2131,7 @@ vlan 30 tagged all</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-12" 
+    id="codeblock-id-7" 
     class="
       chroma 
       !tw-block 
@@ -2228,7 +2228,7 @@ vlan 30 tagged all</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-13" 
+    id="codeblock-id-8" 
     class="
       chroma 
       !tw-block 
@@ -2325,7 +2325,7 @@ vlan 30 tagged all</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-14" 
+    id="codeblock-id-9" 
     class="
       chroma 
       !tw-block 
@@ -2428,7 +2428,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-15" 
+    id="codeblock-id-10" 
     class="
       chroma 
       !tw-block 
