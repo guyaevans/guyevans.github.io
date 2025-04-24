@@ -15,7 +15,7 @@ tags:
 #     - Crowdsec
 summary: "Une question récurrente lors de l'auto-hébergement de servicee est : \n comment sécuriser vos services qui sont accessible publiquement ? La réponse se trouve généralement en couches. J'utilise notamment le pare-feu de mon routeur Mikrotik, situé devant tous mes services auto-hébergés. J'utilise également Crowdsec, un système de détection et de prévention d'intrusion (IDS/IPS) auto-hébergé."
 ---
-ne question récurrente lors de l'auto-hébergement de servicee est :
+Une question récurrente lors de l'auto-hébergement de servicee est :
 > Comment sécuriser vos services qui sont accessible publiquement ?
 
 La réponse est généralement en couches. J'utilise notamment le pare-feu de mon routeur Mirotik, placé devant tous mes services auto-hébergés. J'utilise également Crowdsec, un système de détection et de prévention d'intrusion (IDS/IPS) auto-hébergé, complété par des listes de blocage communautaires. Aujourd'hui, nous allons configurer les deux pour que le Mikrotik puisse utiliser les listes de blocage de Crowdsec pour sécuriser mon réseau homelab directement à l'entrée.
