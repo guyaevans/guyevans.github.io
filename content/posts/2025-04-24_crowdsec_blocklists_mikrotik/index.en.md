@@ -3,7 +3,7 @@ title: "Crowdsec Blocklists and Mikrotik Firewall"
 date: 2025-04-24T00:00:00
 rssFullText: true
 lightgallery: true
-featuredImage: feature.webp
+featuredImage: feature.jpg
 authors: ["Guy Evans"]
 tags:
     - security
