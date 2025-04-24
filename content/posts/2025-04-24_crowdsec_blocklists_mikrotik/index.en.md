@@ -250,7 +250,7 @@ Once our rule has been added we can see traffic being blocked.
 
 Now the firewall on our Mikrotik router is using address lists provided by our Crowdsec bouncer to block suspicious requests.
 
-##s End
+## End
 
 This just a small taste of what we can do with CrowdSec. 
 CrowdSec can do a lot more, like acting as a Web Application Filter and virtual patching in front of your websites, scanning system logs for suspicious behaviors, and then block those behaviors. I might write a poste about its other features in the future.
