@@ -1,9 +1,9 @@
 ---
 title: "Crowdsec Blocklists and Mikrotik Firewall"
-date: 2025-02-23T13:24:15+01:00
+date: 2025-04-24T00:00:00
 rssFullText: true
 lightgallery: true
-# featuredImage: feature.jpg
+featuredImage: feature.webp
 authors: ["Guy Evans"]
 tags:
     - security
@@ -11,13 +11,13 @@ tags:
     - mikrotik
     - selfhosted
     - Homelab
-series: 
-    - Crowdsec
-summary: "One question you always get when selfhosting is: \n\n How do you secure your public facing services ? The answer usually is in layers. One layer I use is the firewall on my Mirotik router that sits in front of all my selfhosted services. Another layer I use is Crowdsec which is an IDS/IPS that you can selfhost."
+# series: 
+#     - Crowdsec
+summary: "One question you always get when selfhosting is: \n\n How do you secure your public facing services ? The answer usually is in layers. One layer I use is the firewall on my Mikrotik router that sits in front of all my selfhosted services. Another layer I use is Crowdsec which is an IDS/IPS that you can selfhost."
 draft: true
 ---
 One question you always get when selfhosting is:
-> How do you secure your public facing services
+> How do you secure your public facing services ?
 
 The answer usually is in layers. 
 One layer I use is the firewall on my Mirotik router that sits in front of all my selfhosted services. Another layer I use is Crowdsec which is an IDS/IPS that you can selfhost and is augmented by community blocklists. Today we will be setting both up so that the Mikrotik can use Crowdsec's blocklists to secure my homelab network directly at the entrance.
@@ -65,7 +65,7 @@ The first setting we want to change is  ```format: mikrotik``` this sets the out
 
 Once all the changes are made your ```crowdsec-blocklist-mirror.yaml``` should look like below
 
-```bash {open=true}
+```yaml {open=true}
 config_version: v1.0
 crowdsec_config:
   lapi_key: <API KEY>
@@ -157,7 +157,7 @@ $CrowdSecAddIP "1.12.55.42" "crowdsecurity/http-probing" "165h1m51s"
 $CrowdSecAddIP "1.14.105.106" "crowdsecurity/http-probing" "165h1m51s"
 ...
 ```
-Notice how it is formatted to be pasted into the mikrotik CLI. 
+Notice how it is formatted to be pasted into the Mikrotik CLI. 
 We could stop here and just past the list to the CLI and setup a block rule. But what about updates as the list is regularly updated?
 
 ### Mikrotik
@@ -166,7 +166,7 @@ We could stop here and just past the list to the CLI and setup a block rule. But
 
 We now need a script to update the blocklist on our Mikrotik and a block rule to use it.
 
-To create a script we are going to use mikrotik's [scripting language](https://help.mikrotik.com/docs/spaces/ROS/pages/47579229/Scripting).
+To create a script we are going to use Mikrotik's [scripting language](https://help.mikrotik.com/docs/spaces/ROS/pages/47579229/Scripting).
 
 We can add our script using the following command while making sure to replace ```server_IP``` with the IP address of our mirror bouncer.
 
@@ -247,3 +247,10 @@ Once our rule has been added we can see traffic being blocked.
 ;;; Drop from Crowdsec Lists
 1 input    drop      339 980    6 586
 ```
+
+Now the firewall on our Mikrotik router is using address lists provided by our Crowdsec bouncer to block suspicious requests.
+
+##s End
+
+This just a small taste of what we can do with CrowdSec. 
+CrowdSec can do a lot more, like acting as a Web Application Filter and virtual patching in front of your websites, scanning system logs for suspicious behaviors, and then block those behaviors. I might write a poste about its other features in the future.
