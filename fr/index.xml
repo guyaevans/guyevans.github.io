@@ -1,5 +1,5 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Guy Evans</title><link>https://guy-evans.com/fr/</link><description>Sysadmin -- Net Admin -- IT Tech -- DIYer</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://guy-evans.com/fr/index.xml" rel="self" type="application/rss+xml"/><item><title>Blocklists Crowdsec et Pare-Feu Mikrotik</title><link>https://guy-evans.com/fr/posts/2025-04-24_crowdsec_blocklists_mikrotik/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><author><name>Guy Evans</name><uri>https://guy-evans.com</uri><email>web@evans.fr</email></author><guid>https://guy-evans.com/fr/posts/2025-04-24_crowdsec_blocklists_mikrotik/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/posts/2025-04-24_crowdsec_blocklists_mikrotik/feature.webp" referrerpolicy="no-referrer">
+                <img src="/posts/2025-04-24_crowdsec_blocklists_mikrotik/feature.jpg" referrerpolicy="no-referrer">
             </div><p>Une question récurrente lors de l&rsquo;auto-hébergement de servicee est :</p>
 <blockquote>
 <p>Comment sécuriser vos services qui sont accessible publiquement ?</p></blockquote>

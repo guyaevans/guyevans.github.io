@@ -1,5 +1,5 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Guy Evans</title><link>https://guy-evans.com/</link><description>Sysadmin -- Net Admin -- IT Tech -- DIYer</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://guy-evans.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Crowdsec Blocklists and Mikrotik Firewall</title><link>https://guy-evans.com/posts/2025-04-24_crowdsec_blocklists_mikrotik/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><author><name>Guy Evans</name><uri>https://guy-evans.com</uri><email>web@evans.fr</email></author><guid>https://guy-evans.com/posts/2025-04-24_crowdsec_blocklists_mikrotik/</guid><description><![CDATA[<div class="featured-image">
-                <img src="/posts/2025-04-24_crowdsec_blocklists_mikrotik/feature.webp" referrerpolicy="no-referrer">
+                <img src="/posts/2025-04-24_crowdsec_blocklists_mikrotik/feature.jpg" referrerpolicy="no-referrer">
             </div><p>One question you always get when selfhosting is:</p>
 <blockquote>
 <p>How do you secure your public facing services ?</p></blockquote>
