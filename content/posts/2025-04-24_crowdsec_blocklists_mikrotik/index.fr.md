@@ -14,7 +14,6 @@ tags:
 # series: 
 #     - Crowdsec
 summary: "Une question récurrente lors de l'auto-hébergement de servicee est : \n comment sécuriser vos services qui sont accessible publiquement ? La réponse se trouve généralement en couches. J'utilise notamment le pare-feu de mon routeur Mikrotik, situé devant tous mes services auto-hébergés. J'utilise également Crowdsec, un système de détection et de prévention d'intrusion (IDS/IPS) auto-hébergé."
-draft: true
 ---
 ne question récurrente lors de l'auto-hébergement de servicee est :
 > Comment sécuriser vos services qui sont accessible publiquement ?

@@ -14,7 +14,6 @@ tags:
 # series: 
 #     - Crowdsec
 summary: "One question you always get when selfhosting is: \n\n How do you secure your public facing services ? The answer usually is in layers. One layer I use is the firewall on my Mikrotik router that sits in front of all my selfhosted services. Another layer I use is Crowdsec which is an IDS/IPS that you can selfhost."
-draft: true
 ---
 One question you always get when selfhosting is:
 > How do you secure your public facing services ?
