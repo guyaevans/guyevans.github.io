@@ -2028,7 +2028,7 @@ J&rsquo;utilise généralement 2 cubes de rangement :</p>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-6" 
+    id="codeblock-id-11" 
     class="
       chroma 
       !tw-block 
@@ -2131,7 +2131,7 @@ vlan 30 tagged all</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-7" 
+    id="codeblock-id-12" 
     class="
       chroma 
       !tw-block 
@@ -2228,7 +2228,7 @@ vlan 30 tagged all</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-8" 
+    id="codeblock-id-13" 
     class="
       chroma 
       !tw-block 
@@ -2325,7 +2325,7 @@ vlan 30 tagged all</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-9" 
+    id="codeblock-id-14" 
     class="
       chroma 
       !tw-block 
@@ -2428,7 +2428,7 @@ aaa port-access authenticator active</code></pre></code></pre>
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-10" 
+    id="codeblock-id-15" 
     class="
       chroma 
       !tw-block 
