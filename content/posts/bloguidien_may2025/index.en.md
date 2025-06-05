@@ -1,17 +1,17 @@
 ---
 title: "Bloguidien – May 2025"
-date: 2025-06-01T21:58:52+02:00
+date: 2025-06-05T19:15:52+02:00
 rssFullText: true
 lightgallery: true
-featuredImage:
-draft: true
+featuredImage: feature.jpg
 authors: ["Guy Evans"]
 tags:
   - life
   - bloguidien
   - prompts
   - QA
-summary: Bloguidien is a website created by two French bloggers, where a new writing prompt is posted every day. It’s designed to be a daily writing challenge.
+  - FAQ
+summary: Bloguidien is a website created by two French bloggers, where a new writing prompt is posted every day. It’s designed to be a daily writing challenge. Here are my pics for May 2025
 ---
 ## Writers block and a discovery
 
