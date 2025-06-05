@@ -56,4 +56,6 @@ If you had not caught on yet, I am fortunate to work in a field that I enjoy - I
 **You Will Break Things** – And that’s totally fine. In IT, things go wrong — code breaks, systems crash, configs get messed up. It happens to everyone. There are two types of people: those who have brought down a production system, and those who will. Mistakes are part of the job. What matters is how you respond—own it, fix it, learn from it, and move forward. That’s how real experience is built. *You have got a backup? Right?*
 
 ---
+_Photo by Suzy Hazelwood @ [Pexels.com](https://www.pexels.com/photo/black-and-red-typewriter-on-white-table-3695297/)_
+
 _Note: some links may be affiliate links. As an Amazon Associate I may earn a small commission from qualifying purchases at no extra cost to the buyer._

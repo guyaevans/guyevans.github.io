@@ -53,3 +53,8 @@ Si vous ne l’avez pas encore deviné, j’ai la chance de travailler dans un d
 **Restez humble** – Dans la tech, personne ne sait tout *(moi le premier)*. Parfois, d’autres en sauront plus que vous, et parfois ce sera l’inverse. Dans tous les cas, gardez l’esprit ouvert et soyez respectueux. N’assumez rien, ne vous vantez pas — partagez vos connaissances, écoutez les autres et soyez prêt à apprendre. 
 
 **Vous allez casser des trucs** – Et c’est totalement normal. En informatique, Il arrive que les choses ne se passent pas comme prévu — le code plante, les systèmes tombent, et les configs sont parfois complètement à côté de la plaque. Ça arrive à tout le monde. Il y a deux types de personnes : celles qui ont déjà pété un système de prod, et celles à qui ça va pas tarder. Les erreurs font partie du métier. Ce qui compte, c’est votre réaction — assumez, corrigez, tirez-en une leçon, et avancez. C’est comme ça qu’on gagne de la vraie expérience. *Vous avez une sauvegarde, hein ?*
+
+---
+_Photo par Suzy Hazelwood @ [Pexels.com](https://www.pexels.com/photo/black-and-red-typewriter-on-white-table-3695297/)_
+
+*Note : certains liens peuvent être des liens d'affiliation. En tant qu'associé d'Amazon, je peux percevoir une petite commission sur les achats qualifiés, sans frais supplémentaires pour l'acheteur.*
