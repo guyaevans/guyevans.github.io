@@ -31,7 +31,7 @@ Alors c’est parti...
 Oui — en fait trois, avant de travailler dans l'informatique.  
 Mon tout premier vrai job, c’était livreur de pizzas dans la village où j'ai grandi, quand j’étais ado. Ensuite, j’ai travaillé dans un fast food comme cuisinier intérimaire pour dépanner une amie, puis j’ai été embauché en CDI après un mois. J’ai aussi été assistant comptable — trop de maths, trop de chiffres. Besoin d’en dire plus ?
 
-### 1er Fevrier — [Là, comme ça, qu’est est le dernier livre que t’as apprécié·e?](https://bloguidien.fr/bloguidien-du-samedi-01-fevrier-2025)
+### 1er Février — [Là, comme ça, qu’est est le dernier livre que t’as apprécié·e?](https://bloguidien.fr/bloguidien-du-samedi-01-fevrier-2025)
 
 **Nuclear War, A Scenario** - [Annie Jacobsen](https://amzn.to/4kINykX) <br>
 Vous plonge minute par minute dans un scénario de guerre nucléaire réaliste. Captivant, parfois éprouvant, mais très éclairant.

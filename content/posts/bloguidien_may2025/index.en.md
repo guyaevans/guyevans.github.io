@@ -27,17 +27,17 @@ So here goes ...
 
 *These prompts were chosen in May, but they may have originally been posted some time ago.*
 
-### Have you ever had a job that was completely different to your current one?
+### 19 May — [Have you ever had a job that was completely different to your current one?](https://bloguidien.fr/bloguidien-du-lundi-19-mai-2025)
 
 Yes-Three actually before working in IT. 
 My first real job I worked as pizza delivery boy in my home-town when I was a teenager. Later on in a fast food kitchen as a temp chef which I become permanent after a month. An assistant accountant, too much maths, too many numbers. Need I say more? 
 
-### What was the last book you enjoyed?
+### 1st February — [What was the last book you enjoyed?](https://bloguidien.fr/bloguidien-du-samedi-01-fevrier-2025)
 
 **Nuclear War, A Scenario** - [Annie Jacobsen](https://amzn.to/4kINykX) <br>
 Takes you on a minute by minute real world nuclear war scenario. Gripping, sometimes gruesome but very eye-opening
 
-### What movie do you regret not seeing at the cinema?
+### 21st November — [What movie do you regret not seeing at the cinema?](https://bloguidien.fr/bloguidien-du-jeudi-21-novembre-2024)
 
 There are a couple actually :
 
@@ -45,7 +45,7 @@ There are a couple actually :
 * Raiders of the Lost Ark
 * Oppenheimer *(in IMAX, I went to see it in a non IMAX equipped cinema and it still blew my mind)*
 
-### What advice would you give to someone starting out in your field?
+### 13 February — [What advice would you give to someone starting out in your field?](https://bloguidien.fr/bloguidien-du-jeudi-13-fevrier-2025)
 
 If you had not caught on yet, I am fortunate to work in a field that I enjoy - IT. Here are some of my thoughts and advice I try to pass on ...
 
