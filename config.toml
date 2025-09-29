@@ -7,6 +7,8 @@ enableEmoji = true
 
 enableRobotsTXT = true
 
+ignoreLogs = ['warning-goldmark-raw-html']
+
 [taxonomies]
     tag = "tags"
     category = "categories"
