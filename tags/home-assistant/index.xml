@@ -1,1 +1,71 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home-Assistant on Guy Evans</title><link>https://guy-evans.com/tags/home-assistant/</link><description>Recent content in Home-Assistant on Guy Evans</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 09 Oct 2024 21:23:43 +0200</lastBuildDate><atom:link href="https://guy-evans.com/tags/home-assistant/index.xml" rel="self" type="application/rss+xml"/><item><title>Daikin AC, Home Assistant and Local control</title><link>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</link><pubDate>Wed, 09 Oct 2024 21:23:43 +0200</pubDate><guid>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</guid><description>When we bought our apartment, the previous owners had installed a Daikin minisplit AC in the living room. Great, another thing to &amp;lsquo;smartify&amp;rsquo; with Home Assistant. But Daikin&amp;rsquo;s Wifi modules are way to expensive and cloud dependent.</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Home-Assistant - Tag - Guy Evans</title><link>https://guy-evans.com/tags/home-assistant/</link><description>Home-Assistant - Tag - Guy Evans</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 09 Oct 2024 21:23:43 +0200</lastBuildDate><atom:link href="https://guy-evans.com/tags/home-assistant/" rel="self" type="application/rss+xml"/><item><title>Daikin AC, Home Assistant and Local control</title><link>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</link><pubDate>Wed, 09 Oct 2024 21:23:43 +0200</pubDate><author><name>Guy Evans</name><uri>https://guy-evans.com</uri><email>web@evans.fr</email></author><guid>https://guy-evans.com/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/</guid><description><![CDATA[<div class="featured-image">
+                <img src="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/feature.jpg" referrerpolicy="no-referrer">
+            </div><h2 id="air-conditioning-and-home-assistant" class="headerLink">
+    <a href="#air-conditioning-and-home-assistant" class="header-mark"></a>Air Conditioning and Home Assistant</h2><p>When we bought our apartment, the previous owners had installed a Daikin minisplit AC in the living room. Great, another thing to &lsquo;smartify&rsquo; with Home Assistant<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>I first did what I always have done in previous places and used a <a href="https://amzn.to/4eAfGEb" target="_blank" rel="noopener noreferrer">Broadlink Mini</a> and the <a href="https://github.com/smartHomeHub/SmartIR/" target="_blank" rel="noopener noreferrer">SmartIR</a> integration to enable smart control of the minisplit using Home Assistant. IR control is great but is lacking in some features, mainly feadback. If your device misses the IR command, well tough, they are now out of sync and you are none the wiser, and your AC did not turn on &hellip;</p>
+<h2 id="daikin-modules-and-a-random-find" class="headerLink">
+    <a href="#daikin-modules-and-a-random-find" class="header-mark"></a>Daikin Modules and a random find</h2><p>Daikin does make a <a href="https://amzn.to/47VGXyB" target="_blank" rel="noopener noreferrer">wifi module</a> to be added to the mini split but it has two major shortcomings:</p>
+<ul>
+<li>the price : I found them for 50-90 Euros <em>(depending on the version you need)</em> - way to much &hellip;</li>
+<li>cloud control only: The Daikin app used to have local control but after a couple of updates they have moved to full cloud control meaning that without an Internet connection you can say bye bye to your aircon &hellip;</li>
+</ul>
+<p>During my research for the Daikin module, I came across this post on the Home Assisant forum: <a href="https://community.home-assistant.io/t/need-daikin-wifi-use-the-open-source-faikin-esp32-hardware-instead-of-the-official-wifi-modules/644370" target="_blank" rel="noopener noreferrer">Need Daikin Wifi? Use the Open-Source Faikin ESP32 Hardware instead of the official wifi Modules</a> and this github repo <a href="https://github.com/revk/ESP32-Faikin" target="_blank" rel="noopener noreferrer">ESP32-Faikin</a> by &ldquo;RevK&rsquo;.</p>
+<p>The promise is great: code and a PCB to enable plug and play wifi function with HomeAssistant via MQTT. Better yet the PCB is sold on <a href="https://www.amazon.co.uk/dp/B0C2ZYXNYQ" target="_blank" rel="noopener noreferrer">Amazon UK</a> and based on the venerable ESP32.</p>
+<p>I decided to buy one along with some header wires, after all &hellip;</p>
+<figure><img src="/img/clarkson-how-hard.gif">
+</figure>
+
+<h2 id="hardware-setup" class="headerLink">
+    <a href="#hardware-setup" class="header-mark"></a>Hardware setup</h2><p>I received the PCB and header wires rather quickly, thanks Amazon</p>
+<figure class="center"><a class="lightgallery" href="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/faikin_pcb.jpg" title="" data-thumbnail="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/faikin_pcb.jpg" data-sub-html="<h2>Faikin ESP32</h2>"><img  loading="lazy" src='/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/faikin_pcb.jpg'     width="40%"></a><figcaption class="image-caption">Faikin ESP32</figcaption>
+    </figure>
+<p>Now comes the fun part, hooking it all up. <em>But first a warning</em> &#x26a1; 🚨:</p>
+<div class="details admonition danger open">
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M439.15 453.06L297.17 384l141.99-69.06c7.9-3.95 11.11-13.56 7.15-21.46L432 264.85c-3.95-7.9-13.56-11.11-21.47-7.16L224 348.41 37.47 257.69c-7.9-3.95-17.51-.75-21.47 7.16L1.69 293.48c-3.95 7.9-.75 17.51 7.15 21.46L150.83 384 8.85 453.06c-7.9 3.95-11.11 13.56-7.15 21.47l14.31 28.63c3.95 7.9 13.56 11.11 21.47 7.15L224 419.59l186.53 90.72c7.9 3.95 17.51.75 21.47-7.15l14.31-28.63c3.95-7.91.74-17.52-7.16-21.47zM150 237.28l-5.48 25.87c-2.67 12.62 5.42 24.85 16.45 24.85h126.08c11.03 0 19.12-12.23 16.45-24.85l-5.5-25.87c41.78-22.41 70-62.75 70-109.28C368 57.31 303.53 0 224 0S80 57.31 80 128c0 46.53 28.22 86.87 70 109.28zM280 112c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32zm-112 0c17.65 0 32 14.35 32 32s-14.35 32-32 32-32-14.35-32-32 14.35-32 32-32z"/></svg></span>Electricity is dangerous and can kill you<span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content">Turn off your main breaker before taking apart your AC unit, if unsure call a professional.
+<em>Don&rsquo;t say I didn&rsquo;t warn you when you get zapped or if you break something</em></div></div></div>
+<p>Mini split units usually come apart rather easy. A screw or two and then a few clips hold the chassis on.</p>
+<figure class="center"><a class="lightgallery" href="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/naked_split.jpg" title="" data-thumbnail="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/naked_split.jpg" data-sub-html="<h2>And look a naked minisplit</h2>"><img  loading="lazy" src='/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/naked_split.jpg'     width="90%"></a><figcaption class="image-caption">And look a naked minisplit</figcaption>
+    </figure>
+<p>Once the AC has it&rsquo;s cover off we need to look for the main circuit board. Usually located on the side. And for my AC least the plug we need to use is labelled S21. <strong>You don&rsquo;t want to touch anything else in here. Especially any capacitors &#x26a1;</strong></p>
+<figure class="center"><a class="lightgallery" href="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/pcb_circuit.jpg" title="" data-thumbnail="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/pcb_circuit.jpg" data-sub-html="<h2>The AC circuit board and the installed Faikin PCB - Don&rsquo;t touch that capacitor</h2>"><img  loading="lazy" src='/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/pcb_circuit.jpg'     width="90%"></a><figcaption class="image-caption">The AC circuit board and the installed Faikin PCB - <strong>Don&rsquo;t touch that capacitor</strong></figcaption>
+    </figure>
+<p>Once installed, we can put the metal covering back on. And there is a perfect space for the Faikin PCB below.</p>
+<figure class="center"><a class="lightgallery" href="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/installed_pcb.jpg" title="" data-thumbnail="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/installed_pcb.jpg" data-sub-html="<h2>Final installation of the PCB</h2>"><img  loading="lazy" src='/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/installed_pcb.jpg'     width="90%"></a><figcaption class="image-caption">Final installation of the PCB</figcaption>
+    </figure>
+<p>After putting all the covers back on the AC unit we can turn our main breaker back on.</p>
+<p><em>You did turn it off right?</em> &#x1f440;</p>
+<p>Once your AC has it&rsquo;s power back you will be able to connect to the Faikin via wifi</p>
+<figure><a class="lightgallery" href="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi1.png?raw=true" title="" data-thumbnail="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi1.png?raw=true" data-sub-html="<h2>Choose the wifi broadcast by the PCB</h2>"><img  loading="lazy" src='https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi1.png?raw=true'     width="90%"></a><figcaption class="image-caption">Choose the wifi broadcast by the PCB</figcaption>
+    </figure>
+<p>It will then ask you to enter your wifi network and MQTT server details</p>
+<figure><a class="lightgallery" href="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi3.png?raw=true" title="" data-thumbnail="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi3.png?raw=true" data-sub-html="<h2>Enter your wifi and MQTT details</h2>"><img  loading="lazy" src='https://github.com/revk/ESP32-Faikin/blob/main/Manuals/WiFi3.png?raw=true'     width="90%"></a><figcaption class="image-caption">Enter your wifi and MQTT details</figcaption>
+    </figure>
+<p>Once done you will be presented with some AC controls and guess what they work instantly.</p>
+<figure><a class="lightgallery" href="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/Controls.png?raw=true" title="" data-thumbnail="https://github.com/revk/ESP32-Faikin/blob/main/Manuals/Controls.png?raw=true" data-sub-html="<h2>AC Commands</h2>"><img  loading="lazy" src='https://github.com/revk/ESP32-Faikin/blob/main/Manuals/Controls.png?raw=true'     width="90%"></a><figcaption class="image-caption">AC Commands</figcaption>
+    </figure>
+<p>Finally we need to setup the Home Assistant side.</p>
+<h2 id="home-assistant" class="headerLink">
+    <a href="#home-assistant" class="header-mark"></a>Home Assistant</h2><p>Not much to do here. If your MQTT broker is setup correctly in Home Assistant. Your AC unit should show up on it&rsquo;s own.</p>
+<figure class="center"><a class="lightgallery" href="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/ha1.png" title="" data-thumbnail="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/ha1.png" data-sub-html="<h2>AC unit in Home Assistant</h2>"><img  loading="lazy" src='/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/ha1.png'     width="90%"></a><figcaption class="image-caption">AC unit in Home Assistant</figcaption>
+    </figure>
+<figure class="center"><a class="lightgallery" href="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/ha2.png" title="" data-thumbnail="/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/ha2.png" data-sub-html="<h2>AC controls in Home Assistant</h2>"><img  loading="lazy" src='/posts/2024-10-09_daikin-ac-home-assistant-and-local-control/ha2.png'     width="90%"></a><figcaption class="image-caption">AC controls in Home Assistant</figcaption>
+    </figure>
+<p>With that we now have full <strong>local</strong> control over our AC unit which includes feedback of the AC&rsquo;s state to Home Assistant.</p>
+<p>No more wondering why the room is warm and why the AC did not turn on.</p>
+<hr>
+<p><em>Note: some links may be affiliate links. As an Amazon Associate I may earn a small commission from qualifying purchases at no extra cost to the buyer.</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.home-assistant.io/" target="_blank" rel="noopener noreferrer">Home Assistant</a> - Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description></item></channel></rss>
